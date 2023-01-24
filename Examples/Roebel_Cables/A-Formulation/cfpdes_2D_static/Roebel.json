@@ -1,0 +1,318 @@
+{
+    "Name": "Roebel",
+    "ShortName": "Roebel",
+    "Models": {
+        "cfpdes": {
+            "equations": "magnetic"
+        },
+        "magnetic": {
+            "common": {
+                "setup": {
+                    "unknown": {
+                        "basis": "Pch1",
+                        "name": "A",
+                        "symbol": "A"
+                    }
+                }
+            },
+            "models": [
+                {
+                    "name": "magnetic_Conductor",
+                    "materials": [
+                        "tape_0",
+                        "tape_1",
+                        "tape_2",
+                        "tape_3",
+                        "tape_4",
+                        "tape_5",
+                        "tape_6",
+                        "tape_7",
+                        "tape_8",
+                        "tape_9"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "1/mu:mu",
+                            "f": "materials_J:materials_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Air",
+                    "materials": "Air",
+                    "setup": {
+                        "coefficients": {
+                            "c": "1/mu:mu"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "Parameters": {
+        "Jc0": 47500000000.0,
+        "Bc": 0.035,
+        "b": 0.6,
+        "k": 0.25,
+        "ns": 10,
+        "ny": "ns/2:ns",
+        "th": 1e-06,
+        "sw": 0.0018,
+        "rg": 0.0004,
+        "sg": 0.0001,
+        "n": 21,
+        "tolAz": 1e-09,
+        "tolp": 1e-09,
+        "I0": 85.5,
+        "x0": "-sw-rg/2:sw:rg",
+        "y0": "-((th+sg)*ny-sg)/2:th:sg:ny",
+        "E": 0,
+        "Ec": 0.0001,
+        "P0": 0.9,
+        "P1": 0.9,
+        "P2": 0.9,
+        "P3": 0.9,
+        "P4": 0.9,
+        "P5": 0.9,
+        "P6": 0.9,
+        "P7": 0.9,
+        "P8": 0.9,
+        "P9": 0.9,
+        "mu": "4*pi*1e-7"
+    },
+    "Meshes": {
+        "cfpdes": {
+            "Import": {
+                "filename": "$cfgdir/Roebel.geo",
+                "hsize": 1e-4
+            },
+            "Fields": {
+                "v": {
+                    "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                    "basis": "Pch1"
+                }
+            }
+        }
+    },
+    "Materials": {
+        "tape_0": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P0:P0",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_1": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P1:P1",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_2": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P2:P2",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_3": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P3:P3",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_4": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P4:P4",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_5": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P5:P5",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_6": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P6:P6",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_7": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P7:P7",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_8": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P8:P8",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_9": {
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "P9:P9",
+            "J": "JcB*p:JcB:p"
+        },
+        "Air": {
+            "p": 0
+        }
+    },
+    "InitialConditions": {
+        "magnetic": {
+            "A": {
+                "File": {
+                    "myic": {
+                        "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                        "format": "hdf5"
+                    }
+                }
+            }
+        }
+    },
+    "BoundaryConditions": {
+        "magnetic": {
+            "Dirichlet": {
+                "magdir": {
+                    "markers": [
+                        "Exterior_boundary"
+                    ],
+                    "expr": "0"
+                }
+            }
+        }
+    },
+    "PostProcess": {
+        "use-model-name": 1,
+        "cfpdes": {
+            "Exports": {
+                "fields": "magnetic.A",
+                "expr": {
+                    "B": {
+                        "expr": "{magnetic_grad_A_1,-magnetic_grad_A_0}:magnetic_grad_A_0:magnetic_grad_A_1",
+                        "representation": [
+                            "element"
+                        ]
+                    },
+                    "J": {
+                        "expr": "materials_J:materials_J",
+                        "markers": [
+                            "tape_0",
+                            "tape_1",
+                            "tape_2",
+                            "tape_3",
+                            "tape_4",
+                            "tape_5",
+                            "tape_6",
+                            "tape_7",
+                            "tape_8",
+                            "tape_9"
+                        ]
+                    },
+                    "JcB": {
+                        "expr": "materials_JcB:materials_JcB",
+                        "markers": [
+                            "tape_0",
+                            "tape_1",
+                            "tape_2",
+                            "tape_3",
+                            "tape_4",
+                            "tape_5",
+                            "tape_6",
+                            "tape_7",
+                            "tape_8",
+                            "tape_9"
+                        ]
+                    },
+                    "P": {
+                        "expr": "materials_p:materials_p",
+                        "markers": [
+                            "tape_0",
+                            "tape_1",
+                            "tape_2",
+                            "tape_3",
+                            "tape_4",
+                            "tape_5",
+                            "tape_6",
+                            "tape_7",
+                            "tape_8",
+                            "tape_9"
+                        ]
+                    }
+                }
+            },
+            "Measures": {
+                "Statistics": {
+                    "Ics_%1%": {
+                        "type": "integrate",
+                        "expr": "materials_%1%_JcB:materials_%1%_JcB",
+                        "markers": "%1%",
+                        "index1": [
+                            "tape_0",
+                            "tape_1",
+                            "tape_2",
+                            "tape_3",
+                            "tape_4",
+                            "tape_5",
+                            "tape_6",
+                            "tape_7",
+                            "tape_8",
+                            "tape_9"
+                        ]
+                    },
+                    "Linf": {
+                        "type": "max",
+                        "expr": "abs(magnetic_A-meshes_cfpdes_fields_v):magnetic_A:meshes_cfpdes_fields_v",
+                        "markers": [
+                            "tape_0",
+                            "tape_1",
+                            "tape_2",
+                            "tape_3",
+                            "tape_4",
+                            "tape_5",
+                            "tape_6",
+                            "tape_7",
+                            "tape_8",
+                            "tape_9",
+                            "Air"
+                        ]
+                    }
+                },
+                "Norm": {
+                    "mynorm": {
+                        "type": "L2",
+                        "field": "magnetic.A"
+                    },
+                    "myerror": {
+                        "type": "L2-error",
+                        "field": "magnetic.A",
+                        "solution": "meshes_cfpdes_fields_v:meshes_cfpdes_fields_v",
+                        "markers": [
+                            "tape_0",
+                            "tape_1",
+                            "tape_2",
+                            "tape_3",
+                            "tape_4",
+                            "tape_5",
+                            "tape_6",
+                            "tape_7",
+                            "tape_8",
+                            "tape_9",
+                            "Air"
+                        ]
+                    }
+                },
+                "Points": {
+                    "point": {
+                        "coord": "{-1e-3,5e-4}",
+                        "fields": [],
+                        "expressions": {
+                            "v": "meshes_cfpdes_fields_v:meshes_cfpdes_fields_v"
+                        }
+                    }
+                }
+            }
+        },
+        "magnetic": {
+            "Save": {
+                "Fields": {
+                    "names": [
+                        "A"
+                    ],
+                    "format": "hdf5"
+                }
+            }
+        }
+    }
+}

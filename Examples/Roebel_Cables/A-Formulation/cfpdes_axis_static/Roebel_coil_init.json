@@ -1,0 +1,3007 @@
+{
+    "Name": "Roebel",
+    "ShortName": "Roebel",
+    "Models": {
+        "cfpdes": {
+            "equations": "magnetic"
+        },
+        "magnetic": {
+            "common": {
+                "setup": {
+                    "unknown": {
+                        "basis": "Pch1",
+                        "name": "A",
+                        "symbol": "A"
+                    }
+                }
+            },
+            "models": [
+                {
+                    "name": "magnetic_Conductor_00",
+                    "materials": [
+                        "tape_00"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_00_J*x:x:materials_tape_00_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_01",
+                    "materials": [
+                        "tape_01"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_01_J*x:x:materials_tape_01_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_02",
+                    "materials": [
+                        "tape_02"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_02_J*x:x:materials_tape_02_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_03",
+                    "materials": [
+                        "tape_03"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_03_J*x:x:materials_tape_03_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_04",
+                    "materials": [
+                        "tape_04"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_04_J*x:x:materials_tape_04_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_05",
+                    "materials": [
+                        "tape_05"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_05_J*x:x:materials_tape_05_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_06",
+                    "materials": [
+                        "tape_06"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_06_J*x:x:materials_tape_06_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_07",
+                    "materials": [
+                        "tape_07"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_07_J*x:x:materials_tape_07_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_08",
+                    "materials": [
+                        "tape_08"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_08_J*x:x:materials_tape_08_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_09",
+                    "materials": [
+                        "tape_09"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_09_J*x:x:materials_tape_09_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_10",
+                    "materials": [
+                        "tape_10"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_10_J*x:x:materials_tape_10_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_11",
+                    "materials": [
+                        "tape_11"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_11_J*x:x:materials_tape_11_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_12",
+                    "materials": [
+                        "tape_12"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_12_J*x:x:materials_tape_12_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_13",
+                    "materials": [
+                        "tape_13"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_13_J*x:x:materials_tape_13_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_14",
+                    "materials": [
+                        "tape_14"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_14_J*x:x:materials_tape_14_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_15",
+                    "materials": [
+                        "tape_15"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_15_J*x:x:materials_tape_15_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_16",
+                    "materials": [
+                        "tape_16"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_16_J*x:x:materials_tape_16_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_17",
+                    "materials": [
+                        "tape_17"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_17_J*x:x:materials_tape_17_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_18",
+                    "materials": [
+                        "tape_18"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_18_J*x:x:materials_tape_18_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_19",
+                    "materials": [
+                        "tape_19"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_19_J*x:x:materials_tape_19_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_20",
+                    "materials": [
+                        "tape_20"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_20_J*x:x:materials_tape_20_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_21",
+                    "materials": [
+                        "tape_21"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_21_J*x:x:materials_tape_21_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_22",
+                    "materials": [
+                        "tape_22"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_22_J*x:x:materials_tape_22_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_23",
+                    "materials": [
+                        "tape_23"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_23_J*x:x:materials_tape_23_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_24",
+                    "materials": [
+                        "tape_24"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_24_J*x:x:materials_tape_24_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_25",
+                    "materials": [
+                        "tape_25"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_25_J*x:x:materials_tape_25_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_26",
+                    "materials": [
+                        "tape_26"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_26_J*x:x:materials_tape_26_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_27",
+                    "materials": [
+                        "tape_27"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_27_J*x:x:materials_tape_27_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_28",
+                    "materials": [
+                        "tape_28"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_28_J*x:x:materials_tape_28_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_29",
+                    "materials": [
+                        "tape_29"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_29_J*x:x:materials_tape_29_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_30",
+                    "materials": [
+                        "tape_30"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_30_J*x:x:materials_tape_30_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_31",
+                    "materials": [
+                        "tape_31"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_31_J*x:x:materials_tape_31_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_32",
+                    "materials": [
+                        "tape_32"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_32_J*x:x:materials_tape_32_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_33",
+                    "materials": [
+                        "tape_33"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_33_J*x:x:materials_tape_33_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_34",
+                    "materials": [
+                        "tape_34"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_34_J*x:x:materials_tape_34_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_35",
+                    "materials": [
+                        "tape_35"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_35_J*x:x:materials_tape_35_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_36",
+                    "materials": [
+                        "tape_36"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_36_J*x:x:materials_tape_36_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_37",
+                    "materials": [
+                        "tape_37"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_37_J*x:x:materials_tape_37_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_38",
+                    "materials": [
+                        "tape_38"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_38_J*x:x:materials_tape_38_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_39",
+                    "materials": [
+                        "tape_39"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_39_J*x:x:materials_tape_39_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_40",
+                    "materials": [
+                        "tape_40"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_40_J*x:x:materials_tape_40_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_41",
+                    "materials": [
+                        "tape_41"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_41_J*x:x:materials_tape_41_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_42",
+                    "materials": [
+                        "tape_42"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_42_J*x:x:materials_tape_42_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_43",
+                    "materials": [
+                        "tape_43"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_43_J*x:x:materials_tape_43_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_44",
+                    "materials": [
+                        "tape_44"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_44_J*x:x:materials_tape_44_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_45",
+                    "materials": [
+                        "tape_45"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_45_J*x:x:materials_tape_45_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_46",
+                    "materials": [
+                        "tape_46"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_46_J*x:x:materials_tape_46_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_47",
+                    "materials": [
+                        "tape_47"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_47_J*x:x:materials_tape_47_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_48",
+                    "materials": [
+                        "tape_48"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_48_J*x:x:materials_tape_48_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_49",
+                    "materials": [
+                        "tape_49"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_49_J*x:x:materials_tape_49_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_50",
+                    "materials": [
+                        "tape_50"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_50_J*x:x:materials_tape_50_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_51",
+                    "materials": [
+                        "tape_51"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_51_J*x:x:materials_tape_51_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_52",
+                    "materials": [
+                        "tape_52"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_52_J*x:x:materials_tape_52_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_53",
+                    "materials": [
+                        "tape_53"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_53_J*x:x:materials_tape_53_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_54",
+                    "materials": [
+                        "tape_54"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_54_J*x:x:materials_tape_54_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_55",
+                    "materials": [
+                        "tape_55"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_55_J*x:x:materials_tape_55_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_56",
+                    "materials": [
+                        "tape_56"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_56_J*x:x:materials_tape_56_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_57",
+                    "materials": [
+                        "tape_57"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_57_J*x:x:materials_tape_57_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_58",
+                    "materials": [
+                        "tape_58"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_58_J*x:x:materials_tape_58_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_59",
+                    "materials": [
+                        "tape_59"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_59_J*x:x:materials_tape_59_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_60",
+                    "materials": [
+                        "tape_60"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_60_J*x:x:materials_tape_60_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_61",
+                    "materials": [
+                        "tape_61"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_61_J*x:x:materials_tape_61_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_62",
+                    "materials": [
+                        "tape_62"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_62_J*x:x:materials_tape_62_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_63",
+                    "materials": [
+                        "tape_63"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_63_J*x:x:materials_tape_63_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_64",
+                    "materials": [
+                        "tape_64"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_64_J*x:x:materials_tape_64_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_65",
+                    "materials": [
+                        "tape_65"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_65_J*x:x:materials_tape_65_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_66",
+                    "materials": [
+                        "tape_66"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_66_J*x:x:materials_tape_66_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_67",
+                    "materials": [
+                        "tape_67"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_67_J*x:x:materials_tape_67_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_68",
+                    "materials": [
+                        "tape_68"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_68_J*x:x:materials_tape_68_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_69",
+                    "materials": [
+                        "tape_69"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_69_J*x:x:materials_tape_69_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_70",
+                    "materials": [
+                        "tape_70"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_70_J*x:x:materials_tape_70_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_71",
+                    "materials": [
+                        "tape_71"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_71_J*x:x:materials_tape_71_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_72",
+                    "materials": [
+                        "tape_72"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_72_J*x:x:materials_tape_72_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_73",
+                    "materials": [
+                        "tape_73"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_73_J*x:x:materials_tape_73_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_74",
+                    "materials": [
+                        "tape_74"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_74_J*x:x:materials_tape_74_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_75",
+                    "materials": [
+                        "tape_75"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_75_J*x:x:materials_tape_75_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_76",
+                    "materials": [
+                        "tape_76"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_76_J*x:x:materials_tape_76_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_77",
+                    "materials": [
+                        "tape_77"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_77_J*x:x:materials_tape_77_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_78",
+                    "materials": [
+                        "tape_78"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_78_J*x:x:materials_tape_78_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_79",
+                    "materials": [
+                        "tape_79"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_79_J*x:x:materials_tape_79_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_80",
+                    "materials": [
+                        "tape_80"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_80_J*x:x:materials_tape_80_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_81",
+                    "materials": [
+                        "tape_81"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_81_J*x:x:materials_tape_81_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_82",
+                    "materials": [
+                        "tape_82"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_82_J*x:x:materials_tape_82_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_83",
+                    "materials": [
+                        "tape_83"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_83_J*x:x:materials_tape_83_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_84",
+                    "materials": [
+                        "tape_84"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_84_J*x:x:materials_tape_84_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_85",
+                    "materials": [
+                        "tape_85"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_85_J*x:x:materials_tape_85_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_86",
+                    "materials": [
+                        "tape_86"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_86_J*x:x:materials_tape_86_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_87",
+                    "materials": [
+                        "tape_87"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_87_J*x:x:materials_tape_87_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_88",
+                    "materials": [
+                        "tape_88"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_88_J*x:x:materials_tape_88_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Conductor_89",
+                    "materials": [
+                        "tape_89"
+                    ],
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_89_J*x:x:materials_tape_89_J"
+                        }
+                    }
+                },
+                {
+                    "name": "magnetic_Air",
+                    "materials": "Air",
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "Parameters": {
+        "Jc0": 3.5e10,
+        "Bc": 0.035,
+        "b": 0.6,
+        "k": 0.25,
+        "ns": 10,
+        "ny": "ns/2:ns",
+        "th": 1e-06,
+        "sw": 0.0018,
+        "rg": 0.0004,
+        "sg": 0.0001,
+        "n": 21,
+        "tolAz": 1e-09,
+        "tolp": 1e-09,
+        "I0": 60,
+        "x0": "-sw-rg/2:sw:rg",
+        "y0": "-((th+sg)*ny-sg)/2:th:sg:ny",
+        "E": 0,
+        "Ec": 0.0001,
+        "P00": 0,
+        "P01": 0,
+        "P02": 0,
+        "P03": 0,
+        "P04": 0,
+        "P05": 0,
+        "P06": 0,
+        "P07": 0,
+        "P08": 0,
+        "P09": 0,
+        "P10": 0,
+        "P11": 0,
+        "P12": 0,
+        "P13": 0,
+        "P14": 0,
+        "P15": 0,
+        "P16": 0,
+        "P17": 0,
+        "P18": 0,
+        "P19": 0,
+        "P20": 0,
+        "P21": 0,
+        "P22": 0,
+        "P23": 0,
+        "P24": 0,
+        "P25": 0,
+        "P26": 0,
+        "P27": 0,
+        "P28": 0,
+        "P29": 0,
+        "P30": 0,
+        "P31": 0,
+        "P32": 0,
+        "P33": 0,
+        "P34": 0,
+        "P35": 0,
+        "P36": 0,
+        "P37": 0,
+        "P38": 0,
+        "P39": 0,
+        "P40": 0,
+        "P41": 0,
+        "P42": 0,
+        "P43": 0,
+        "P44": 0,
+        "P45": 0,
+        "P46": 0,
+        "P47": 0,
+        "P48": 0,
+        "P49": 0,
+        "P50": 0,
+        "P51": 0,
+        "P52": 0,
+        "P53": 0,
+        "P54": 0,
+        "P55": 0,
+        "P56": 0,
+        "P57": 0,
+        "P58": 0,
+        "P59": 0,
+        "P60": 0,
+        "P61": 0,
+        "P62": 0,
+        "P63": 0,
+        "P64": 0,
+        "P65": 0,
+        "P66": 0,
+        "P67": 0,
+        "P68": 0,
+        "P69": 0,
+        "P70": 0,
+        "P71": 0,
+        "P72": 0,
+        "P73": 0,
+        "P74": 0,
+        "P75": 0,
+        "P76": 0,
+        "P77": 0,
+        "P78": 0,
+        "P79": 0,
+        "P80": 0,
+        "P81": 0,
+        "P82": 0,
+        "P83": 0,
+        "P84": 0,
+        "P85": 0,
+        "P86": 0,
+        "P87": 0,
+        "P88": 0,
+        "P89": 0,
+        "mu": "4*pi*1e-7",
+
+        "J0p":4.9e10,
+        "J0i":3.2e10,
+        "B0ab":4.6e-3,
+        "B0c":2e-3,
+        "B0i":32e-3,
+        "betajc":0.48,
+        "alphajc":0.9,
+        "uab":8.3,
+        "uc":1.8,
+        "ui":1.7
+    },
+    "Meshes": {
+        "cfpdes": {
+            "Import": {
+                "filename": "$cfgdir/Roebel_coil.geo",
+                "hsize": 0.005
+            }
+        }
+    },
+    "Materials": {
+        "tape_00": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P00:P00",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_01": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P01:P01",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_02": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P02:P02",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_03": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P03:P03",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_04": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P04:P04",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_05": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P05:P05",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_06": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P06:P06",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_07": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P07:P07",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_08": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P08:P08",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_09": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P09:P09",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_10": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P10:P10",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_11": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P11:P11",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_12": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P12:P12",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_13": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P13:P13",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_14": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P14:P14",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_15": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P15:P15",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_16": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P16:P16",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_17": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P17:P17",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_18": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P18:P18",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_19": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P19:P19",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_20": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P20:P20",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_21": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P21:P21",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_22": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P22:P22",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_23": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P23:P23",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_24": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P24:P24",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_25": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P25:P25",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_26": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P26:P26",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_27": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P27:P27",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_28": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P28:P28",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_29": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P29:P29",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_30": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P30:P30",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_31": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P31:P31",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_32": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P32:P32",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_33": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P33:P33",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_34": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P34:P34",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_35": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P35:P35",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_36": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P36:P36",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_37": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P37:P37",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_38": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P38:P38",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_39": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P39:P39",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_40": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P40:P40",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_41": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P41:P41",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_42": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P42:P42",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_43": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P43:P43",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_44": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P44:P44",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_45": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P45:P45",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_46": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P46:P46",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_47": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P47:P47",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_48": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P48:P48",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_49": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P49:P49",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_50": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P50:P50",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_51": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P51:P51",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_52": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P52:P52",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_53": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P53:P53",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_54": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P54:P54",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_55": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P55:P55",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_56": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P56:P56",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_57": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P57:P57",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_58": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P58:P58",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_59": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P59:P59",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_60": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P60:P60",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_61": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P61:P61",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_62": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P62:P62",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_63": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P63:P63",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_64": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P64:P64",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_65": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P65:P65",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_66": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P66:P66",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_67": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P67:P67",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_68": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P68:P68",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_69": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P69:P69",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_70": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P70:P70",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_71": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P71:P71",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_72": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P72:P72",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_73": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P73:P73",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_74": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P74:P74",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_75": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P75:P75",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_76": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P76:P76",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_77": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P77:P77",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_78": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P78:P78",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_79": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P79:P79",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_80": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P80:P80",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_81": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P81:P81",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_82": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P82:P82",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_83": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P83:P83",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_84": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P84:P84",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_85": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P85:P85",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_86": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P86:P86",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_87": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P87:P87",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_88": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P88:P88",
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_89": {
+            "normB":"sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta":"atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            
+            "fab":"sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc":"sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi":"sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+
+            "Jcab":"J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc":"J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci":"J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+
+            "JcB":"max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+
+            "p": "P89:P89",
+            "J": "JcB*p:JcB:p"
+        },
+        "Air": {
+            "p": 0
+        }
+    },
+    "BoundaryConditions": {
+        "magnetic": {
+            "Dirichlet": {
+                "magdir": {
+                    "markers": [
+                        "Exterior_boundary",
+                        "ZAxis"
+                    ],
+                    "expr": "0"
+                }
+            }
+        }
+    },
+    "PostProcess": {
+        "use-model-name": 1,
+        "cfpdes": {
+            "Exports": {
+                "fields": "magnetic.A",
+                "expr": {
+                    "B": {
+                        "expr": "{-magnetic_grad_A_1,magnetic_grad_A_0+magnetic_A/x}:magnetic_grad_A_0:magnetic_grad_A_1:magnetic_A:x",
+                        "representation": [
+                            "element"
+                        ]
+                    }
+                }
+            },
+            "Measures": {
+                "Statistics": {
+                    "Ics_%1%": {
+                        "type": "integrate",
+                        "expr": "materials_%1%_JcB:materials_%1%_JcB",
+                        "markers": "%1%",
+                        "index1": [
+                            "tape_00",
+                            "tape_01",
+                            "tape_02",
+                            "tape_03",
+                            "tape_04",
+                            "tape_05",
+                            "tape_06",
+                            "tape_07",
+                            "tape_08",
+                            "tape_09",
+                            "tape_10",
+                            "tape_11",
+                            "tape_12",
+                            "tape_13",
+                            "tape_14",
+                            "tape_15",
+                            "tape_16",
+                            "tape_17",
+                            "tape_18",
+                            "tape_19",
+                            "tape_20",
+                            "tape_21",
+                            "tape_22",
+                            "tape_23",
+                            "tape_24",
+                            "tape_25",
+                            "tape_26",
+                            "tape_27",
+                            "tape_28",
+                            "tape_29",
+                            "tape_30",
+                            "tape_31",
+                            "tape_32",
+                            "tape_33",
+                            "tape_34",
+                            "tape_35",
+                            "tape_36",
+                            "tape_37",
+                            "tape_38",
+                            "tape_39",
+                            "tape_40",
+                            "tape_41",
+                            "tape_42",
+                            "tape_43",
+                            "tape_44",
+                            "tape_45",
+                            "tape_46",
+                            "tape_47",
+                            "tape_48",
+                            "tape_49",
+                            "tape_50",
+                            "tape_51",
+                            "tape_52",
+                            "tape_53",
+                            "tape_54",
+                            "tape_55",
+                            "tape_56",
+                            "tape_57",
+                            "tape_58",
+                            "tape_59",
+                            "tape_60",
+                            "tape_61",
+                            "tape_62",
+                            "tape_63",
+                            "tape_64",
+                            "tape_65",
+                            "tape_66",
+                            "tape_67",
+                            "tape_68",
+                            "tape_69",
+                            "tape_70",
+                            "tape_71",
+                            "tape_72",
+                            "tape_73",
+                            "tape_74",
+                            "tape_75",
+                            "tape_76",
+                            "tape_77",
+                            "tape_78",
+                            "tape_79",
+                            "tape_80",
+                            "tape_81",
+                            "tape_82",
+                            "tape_83",
+                            "tape_84",
+                            "tape_85",
+                            "tape_86",
+                            "tape_87",
+                            "tape_88",
+                            "tape_89"
+                        ]
+                    }
+                }
+            }
+        },
+        "magnetic": {
+            "Save": {
+                "Fields": {
+                    "names": [
+                        "A"
+                    ],
+                    "format": "hdf5"
+                }
+            }
+        }
+    }
+}
