@@ -43,3 +43,13 @@ docs/cache/
 auto-save-list
 tramp
 .\#*
+
+# Res files
+*.msh
+*.pre
+*.res
+*.csv
+*.pos
+*.db
+*.bdf
+res

@@ -15,78 +15,11 @@ import feelpp
 from feelpp.toolboxes.core import *
 from feelpp.toolboxes.cfpdes import *
 
-### New function Simulate
-# def new_simulate(toolbox, export=True, buildModelAlgebraicFactory=True,data=None):
-#     ns=20                  
-#     tolAz=1e-9
-#     tolp=1e-9
-
-
-#     toolbox.init(buildModelAlgebraicFactory)
-#     #toolbox.printAndSaveInfo()
-#     meas=[]
-#     if toolbox.isStationary():
-#         Jc0=4.75e10
-#         th=1.e-6, 
-#         sw=1.8e-3
-#         I0=85.5
-        
-
-#         p=[0]*10
-#         Ics=[0]*10
-
-#         pmax=np.max(p)
-#         while np.abs(pmax-1)>tolp :                 ## Ic criterion
-#             print("I0 = ",I0)
-#             err=1                                   ## Reset err variable
-#             while err > tolAz :                     ## Self consistency loop
-#                 meas = []
-#                 toolbox.solve()                     ## Run FEM problem
-#                 if export:
-#                     toolbox.exportResults()
-#                 if not toolbox.postProcessMeasures().empty():
-#                     meas.append(toolbox.postProcessMeasures().values())
-                    
-#                 print(meas)
-
-#                 for j in range(0,ns) :              ## Ic and p value updated for each materials
-#                     Ics[j]=meas[0][f'Statistics_Ics_tape_{j}_integrate']   
-#                     p[j]=I0/Ics[j]
-#                     toolbox.addParameterInModelProperties(f"P{j}", p[j])
-#                     toolbox.updateParameterValues()
-#                     print(f"        P{j} = {p[j]}")
-
-#                 err = meas[0]["Statistics_Linf_max"]
-#                 print(err)
-
-#             pmax=np.max(p)
-#             I0=2*I0/(1+pmax)
-#             toolbox.addParameterInModelProperties("I0", I0)
-#             toolbox.updateParameterValues()
-
-#     else:
-#         if not toolbox.doRestart():
-#             toolbox.exportResults(toolbox.timeInitial())
-#         toolbox.startTimeStep()
-#         while not toolbox.timeStepBase().isFinished():
-#             if feelpp.Environment.isMasterRank():
-#                 print("============================================================\n")
-#                 print("time simulation: {}s/{}s with step: {}".format(toolbox.time(),toolbox.timeFinal(),toolbox.timeStep()))
-#                 print("============================================================\n")
-#             toolbox.solve()
-#             if not toolbox.postProcessMeasures().empty():
-#                 meas.append(toolbox.postProcessMeasures().values())
-#             if export:
-#                 toolbox.exportResults()
-
-#             toolbox.updateTimeStep()
-#     return [toolbox.checkResults(),meas]
-#######################################
-
+filename = os.getcwd()+'/Roebel_coil.json'
 
 app = feelpp.Environment(["myapp"], opts= toolboxes_options("coefficient-form-pdes", "cfpdes"),config=feelpp.localRepository(""))
 
-feelpp.Environment.setConfigFile('/home/LNCMI-G/muzet/stage/2021-m2-lncmi-supermagnets/simulations/aform/Ic_Roebel/Roebel_coil_init.cfg')
+feelpp.Environment.setConfigFile('Roebel_coil_init.cfg')
 f = cfpdes(dim=2)
 [ok,meas]=simulate(f)
 f.checkResults()
@@ -111,7 +44,6 @@ tolAz=1e-9
 tolp=1e-6
 I0=60
 
-filename = '/home/LNCMI-G/muzet/stage/2021-m2-lncmi-supermagnets/simulations/aform/Ic_Roebel/Roebel_coil.json'
 with open(filename, 'r') as file:
     data = json.load(file)
     for j in range(0,9) :
@@ -150,7 +82,7 @@ while np.abs(pmax-1)*(1-s) + np.abs(np.max(avg)-ns)*s*(1-s1) + np.abs(sum_avg-L*
     err=1                                                                   ## Reset err variable
     while err > tolAz :                                                     ## Self consistency loop
         """"""""
-        feelpp.Environment.setConfigFile('/home/LNCMI-G/muzet/stage/2021-m2-lncmi-supermagnets/simulations/aform/Ic_Roebel/Roebel_coil.cfg')
+        feelpp.Environment.setConfigFile('Roebel_coil.cfg')
         f = cfpdes(dim=2)
         [ok,meas]=simulate(f)                                               ## Run FEM problem
         """"""""
