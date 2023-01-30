@@ -1,5 +1,5 @@
-name: template_project
-title: Feel++ Templace Project
+name: feelpp_hts
+title: Feel++ HTS
 version: '1.0.3'
 start_page: ROOT:index.adoc
 nav:

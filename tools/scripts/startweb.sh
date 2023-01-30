@@ -53,14 +53,24 @@ if [ ! -d ${SRCDIR} ]; then
 fi
 
 # install npm and antora
-sudo apt-get update
-sudo apt-get -y install npm
+cd ~
+curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+sudo bash /tmp/nodesource_setup.sh
+sudo apt install nodejs
+node -v
+
+# sudo apt-get update
+# sudo apt-get -y install npm
+
 sudo npm i -g @antora/cli @antora/site-generator-default
+# sudo npm i -D -E @antora/site-generator@3.1
 sudo npm i -g asciidoctor.js asciidoctor-plantuml
 sudo npm i -g live-server
 
 # do it in docs
 cd ${SRCDIR}/docs
+sudo npm i -D -E @antora/site-generator@3.1
+sudo npm install --save handlebars-utils
 antora --stacktrace generate --cache-dir cache --redirect-facility disabled --clean site-dev.yml > ../Antora.log 2>&1
 
 # get VERSION from main mqs CMakeLists.txt
