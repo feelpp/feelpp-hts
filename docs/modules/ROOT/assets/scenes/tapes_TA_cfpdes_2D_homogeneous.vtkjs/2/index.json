@@ -1,0 +1,158 @@
+{
+  "vtkClass": "vtkPolyData",
+  "points": {
+      "vtkClass": "vtkPoints",
+      "name": "points",
+      "numberOfComponents": 3,
+      "dataType": "Float32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Float32_48324-cbe25191a6fc039cbde086fa0d2f6c12"
+      },
+      "size": 48324
+    },
+  "polys": {
+      "vtkClass": "vtkCellArray",
+      "name": "polys",
+      "numberOfComponents": 1,
+      "dataType": "Int32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Int32_126968-cf7e008116712c463b4a550a1f799d09"
+      },
+      "size": 126968
+    },
+  "pointData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": [
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "cfpdes.current.T",
+      "numberOfComponents": 1,
+      "dataType": "Float32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Float32_16108-d5caa956b980d744027bb65b4f9669f5"
+      },
+      "size": 16108
+    }},
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "cfpdes.magnetic.A",
+      "numberOfComponents": 1,
+      "dataType": "Float32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Float32_16108-12723d964dc291507d28248a38c51f0d"
+      },
+      "size": 16108
+    }},
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "cfpdes.expr.B",
+      "numberOfComponents": 3,
+      "dataType": "Float32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Float32_48324-5d3a595c0e755d09a41f4f2ee4b03150"
+      },
+      "size": 48324
+    }},
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "cfpdes.expr.Jz",
+      "numberOfComponents": 1,
+      "dataType": "Float32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Float32_16108-8adfa8a6eb07ad2633f8a11eeed43b7e"
+      },
+      "size": 16108
+    }},
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "cfpdes.pid",
+      "numberOfComponents": 1,
+      "dataType": "Float32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Float32_16108-53b3c9f2da58d637a9b18a50e8d18882"
+      },
+      "size": 16108
+    }},
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "vtkOriginalPointIds",
+      "numberOfComponents": 1,
+      "dataType": "Int32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Int32_16108-2c65b55fa6e51b1471c1ed081b25809e"
+      },
+      "size": 16108
+    }},
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "vtkCompositeIndex",
+      "numberOfComponents": 1,
+      "dataType": "Uint32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Uint32_16108-dad9387de8ac5c0c621b5e9a56deb432"
+      },
+      "size": 16108
+    }}
+    ],
+    "activeTCoords": -1,
+    "activeScalars": 3,
+    "activeNormals": -1,
+    "activeGlobalIds": -1,
+    "activeTensors": -1,
+    "activePedigreeIds": -1,
+    "activeVectors": 2
+  },
+  "cellData": {
+    "vtkClass": "vtkDataSetAttributes",
+    "arrays": [
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "vtkOriginalCellIds",
+      "numberOfComponents": 1,
+      "dataType": "Int32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Int32_31742-57bbb46495da1679b5d552cf9b314b5c"
+      },
+      "size": 31742
+    }},
+      { "data": {
+      "vtkClass": "vtkDataArray",
+      "name": "vtkCompositeIndex",
+      "numberOfComponents": 1,
+      "dataType": "Uint32Array",
+      "ref": {
+         "encode": "LittleEndian",
+         "basepath": "data",
+         "id": "Uint32_31742-1461ebc02b1d2f15f9c995b9114f69c2"
+      },
+      "size": 31742
+    }}
+    ],
+    "activeTCoords": -1,
+    "activeScalars": -1,
+    "activeNormals": -1,
+    "activeGlobalIds": -1,
+    "activeTensors": -1,
+    "activePedigreeIds": -1,
+    "activeVectors": -1
+  }}
