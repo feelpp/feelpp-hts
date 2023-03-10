@@ -71,10 +71,10 @@
 
         "mu":"4*pi*1e-7",
         "f":50,
-        "Ic":300.0,
-        "Iapp":"0.5*Ic*sin(2*pi*f*t):Ic:f:t",
+        "Imax":300.0,
+        "Iapp":"0.5*Imax*sin(2*pi*f*t):Imax:f:t",
 
-        "Jc0":"Ic/thickness_tape/height:Ic:height:thickness_tape", //=2.5E10
+        "Jc0":"Imax/thickness_tape/height:Imax:height:thickness_tape", //=2.5E10
         "ec":1e-4,
         "n":25,
 
@@ -99,9 +99,8 @@
         {
             "markers":["Bulks"],
 
-            "JcB":"(Jc0/(1+sqrt(k^2*(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2+(-magnetic_grad_A_rt_1)^2)/b0)^alpha):Jc0:b0:k:alpha:magnetic_A_rt:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:x",
-            
-            "rhoHTS":"ec/Jc0*((abs(current_grad_T_rt_1)/Jc0)^(n)):ec:Jc0:n:current_grad_T_rt_1",
+            // "rhoHTS":"ec/Jc0*((abs(current_grad_T_rt_1)/Jc0)^(n)):ec:Jc0:n:current_grad_T_rt_1",
+            "rhoHTS":"ec/Jc0*((abs(current_grad_T_1+1e-12*(abs(current_grad_T_rt_1)<1e-6))/Jc0)^(n)):ec:Jc0:n:current_grad_T_1:current_grad_T_rt_1",
 
             "J":"current_grad_T_1*(thickness_tape/thickness_cell):thickness_tape:thickness_cell:current_grad_T_1"
         },

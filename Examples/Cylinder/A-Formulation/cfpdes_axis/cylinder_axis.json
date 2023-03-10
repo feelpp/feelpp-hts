@@ -80,16 +80,20 @@
     },
     "InitialConditions":    
     {        
-        "Atheta":        
-        {            
-            "Expression":            
-            {                
-                "Conductor":                
-                {                    
-                    "expr":"0"                
-                }            
-            }        
-        }    
+        "magnetic":
+        {
+            "Atheta":        
+            {            
+                "Expression":            
+                {                
+                    "Conductor":                
+                    {                    
+                        "expr":"0"                
+                    }            
+                }        
+            } 
+        }
+           
     },
     "BoundaryConditions":
     {

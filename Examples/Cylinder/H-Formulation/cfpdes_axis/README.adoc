@@ -1,0 +1,570 @@
+= HTS Bulk Cylinder in Axisymmetric coordinates
+
+:stem: latexmath
+:toc: left
+
+:page-vtkjs: true
+:page-plotly: true
+
+:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/Examples
+:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/Examples
+
+We took this example from : [[dular]] __Finite-Element Formulation for Systems with High-Temperature Superconductors__, Julien Dular, Christophe Gauzaine, Benoît Vanderheyden, IEEE Transactions on Applied Superconductivity VOL. 30 NO. 3, April 2020, https://www.htsmodelling.com/?page_id=748#Ferro[Link] .
+
+== Description
+stem:[\quad]In this example, we will build a magnetic model on a cylinder geometry surrounded by air in axisymmetric coordinates. We will use the *H Formulation*.
+Thus stem:[\Omega] the domain contains the superconductor domain stem:[\Omega_c] and non conducting materials stem:[\Omega_c^C] (stem:[\mathbf{J} = 0]) like the air for example. Also stem:[\Gamma = \partial \Omega] is the bound of stem:[\Omega], stem:[\Gamma_c = \partial \Omega_c] the bound of stem:[\Omega_c], stem:[\Gamma_D] the bound with Dirichlet boundary condition and stem:[\Gamma_N] the bound with Neumann boundary condition, such that stem:[\Gamma = \Gamma_D \cup \Gamma_N].
+
+[example,caption="",title="H Formulation"]
+[[h_formulation]]
+====
+[stem]
+++++
+\text{(H)}
+	\left\{ \begin{matrix}
+		-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&=&\partial_t(\mu \textbf{H}) &\text{ on } \Omega & \text{(H)} \\
+		\mathbf{H} \times \mathbf{n} &=& 0 &\text{ on } \Gamma_D & \text{(D)} \\
+		\left( \nabla \times \mathbf{H} \right) \times \mathbf{n} &=& 0 &\text{ on } \Gamma_N & \text{(N)}
+	\end{matrix} \right.
+++++
+with stem:[\rho] the resistivity following the *E-J power law* for the superconductor :
+[stem]
+++++
+\rho=\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}
+++++
+
+with :
+
+* stem:[J_c]: the critical current density stem:[(A/m^2)]
+
+* stem:[E_c]: the threshold electric field stem:[(V/m)]
+
+* stem:[n]: material dependent exponent
+
+
+In the air, we give the resistivity a high value like stem:[\rho_\text{air}=1].
+====
+
+
+=== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+++++
+
+=== Equation 
+
+The H Formulation in axysimmetric coordinates is :
+
+[example,caption="",title="H Formulation in axisymmetric coordinates"]
+====
+[stem]
+++++
+\text{(H Axi)}
+\left\{ \begin{matrix}
+    \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &=& 0  & \text{on } \Omega^{axis} & \text{(H Axi)}\\
+    \mathbf{H} \times \mathbf{n} &=& 0 &\text{ on } \Gamma_D^{axis} & \text{(D Axi)} \\
+	\left( \nabla \times \mathbf{H} \right) \times \mathbf{n} &=& 0 &\text{ on } \Gamma_N^{axis} & \text{(N Axi)}
+\end{matrix} \right.
+++++
+
+With : 
+
+* stem:[H] : magnetic field
+
+* stem:[\rho] : electric resistivity stem:[\Omega \cdot m] described by the e-j power law : 
+stem:[\rho=\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}=\frac{E_c}{J_c}\left(\frac{\mid\mid \nabla\times \textbf{H} \mid\mid}{J_c}\right)^{(n)}]
+
+* stem:[\mu] : electric permeability stem:[kg/A^2/S^2]
+
+====
+
+For the Dirichlet boundary conditions, we want to impose the applied magnetic field :
+
+So we have stem:[B_z=hsVal], therefore stem:[H_z = hsVal/\mu].
+
+**Time evolution of hsVal:**
+
+image:Cylinder/A-Formulation/cfpdes_axis/applied_field.png[,width=700]
+
+=== Geometry
+
+.Geometry with GMSH
+|====
+a|image:Cylinder/A-Formulation/cfpdes_axis/cylinder.png[,width=300]
+|====
+
+.Mesh with GMSH
+|====
+a|image:Cylinder/A-Formulation/cfpdes_axis/cylinder_mesh.png[,width=300]
+|====
+
+== Input
+
+.Parameter table
+
+[width="100%",options="header,footer"]
+|====================
+| Notation | Description  | Value  | Unit  | Note
+5+s|Paramètres globale
+| stem:[t] | times |  | s |
+| stem:[tf] | final time | 15 | s |
+|stem:[H] | magnetic field | |stem:[A/m] |
+|stem:[bmax]| Maximal applied field| 1 | stem:[T] |
+| stem:[rate] | rate of the applied field raise | stem:[\frac{3}{tf}b_{max}] | stem:[T/s] |
+|stem:[hsVal]| applied field| stem:[\frac{1}{\mu_0}\begin{cases}rate*t &\quad\text{if }t<\frac{t_f}{3}\\b_{max} &\quad\text{if }t<\frac{2t_f}{3}\\b_{max} - (t-\frac{2t_f}{3})*rate &\quad\text{if }t>\frac{2t_f}{3}\end{cases}] | stem:[K] |
+
+5+s|Air
+| stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
+| stem:[\rho] | electrical resistivity | stem:[1] | stem:[\Omega\cdot m] |
+
+5+s|Cylinder
+| stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
+| stem:[J_c] | critical current density | stem:[3.10^8] | stem:[A/m^2] |
+| stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
+| stem:[n] | material dependent exponent | stem:[20] | |
+| stem:[\rho] | electrical resistivity (described by the stem:[e-j] power law) | stem:[\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}] | stem:[\Omega\cdot m] |
+
+
+|====================
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/Cylinder/H-Formulation/cfpdes_axis[here]
+
+* link:{uri-data}/Cylinder/H-Formulation/cfpdes_axis/cylinder_axis.cfg[CFG file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_axis/cylinder_axis.cfg[Edit the file]]
+* link:{uri-data}/Cylinder/H-Formulation/cfpdes_axis/cylinder_axis.json[JSON file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_axis/cylinder_axis.json[Edit the file]]
+
+
+=== Json file
+
+==== Mesh
+
+This section of the Model JSON file setup the mesh.
+
+//.Example of Materials section
+[source,json]
+----
+"Meshes":
+    {
+        "cfpdes":
+        {
+            "Import":
+            {
+                "filename":"$cfgdir/cylinder.geo"<1>
+            }
+        }
+    },
+----
+<1> the geometric file
+
+==== Materials
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+//.Example of Materials section
+[source,json]
+----
+"Materials":
+    {
+        "Conductor":<1>
+        {
+            "markers":["Cylinder"],<1>
+            
+            "rho":"ec / jc * (abs(magnetic_curl_H_rt)/jc)^(n - 1):ec:jc:n:magnetic_curl_H_rt",<2>
+	    "mu":"mu0:mu0"
+        },
+        "Air":<1>
+        {
+	    "markers":["Air","Spherical_shell"],<1>
+
+            "rho":1,
+	    "mu":"mu0:mu0"
+        }
+    },
+----
+<1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
+<2> stem:[\rho]  is defined by the E-J power law in the HTS
+
+==== Models
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+//.Example of Materials section
+[source,json]
+----
+"Models":<1>
+    {
+        "cfpdes":{
+            "equations":"magnetic"<2>
+        },
+        "magnetic":<3>
+        {
+            "name": "magnetic_conductor",
+            "setup":{
+                "unknown":{
+                    "basis":"Ned1h0",<4>
+                    "name":"H",<5>
+                    "symbol":"H"<6>
+                },
+                "coefficients":{<7>
+                    "zeta":"materials_rho*x:materials_rho:x",
+                    "d":"materials_mu*x:materials_mu:x"
+                }
+            }
+        }
+    },
+----
+<1> start section `Models` defined by the toolbox to define the main configuration and particularly the set of equations to be solved
+<2> set of equations to be solved
+<3> toolbox keyword that allows identifying the kind of model
+<4> equation unknown's basis
+<5> equation unknown's name
+<6> equation unknown's symbol
+<7> CFPDES coefficients
+
+
+
+
+==== Boundary Conditions
+
+This section of the Model JSON file defines the boundary conditions.
+
+[source,json]
+----
+"BoundaryConditions":
+    {
+        "magnetic": <1>
+        {
+            "Dirichlet": <2>
+            {
+                "magdir":
+                {
+                    "markers":["Symmetry_line","Exterior_boundary"], <3>
+                    "expr":"{0,hsVal}:hsVal" 
+                }
+            }
+        }
+    },
+----
+<1> the field name of the toolbox to which the boundary condition is associated
+<2> the type of boundary condition to apply, here `Dirichlet`
+<3> the physical entity (associated to the mesh) to which the condition is applied
+
+
+==== Post Process
+[source,json]
+----
+"PostProcess":
+    {
+        "use-model-name":1,
+        "magnetic":<1>
+        {
+            "Exports":<2>
+            {
+                "fields":["H"],<3>
+                "expr":<4>
+                {
+                    "B":<5>
+                    {
+                        "expr":"{materials_mu*magnetic_H_0,materials_mu*magnetic_H_1}:materials_mu:magnetic_H_0:magnetic_H_1",
+                        "representation":["element"]
+                    },
+                    "J":<6>
+                    {
+                        "expr":"magnetic_curl_H:magnetic_curl_H",
+                        "markers":["Cylinder"]<7>
+                    }
+                }
+            }
+        }
+    }
+}
+----
+<1> the field name of the toolbox to which the post-processing is associated
+<2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
+<3> the list of fields to be exported
+<4> the list of expressions assiocated to the fields to be exported
+<5> `B` is for the magnetic flux density
+<6> `J` is for the current density
+<7> the physical entity (associated to the mesh) to which the expression is applied
+
+=== CFG file
+
+The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to  define the solution strategy and configure the linear/non-linear algebraic solvers.
+
+The Cfg file used is
+----
+directory=feelpp-hts/cylinder/Hform/cfpdes_axis<1>
+
+case.dimension=2<2>
+
+[cfpdes]<3>
+filename=$cfgdir/cylinder_axis.json<4>
+
+verbose_solvertimer=1<5>
+solver=Newton<6>
+
+ksp-monitor=1<7>
+ksp-view=1
+ksp-converged-reason=1<8>
+
+snes-type=ls
+snes-line-search-type=bt
+snes-monitor=1
+snes-view=1
+snes-maxit=200<9>
+snes-atol=1.e-5<10>
+#snes-rtol=1.e-6<11>
+snes-converged-reason=1
+
+[cfpdes.magnetic]<12>
+bdf.order=2<13>
+
+[ts]<14>
+time-initial=0<15>
+time-step=0.2<16>
+time-final=15<17>
+restart.at-last-save=true<18>
+----
+<1> the directory where the results are exported
+<2>	the dimension of the application, by default 3D
+<3> toolbox prefix
+<4> the associated Json file
+<5> information on solver time
+<6> the non-linear solver
+<7> ksp-monitor
+<8> ksp-converged-reason
+<9> maximum number of iteration
+<10> snes absolute tolerance
+<11> snes relative tolerance
+<12> cfpdes.magnetic
+<13> cfpdes.magnetic order
+<14> time setup
+<15> time initila
+<16> time step
+<17> time final
+<18> restart at last save
+
+== Result
+
+=== Electric current density
+
+
+// video::Up9pqZRe6ag[youtube, title="Electric current density stem:[j_\theta (A/m^2)]", width=720, height=400]
+
+// We compare the current density profiles with *Feelpp* and *getDP* on the stem:[O_r] axis, at the mid-height of the cylinder, at time stem:[t_3] for a maximum applied field of 1 T and stem:[n=20].
+// ++++
+// <div id="myDiv"></div>
+//     <script type="text/javascript">
+
+//     function makeplot() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/0498764d7cab9c655f30281d562c44f8/raw/b0267dbe1e310855885f03dbcaf8563f54afecb4/feelaformaxi_jline.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/14683d5efca480015e4af9f2d41a78b1/raw/ccc70c40e615acc160b6e0ffdc854679f23cd20f/jline.csv", function(file2) {
+//                 processData(file1,file2);});
+//         });
+//     };
+    
+
+
+//     function processData(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:0'] );
+//             y.push( -row1['cfpdes.magnetic.expr.j_th'] /3e8);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['X'] );
+//             z.push( row2['getDP_t3'] /3e8);
+//         }
+
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly( x1, y, x2, z, standard_deviation );
+//     }
+
+
+//     function makePlotly( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp'
+//         };
+
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'getDP'
+//         };
+
+//         var data = [traces1, traces2];
+
+//         Plotly.newPlot('myDiv', data, {title: 'J_theta/J_c on the Or axis of the cylinder'});
+//     };
+
+//     makeplot();
+
+//     </script>
+
+// ++++
+// [cols="a"]
+// |===
+// ^|*L2 Relative Error Norm* : stem:[25.09 \%]
+// |===
+
+=== Magnetic flux density
+
+// [cols="a,a"]
+// |===
+// |video::jkJHCIRv7mc[youtube, title="z_component of the magnetic flux density stem:[b_z (T)]", width=720, height=400]
+// |video::n8EQY0Zf-XM[youtube, title="z_component of the magnetic flux density stem:[B_z (T)]", width=720, height=400]
+// |===
+
+// We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants stem:[t_1], stem:[t_2] and stem:[t_3] with *Feelpp* and *getDP*.
+// ++++
+// <div id="myDiv2"></div>
+//     <script type="text/javascript">
+
+//     function makeplot2() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/90fe45d798639b02759ec62992630e74/raw/72bd00db2895bb204e1b0ad860ec3110e0fc134c/feelaformaxi_b_t1.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/dd4592cf880455d5e13f3b9bc33e1925/raw/7ec6f079d5f6305b71d3caa6a146ed035a7ce5b0/feelaformaxi_b_t2.csv", function(file2) {
+//                 Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/a7a17becfb51d9060c660d2d854ff146/raw/af71b36582c6c8e29e298b4fb3951ca10ad73db7/feelaformaxi_b_t3.csv", function(file3) {
+//                     Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/03ab65c93d3eb3784739b2d0210e1b81/raw/1c2783601c378823572c5cee7ad6e122f9b3d7bd/getdpaformaxi_b_t1.csv", function(file4) {
+//                         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e16dea426990083f3a252f1a08883955/raw/71b121bfef7e40d72483657c565dde6dfcccab60/getdpaformaxi_b_t2.csv", function(file5) {
+//                             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5743a0b3ff9d43d5bde7bde4503296b6/raw/053822d054754969b01e098183e6449c2510b74c/getdpaformaxi_b_t3.csv", function(file6) {
+//                                 processData2(file1,file2,file3,file4,file5,file6);
+//                             });
+//                         });
+//                     });
+//                 });
+//             });
+//         });
+//     };
+    
+
+
+//     function processData2(file1,file2,file3,file4,file5,file6) {
+//         console.log(file1);
+//         var x1 = [], y1 = [], y2 = [], y3 = [], x2 =[], z1=[], z2 = [], z3 =[], standard_deviation = [];
+
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             row2 = file2[i];
+//             row3 = file3[i];
+//             x1.push( row1['Points:0'] );
+//             y1.push( row1['cfpdes.magnetic.expr.B:1']);
+//             y2.push( row2['cfpdes.magnetic.expr.B:1']);
+//             y3.push( row3['cfpdes.magnetic.expr.B:1']);
+//         }
+//         for (var i=0; i<file4.length; i++) {
+//             row1 = file4[i];
+//             row2 = file5[i];
+//             row3 = file6[i];
+//             x2.push( row1['X'] );
+//             z1.push( row1['getDP_t1']);
+//             z2.push( row2['getDP_t2']);
+//             z3.push( row3['getDP_t3']);
+//         }
+
+//         makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation );
+//     }
+
+
+//     function makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y1,
+//             name: 't1 (Feelpp)',
+//             mode: 'lines',
+//             line: {
+//                 color: 'red',
+//                 width:4
+//             }
+//         };
+//         var traces2 = {
+//             x: x1,
+//             y: y2,
+//             name: 't2 (Feelpp)',
+//             mode: 'lines',
+//             line: {
+//                 color: 'blue'
+//             }
+//         };
+//         var traces3 = {
+//             x: x1,
+//             y: y3,
+//             name: 't3 (Feelpp)',
+//             mode: 'lines',
+//             line: {
+//                 color: 'green'
+//             }
+//         };
+
+//         var traces4 = {
+//             x: x2,
+//             y: z1,
+//             name: 't1 (getDP)',
+//             mode: 'lines',
+//             line: {
+//                 color: 'indianred'
+//             }
+//         };
+//         var traces5 = {
+//             x: x2,
+//             y: z2,
+//             name: 't2 (getDP)',
+//             mode: 'lines',
+//             line: {
+//                 color: 'dodgerblue'
+//             }
+//         };
+//         var traces6 = {
+//             x: x2,
+//             y: z3,
+//             name: 't3 (getDP)',
+//             mode: 'lines',
+//             line: {
+//                 color: 'lightgreen'
+//             }
+//         };
+
+//         var data = [traces1, traces2, traces3, traces4, traces5, traces6];
+
+//         Plotly.newPlot('myDiv2', data, {title: 'Distribution of the z-component of the magnetic flux density'});
+//     };
+
+//     makeplot2();
+
+//     </script>
+
+// ++++
+
+// [cols="1,3"]
+// |===
+// |*t1* stem:[=5s]
+// ^|*L2 Relative Error Norm* : stem:[0.42 \%]
+// |*t2* stem:[=10s]
+// ^|*L2 Relative Error Norm* : stem:[2.13 \%]
+// |*t3* stem:[=15s]
+// ^|*L2 Relative Error Norm* : stem:[6.54 \%]
+// |===

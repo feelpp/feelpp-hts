@@ -70,11 +70,11 @@
 
         "mu":"4*pi*1e-7",
         "f":50,
-        "Ic":120.0,
+        "Imax":120.0,
         "I0":70,
         "Iapp":"I0*sin(2*pi*f*t):I0:f:t",
 
-        "jc0":"Ic/thickness_tape/width:Ic:width:thickness_tape", //=3E10
+        "jc0":"Imax/thickness_tape/width:Imax:width:thickness_tape", //=3E10
         "ec":1e-4,
         "n":19, //n-1
 
@@ -191,12 +191,6 @@
                     "Jz":
                     {
                         "expr":"current_grad_T_rt_0:current_grad_T_rt_0",
-                        "representation":["element"],
-                        "markers":["Conductor"]
-                    },
-                    "J":
-                    {
-                        "expr":"materials_Conductor_J:materials_Conductor_J",
                         "representation":["element"],
                         "markers":["Conductor"]
                     }
