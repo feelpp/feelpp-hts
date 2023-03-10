@@ -1,0 +1,542 @@
+:page-pseudocode: ["algo1"]
+:page-vtkjs: true
+:page-plotly: true
+
+
+= Critical current in Roebel tapes in axisymmetric coordinates
+
+:stem: latexmath
+:toc: left
+
+:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/Examples
+:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/Examples
+
+We took this example from : [[Zermeno]] _A self-consistent model for estimating the critical current of superconducting devices_, V Zermeño et al 2015 Supercond. Sci. Technol. 28 085004, https://www.htsmodelling.com/?page_id=748#Ps_model[Link] .
+
+== Description
+stem:[\quad]In this example, we will build self consistent algorithm in order to estimate the critical current with a magnetic model on coil geometry surrounded by air in axisymmetric coordinates. We will use the *A Formulation* and *Gauge Condition*.
+Thus stem:[\Omega] the domain contains the superconductor domain stem:[\Omega_c] and non conducting materials stem:[\Omega_c^C] (stem:[\mathbf{J} = 0]) like the air for example. Also stem:[\Gamma = \partial \Omega] is the bound of stem:[\Omega], stem:[\Gamma_c = \partial \Omega_c] the bound of stem:[\Omega_c], stem:[\Gamma_D] the bound with Dirichlet boundary condition and stem:[\Gamma_N] the bound with Neumann boundary condition, such that stem:[\Gamma = \Gamma_D \cup \Gamma_N].
+
+We introduce : 
+
+* Magnetic potential field stem:[\mathbf{A}] : stem:[\textbf{B} = \nabla \times \textbf{A}]
+
+
+[example,caption="",title="A Formulation"]
+[[a_formulation]]
+====
+[stem]
+++++
+\left\{ \begin{matrix}
+	\nabla \times \left( \frac{1}{\mu} \nabla \times \textbf{A} \right)    &=& J \text{ on } \Omega & \text{(A form)} \\
+	\mathbf{A} \times \mathbf{n} &=& 0 \text{ on } \Gamma_D & \text{(D)} \\
+	\left( \nabla \times \mathbf{A} \right) \times \mathbf{n} &=& 0 \text{ on } \Gamma_N & \text{(N)}
+\end{matrix} \right.
+++++
+====
+
+
+=== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+python Roebel_coil.py
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+++++
+
+=== Equation 
+
+For this example, we will use the E-J power law to rewrite the stem:[J] expression :
+
+[stem]
+++++
+J=\frac{J_c(B)}{E_c}\left|\frac{E}{E_c}\right|^{(1-n)/n} E=J_c(B) P
+++++
+where :
+[stem]
+++++
+P=\frac{E}{E_c}\left|\frac{E}{E_c}\right|^{(1-n)/n}
+++++
+
+When the current density reaches stem:[I_c] i.e stem:[J=J_c(B)], then stem:[E=E_c] and stem:[P=1]. For bundles of conductors carrying the same current, we have on constant stem:[P_i|i\in\{1,2,...n_c\}] for each conductor. To impose a current stem:[I_a] in the stem:[i]th conductor, we need to choose stem:[P_i] as :
+
+[stem]
+++++
+I_a=\int_{\Omega_i} P_i J_c(B) dxdy
+++++
+
+where stem:[\Omega_i] is the domain of the stem:[i]th conductor. As stem:[P_i] is constant, it can be calculated as :
+
+[stem]
+++++
+P_i=I_a/\int_{\Omega_i} J_C(B) dxdy
+++++
+
+FInally the  A-Formulation in 2D coordinates is :
+
+[example,caption="",title="A Formulation in 2D coordinates"]
+====
+[stem]
+++++
+- \begin{matrix}
+    -\frac{1}{\mu}\Delta A  + \frac{1}{\mu r^2}A   =  J_c(B) P & \text{on } \Omega & \text{(A 2D)} \\
+\end{matrix} 
+++++
+
+With : 
+
+* stem:[A] : potential magnetic field
+
+* stem:[J_c(B)] : critical current density using the Kim's law : stem:[J_c(B)=J_{c0}/\left(1+\sqrt{\frac{(k\partial_y A)^2+(-\partial_x A)^2)}{B_c}}\right)^b]
+
+* stem:[P] : rewritten power law :
+stem:[P=\frac{E}{E_c}\left|\frac{E}{E_c}\right|^{(1-n)/n}]
+
+* stem:[\mu] : electric permeability stem:[kg/A^2/S^2]
+====
+
+=== Self-consistent Algorithm
+
+In order to have find the critical current, we need to have criteria to stop the algorithm and find stem:[I_c]. For the case of transport current in Roebel coil with a axisymmetric model, we implemented :
+
+* The MAX criterion is when _at least one conductor_ has its voltage drop per unit length stem:[E_i] reach its critical value stem:[E_c], i.e stem:[P_i=1]. The condition is stem:[\max_{i\in\{1,2,...,n_c\}}P_i=1]. 
+
+// * The AVG criterion is when the _average_ voltage drop per unit length stem:[E_i] has reached its critical value stem:[E_c]. The condition is stem:[\sum^{n_c}_{i=1}P_i|P_i|^{n-1}=n_c].
+
+
+.Algorithm example with the MAX criterion
+++++
+<pre id="algo1" style="display:hidden;">
+    \begin{algorithm}
+    \caption{I_c estimation}
+    \begin{algorithmic}
+    \WHILE{ $\abs( \max(P_{ji}) - 1 )> tolp$ :  }   
+        \STATE $err=1$
+        \WHILE{ $err > tolAz$ :}
+            \STATE $A_0=A$ 
+            \STATE Run FEM problem
+            \FOR{j in range(0,n_t) :} 
+                \FOR{i in range(0,n_c) :} 
+                    \STATE $Ics=\int_{Omega_{ji}} J_c(B)$             
+                    \STATE $P_{ji}=I_0/Ics$
+                \ENDFOR
+            \ENDFOR
+            \STATE $err=||A-A_0||_\infty$
+        \ENDWHILE
+        \STATE $I_0=2*I_0/(1+\max(P_{ji}))$
+    \ENDWHILE
+    \STATE
+    \STATE $I_c=n_c*I_0$
+
+    \end{algorithmic}
+    \end{algorithm}
+    </pre>
+++++
+
+=== Geometry
+
+.Geometry with GMSH
+[cols="a,a"]
+|===
+|image::Roebel/A-Formulation/cfpdes_axi/roebel_axi.png[,width=600]
+|image::Roebel/A-Formulation/cfpdes_axi/roebel_axi_zoom.png[,width=600]
+|===
+
+.Mesh with GMSH
+|====
+a|image:Roebel/A-Formulation/cfpdes_axi/roebel_axi_mesh.png[,width=600]
+|====
+
+== Input
+
+.Feelpp Model Parameter table
+
+[width="100%",options="header,footer"]
+|====================
+| Notation | Description  | Value  | Unit  | Note
+5+s|Paramètres globale
+|stem:[A] | magnetic potential field | |stem:[T m] |
+
+5+s|Air
+| stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
+
+5+s|Conductors
+| stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
+| stem:[J_c(B)] | critical current density using the Kim's law | stem:[J_{c0}/\left(1+\sqrt{\frac{(k\partial_y A)^2+(-\partial_x A)^2)}{B_c}}\right)^b] | stem:[A/m^2] |
+| stem:[p] | constant parameter resulting for the rewritten power law  |  |  |
+| stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
+| stem:[n] | material dependent exponent | stem:[21] | |
+
+|====================
+
+.Python Algorithm Parameter table
+
+[width="100%",options="header,footer"]
+|====================
+| Notation | Description  | Value  | Unit  | Note
+|stem:[ns] | number of conductors in one turn | 10 | |
+|stem:[nt] | number of turns | 10 | |
+|stem:[I_0] | initial tranported current | 85.5 | stem:[A] |
+|stem:[tolAz] | tolerance for self-consistency WHILE loop | 1e-9 |  |
+|stem:[tolp] | tolerance for Ic criterion | 1e-9 |  |
+| stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
+| stem:[n] | material dependent exponent | stem:[21] | |
+|====================
+
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/Roebel_cables/A-Formulation/cfpdes_axis_static[here]
+
+* link:{uri-data}/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.cfg[CFG file] - [link:{uri-data-edit}/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.cfg[Edit the file]]
+* link:{uri-data}/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.json[JSON file] - [link:{uri-data-edit}/Roebel_cables/A-Formulation/cfpdes_axis_static/Robel.json[Edit the file]]
+* link:{uri-data}/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.py[PY file] - [link:{uri-data-edit}/Roebel_cables/A-Formulation/cfpdes_axis_static/Robel.py[Edit the file]]
+
+
+=== Json file
+
+==== Mesh
+
+This section of the Model JSON file setup the mesh. It will also load the previous field for the stem:[L_\infty] error norm :
+ 
+//.Example of Materials section
+[source,json]
+----
+"Meshes":
+    {
+        "cfpdes":
+        {
+            "Import":
+            {
+                "filename":"$cfgdir/Roebel_coil.geo"<1>
+            }
+        },
+        "Fields": {<2>
+            "v": {
+                "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                "basis": "Pch1"
+            }
+        }
+    },
+----
+<1> the geometric file
+<2> loading field from previous iteration
+
+==== Materials
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+//.Example of Materials section
+[source,json]
+----
+"Materials":
+    {
+        "tape_00": {<1>
+            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+            "p": "P00:P00",<2>
+            "J": "JcB*p:JcB:p"
+        },
+        "tape_01": {<1>
+            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+            "p": "P01:P01",<2>
+            "J": "JcB*p:JcB:p"
+        },
+        .
+        .
+        .
+        "tape_89": {<1>
+            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
+            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
+            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
+            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
+            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
+            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+            "p": "P89:P89",<2>
+            "J": "JcB*p:JcB:p"
+        },
+        "Air": {<1>
+
+        }
+    },
+----
+<1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
+<2> loading a different parameter stem:[P] for each conductor.
+
+==== Models
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+//.Example of Materials section
+[source,json]
+----
+"Models":<1>
+    {
+        "cfpdes":{
+            "equations":"magnetic"<2>
+        },
+        "magnetic":{<3>
+            "common":{
+                "setup":{
+                    "unknown":
+                    {
+                        "basis":"Pch1",<4>
+                        "name":"A",<5>
+                        "symbol":"A"<6>
+                    }
+                }
+            },
+            "models":[<7>
+                {<8>
+                    "name": "magnetic_Conductor_00",
+                    "materials": ["tape_00"],<9>
+                    "setup": {
+                        "coefficients": {<10>
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_00_J*x:x:materials_tape_00_J"
+                        }
+                    }
+                },{<8>
+                    "name": "magnetic_Conductor_01",
+                    "materials": ["tape_01"],<9>
+                    "setup": {
+                        "coefficients": {<10>
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_01_J*x:x:materials_tape_01_J"
+                        }
+                    }
+                },
+                .
+                .
+                .
+                {<8>
+                    "name": "magnetic_Conductor_89",
+                    "materials": ["tape_89"],<9>
+                    "setup": {
+                        "coefficients": {<10>
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_tape_89_J*x:x:materials_tape_89_J"
+                        }
+                    }
+                },{<8>
+                    "name":"magnetic_Air",
+                    "materials":"Air",<9>
+                    "setup":{
+                        "coefficients":{<10>
+                            "c":"1/mu:mu"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+----
+<1> start section `Models` defined by the toolbox to define the main configuration and particularly the set of equations to be solved
+<2> set of equations to be solved
+<3> toolbox keyword that allows identifying the kind of model
+<4> equation unknown's basis
+<5> equation unknown's name
+<6> equation unknown's symbol
+<7> models for the different materials
+<8> start JSON object of first model
+<9> list of materials associated to the model
+<10> CFPDES coefficients
+
+
+
+
+==== Boundary Conditions
+
+This section of the Model JSON file defines the boundary conditions.
+
+[source,json]
+----
+"BoundaryConditions":
+    {
+        "magnetic": <1>
+        {
+            "Dirichlet": <2>
+            {
+                "magdir":
+                {
+                    "markers": ["Exterior_boundary","ZAxis"],<3>
+                    "expr":"0"
+                }
+            }
+        }
+    },
+----
+<1> the field name of the toolbox to which the boundary condition is associated
+<2> the type of boundary condition to apply, here `Dirichlet`
+<3> the physical entity (associated to the mesh) to which the condition is applied
+
+
+==== Post Process
+[source,json]
+----
+"PostProcess":{
+        "use-model-name":1,
+        "cfpdes":{<1>
+            "Exports":{<2>
+                "fields":["A"],<3>
+                "expr":{<4>
+                    "B":{<5>
+                        "expr":"{-magnetic_grad_A_1,magnetic_grad_A_0+magnetic_A/x}
+                                :magnetic_grad_A_0:magnetic_grad_A_1:magnetic_A:x",
+                        "representation":["element"]
+                    },
+                    "J":{<6>
+                        "expr": "materials_J:materials_J",
+                        "markers": [
+                            "tape_00","tape_01","tape_02","tape_03","tape_04","tape_05","tape_06","tape_07","tape_08","tape_09",
+                            "tape_10","tape_11","tape_12","tape_13","tape_14","tape_15","tape_16","tape_17","tape_18","tape_19",
+                            "tape_20","tape_21","tape_22","tape_23","tape_24","tape_25","tape_26","tape_27","tape_28","tape_29",
+                            "tape_30","tape_31","tape_32","tape_33","tape_34","tape_35","tape_36","tape_37","tape_38","tape_39",
+                            "tape_40","tape_41","tape_42","tape_43","tape_44","tape_45","tape_46","tape_47","tape_48","tape_49",
+                            "tape_50","tape_51","tape_52","tape_53","tape_54","tape_55","tape_56","tape_57","tape_58","tape_59",
+                            "tape_60","tape_61","tape_62","tape_63","tape_64","tape_65","tape_66","tape_67","tape_68","tape_69",
+                            "tape_70","tape_71","tape_72","tape_73","tape_74","tape_75","tape_76","tape_77","tape_78","tape_79",
+                            "tape_80","tape_81","tape_82","tape_83","tape_84","tape_85","tape_86","tape_87","tape_88","tape_89"
+                        ]<7>
+                    }
+                }
+            },
+            "Measures": {<8>
+                "Statistics": {
+                    "Ics_%1%": {<9>
+                        "type": "integrate",<10>
+                        "expr": "materials_%1%_JcB:materials_%1%_JcB",
+                        "markers": "%1%",<11>
+                        "index1": [<12>
+                            "tape_00","tape_01","tape_02","tape_03","tape_04","tape_05","tape_06","tape_07","tape_08","tape_09",
+                            "tape_10","tape_11","tape_12","tape_13","tape_14","tape_15","tape_16","tape_17","tape_18","tape_19",
+                            "tape_20","tape_21","tape_22","tape_23","tape_24","tape_25","tape_26","tape_27","tape_28","tape_29",
+                            "tape_30","tape_31","tape_32","tape_33","tape_34","tape_35","tape_36","tape_37","tape_38","tape_39",
+                            "tape_40","tape_41","tape_42","tape_43","tape_44","tape_45","tape_46","tape_47","tape_48","tape_49",
+                            "tape_50","tape_51","tape_52","tape_53","tape_54","tape_55","tape_56","tape_57","tape_58","tape_59",
+                            "tape_60","tape_61","tape_62","tape_63","tape_64","tape_65","tape_66","tape_67","tape_68","tape_69",
+                            "tape_70","tape_71","tape_72","tape_73","tape_74","tape_75","tape_76","tape_77","tape_78","tape_79",
+                            "tape_80","tape_81","tape_82","tape_83","tape_84","tape_85","tape_86","tape_87","tape_88","tape_89"
+                        ]
+                    },
+                    "Linf": {<9>
+                        "type": "max",<10>
+                        "expr": "abs(magnetic_A-meshes_cfpdes_fields_v):magnetic_A:meshes_cfpdes_fields_v",
+                        "markers": [
+                            "tape_00","tape_01","tape_02","tape_03","tape_04","tape_05","tape_06","tape_07","tape_08","tape_09",
+                            "tape_10","tape_11","tape_12","tape_13","tape_14","tape_15","tape_16","tape_17","tape_18","tape_19",
+                            "tape_20","tape_21","tape_22","tape_23","tape_24","tape_25","tape_26","tape_27","tape_28","tape_29",
+                            "tape_30","tape_31","tape_32","tape_33","tape_34","tape_35","tape_36","tape_37","tape_38","tape_39",
+                            "tape_40","tape_41","tape_42","tape_43","tape_44","tape_45","tape_46","tape_47","tape_48","tape_49",
+                            "tape_50","tape_51","tape_52","tape_53","tape_54","tape_55","tape_56","tape_57","tape_58","tape_59",
+                            "tape_60","tape_61","tape_62","tape_63","tape_64","tape_65","tape_66","tape_67","tape_68","tape_69",
+                            "tape_70","tape_71","tape_72","tape_73","tape_74","tape_75","tape_76","tape_77","tape_78","tape_79",
+                            "tape_80","tape_81","tape_82","tape_83","tape_84","tape_85","tape_86","tape_87","tape_88","tape_89",
+                            "Air"
+                        ]<11>
+                    }
+                }
+            }
+        },
+        "magnetic": {<1>
+            "Save": {<13>
+                "Fields": {
+                    "names": ["A"],<14>
+                    "format": "hdf5"<15>
+                }
+            }
+        }
+    }
+}
+----
+<1> the field name of the toolbox to which the post-processing is associated
+<2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
+<3> the list of fields to be exported
+<4> the list of expressions assiocated to the fields to be exported
+<5> `B` is for the magnetic flux density
+<6> `J_z` is for the current density
+<7> the physical entity (associated to the mesh) to which the expression is applied
+<8> the `Measure` identifies the quantities tht will be computed after the solve. The values computed are stored in a CSV files.
+<9> the name associated with the Statistics computation
+<10> the Statistics type
+<11> the mesh marker where the Statistics is computed. This entry can be a vector of marker
+<12> index that wil replace %1%
+<13> storing the field for the next iteration of the algorithm
+<14> the names of fields that we want to save (can be a name or a vector of name)
+<15> the format used ("hdf5")
+
+=== CFG file
+
+The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to  define the solution strategy and configure the linear/non-linear algebraic solvers.
+
+The Cfg file used is
+----
+directory=feelpp-hts/Roebel_Cables/cfpdes_axis<1>
+
+case.dimension=2<2>
+
+[cfpdes]<3>
+filename=$cfgdir/Roebel_coil.json<4>
+
+verbose_solvertimer=1<5>
+solver=Picard-OLD<6>
+
+snes-monitor=1<7>
+ksp-monitor=1<8>
+snes-maxit=600<9>
+
+----
+<1> the directory where the results are exported
+<2>	the dimension of the application, by default 3D
+<3> toolbox prefix
+<4> the associated Json file
+<5> information on solver time
+<6> the non-linear solver
+<7> snes-monitor
+<8> ksp-monitor
+<9> maximum number of iteration
+
+
+== Result
+
+
+=== Magnetic flux density
+
+
+image::Roebel/A-Formulation/cfpdes_axi/roebel_A_axi_stat_B.png[,width=800,title="Magnetic flux density stem:[B (T)]]
+
+=== Critical current
+
+|====================
+| MAX criterion 
+| stem:[I_c=573.1893747964195 A] 
+|====================

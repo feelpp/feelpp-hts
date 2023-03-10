@@ -1,0 +1,690 @@
+= HTS Tapes in Axisymmetric coordinates
+
+:stem: latexmath
+:toc: left
+
+:page-vtkjs: true
+:page-plotly: true
+
+:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/Examples
+:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/Examples
+
+We took this example from : [[juarez]] __Real-time simulation of large-scale HTS systems: multi-scale and homogeneous models using the T–A formulation__, Edgar Berrospe-Juarez et al 2019 Supercond. Sci. Technol. 32 065003, https://www.htsmodelling.com/?page_id=748#TA_multi_scale[Link] .
+
+== Description
+stem:[\quad]In this example, we will build a magnetic model on stacked superconducting tapes geometry surrounded by air in axisymmetric coordinates. We will use the *T-A Homogeneous Formulation*.
+Thus stem:[\Omega] the domain contains the superconductor domain stem:[\Omega_c] and non conducting materials stem:[\Omega_c^C] (stem:[\mathbf{J} = 0]) like the air for example. Also stem:[\Gamma = \partial \Omega] is the bound of stem:[\Omega], stem:[\Gamma_c = \partial \Omega_c] the bound of stem:[\Omega_c], stem:[\Gamma_D] the bound with Dirichlet boundary condition and stem:[\Gamma_N] the bound with Neumann boundary condition, such that stem:[\Gamma = \Gamma_D \cup \Gamma_N].
+
+We introduce : 
+
+* Magnetic potential field stem:[\mathbf{A}] : stem:[\textbf{B} = \nabla \times \textbf{A}]
+
+* Electric potential field : stem:[\textbf{J} = \nabla \times \textbf{T}]
+
+[example,caption="",title="T-A Formulation"]
+[[ta_formulation]]
+====
+[stem]
+++++
+\text{(T-A)}\left\{ \begin{matrix}
+	\nabla\times\left(\frac{1}{\mu}\nabla\times\textbf{A}\right) &=& \nabla\times\textbf{T} \text{ on } \Omega & \text{(A-form)} \\
+	\nabla \times \left(\rho\nabla\times\textbf{T} \right) &=& -\frac{\partial (\nabla\times\textbf{A})}{\partial t} \text{ on } \Omega_c & \text{(T-form)} \\
+	\mathbf{A} \times \mathbf{n} &=& 0 \text{ on } \Gamma_D & \text{(D)} \\
+	\left( \nabla \times \mathbf{A} \right) \times \mathbf{n} &=& 0 \text{ on } \Gamma_N & \text{(N)}
+\end{matrix} \right.
+++++
+
+
+with stem:[\rho] the resistivity following the *E-J power law* for the superconductor :
+[stem]
+++++
+\rho=\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}
+++++
+
+with :
+
+* stem:[J_c]: the critical current density stem:[(A/m^2)]
+
+* stem:[E_c]: the threshold electric field stem:[(V/m)]
+
+* stem:[n]: material dependent exponent
+
+====
+
+
+=== Running the case
+
+The command line to run this case is
+
+[[command-line]]
+[source,sh]
+----
+mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+++++
+
+=== Equation 
+
+The  T-A Homogeneous Formulation in axisymmetric coordinates is :
+
+[example,caption="",title="T-A Formulation in axisymmetric coordinates"]
+====
+[stem]
+++++
+\text{(TA axi)}
+\left\{ \begin{matrix}
+    -\frac{1}{\mu}\Delta A  + \frac{1}{\mu r^2}A &=& \frac{\delta}{\Lambda}\partial_z T_r  & \text{on } \Omega^{axis} & \text{(A Axis)} \\
+    \begin{pmatrix}
+0 & 0\\
+0 & -\rho
+\end{pmatrix}\Delta T_r &=& \frac{\partial(\partial_z A)}{\partial t} & \text{on } \Omega_c^{axis} & \text{(T Axis)}
+\end{matrix} \right.
+++++
+
+With : 
+
+* stem:[A_\theta] : stem:[\theta] component of potential magnetic field
+
+* stem:[T_r] : stem:[r] component of potential current density
+
+* stem:[\rho] : electric resistivity stem:[\Omega \cdot m] defined by the E-J power law on HTS :
+stem:[\rho=\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}=\frac{E_c}{J_c}\left(\frac{\mid\mid \partial_z T_r \mid\mid}{J_c}\right)^{(n)}]
+
+* stem:[\mu] : electric permeability stem:[kg/A^2/S^2]
+
+* stem:[\delta] : thickness of the tapes stem:[m]
+
+* stem:[\Lambda] : space between the Tapes stem:[m]
+====
+
+
+For the Dirichlet boundary conditions, we want to impose the transport current :
+
+The transport current is the difference of current potential between the top and the bottom of the tapes divided by the thickness of the tapes, so we can impose stem:[0] at the bottom and stem:[Iapp/thickness] at the top of the tapes
+
+Finally we have :
+
+* On `Top` : stem:[T_r = Iapp/\delta]
+* On `Bottom` : stem:[T_r = 0]
+
+For the Neumann boundary conditions, the homogeneous approach of the T-A formulation impose that it is stem:[0] on both side of the bulk representation.
+
+
+Finally we have :
+
+* On `Sides` : stem:[T_r \cdot \mathbf{n} = 0]
+
+.Time evolution of hsVal
+|====
+a|image:Tapes/T-A-Formulation/cfpdes_axis/iapp.png[]
+|====
+
+=== Geometry
+
+.Geometry with GMSH
+[cols="a,a"]
+|===
+|image::Tapes/T-A-Formulation/cfpdes_axis/hom_tapes.png[,width=600]
+|image::Tapes/T-A-Formulation/cfpdes_axis/hom_tapes2.png[,width=600]
+|===
+
+
+.Mesh with GMSH
+|====
+a|image:Tapes/T-A-Formulation/cfpdes_axis/hom_tapesmesh.png[,width=600]
+|====
+
+== Input
+
+.Parameter table
+
+[width="100%",options="header,footer"]
+|====================
+| Notation | Description  | Value  | Unit  | Note
+5+s|Paramètres globale
+| stem:[t] | times |  | s |
+| stem:[timestep] | time step | 2e-4 | s |
+| stem:[tf] | final time | 15 | s |
+|stem:[A] | magnetic potential field | |stem:[T m] |
+|stem:[T] | electric potential field | |stem:[A/m] |
+| stem:[thickness_{tape}] | tapes width | stem:[1e-6] | stem:[m] |
+| stem:[thickness_{cell}] | space between the tapes | stem:[250e-6] | stem:[m] |
+| stem:[height] | tapes height | stem:[12e-3] | stem:[m] |
+| stem:[f] | frequency | stem:[50] | stem:[Hz] |
+| stem:[Imax] | maximal current | stem:[300] | stem:[A] |
+| stem:[Iapp] | applied current | stem:[0.5*Imax*sin(2*\pi*f*t)] | stem:[A] |
+
+5+s|Air
+| stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
+
+5+s|Cylinder
+| stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
+| stem:[J_c] | critical current density | stem:[3.10^8] | stem:[A/m^2] |
+| stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
+| stem:[n] | material dependent exponent | stem:[20] | |
+| stem:[\rho] | electrical resistivity (described by the stem:[E-J] power law) | stem:[\frac{e_c}{j_c}\left(\frac{\mid\mid \partial_z T_r \mid\mid}{j_c}\right)^{(n)}] | stem:[\Omega\cdot m] |
+
+
+|====================
+
+== Data files
+
+The case data files are available in Github link:{uri-data}/Tapes/T-A-Formulation/cfpdes_axis_hom[here]
+
+* link:{uri-data}/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.cfg[CFG file] - [link:{uri-data-edit}/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.cfg[Edit the file]]
+* link:{uri-data}/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.json[JSON file] - [link:{uri-data-edit}/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.json[Edit the file]]
+
+
+=== Json file
+
+==== Mesh
+
+This section of the Model JSON file setup the mesh.
+
+//.Example of Materials section
+[source,json]
+----
+"Meshes":
+    {
+        "cfpdes":
+        {
+            "Import":
+            {
+                "filename":"$cfgdir/tapes.geo",<1>
+                "hsize":0.0006<2>
+            }
+        }
+    },
+----
+<1> the geometric file
+<2> mesh size
+
+==== Materials
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+//.Example of Materials section
+[source,json]
+----
+"Materials":
+    {
+        "Conductor":<1>
+        {
+            "markers":["Bulks"],<1>
+            
+            "rhoHTS":"ec/Jc0*((abs(current_grad_T_rt_1)/Jc0)^(n)):ec:Jc0:n:current_grad_T_rt_1",<2>
+
+            "J":"current_grad_T_1*(thickness_tape/thickness_cell):thickness_tape:thickness_cell:current_grad_T_1"
+        },
+        "Air":<1>
+        {
+	        "markers":["Air","Spherical_shell"]<1>
+        }
+    },
+----
+<1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
+<2> stem:[\rho]  is defined by the E-J power law
+
+==== Models
+
+This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
+
+//.Example of Materials section
+[source,json]
+----
+"Models":<1>
+    {
+        "cfpdes":{
+            "equations":["magnetic","current"]<2>
+        },
+        "magnetic":{<3>
+            "common":{
+                "setup":{
+                    "unknown":
+                    {
+                        "basis":"Pch1",<4>
+                        "name":"A",<5>
+                        "symbol":"A"<6>
+                    }
+                }
+            },
+            "models":[<7>
+                {<8>
+                "name":"magnetic_Conductor",
+                "materials":"Conductor",<9>
+                "setup":{
+                    "coefficients":{<10>
+                        "c":"x/mu:x:mu",
+                        "a":"1/mu/x:mu:x",
+                        "f":"x*materials_Conductor_J:x:materials_Conductor_J"
+                    }
+                }
+            },{<8>
+                "name":"magnetic_Air",
+                "materials":"Air",<9>
+                "setup":{
+                    "coefficients":{<10>
+                        "c":"x/mu:x:mu",
+                        "a":"1/mu/x:mu:x"
+                    }
+                }
+            }]
+        },
+        "current":{<3>
+            "common":{
+                "setup":{
+                    "unknown":
+                    {
+                        "basis":"Pch1",<4>
+                        "name":"T",<5>
+                        "symbol":"T"<6>
+                    }
+                }
+            },
+            "models":[<7>
+                {<8>
+                "name":"current_Conductor",
+                "materials":"Conductor",<9>
+                "setup":{
+                    "coefficients":{<10>
+                        "c":"{0,0,0,x*materials_Conductor_rhoHTS}:x:materials_Conductor_rhoHTS",
+                        "f":"(magnetic_grad_A_1-magnetic_grad_A_previous_1)*x/timestep
+                                :x:magnetic_grad_A_1:magnetic_grad_A_previous_1:timestep"
+                    }
+                }
+            }]
+        }
+    },
+----
+<1> start section `Models` defined by the toolbox to define the main configuration and particularly the set of equations to be solved
+<2> set of equations to be solved
+<3> toolbox keyword that allows identifying the kind of model
+<4> equation unknown's basis
+<5> equation unknown's name
+<6> equation unknown's symbol
+<7> models for the different materials
+<8> start JSON object of first model
+<9> list of materials associated to the model
+<10> CFPDES coefficients
+
+
+
+
+==== Boundary Conditions
+
+This section of the Model JSON file defines the boundary conditions.
+
+[source,json]
+----
+"BoundaryConditions":
+    {
+        "current":<1>
+        {
+            "Dirichlet":<2>
+            {
+                "Top":<3>
+                {
+                    "expr":"Iapp/thickness_tape:thickness_tape:Iapp"
+                },
+                "Bottom":<3>
+                {
+                    "expr":"0"
+                }
+            },
+            "Neumann":<2>
+            {
+                "Sides":<3>
+                {
+                    "expr":0
+                }
+            }
+        },
+        "magnetic": <1>
+        {
+            "Dirichlet": <2>
+            {
+                "magdir":
+                {
+                    "markers":["Symmetry_line","Exterior_boundary"], <3>
+                    "expr":"0"
+                }
+            }
+        }
+    },
+----
+<1> the field name of the toolbox to which the boundary condition is associated
+<2> the type of boundary condition to apply, here `Dirichlet` or `Neumann`
+<3> the physical entity (associated to the mesh) to which the condition is applied
+
+
+==== Post Process
+[source,json]
+----
+"PostProcess":
+    {
+        "use-model-name":1,
+        "cfpdes":<1>
+        {
+            "Exports":<2>
+            {
+                "fields":["Atheta"],<3>
+                "expr":<4>
+                {
+                    "B":<5>
+                    {
+                        "expr":"{-magnetic_grad_Atheta_1,magnetic_grad_Atheta_0+magnetic_Atheta/x}
+                                    :magnetic_grad_Atheta_0:magnetic_grad_Atheta_1:magnetic_Atheta:x",
+                        "representation":["element"]
+                    },
+                    "Jphi":<6>
+                    {
+                        "expr":"current_grad_T_rt_1:current_grad_T_rt_1",
+                        "markers":["Bulks"]<7>
+                    }
+                }
+            }
+        }
+    }
+}
+----
+<1> the field name of the toolbox to which the post-processing is associated
+<2> the `Exports` identifies the toolbox fields that have to be exported for visualisation
+<3> the list of fields to be exported
+<4> the list of expressions assiocated to the fields to be exported
+<5> `B` is for the magnetic flux density
+<6> `Jphi` is for the current density
+<7> the physical entity (associated to the mesh) to which the expression is applied
+
+=== CFG file
+
+The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to  define the solution strategy and configure the linear/non-linear algebraic solvers.
+
+The Cfg file used is
+----
+directory=feelpp-hts/tapes/cfpdes_axis_homogeneous<1>
+
+case.dimension=2<2>
+
+[cfpdes]<3>
+filename=$cfgdir/tapes_axis.json<4>
+
+verbose_solvertimer=1<5>
+solver=Newton<6>
+
+pc-type=lu
+ksp-type=preonly
+
+ksp-monitor=1<7>
+snes-monitor=1<8>
+snes-maxit=500<9>
+
+solver.nonlinear.apply-dof-elimination-on-initial-guess=0
+
+[cfpdes.magnetic]<10>
+bdf.order=1<11>
+
+[ts]<12>
+time-initial=0<13>
+time-step=0.0002<14>
+time-final=0.02<15>
+restart.at-last-save=true<16>
+----
+<1> the directory where the results are exported
+<2>	the dimension of the application, by default 3D
+<3> toolbox prefix
+<4> the associated Json file
+<5> information on solver time
+<6> the non-linear solver
+<7> ksp-monitor
+<8> snes-monitor
+<9> maximum number of iteration
+<10> cfpdes.magnetic
+<11> cfpdes.magnetic order
+<12> time setup
+<13> time initial
+<14> time step
+<15> time final
+<16> restart at last save
+
+
+== Results
+
+// The results that we obtain with this formulation with *Feelpp* are compared to the results of the article *Real-time simulation of large-scale HTS systems : multi-scale and homogeneous models using the T-A formulation*  where the software *Comsol* is used.
+
+
+=== Electric current density
+
+// The electric current density stem:[j_\theta] is defined by :
+
+// [stem]
+// ++++
+//     j_\theta=\frac{\partial T}{\partial z}
+// ++++
+
+video::4k0RAQOwvwM[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
+
+// We compare the distribution of the electric current density on the Oz axis between the tapes at the instant stem:[t=0.005s] with *Feelpp* and *Comsol*.
+// ++++
+// <div id="myDiv3"></div>
+//     <script type="text/javascript">
+
+//     function makeplot3() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5314f37c7fb3caad25edc7ba68b699d3/raw/43c3d1267f572e5aa9880682a4a79ed4aa5c9043/cfpdetahom_Oz2.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/16ccc5ac4a93995a00ae2f38f65f9072/raw/d6f124fbfc0c3eaaecef8f945224c374bb5e46d1/comsoltahom_J.csv", function(file2) {
+//                 processData3(file1,file2);});
+//         });
+//     };
+    
+
+
+//     function processData3(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:1'] );
+//             y.push( row1['cfpdes.expr.Jz']);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['z'] );
+//             z.push( row2['J']);
+//         }
+
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly3( x1, y, x2, z, standard_deviation );
+//     }
+
+
+//     function makePlotly3( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp',
+//             type: 'scatter'
+//         };
+
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'Comsol'
+//         };
+
+//         var data = [traces1, traces2];
+
+//         Plotly.newPlot('myDiv3', data, {title: 'J_theta on the Oz axis between the tapes at t=0.005s'});
+//     };
+
+//     makeplot3();
+
+//     </script>
+// ++++
+// [cols="a"]
+// |===
+// ^|*L2 Relative Error Norm* : stem:[9.98 \%]
+// |===
+
+=== Magnetic flux density
+
+// The magnetic flux density stem:[B] is defined by:
+
+// [stem]
+// ++++
+//     B=\nabla\times A =\begin{pmatrix}-\partial_z A_\theta\\ 0\\ \frac{1}{r}\partial_r (rA_\theta)\end{pmatrix}
+// ++++
+
+
+video::AgSLSLyXVn4[youtube, title="Magnitude of the Magnetic flux density stem:[B (T)]", width=720, height=400]
+
+// As such, stem:[B_r=-\partial_z A_\theta] and stem:[B_z=\frac{1}{r}\partial_r (rA_\theta)] :
+
+// [cols="a,a"]
+// |===
+// |video::PasMiDU-ALI[youtube, title="r_component of the magnetic flux density stem:[B_r (T)]", width=720, height=400]
+// |video::_JNWJDeDElQ[youtube, title="z_component of the magnetic flux density stem:[B_z (T)]", width=720, height=400]
+// |===
+
+// We compare the distribution of the r-component of the magnetic flux density on the Oz axis between the tapes at the instant stem:[t=0.005s] with *Feelpp* and *Comsol*.
+// ++++
+// <div id="myDiv"></div>
+//     <script type="text/javascript">
+
+//     function makeplot() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/90e4c195b4812b695307bfca79286279/raw/8ed2adb752251971d7b1e1e10b50da31cb3d9572/cfpdetahom_Oz.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/061eabea43b1f52a35a75be583e6a8d4/raw/f214909d665eab74eace1cee84a2650b3ab23f0a/comsoltahom_Br.csv", function(file2) {
+//                 processData(file1,file2);});
+//         });
+//     };
+    
+
+
+//     function processData(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:1'] );
+//             y.push( row1['cfpdes.expr.B:0']);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['z'] );
+//             z.push( row2['Br']);
+//         }
+
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly( x1, y, x2, z, standard_deviation );
+//     }
+
+
+//     function makePlotly( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp'
+//         };
+
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'Comsol'
+//         };
+
+//         var data = [traces1, traces2];
+
+//         Plotly.newPlot('myDiv', data, {title: 'B_r on the Oz axis between the tapes at t=0.005s'});
+//     };
+
+//     makeplot();
+
+//     </script>
+
+// ++++
+// [cols="a"]
+// |===
+// ^|*L2 Relative Error Norm* : stem:[2.86 \%]
+// |===
+
+// We also compare the distribution of the z-component of the magnetic flux density on the Or axis across the tapes at the instants stem:[t=0.005s] with *Feelpp* and *Comsol*.
+// ++++
+// <div id="myDiv2"></div>
+//     <script type="text/javascript">
+
+//     function makeplot2() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/c39eba67f50a91df6ab28b008cdb32ea/raw/2feb23eb8040363055e0aab821a1ad7d0bffc920/cfpdetahom_Or.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e839e527fb181927825e42e419b70d84/raw/c09a64a05c7bc69cb35512d28f7ff9cdd236fb1f/comsoltahom_Bz.csv", function(file2) {
+//                 processData2(file1,file2);});
+//         });
+//     };
+    
+
+
+//     function processData2(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:0'] );
+//             y.push( row1['cfpdes.expr.B:1']);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['r'] );
+//             z.push( row2['Bz']);
+//         }
+
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly2( x1, y, x2, z, standard_deviation );
+//     }
+
+
+//     function makePlotly2( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp'
+//         };
+
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'Comsol'
+//         };
+
+//         var data = [traces1, traces2];
+
+//         Plotly.newPlot('myDiv2', data, {title: 'B_z on the Or axis between the tapes at t=0.005s'});
+//     };
+
+//     makeplot2();
+
+//     </script>
+
+// ++++
+// [cols="a"]
+// |===
+// ^|*L2 Relative Error Norm* : stem:[3.02 \%]
+// |===
