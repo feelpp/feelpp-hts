@@ -1,6 +1,14 @@
-name: feelpp_hts
+name: feelpp-hts
 title: Feel++ HTS
-version: '1.0.3'
-start_page: ROOT:index.adoc
+version: ~
+start_page: index.adoc
 nav:
 - modules/ROOT/nav.adoc
+ext:
+  collector:
+    - run:
+        command: ./generate-jupyter.sh docs/modules/ROOT
+      scan:
+        dir: jupyter/
+        files: '**/*.ipynb'
+        base: modules/ROOT/attachments/
