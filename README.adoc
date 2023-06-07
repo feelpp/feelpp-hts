@@ -1,6 +1,6 @@
 :feelpp: Feel++
 :cpp: C++
-= {feelpp} Project Template
+= {feelpp} HTS
 Christophe Prud'homme <https://github.com/prudhomm[@prudhomm]>
 v1: 
 
@@ -18,3 +18,8 @@ This repository provides a basic starting point for a {feelpp} application inclu
 - [x] update the version in CMakeLists.txt
 - [x] update the version in docs/antora.yml
 - [x] commit the changes with the message "Release vx.y.z". At this point the CI will generate the docker image and push it to docker hub
+
+== Issues 
+
+- Cylinder/H-Formulation models don't work in paralell
+- Torus/A-Formulation/cfpdes_3D_regularized models don't work in paralell
