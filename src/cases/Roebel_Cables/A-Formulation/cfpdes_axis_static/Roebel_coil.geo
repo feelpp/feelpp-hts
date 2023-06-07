@@ -1,4 +1,4 @@
-h=1e-3;
+h=5e-3;
 LcTapes=h*0.1;
 LcAir=h*3;
 LcInf=h*5;
