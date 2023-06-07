@@ -1,12 +1,12 @@
 :feelpp: Feel++
 :cpp: C++
-:project: feelpp-ths 
+:project: feelpp-hts 
 
 = {feelpp} Project Template
 Christophe Prud'homme <https://github.com/prudhomm[@prudhomm]>
 v2: 
 
-image:https://github.com/feelpp/feelpp-ths/workflows/CI/badge.svg[CI]
+image:https://github.com/feelpp/feelpp-hts/workflows/CI/badge.svg[CI]
 
 This repository provides a basic starting point for a {feelpp} application including:
 
@@ -16,11 +16,11 @@ This repository provides a basic starting point for a {feelpp} application inclu
 - [x] continuous integration including tests for the {cpp} applications
 - [x] docker image generation for the project
 
-The documentation for feelpp-ths is available at link:https://feelpp.github.io/feelpp-ths[here] and you can build on it for your project by enabling the link:https://docs.github.com/en/pages[github pages] for your repository.
+The documentation for feelpp-hts is available at link:https://feelpp.github.io/feelpp-hts[here] and you can build on it for your project by enabling the link:https://docs.github.com/en/pages[github pages] for your repository.
 
 == Renaming the project
 
-By default the project is named  `feelpp-ths` if you cloned the repository `feelpp/feelpp-ths`.
+By default the project is named  `feelpp-hts` if you cloned the repository `feelpp/feelpp-hts`.
 However if you used the previous repository as a template, then the project is renamed using the name of the repository using the script `rename.sh` at the initialization of the repository.
 If the name does not suit you, you can change it again using the script `rename.sh` and providing the new name as argument.
 

@@ -1,17 +1,17 @@
 {
   "private": true,
-  "name": "feelpp-ths",
-  "description": "The Feelpp Ths documentation",
+  "name": "feelpp-hts",
+  "description": "The Feelpp HTS documentation",
   "version": "2.0.2",
   "license": "AGPL-3.0",
-  "author": "The Feelpp Ths Team",
-  "homepage": "https://github.com/feelpp/feelpp-ths#readme",
+  "author": "The Feelpp HTS Team",
+  "homepage": "https://github.com/feelpp/feelpp-hts#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/feelpp/feelpp-ths.git"
+    "url": "git+https://github.com/feelpp/feelpp-hts.git"
   },
   "bugs": {
-    "url": "https://github.com/feelpp/feelpp-ths/issues"
+    "url": "https://github.com/feelpp/feelpp-hts/issues"
   },
   "contributors": [
     {

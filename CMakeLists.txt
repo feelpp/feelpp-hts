@@ -48,7 +48,7 @@ if ( NOT TARGET check )
 endif()
 
 
-add_subdirectory( src )
+#add_subdirectory( src )
 add_subdirectory( docs )
 
 # extra ignored files
