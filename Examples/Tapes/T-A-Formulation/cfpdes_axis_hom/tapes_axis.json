@@ -1,204 +1,196 @@
 {
     "Name": "Mqs Axisymmetric",
     "ShortName": "mqs-axis",
-    "Models":
-    {
-        "cfpdes":{
-            "equations":["magnetic","current"]
+    "Models": {
+        "cfpdes": {
+            "equations": [
+                "magnetic",
+                "current"
+            ]
         },
-        "magnetic":{
-            "common":{
-                "setup":{
-                    "unknown":
-                    {
-                        "basis":"Pch1",
-                        "name":"A",
-                        "symbol":"A"
+        "magnetic": {
+            "common": {
+                "setup": {
+                    "unknown": {
+                        "basis": "Pch1",
+                        "name": "A",
+                        "symbol": "A"
                     }
                 }
             },
-            "models":[{
-                "name":"magnetic_Conductor",
-                "materials":"Conductor",
-                "setup":{
-                    "coefficients":{
-                        "c":"x/mu:x:mu",
-                        "a":"1/mu/x:mu:x",
-                        "f":"x*materials_Conductor_J:x:materials_Conductor_J"
-                    }
-                }
-            },{
-                "name":"magnetic_Air",
-                "materials":"Air",
-                "setup":{
-                    "coefficients":{
-                        "c":"x/mu:x:mu",
-                        "a":"1/mu/x:mu:x"
-                    }
-                }
-            }]
-        },
-        "current":{
-            "common":{
-                "setup":{
-                    "unknown":
-                    {
-                        "basis":"Pch1",
-                        "name":"T",
-                        "symbol":"T"
-                    }
-                }
-            },
-            "models":[{
-                "name":"current_Conductor",
-                "materials":"Conductor",
-                "setup":{
-                    "coefficients":{
-                        "c":"{0,0,0,x*materials_Conductor_rhoHTS}:x:materials_Conductor_rhoHTS",
-                        "f":"(magnetic_grad_A_1-magnetic_grad_A_previous_1)*x/timestep:x:magnetic_grad_A_1:magnetic_grad_A_previous_1:timestep"
-                    }
-                }
-            }]
-        }
-    },
-    "Parameters":
-    {
-        "timestep":2e-4,
-
-        "thickness_tape":1e-6,   //delta
-        "thickness_cell":250e-6, //Lambda
-        "height":12e-3,
-
-        "mu":"4*pi*1e-7",
-        "f":50,
-        "Imax":300.0,
-        "Iapp":"0.5*Imax*sin(2*pi*f*t):Imax:f:t",
-
-        "Jc0":"Imax/thickness_tape/height:Imax:height:thickness_tape", //=2.5E10
-        "ec":1e-4,
-        "n":25,
-
-        "b0":0.1,
-        "k":0.5,
-        "alpha":1.5
-    },
-    "Meshes":
-    {
-        "cfpdes":
-        {
-            "Import":
-            {
-                "filename":"$cfgdir/tapes.geo",
-                "hsize":0.0006
-            }
-        }
-    },
-    "Materials":
-    {
-        "Conductor":
-        {
-            "markers":["Bulks"],
-
-            // "rhoHTS":"ec/Jc0*((abs(current_grad_T_rt_1)/Jc0)^(n)):ec:Jc0:n:current_grad_T_rt_1",
-            "rhoHTS":"ec/Jc0*((abs(current_grad_T_1+1e-12*(abs(current_grad_T_rt_1)<1e-6))/Jc0)^(n)):ec:Jc0:n:current_grad_T_1:current_grad_T_rt_1",
-
-            "J":"current_grad_T_1*(thickness_tape/thickness_cell):thickness_tape:thickness_cell:current_grad_T_1"
-        },
-        "Air":
-        {
-	        "markers":["Air","Spherical_shell"]
-        }
-    },
-    "InitialConditions":
-    {
-        "A":
-        {
-            "Expression":
-            {
-                "ini1":
+            "models": [
                 {
-                    "markers":["Bulks","Air","Spherical_shell"],
-                    "expr":0
-                }
-            }
-        },
-        "T":
-        {
-            "Expression":
-            {
-                "ini2":
-                {
-                    "markers":["Bulks"],
-                    "expr":0
-                }
-            }
-        }
-    },
-    "BoundaryConditions":
-    {
-        "current":
-        {
-            "Dirichlet":
-            {
-                "Top":
-                {
-                    "expr":"Iapp/thickness_tape:thickness_tape:Iapp"
+                    "name": "magnetic_Conductor",
+                    "materials": "Conductor",
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "x*materials_Conductor_J:x:materials_Conductor_J"
+                        }
+                    }
                 },
-                "Bottom":
                 {
-                    "expr":"0"
+                    "name": "magnetic_Air",
+                    "materials": "Air",
+                    "setup": {
+                        "coefficients": {
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x"
+                        }
+                    }
+                }
+            ]
+        },
+        "current": {
+            "common": {
+                "setup": {
+                    "unknown": {
+                        "basis": "Pch1",
+                        "name": "T",
+                        "symbol": "T"
+                    }
                 }
             },
-            "Neumann":
-            {
-                "Sides":
+            "models": [
                 {
-                    "expr":0
+                    "name": "current_Conductor",
+                    "materials": "Conductor",
+                    "setup": {
+                        "coefficients": {
+                            "c": "{0,0,0,x*materials_Conductor_rhoHTS}:x:materials_Conductor_rhoHTS",
+                            "f": "(magnetic_grad_A_1-magnetic_grad_A_previous_1)*x/timestep:x:magnetic_grad_A_1:magnetic_grad_A_previous_1:timestep"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "Parameters": {
+        "timestep": 2e-4,
+        "thickness_tape": 1e-6, //delta
+        "thickness_cell": 250e-6, //Lambda
+        "height": 12e-3,
+        "mu": "4*pi*1e-7",
+        "f": 50,
+        "Imax": 300.0,
+        "Iapp": "0.5*Imax*sin(2*pi*f*t):Imax:f:t",
+        "Jc0": "Imax/thickness_tape/height:Imax:height:thickness_tape", //=2.5E10
+        "ec": 1e-4,
+        "n": 25,
+        "b0": 0.1,
+        "k": 0.5,
+        "alpha": 1.5
+    },
+    "Meshes": {
+        "cfpdes": {
+            "Import": {
+                "filename": "$cfgdir/tapes.geo",
+                "hsize": 0.0006
+            }
+        }
+    },
+    "Materials": {
+        "Conductor": {
+            "markers": [
+                "Bulks"
+            ],
+            // "rhoHTS":"ec/Jc0*((abs(current_grad_T_rt_1)/Jc0)^(n)):ec:Jc0:n:current_grad_T_rt_1",
+            "rhoHTS": "ec/Jc0*((abs(current_grad_T_1+1e-12*(abs(current_grad_T_rt_1)<1e-6))/Jc0)^(n)):ec:Jc0:n:current_grad_T_1:current_grad_T_rt_1",
+            "J": "current_grad_T_1*(thickness_tape/thickness_cell):thickness_tape:thickness_cell:current_grad_T_1"
+        },
+        "Air": {
+            "markers": [
+                "Air",
+                "Spherical_shell"
+            ]
+        }
+    },
+    "InitialConditions": {
+        "A": {
+            "Expression": {
+                "ini1": {
+                    "markers": [
+                        "Bulks",
+                        "Air",
+                        "Spherical_shell"
+                    ],
+                    "expr": 0
                 }
             }
         },
-        "magnetic":
-        {
-            "Dirichlet":
-            {
-                "dir1":
-                {
-                    "markers":["Exterior_boundary","Symmetry_line"],
-                    "expr":"0"
+        "T": {
+            "Expression": {
+                "ini2": {
+                    "markers": [
+                        "Bulks"
+                    ],
+                    "expr": 0
                 }
             }
         }
     },
-    "PostProcess":
-    {
-        "use-model-name":1,
-        "cfpdes":
-        {
-            "Exports":
-            {
-                "fields":"all",
-                "expr":
-                {
-                    "B":
-                    {
-                        "expr":"{-magnetic_grad_A_1,magnetic_grad_A_0+magnetic_A/x}:magnetic_grad_A_0:magnetic_grad_A_1:magnetic_A:x",
-                        "representation":["element"]
+    "BoundaryConditions": {
+        "current": {
+            "Dirichlet": {
+                "Top": {
+                    "expr": "Iapp/thickness_tape:thickness_tape:Iapp"
+                },
+                "Bottom": {
+                    "expr": "0"
+                }
+            },
+            "Neumann": {
+                "Sides": {
+                    "expr": 0
+                }
+            }
+        },
+        "magnetic": {
+            "Dirichlet": {
+                "dir1": {
+                    "markers": [
+                        "Exterior_boundary",
+                        "Symmetry_line"
+                    ],
+                    "expr": "0"
+                }
+            }
+        }
+    },
+    "PostProcess": {
+        "use-model-name": 1,
+        "cfpdes": {
+            "Exports": {
+                "fields": "all",
+                "expr": {
+                    "B": {
+                        "expr": "{-magnetic_grad_A_1,magnetic_grad_A_0+magnetic_A/x}:magnetic_grad_A_0:magnetic_grad_A_1:magnetic_A:x",
+                        "representation": [
+                            "element"
+                        ]
                     },
-                    "Jphi":
-                    {
-                        "expr":"current_grad_T_rt_1:current_grad_T_rt_1",
-                        "representation":["element"],
-                        "markers":["Bulks"]
+                    "Jphi": {
+                        "expr": "current_grad_T_rt_1:current_grad_T_rt_1",
+                        "representation": [
+                            "element"
+                        ],
+                        "markers": [
+                            "Bulks"
+                        ]
                     },
-                    "JcB":
-                    {
-                        "expr":"materials_Conductor_JcB:materials_Conductor_JcB",
-                        "representation":["element"],
-                        "markers":["Bulks"]
+                    "JcB": {
+                        "expr": "materials_Conductor_JcB:materials_Conductor_JcB",
+                        "representation": [
+                            "element"
+                        ],
+                        "markers": [
+                            "Bulks"
+                        ]
                     }
                 }
             }
-        }//,
+        } //,
         // "current":
         // {
         //     "Measures":
