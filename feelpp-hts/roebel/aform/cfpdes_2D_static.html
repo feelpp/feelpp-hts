@@ -149,7 +149,7 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html">Feel++ hts</a>
+    <a class="nav-link" href="../../index.html">Feel++ hts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -250,7 +250,7 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Feel++ Template Project</a></li>
-    <li><a href="../../example.html">Feel++ hts</a></li>
+    <li><a href="../../index.html">Feel++ hts</a></li>
     <li><a href="../../example.html#_roebel_cables">Roebel Cables</a></li>
     <li><a href="../../example.html#_a_formulation_2">A-Formulation</a></li>
     <li><a href="cfpdes_2D_static.html">cfpdes 2D static</a></li>
@@ -321,11 +321,22 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 <div class="sect2">
 <h3 id="_running_the_case"><a class="anchor" href="#_running_the_case"></a>1.1. Running the case</h3>
 <div class="paragraph">
+<p>First create the mesh :</p>
+</div>
+<div id="command-line" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 16</code></pre>
+</div>
+</div>
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<div class="paragraph">
 <p>The command line to run this case is</p>
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python Roebel.py</code></pre>
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 16 python Roebel.py --criteria MAX</code></pre>
 </div>
 </div>
 <button class="btn" data-clipboard-target="#command-line">
@@ -665,12 +676,16 @@ Copy command line to clipboard
         {
             "Import":
             {
-                "filename":"$cfgdir/Roebel.geo"<i class="conum" data-value="1"></i><b>(1)</b>
+                "filename": "$cfgdir/Roebel_p16.json"<i class="conum" data-value="1"></i><b>(1)</b>
             }
         },
-        "Fields": {<i class="conum" data-value="2"></i><b>(2)</b>
-            "v": {
+        "Fields": {
+            "v": {<i class="conum" data-value="2"></i><b>(2)</b>
                 "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                "basis": "Pch1"
+            },
+            "P": {<i class="conum" data-value="3"></i><b>(3)</b>
+                "filename": "$cfgdir/P.h5",
                 "basis": "Pch1"
             }
         }
@@ -681,11 +696,15 @@ Copy command line to clipboard
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>the geometric file</td>
+<td>the mesh file already partitionned</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>loading field from previous iteration</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>loading finite element field containing all the P</td>
 </tr>
 </table>
 </div>
@@ -699,25 +718,21 @@ Copy command line to clipboard
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Materials":
     {
-        "tape_0": {<i class="conum" data-value="1"></i><b>(1)</b>
-            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b
-                    :Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
-            "p": "P0:P0",<i class="conum" data-value="2"></i><b>(2)</b>
-            "J": "JcB*p:JcB:p"
-        },
-        "tape_1": {<i class="conum" data-value="1"></i><b>(1)</b>
-            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b
-                    :Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
-            "p": "P1:P1",<i class="conum" data-value="2"></i><b>(2)</b>
-            "J": "JcB*p:JcB:p"
-        },
-        .
-        .
-        .
-        "tape_9": {<i class="conum" data-value="1"></i><b>(1)</b>
-            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b
-                    :Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
-            "p": "P9:P9",<i class="conum" data-value="2"></i><b>(2)</b>
+        "Conductor": {<i class="conum" data-value="1"></i><b>(1)</b>
+            "markers": [<i class="conum" data-value="2"></i><b>(2)</b>
+                "tape_0",
+                "tape_1",
+                "tape_2",
+                "tape_3",
+                "tape_4",
+                "tape_5",
+                "tape_6",
+                "tape_7",
+                "tape_8",
+                "tape_9"
+            ],
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "meshes_cfpdes_fields_P:meshes_cfpdes_fields_P",<i class="conum" data-value="3"></i><b>(3)</b>
             "J": "JcB*p:JcB:p"
         },
         "Air": {<i class="conum" data-value="1"></i><b>(1)</b>
@@ -734,6 +749,10 @@ Copy command line to clipboard
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>the physical entities (associated to the mesh) to which the material is applied</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>loading a different parameter \(P\) for each conductor.</td>
 </tr>
 </table>
@@ -766,16 +785,7 @@ Copy command line to clipboard
                 {<i class="conum" data-value="8"></i><b>(8)</b>
                 "name":"magnetic_Conductor",
                 "materials": [
-                        "tape_0",
-                        "tape_1",
-                        "tape_2",
-                        "tape_3",
-                        "tape_4",
-                        "tape_5",
-                        "tape_6",
-                        "tape_7",
-                        "tape_8",
-                        "tape_9"
+                        "Conductor"
                     ],<i class="conum" data-value="9"></i><b>(9)</b>
                 "setup":{
                     "coefficients":{<i class="conum" data-value="10"></i><b>(10)</b>

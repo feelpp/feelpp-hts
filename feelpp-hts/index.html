@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MyProject :: Feelpp HTS</title>
+    <title>Examples :: Feelpp HTS</title>
     <link rel="canonical" href="https://feelpp.github.io/feelpp-hts/feelpp-hts/index.html">
     <meta name="generator" content="Antora 3.1.3">
     <link rel="stylesheet" href="../_/css/site.css">
@@ -132,9 +132,9 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="example.html">Feel++ hts</a>
+    <a class="nav-link" href="index.html">Feel++ hts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -235,7 +235,7 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Feel++ Template Project</a></li>
-    <li><a href="index.html">MyProject</a></li>
+    <li><a href="index.html">Feel++ hts</a></li>
   </ul>
 </nav>
 
@@ -261,26 +261,185 @@ MathJax.Hub.Config({
 </aside>
 
 <article class="doc">
-<h1 class="page">MyProject</h1>
-<div class="paragraph">
-<p>This is a Feel++ Template Project.
-It serves as a template for Feel++ projects.</p>
-</div>
-<div class="paragraph">
-<p>The features include</p>
-</div>
+<h1 class="page">Examples</h1>
+<div class="sect1">
+<h2 id="_cylinder"><a class="anchor" href="#_cylinder"></a>1. Cylinder</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_a_formulation"><a class="anchor" href="#_a_formulation"></a>1.1. A Formulation</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="cmake.html" class="xref page">cmake environment</a></p>
-</li>
-<li>
-<p><a href="antora.html" class="xref page">antora environment</a></p>
-</li>
-<li>
-<p><a href="vscode.html" class="xref page">vscode integration</a></p>
+<p><a href="cylinder/aform/cfpdes_axis.html" class="xref page">cfpdes axis</a></p>
 </li>
 </ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/cyl_A_axi_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in axisymmetric coordinates using the A Formulation and the E-J power law.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="cylinder/aform/cfpdes_2D_static.html" class="xref page">cfpdes 2D static</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/cyl_A_2D_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnetic static model on a HTS bulk cylinder geometry surrounded by air in 2D coordinates using the A Formulation and the Erf function.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_h_formulation"><a class="anchor" href="#_h_formulation"></a>1.2. H Formulation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="cylinder/hform/cfpdes_axis.html" class="xref page">cfpdes axis</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/cyl_H_axi_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in axisymmetric coordinates using the H Formulation and the E-J power law.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="cylinder/hform/cfpdes_2D.html" class="xref page">cfpdes 2D</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/cyl_H_2D_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in 2D coordinates using the H Formulation and the E-J power law.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_roebel_cables"><a class="anchor" href="#_roebel_cables"></a>2. Roebel Cables</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_a_formulation_2"><a class="anchor" href="#_a_formulation_2"></a>2.1. A Formulation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="roebel/aform/cfpdes_2D_static.html" class="xref page">cfpdes 2D static</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/roebel_A_2D_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Self-consistent python algorithm to find the critical current Ic. Using a magnetic static model on HTS Roebel tapes geometry surrounded by air in 2D coordinates using the A Formulation and the E-J power law.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="roebel/aform/cfpdes_axis_static.html" class="xref page">cfpdes axis static</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/roebel_A_axi_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Self-consistent python algorithm to find the critical current Ic. Using a magnetic static model on a HTS Roebel coil geometry surrounded by air in axisymmetric coordinates using the A Formulation and the E-J power law.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tapes"><a class="anchor" href="#_tapes"></a>3. Tapes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_t_a_homogeneous_formulation"><a class="anchor" href="#_t_a_homogeneous_formulation"></a>3.1. T-A Homogeneous Formulation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="tapes/taform/cfpdes_axis.html" class="xref page">cfpdes axis</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/tapes_TA_axi_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnetic transient model on a HTS stacked tapes geometry surrounded by air in axisymmetric coordinates using the T-A Homogeneous Formulation and the E-J power law.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="tapes/taform/cfpdes_2D.html" class="xref page">cfpdes 2D</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="_images/Examples/tapes_TA_2D_B.png" alt="B" width="100%"></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Magnetic transient model on a HTS stacked tapes geometry surrounded by air in 2D coordinates using the T-A Homogeneous Formulation and the E-J power law.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </article>
   </div>

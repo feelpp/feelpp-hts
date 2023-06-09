@@ -149,7 +149,7 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html">Feel++ hts</a>
+    <a class="nav-link" href="../../index.html">Feel++ hts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -250,7 +250,7 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Feel++ Template Project</a></li>
-    <li><a href="../../example.html">Feel++ hts</a></li>
+    <li><a href="../../index.html">Feel++ hts</a></li>
     <li><a href="../../example.html#_roebel_cables">Roebel Cables</a></li>
     <li><a href="../../example.html#_a_formulation_2">A-Formulation</a></li>
     <li><a href="cfpdes_axis_static.html">cfpdes axis static</a></li>
@@ -321,11 +321,22 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 <div class="sect2">
 <h3 id="_running_the_case"><a class="anchor" href="#_running_the_case"></a>1.1. Running the case</h3>
 <div class="paragraph">
+<p>First create the mesh :</p>
+</div>
+<div id="command-line" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 16</code></pre>
+</div>
+</div>
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<div class="paragraph">
 <p>The command line to run this case is</p>
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python Roebel_coil.py</code></pre>
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python Roebel_coil.py --criteria MAX</code></pre>
 </div>
 </div>
 <button class="btn" data-clipboard-target="#command-line">
@@ -671,12 +682,16 @@ Copy command line to clipboard
         {
             "Import":
             {
-                "filename":"$cfgdir/Roebel_coil.geo"<i class="conum" data-value="1"></i><b>(1)</b>
+                "filename":"$cfgdir/Roebel_coil_p16.json"<i class="conum" data-value="1"></i><b>(1)</b>
             }
         },
-        "Fields": {<i class="conum" data-value="2"></i><b>(2)</b>
-            "v": {
+        "Fields": {
+            "v": {<i class="conum" data-value="2"></i><b>(2)</b>
                 "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                "basis": "Pch1"
+            },
+            "P": {<i class="conum" data-value="3"></i><b>(3)</b>
+                "filename": "$cfgdir/P.h5",
                 "basis": "Pch1"
             }
         }
@@ -693,6 +708,10 @@ Copy command line to clipboard
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>loading field from previous iteration</td>
 </tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>loading finite element field containing all the P</td>
+</tr>
 </table>
 </div>
 </div>
@@ -704,47 +723,28 @@ Copy command line to clipboard
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Materials":
-    {
-        "tape_00": {<i class="conum" data-value="1"></i><b>(1)</b>
+    "Conductor": {
+            "markers": [<i class="conum" data-value="2"></i><b>(2)</b>
+                "tape_00",
+                "tape_01",
+                "tape_02",
+                "tape_03",
+                "tape_04",
+                .
+                .
+                .
+                "tape_89"
+            ],
             "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
             "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
-            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
-            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
-            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
-            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
-            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+            "fab": "sqrt(cos(theta+pi/2)^2 + uab^2*sin(theta+pi/2)^2):theta:uab",
+            "fc": "sqrt(sin(theta+pi/2)^2 + uc^2*cos(theta+pi/2)^2):theta:uc",
+            "fi": "sqrt(cos(theta+pi/2)^2 + ui^2*sin(theta+pi/2)^2):theta:ui",
+            "Jcab": "J0p/(1+normB*fab/B0ab)^betajc:J0p:normB:fab:B0ab:betajc",
+            "Jcc": "J0p/(1+normB*fc/B0c)^betajc:J0p:normB:fc:B0c:betajc",
+            "Jci": "J0i/(1+normB*fi/B0i)^alphajc:J0i:normB:fi:B0i:alphajc",
             "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
-            "p": "P00:P00",<i class="conum" data-value="2"></i><b>(2)</b>
-            "J": "JcB*p:JcB:p"
-        },
-        "tape_01": {<i class="conum" data-value="1"></i><b>(1)</b>
-            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
-            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
-            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
-            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
-            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
-            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
-            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
-            "p": "P01:P01",<i class="conum" data-value="2"></i><b>(2)</b>
-            "J": "JcB*p:JcB:p"
-        },
-        .
-        .
-        .
-        "tape_89": {<i class="conum" data-value="1"></i><b>(1)</b>
-            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
-            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
-            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
-            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
-            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
-            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
-            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
-            "p": "P89:P89",<i class="conum" data-value="2"></i><b>(2)</b>
+            "p": "meshes_cfpdes_fields_P:meshes_cfpdes_fields_P",<i class="conum" data-value="3"></i><b>(3)</b>
             "J": "JcB*p:JcB:p"
         },
         "Air": {<i class="conum" data-value="1"></i><b>(1)</b>
@@ -761,6 +761,10 @@ Copy command line to clipboard
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>the physical entities (associated to the mesh) to which the material is applied</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>loading a different parameter \(P\) for each conductor.</td>
 </tr>
 </table>
@@ -792,36 +796,12 @@ Copy command line to clipboard
             "models":[<i class="conum" data-value="7"></i><b>(7)</b>
                 {<i class="conum" data-value="8"></i><b>(8)</b>
                     "name": "magnetic_Conductor_00",
-                    "materials": ["tape_00"],<i class="conum" data-value="9"></i><b>(9)</b>
+                    "materials": ["Conductor"],<i class="conum" data-value="9"></i><b>(9)</b>
                     "setup": {
                         "coefficients": {<i class="conum" data-value="10"></i><b>(10)</b>
                             "c": "x/mu:x:mu",
                             "a": "1/mu/x:mu:x",
-                            "f": "materials_tape_00_J*x:x:materials_tape_00_J"
-                        }
-                    }
-                },{<i class="conum" data-value="8"></i><b>(8)</b>
-                    "name": "magnetic_Conductor_01",
-                    "materials": ["tape_01"],<i class="conum" data-value="9"></i><b>(9)</b>
-                    "setup": {
-                        "coefficients": {<i class="conum" data-value="10"></i><b>(10)</b>
-                            "c": "x/mu:x:mu",
-                            "a": "1/mu/x:mu:x",
-                            "f": "materials_tape_01_J*x:x:materials_tape_01_J"
-                        }
-                    }
-                },
-                .
-                .
-                .
-                {<i class="conum" data-value="8"></i><b>(8)</b>
-                    "name": "magnetic_Conductor_89",
-                    "materials": ["tape_89"],<i class="conum" data-value="9"></i><b>(9)</b>
-                    "setup": {
-                        "coefficients": {<i class="conum" data-value="10"></i><b>(10)</b>
-                            "c": "x/mu:x:mu",
-                            "a": "1/mu/x:mu:x",
-                            "f": "materials_tape_89_J*x:x:materials_tape_89_J"
+                            "f": "materials_Conductor_J*x:x:materials_Conductor_J"
                         }
                     }
                 },{<i class="conum" data-value="8"></i><b>(8)</b>
