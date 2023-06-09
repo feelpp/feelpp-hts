@@ -8,8 +8,8 @@
 :stem: latexmath
 :toc: left
 
-:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/Examples
-:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/Examples
+:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
+:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
 
 We took this example from : [[Zermeno]] _A self-consistent model for estimating the critical current of superconducting devices_, V Zermeño et al 2015 Supercond. Sci. Technol. 28 085004, https://www.htsmodelling.com/?page_id=748#Ps_model[Link] .
 

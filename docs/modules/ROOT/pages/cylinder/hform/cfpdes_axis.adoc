@@ -6,8 +6,8 @@
 :page-vtkjs: true
 :page-plotly: true
 
-:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/Examples
-:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/Examples
+:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
+:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
 
 We took this example from : [[dular]] __Finite-Element Formulation for Systems with High-Temperature Superconductors__, Julien Dular, Christophe Gauzaine, Benoît Vanderheyden, IEEE Transactions on Applied Superconductivity VOL. 30 NO. 3, April 2020, https://www.htsmodelling.com/?page_id=748#Ferro[Link] .
 

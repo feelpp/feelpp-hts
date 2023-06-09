@@ -7,8 +7,8 @@
 
 = HTS Tapes in 2D coordinates
 
-:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/Examples
-:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/Examples
+:uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
+:uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
 
 We took this example from : [[liang]] __A finite element model for simulating second generation high temperature superconducting coils/stacks with large number of turns__, Liang et al. 2017 J. Appl. Phys. 122 043903, https://www.htsmodelling.com/?page_id=748#T_A_form[Link] with the T-A homogeneous formulation.
 
