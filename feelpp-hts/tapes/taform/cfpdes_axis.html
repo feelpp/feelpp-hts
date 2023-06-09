@@ -134,31 +134,7 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Feel++ hts</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../index.html">Introduction</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../cmake.html">cmake environment</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../antora.html">antora environment</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../vscode.html">vscode integration</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../githubactions.html">Github Actions</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../../rename.html">Renaminge the project</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html">Examples</a>
+    <a class="nav-link" href="../../example.html">Feel++ hts</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
@@ -259,7 +235,7 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Feel++ Template Project</a></li>
-    <li><a href="../../example.html">Examples</a></li>
+    <li><a href="../../example.html">Feel++ hts</a></li>
     <li><a href="../../example.html#_tapes">Tapes</a></li>
     <li><a href="../../example.html#_t_a_homogeneous_formulation">T-A Homogeneous Formulation</a></li>
     <li><a href="cfpdes_axis.html">cfpdes axis</a></li>
@@ -662,15 +638,15 @@ Copy command line to clipboard
 <h2 id="_data_files"><a class="anchor" href="#_data_files"></a>3. Data files</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The case data files are available in Github <a href="https://github.com/feelpp/feelpp-hts/blob/master/Examples/Tapes/T-A-Formulation/cfpdes_axis_hom">here</a></p>
+<p>The case data files are available in Github <a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Tapes/T-A-Formulation/cfpdes_axis_hom">here</a></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/Examples/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.cfg">CFG file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/Examples/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.cfg">Edit the file</a>]</p>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.cfg">CFG file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.cfg">Edit the file</a>]</p>
 </li>
 <li>
-<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/Examples/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.json">JSON file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/Examples/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.json">Edit the file</a>]</p>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.json">JSON file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Tapes/T-A-Formulation/cfpdes_axis_hom/tapes_axis.json">Edit the file</a>]</p>
 </li>
 </ul>
 </div>
@@ -1111,6 +1087,80 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <iframe width="720" height="400" src="https://www.youtube.com/embed/4k0RAQOwvwM?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+<div class="paragraph">
+<p>We compare the distribution of the electric current density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
+</div>
+<div id="myDiv3"></div>
+    <script type="text/javascript">
+
+    function makeplot3() {
+
+        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5314f37c7fb3caad25edc7ba68b699d3/raw/43c3d1267f572e5aa9880682a4a79ed4aa5c9043/cfpdetahom_Oz2.csv", function(file1) {
+            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/16ccc5ac4a93995a00ae2f38f65f9072/raw/d6f124fbfc0c3eaaecef8f945224c374bb5e46d1/comsoltahom_J.csv", function(file2) {
+                processData3(file1,file2);});
+        });
+    };
+
+
+
+    function processData3(file1,file2) {
+        console.log(file1);
+        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+        for (var i=0; i<file1.length; i++) {
+            row1 = file1[i];
+            x1.push( row1['Points:1'] );
+            y.push( row1['cfpdes.expr.Jz']);
+        }
+        for (var i=0; i<file2.length; i++) {
+            row2 = file2[i];
+            x2.push( row2['z'] );
+            z.push( row2['J']);
+        }
+
+        console.log( 'X1',x1, 'SD',standard_deviation );
+        console.log( 'Y',y, 'SD',standard_deviation );
+        console.log( 'X2',x2, 'SD',standard_deviation );
+        console.log( 'Z',z, 'SD',standard_deviation );
+        makePlotly3( x1, y, x2, z, standard_deviation );
+    }
+
+
+    function makePlotly3( x1, y, x2, z, standard_deviation ){
+        var plotDiv = document.getElementById("plot");
+        var traces1 = {
+            x: x1,
+            y: y,
+            name: 'Feelpp',
+            type: 'scatter'
+        };
+
+        var traces2 = {
+            x: x2,
+            y: z,
+            name: 'Comsol'
+        };
+
+        var data = [traces1, traces2];
+
+        Plotly.newPlot('myDiv3', data, {title: 'J_theta on the Oz axis between the tapes at t=0.005s'});
+    };
+
+    makeplot3();
+
+    </script>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong>L2 Relative Error Norm</strong> : \(9.98 \%\)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_magnetic_flux_density"><a class="anchor" href="#_magnetic_flux_density"></a>4.2. Magnetic flux density</h3>
@@ -1120,6 +1170,152 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <iframe width="720" height="400" src="https://www.youtube.com/embed/AgSLSLyXVn4?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+<div class="paragraph">
+<p>We compare the distribution of the r-component of the magnetic flux density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
+</div>
+<div id="myDiv"></div>
+    <script type="text/javascript">
+
+    function makeplot() {
+
+        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/90e4c195b4812b695307bfca79286279/raw/8ed2adb752251971d7b1e1e10b50da31cb3d9572/cfpdetahom_Oz.csv", function(file1) {
+            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/061eabea43b1f52a35a75be583e6a8d4/raw/f214909d665eab74eace1cee84a2650b3ab23f0a/comsoltahom_Br.csv", function(file2) {
+                processData(file1,file2);});
+        });
+    };
+
+
+
+    function processData(file1,file2) {
+        console.log(file1);
+        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+        for (var i=0; i<file1.length; i++) {
+            row1 = file1[i];
+            x1.push( row1['Points:1'] );
+            y.push( row1['cfpdes.expr.B:0']);
+        }
+        for (var i=0; i<file2.length; i++) {
+            row2 = file2[i];
+            x2.push( row2['z'] );
+            z.push( row2['Br']);
+        }
+
+        console.log( 'X1',x1, 'SD',standard_deviation );
+        console.log( 'Y',y, 'SD',standard_deviation );
+        console.log( 'X2',x2, 'SD',standard_deviation );
+        console.log( 'Z',z, 'SD',standard_deviation );
+        makePlotly( x1, y, x2, z, standard_deviation );
+    }
+
+
+    function makePlotly( x1, y, x2, z, standard_deviation ){
+        var plotDiv = document.getElementById("plot");
+        var traces1 = {
+            x: x1,
+            y: y,
+            name: 'Feelpp'
+        };
+
+        var traces2 = {
+            x: x2,
+            y: z,
+            name: 'Comsol'
+        };
+
+        var data = [traces1, traces2];
+
+        Plotly.newPlot('myDiv', data, {title: 'B_r on the Oz axis between the tapes at t=0.005s'});
+    };
+
+    makeplot();
+
+    </script>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong>L2 Relative Error Norm</strong> : \(2.86 \%\)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We also compare the distribution of the z-component of the magnetic flux density on the Or axis across the tapes at the instants \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
+</div>
+<div id="myDiv2"></div>
+    <script type="text/javascript">
+
+    function makeplot2() {
+
+        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/c39eba67f50a91df6ab28b008cdb32ea/raw/2feb23eb8040363055e0aab821a1ad7d0bffc920/cfpdetahom_Or.csv", function(file1) {
+            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e839e527fb181927825e42e419b70d84/raw/c09a64a05c7bc69cb35512d28f7ff9cdd236fb1f/comsoltahom_Bz.csv", function(file2) {
+                processData2(file1,file2);});
+        });
+    };
+
+
+
+    function processData2(file1,file2) {
+        console.log(file1);
+        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+        for (var i=0; i<file1.length; i++) {
+            row1 = file1[i];
+            x1.push( row1['Points:0'] );
+            y.push( row1['cfpdes.expr.B:1']);
+        }
+        for (var i=0; i<file2.length; i++) {
+            row2 = file2[i];
+            x2.push( row2['r'] );
+            z.push( row2['Bz']);
+        }
+
+        console.log( 'X1',x1, 'SD',standard_deviation );
+        console.log( 'Y',y, 'SD',standard_deviation );
+        console.log( 'X2',x2, 'SD',standard_deviation );
+        console.log( 'Z',z, 'SD',standard_deviation );
+        makePlotly2( x1, y, x2, z, standard_deviation );
+    }
+
+
+    function makePlotly2( x1, y, x2, z, standard_deviation ){
+        var plotDiv = document.getElementById("plot");
+        var traces1 = {
+            x: x1,
+            y: y,
+            name: 'Feelpp'
+        };
+
+        var traces2 = {
+            x: x2,
+            y: z,
+            name: 'Comsol'
+        };
+
+        var data = [traces1, traces2];
+
+        Plotly.newPlot('myDiv2', data, {title: 'B_z on the Or axis between the tapes at t=0.005s'});
+    };
+
+    makeplot2();
+
+    </script>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong>L2 Relative Error Norm</strong> : \(3.02 \%\)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
