@@ -38,12 +38,26 @@ We introduce :
 
 === Running the case
 
+First create the mesh :
+
+[[command-line]]
+[source,sh]
+----
+python create_mesh_part.py --ncore 16
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+++++
+
 The command line to run this case is
 
 [[command-line]]
 [source,sh]
 ----
-python Roebel.py
+mpirun -np 16 python Roebel.py --criteria MAX
 ----
 
 ++++
@@ -172,7 +186,6 @@ a|image:Roebel/A-Formulation/cfpdes_2D/roebel_mesh.png[,width=600]
 | stem:[p] | constant parameter resulting for the rewritten power law  |  |  |
 | stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
 | stem:[n] | material dependent exponent | stem:[21] | |
-
 |====================
 
 .Python Algorithm Parameter table
@@ -213,19 +226,24 @@ This section of the Model JSON file setup the mesh. It will also load the previo
         {
             "Import":
             {
-                "filename":"$cfgdir/Roebel.geo"<1>
+                "filename": "$cfgdir/Roebel_p16.json"<1>
             }
         },
-        "Fields": {<2>
-            "v": {
+        "Fields": {
+            "v": {<2>
                 "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                "basis": "Pch1"
+            },
+            "P": {<3>
+                "filename": "$cfgdir/P.h5",
                 "basis": "Pch1"
             }
         }
     },
 ----
-<1> the geometric file
+<1> the mesh file already partitionned 
 <2> loading field from previous iteration
+<3> loading finite element field containing all the P
 
 ==== Materials
 
@@ -236,25 +254,21 @@ This section of the Model JSON file defines material properties linking the Phys
 ----
 "Materials":
     {
-        "tape_0": {<1>
-            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b
-                    :Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
-            "p": "P0:P0",<2>
-            "J": "JcB*p:JcB:p"
-        },
-        "tape_1": {<1>
-            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b
-                    :Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
-            "p": "P1:P1",<2>
-            "J": "JcB*p:JcB:p"
-        },
-        .
-        .
-        .
-        "tape_9": {<1>
-            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b
-                    :Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
-            "p": "P9:P9",<2>
+        "Conductor": {<1>
+            "markers": [<2>
+                "tape_0",
+                "tape_1",
+                "tape_2",
+                "tape_3",
+                "tape_4",
+                "tape_5",
+                "tape_6",
+                "tape_7",
+                "tape_8",
+                "tape_9"
+            ],
+            "JcB": "Jc0/(1+sqrt((k*magnetic_grad_A_rt_1)^2+(-magnetic_grad_A_rt_0)^2)/Bc)^b:Jc0:k:Bc:b:magnetic_grad_A_rt_0:magnetic_grad_A_rt_1",
+            "p": "meshes_cfpdes_fields_P:meshes_cfpdes_fields_P",<3>
             "J": "JcB*p:JcB:p"
         },
         "Air": {<1>
@@ -263,7 +277,8 @@ This section of the Model JSON file defines material properties linking the Phys
     },
 ----
 <1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
-<2> loading a different parameter stem:[P] for each conductor.
+<2> the physical entities (associated to the mesh) to which the material is applied
+<3> loading a different parameter stem:[P] for each conductor.
 
 ==== Models
 
@@ -292,16 +307,7 @@ This section of the Model JSON file defines material properties linking the Phys
                 {<8>
                 "name":"magnetic_Conductor",
                 "materials": [
-                        "tape_0",
-                        "tape_1",
-                        "tape_2",
-                        "tape_3",
-                        "tape_4",
-                        "tape_5",
-                        "tape_6",
-                        "tape_7",
-                        "tape_8",
-                        "tape_9"
+                        "Conductor"
                     ],<9>
                 "setup":{
                     "coefficients":{<10>

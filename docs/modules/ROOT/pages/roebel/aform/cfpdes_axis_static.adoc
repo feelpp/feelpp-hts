@@ -38,12 +38,26 @@ We introduce :
 
 === Running the case
 
+First create the mesh :
+
+[[command-line]]
+[source,sh]
+----
+python create_mesh_part.py --ncore 16
+----
+
+++++
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+++++
+
 The command line to run this case is
 
 [[command-line]]
 [source,sh]
 ----
-python Roebel_coil.py
+python Roebel_coil.py --criteria MAX
 ----
 
 ++++
@@ -216,12 +230,16 @@ This section of the Model JSON file setup the mesh. It will also load the previo
         {
             "Import":
             {
-                "filename":"$cfgdir/Roebel_coil.geo"<1>
+                "filename":"$cfgdir/Roebel_coil_p16.json"<1>
             }
         },
-        "Fields": {<2>
-            "v": {
+        "Fields": {
+            "v": {<2>
                 "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                "basis": "Pch1"
+            },
+            "P": {<3>
+                "filename": "$cfgdir/P.h5",
                 "basis": "Pch1"
             }
         }
@@ -229,6 +247,7 @@ This section of the Model JSON file setup the mesh. It will also load the previo
 ----
 <1> the geometric file
 <2> loading field from previous iteration
+<3> loading finite element field containing all the P
 
 ==== Materials
 
@@ -238,47 +257,28 @@ This section of the Model JSON file defines material properties linking the Phys
 [source,json]
 ----
 "Materials":
-    {
-        "tape_00": {<1>
+    "Conductor": {
+            "markers": [<2>
+                "tape_00",
+                "tape_01",
+                "tape_02",
+                "tape_03",
+                "tape_04",
+                .
+                .
+                .
+                "tape_89"
+            ],
             "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
             "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
-            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
-            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
-            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
-            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
-            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
+            "fab": "sqrt(cos(theta+pi/2)^2 + uab^2*sin(theta+pi/2)^2):theta:uab",
+            "fc": "sqrt(sin(theta+pi/2)^2 + uc^2*cos(theta+pi/2)^2):theta:uc",
+            "fi": "sqrt(cos(theta+pi/2)^2 + ui^2*sin(theta+pi/2)^2):theta:ui",
+            "Jcab": "J0p/(1+normB*fab/B0ab)^betajc:J0p:normB:fab:B0ab:betajc",
+            "Jcc": "J0p/(1+normB*fc/B0c)^betajc:J0p:normB:fc:B0c:betajc",
+            "Jci": "J0i/(1+normB*fi/B0i)^alphajc:J0i:normB:fi:B0i:alphajc",
             "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
-            "p": "P00:P00",<2>
-            "J": "JcB*p:JcB:p"
-        },
-        "tape_01": {<1>
-            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
-            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
-            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
-            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
-            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
-            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
-            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
-            "p": "P01:P01",<2>
-            "J": "JcB*p:JcB:p"
-        },
-        .
-        .
-        .
-        "tape_89": {<1>
-            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
-            "fab": "sqrt(cos(theta)^2 + uab^2*sin(theta)^2):theta:uab",
-            "fc": "sqrt(sin(theta)^2 + uc^2*cos(theta)^2):theta:uc",
-            "fi": "sqrt(cos(theta)^2 + ui^2*sin(theta)^2):theta:ui",
-            "Jcab": "J0p/(1+normB/B0ab)^betajc:J0p:normB:B0ab:betajc",
-            "Jcc": "J0p/(1+normB/B0c)^betajc:J0p:normB:B0c:betajc",
-            "Jci": "J0i/(1+normB/B0i)^alphajc:J0i:normB:B0i:alphajc",
-            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
-            "p": "P89:P89",<2>
+            "p": "meshes_cfpdes_fields_P:meshes_cfpdes_fields_P",<3>
             "J": "JcB*p:JcB:p"
         },
         "Air": {<1>
@@ -287,7 +287,8 @@ This section of the Model JSON file defines material properties linking the Phys
     },
 ----
 <1> gives the name of the physical entity (here `Physical Surface`) associated to the Material.
-<2> loading a different parameter stem:[P] for each conductor.
+<2> the physical entities (associated to the mesh) to which the material is applied
+<3> loading a different parameter stem:[P] for each conductor.
 
 ==== Models
 
@@ -315,36 +316,12 @@ This section of the Model JSON file defines material properties linking the Phys
             "models":[<7>
                 {<8>
                     "name": "magnetic_Conductor_00",
-                    "materials": ["tape_00"],<9>
+                    "materials": ["Conductor"],<9>
                     "setup": {
                         "coefficients": {<10>
                             "c": "x/mu:x:mu",
                             "a": "1/mu/x:mu:x",
-                            "f": "materials_tape_00_J*x:x:materials_tape_00_J"
-                        }
-                    }
-                },{<8>
-                    "name": "magnetic_Conductor_01",
-                    "materials": ["tape_01"],<9>
-                    "setup": {
-                        "coefficients": {<10>
-                            "c": "x/mu:x:mu",
-                            "a": "1/mu/x:mu:x",
-                            "f": "materials_tape_01_J*x:x:materials_tape_01_J"
-                        }
-                    }
-                },
-                .
-                .
-                .
-                {<8>
-                    "name": "magnetic_Conductor_89",
-                    "materials": ["tape_89"],<9>
-                    "setup": {
-                        "coefficients": {<10>
-                            "c": "x/mu:x:mu",
-                            "a": "1/mu/x:mu:x",
-                            "f": "materials_tape_89_J*x:x:materials_tape_89_J"
+                            "f": "materials_Conductor_J*x:x:materials_Conductor_J"
                         }
                     }
                 },{<8>

@@ -1,4 +1,4 @@
-* xref:example.adoc[{feelpp} hts]
+* xref:index.adoc[{feelpp} hts]
 
 ** xref:example.adoc#_cylinder[Cylinder]
 *** xref:example.adoc#_a_formulation[A-Formulation]
