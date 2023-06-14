@@ -54,7 +54,7 @@
         "n": 21,
         "tolAz": 1e-09,
         "tolp": 1e-09,
-        "I0": 49.4039497004959,
+        "I0": 49.383007710069144,
         "x0": "-sw-rg/2:sw:rg",
         "y0": "-((th+sg)*ny-sg)/2:th:sg:ny",
         "E": 0,
@@ -74,7 +74,7 @@
     "Meshes": {
         "cfpdes": {
             "Import": {
-                "filename": "$cfgdir/Roebel_coil_p4.json"
+                "filename": "$cfgdir/Roebel_coil.msh"
             },
             "Fields": {
                 "v": {

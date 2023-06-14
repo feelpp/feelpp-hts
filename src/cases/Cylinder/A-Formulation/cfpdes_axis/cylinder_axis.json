@@ -65,9 +65,7 @@
             "markers": [
                 "Cylinder"
             ],
-            "sigma": "jc / ec * 1.0 / ( epsSigma + (sqrt((-magnetic_dAtheta_dt_rt)*(-magnetic_dAtheta_dt_rt))/ec )^((n-1.0)/n) ):jc:ec:n:epsSigma:magnetic_dAtheta_dt_rt"
-            // "sigma":"jc / ec * 1.0 / ( epsSigma + (sqrt((-magnetic_dAtheta_dt)*(-magnetic_dAtheta_dt))/ec )^((n-1.0)/n) ):jc:ec:n:epsSigma:magnetic_dAtheta_dt"
-            //"sigma":"jc / ec * 1.0 / ( epsSigma + (sqrt(((magnetic_Atheta-magnetic_Atheta_previous)/timestep)*((magnetic_Atheta-magnetic_Atheta_previous)/timestep))/ec )^((n-1.0)/n) ):jc:ec:n:epsSigma:magnetic_Atheta:magnet_Atheta_previous:timestep"
+            "sigma": "jc / ec * 1.0 / ( epsSigma + (sqrt((-magnetic_dAtheta_dt)*(-magnetic_dAtheta_dt))/ec )^((n-1.0)/n) ):jc:ec:n:epsSigma:magnetic_dAtheta_dt"
         },
         "Air": {
             "markers": [

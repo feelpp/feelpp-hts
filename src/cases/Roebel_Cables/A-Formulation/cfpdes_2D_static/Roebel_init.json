@@ -62,7 +62,7 @@
     "Meshes": {
         "cfpdes": {
             "Import": {
-                "filename": "$cfgdir/Roebel_p16.json"
+                "filename": "$cfgdir/Roebel_p32.json"
             },
             "Fields": {
                 "P": {

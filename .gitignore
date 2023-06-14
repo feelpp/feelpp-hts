@@ -54,3 +54,6 @@ tramp
 *.db
 *.bdf
 res
+feelppdb
+*_p32.json
+*.h5

@@ -52,7 +52,7 @@
         "n": 21,
         "tolAz": 1e-09,
         "tolp": 1e-09,
-        "I0": 53.59147192191034,
+        "I0": 53.59543625231519,
         "x0": "-sw-rg/2:sw:rg",
         "y0": "-((th+sg)*ny-sg)/2:th:sg:ny",
         "E": 0,
@@ -62,7 +62,7 @@
     "Meshes": {
         "cfpdes": {
             "Import": {
-                "filename": "$cfgdir/Roebel_p16.json"
+                "filename": "$cfgdir/Roebel_p32.json"
             },
             "Fields": {
                 "v": {
