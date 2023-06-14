@@ -325,7 +325,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 16</code></pre>
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 32</code></pre>
 </div>
 </div>
 <button class="btn" data-clipboard-target="#command-line">
@@ -336,12 +336,30 @@ Copy command line to clipboard
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 16 python Roebel.py --criteria MAX</code></pre>
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 32 python Roebel.py --criteria MAX</code></pre>
 </div>
 </div>
 <button class="btn" data-clipboard-target="#command-line">
 Copy command line to clipboard
 </button>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Feelpp (parallel np 32)</th>
+<th class="tableblock halign-left valign-top">FreeFEM++</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.071e+01 s</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tfoot>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_equation"><a class="anchor" href="#_equation"></a>1.2. Equation</h3>
@@ -676,7 +694,7 @@ Copy command line to clipboard
         {
             "Import":
             {
-                "filename": "$cfgdir/Roebel_p16.json"<i class="conum" data-value="1"></i><b>(1)</b>
+                "filename": "$cfgdir/Roebel_p32.json"<i class="conum" data-value="1"></i><b>(1)</b>
             }
         },
         "Fields": {

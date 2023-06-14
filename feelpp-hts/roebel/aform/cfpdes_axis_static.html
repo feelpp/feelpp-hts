@@ -325,7 +325,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 16</code></pre>
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 32</code></pre>
 </div>
 </div>
 <button class="btn" data-clipboard-target="#command-line">
@@ -342,6 +342,21 @@ Copy command line to clipboard
 <button class="btn" data-clipboard-target="#command-line">
 Copy command line to clipboard
 </button>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Feelpp (parallel np 32)</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3136e+02 s</p></td>
+</tr>
+</tfoot>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_equation"><a class="anchor" href="#_equation"></a>1.2. Equation</h3>
@@ -422,6 +437,12 @@ Copy command line to clipboard
 <ul>
 <li>
 <p>The MAX criterion is when <em>at least one conductor</em> has its voltage drop per unit length \(E_i\) reach its critical value \(E_c\), i.e \(P_i=1\). The condition is \(\max_{i\in\{1,2,...,n_c\}}P_i=1\).</p>
+</li>
+<li>
+<p>The MAX-AVG criterion is when the average voltage drop per unit length \(E_i\) has reached its critical value \(E_c\) in <em>at least one turn</em>. The condition is \(\max_{j\in \{1,..,m\}}\sum^{k}_{i=1}P_{i,j}|P_{i,j}|^{n-1}=k\) for a coil composed of \(m\) turns made of \(k\) conductors.</p>
+</li>
+<li>
+<p>The SUM-AVG criterion is when the <em>sum of the average voltage drop</em> in each turn, divide by the coil&#8217;s length, has reached its critical value \(E_c\) in <em>at least one turn</em>. The condition is \(\sum^{m}_{j=1}\sum^{k}_{i=1}P_{i,j}|P_{i,j}|^{n-1} l_j=L_k\) for a coil composed of \(m\) turns made of \(k\) conductors, \(l_j\) the length of the _j_th turn of the coil and \(L_k\) the total lenght of the coil.</p>
 </li>
 </ul>
 </div>
@@ -682,7 +703,7 @@ Copy command line to clipboard
         {
             "Import":
             {
-                "filename":"$cfgdir/Roebel_coil_p16.json"<i class="conum" data-value="1"></i><b>(1)</b>
+                "filename":"$cfgdir/Roebel_coil_p32.json"<i class="conum" data-value="1"></i><b>(1)</b>
             }
         },
         "Fields": {
@@ -769,6 +790,9 @@ Copy command line to clipboard
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>The fit formula for the critical current density \(J_c(B)\) used here is described in <em>E Pardo et al 2011 Supercond. Sci. Technol. 24 065007</em></p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_models"><a class="anchor" href="#_models"></a>3.1.3. Models</h4>
@@ -795,7 +819,7 @@ Copy command line to clipboard
             },
             "models":[<i class="conum" data-value="7"></i><b>(7)</b>
                 {<i class="conum" data-value="8"></i><b>(8)</b>
-                    "name": "magnetic_Conductor_00",
+                    "name": "magnetic_Conductor",
                     "materials": ["Conductor"],<i class="conum" data-value="9"></i><b>(9)</b>
                     "setup": {
                         "coefficients": {<i class="conum" data-value="10"></i><b>(10)</b>

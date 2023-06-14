@@ -15,6 +15,20 @@
 
 
 
+    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+        function feelpp_unpack(rows, key) {
+           return rows.map(function(row) { return row[key] });
+        }
+          function feelpp_add_redimensionable_plot(plot) {
+            var oldResize = window.onresize;
+            window.onresize = function() {
+              if(typeof oldResize === 'function')
+                oldResize();
+              Plotly.Plots.resize(plot);
+            };
+          }
+      </script>
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -338,12 +352,30 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg</code></pre>
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg --cfpdes.gmsh.hsize=1e-3</code></pre>
 </div>
 </div>
 <button class="btn" data-clipboard-target="#command-line">
 Copy command line to clipboard
 </button>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Feelpp (parallel np 32)</th>
+<th class="tableblock halign-left valign-top">Comsol</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.621e+2 s</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tfoot>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_equation"><a class="anchor" href="#_equation"></a>1.2. Equation</h3>
