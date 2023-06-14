@@ -525,6 +525,6 @@ image::Roebel/A-Formulation/cfpdes_axi/roebel_A_axi_stat_B.png[,width=800,title=
 === Critical current
 
 |====================
-| MAX criterion 
-| stem:[I_c=573.1893747964195 A] 
+| MAX criterion | MAX-AVG criterion | SUM-AVG criterion 
+| stem:[I_c=493.8300771006914 A]  | stem:[I_c=511.6334601807369 A] | stem:[Ic= 541.6612911585148 A]
 |====================
