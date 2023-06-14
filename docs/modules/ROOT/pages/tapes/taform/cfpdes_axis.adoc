@@ -72,7 +72,7 @@ Copy command line to clipboard
 [width="50%",options="header,footer"]
 |====================
 | Feelpp (parallel np 32) | Comsol
-| 1.621e+2 s |  
+| 6.600e+02 s |  
 |====================
 
 === Equation 
