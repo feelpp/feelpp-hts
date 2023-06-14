@@ -53,7 +53,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg
+feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3
 ----
 
 ++++
@@ -61,6 +61,12 @@ mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg
 Copy command line to clipboard
 </button>
 ++++
+
+[width="50%",options="header,footer"]
+|====================
+| Feelpp (sequential) | getDP  
+|  1.437667e+03 s |  
+|====================
 
 === Equation 
 

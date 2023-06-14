@@ -1,10 +1,11 @@
+:page-plotly: true
 = HTS Tapes in Axisymmetric coordinates
 
 :stem: latexmath
 :toc: left
 
 :page-vtkjs: true
-:page-plotly: true
+
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
@@ -59,7 +60,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg
+mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg --cfpdes.gmsh.hsize=1e-3
 ----
 
 ++++
@@ -67,6 +68,12 @@ mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg
 Copy command line to clipboard
 </button>
 ++++
+
+[width="50%",options="header,footer"]
+|====================
+| Feelpp (parallel np 32) | Comsol
+| 1.621e+2 s |  
+|====================
 
 === Equation 
 

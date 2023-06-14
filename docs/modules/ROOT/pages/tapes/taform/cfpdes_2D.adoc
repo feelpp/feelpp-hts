@@ -1,8 +1,9 @@
+:page-plotly: true
 :stem: latexmath
 :toc: left
 
 :page-vtkjs: true
-:page-plotly: true
+
 
 
 = HTS Tapes in 2D coordinates
@@ -60,7 +61,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=tapes_2D.cfg
+mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=tapes_2D.cfg --cfpdes.gmsh.hsize=1e-3
 ----
 
 ++++
@@ -68,6 +69,12 @@ mpirun -np 16 feelpp_toolbox_coefficientformpdes --config-file=tapes_2D.cfg
 Copy command line to clipboard
 </button>
 ++++
+
+[width="50%",options="header,footer"]
+|====================
+| Feelpp (parallel np 32) | Comsol  
+| 2.803118e+03 s |  
+|====================
 
 === Equation 
 
