@@ -1,5 +1,4 @@
 :page-plotly: true
-:page-pseudocode: ["algo1"]
 :page-vtkjs: true
 
 
