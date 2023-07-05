@@ -335,6 +335,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 Copy command line to clipboard
 </button>
 <table class="tableblock frame-all grid-all" style="width: 50%;">
+<caption class="title">Table 1. Execution time</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -406,7 +407,7 @@ Copy command line to clipboard
 <div class="sect2">
 <h3 id="_geometry"><a class="anchor" href="#_geometry"></a>1.3. Geometry</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Geometry with GMSH</caption>
+<caption class="title">Table 2. Geometry with GMSH</caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -419,7 +420,7 @@ Copy command line to clipboard
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Mesh with GMSH</caption>
+<caption class="title">Table 3. Mesh with GMSH</caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -438,7 +439,7 @@ Copy command line to clipboard
 <h2 id="_input"><a class="anchor" href="#_input"></a>2. Input</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Parameter table</caption>
+<caption class="title">Table 4. Parameter table</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -948,6 +949,79 @@ restart.at-last-save=true<i class="conum" data-value="18"></i><b>(18)</b></pre>
 <iframe width="720" height="400" src="https://www.youtube.com/embed/jBWlTIlLnSw?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+<div class="paragraph">
+<p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>getDP</strong> on the \(O_r\) axis, at the mid-height of the cylinder, at time \(t_3\) for a maximum applied field of 1 T and \(n=20\).</p>
+</div>
+<div id="myDiv"></div>
+<script type="text/javascript">
+
+function makeplot() {
+
+    Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/4493e66c7714536833397587094dd9f1/raw/4fc428100c9e29df6d76407e83f64e5fb36f63da/Hform_cyl_jphi-t3.csv", function(file1) {
+        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/14683d5efca480015e4af9f2d41a78b1/raw/ccc70c40e615acc160b6e0ffdc854679f23cd20f/jline.csv", function(file2) {
+            processData(file1,file2);});
+    });
+};
+
+
+
+function processData(file1,file2) {
+    console.log(file1);
+    var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+
+    for (var i=0; i<file1.length; i++) {
+        row1 = file1[i];
+        x1.push( row1['Points:0'] );
+        y.push( -row1['cfpdes.magnetic.expr.J'] /3e8);
+    }
+    for (var i=0; i<file2.length; i++) {
+        row2 = file2[i];
+        x2.push( row2['X'] );
+        z.push( row2['getDP_t3'] /3e8);
+    }
+
+    console.log( 'X1',x1, 'SD',standard_deviation );
+    console.log( 'Y',y, 'SD',standard_deviation );
+    console.log( 'X2',x2, 'SD',standard_deviation );
+    console.log( 'Z',z, 'SD',standard_deviation );
+    makePlotly( x1, y, x2, z, standard_deviation );
+}
+
+
+function makePlotly( x1, y, x2, z, standard_deviation ){
+    var plotDiv = document.getElementById("plot");
+    var traces1 = {
+        x: x1,
+        y: y,
+        name: 'Feelpp'
+    };
+
+    var traces2 = {
+        x: x2,
+        y: z,
+        name: 'getDP'
+    };
+
+    var data = [traces1, traces2];
+
+    Plotly.newPlot('myDiv', data, {title: 'J_theta/J_c on the Or axis of the cylinder'});
+};
+
+makeplot();
+
+</script>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong>L2 Relative Error Norm</strong> : \(24.57 \%\)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_magnetic_flux_density"><a class="anchor" href="#_magnetic_flux_density"></a>4.2. Magnetic flux density</h3>
@@ -957,6 +1031,145 @@ restart.at-last-save=true<i class="conum" data-value="18"></i><b>(18)</b></pre>
 <iframe width="720" height="400" src="https://www.youtube.com/embed/STlNSx_-kyU?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+<div class="paragraph">
+<p>We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants \(t_1\), \(t_2\) and \(t_3\) with <strong>Feelpp</strong> and <strong>getDP</strong>.</p>
+</div>
+<div id="myDiv2"></div>
+<script type="text/javascript">
+
+function makeplot2() {
+
+    Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/1e9d91fcdb4297ae317b9392aed7cf85/raw/c81b04e539a5ecaf5f1ee3bd92846ee48375cb0c/Hform_cyl_b-t1.csv", function(file1) {
+        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/20dcf1c2e513240fb80f19891c477ce7/raw/e3fc0a82594ded817efe6735f611104e016f0ba1/Hform_cyl_b-t2.csv", function(file2) {
+            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/3a4aeec4b1cdbbbde69c65be02c55bea/raw/8c8a4f93a62b0423578e61a030e710302bf295dc/Hform_cyl_b-t3.csv", function(file3) {
+                Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/03ab65c93d3eb3784739b2d0210e1b81/raw/1c2783601c378823572c5cee7ad6e122f9b3d7bd/getdpaformaxi_b_t1.csv", function(file4) {
+                    Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e16dea426990083f3a252f1a08883955/raw/71b121bfef7e40d72483657c565dde6dfcccab60/getdpaformaxi_b_t2.csv", function(file5) {
+                        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5743a0b3ff9d43d5bde7bde4503296b6/raw/053822d054754969b01e098183e6449c2510b74c/getdpaformaxi_b_t3.csv", function(file6) {
+                            processData2(file1,file2,file3,file4,file5,file6);
+                        });
+                    });
+                });
+            });
+        });
+    });
+};
+
+
+
+function processData2(file1,file2,file3,file4,file5,file6) {
+    console.log(file1);
+    var x1 = [], y1 = [], y2 = [], y3 = [], x2 =[], z1=[], z2 = [], z3 =[], standard_deviation = [];
+
+    for (var i=0; i<file1.length; i++) {
+        row1 = file1[i];
+        row2 = file2[i];
+        row3 = file3[i];
+        x1.push( row1['Points:0'] );
+        y1.push( row1['cfpdes.magnetic.expr.B:1']);
+        y2.push( row2['cfpdes.magnetic.expr.B:1']);
+        y3.push( row3['cfpdes.magnetic.expr.B:1']);
+    }
+    for (var i=0; i<file4.length; i++) {
+        row1 = file4[i];
+        row2 = file5[i];
+        row3 = file6[i];
+        x2.push( row1['X'] );
+        z1.push( row1['getDP_t1']);
+        z2.push( row2['getDP_t2']);
+        z3.push( row3['getDP_t3']);
+    }
+
+    makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation );
+}
+
+
+function makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation ){
+    var plotDiv = document.getElementById("plot");
+    var traces1 = {
+        x: x1,
+        y: y1,
+        name: 't1 (Feelpp)',
+        mode: 'lines',
+        line: {
+            color: 'red',
+            width:4
+        }
+    };
+    var traces2 = {
+        x: x1,
+        y: y2,
+        name: 't2 (Feelpp)',
+        mode: 'lines',
+        line: {
+            color: 'blue'
+        }
+    };
+    var traces3 = {
+        x: x1,
+        y: y3,
+        name: 't3 (Feelpp)',
+        mode: 'lines',
+        line: {
+            color: 'green'
+        }
+    };
+
+    var traces4 = {
+        x: x2,
+        y: z1,
+        name: 't1 (getDP)',
+        mode: 'lines',
+        line: {
+            color: 'indianred'
+        }
+    };
+    var traces5 = {
+        x: x2,
+        y: z2,
+        name: 't2 (getDP)',
+        mode: 'lines',
+        line: {
+            color: 'dodgerblue'
+        }
+    };
+    var traces6 = {
+        x: x2,
+        y: z3,
+        name: 't3 (getDP)',
+        mode: 'lines',
+        line: {
+            color: 'lightgreen'
+        }
+    };
+
+    var data = [traces1, traces2, traces3, traces4, traces5, traces6];
+
+    Plotly.newPlot('myDiv2', data, {title: 'Distribution of the z-component of the magnetic flux density'});
+};
+
+makeplot2();
+
+</script>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>t1</strong> \(=5s\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>L2 Relative Error Norm</strong> : \(1.31 \%\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>t2</strong> \(=10s\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>L2 Relative Error Norm</strong> : \(3.42 \%\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>t3</strong> \(=15s\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>L2 Relative Error Norm</strong> : \(6.66 \%\)</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
