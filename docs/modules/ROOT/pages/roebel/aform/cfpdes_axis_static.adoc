@@ -1,6 +1,5 @@
 :page-plotly: true
 :page-vtkjs: true
-:pseudocode-gh-url: https://github.com/SaswatPadhi/pseudocode.js
 
 
 = Critical current in Roebel tapes in axisymmetric coordinates
@@ -136,7 +135,6 @@ In order to have find the critical current, we need to have criteria to stop the
 
 
 .Algorithm example with the MAX criterion
-
 [.pseudocode]
 ....
 \begin{algorithm}
@@ -158,8 +156,7 @@ In order to have find the critical current, we need to have criteria to stop the
     \STATE $I_0=2*I_0/(1+\max(P_{ji}))$
 \ENDWHILE
 \STATE
-\STATE $I_c=n_c*I_0$
-
+\RETURN $I_c=n_c*I_0$
 \end{algorithmic}
 \end{algorithm}
 ....
