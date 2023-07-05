@@ -1,10 +1,11 @@
+:page-plotly: true
+
 = HTS Bulk Cylinder in Axisymmetric coordinates
 
 :stem: latexmath
 :toc: left
 
 :page-vtkjs: true
-:page-plotly: true
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
