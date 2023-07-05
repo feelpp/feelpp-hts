@@ -2,42 +2,34 @@
 :cpp: C++
 :project: feelpp-hts 
 
-= {feelpp} Project Template
+= {feelpp} HTS
 Christophe Prud'homme <https://github.com/prudhomm[@prudhomm]>
 v2: 
 
 image:https://github.com/feelpp/feelpp-hts/workflows/CI/badge.svg[CI]
 
-This repository provides a basic starting point for a {feelpp} application including:
+This repository provides:
 
-- [x] {feelpp} applications in {cpp} to use {feelpp} and {feelpp} toolboxes in `src`
-- [x] documentation using asciidoc and antora
-- [x] python {feelpp} notebooks that can be downloaded from the documentation
-- [x] continuous integration including tests for the {cpp} applications
-- [x] docker image generation for the project
+- HTS examples using {feelpp} toolbox CFPDES in `src\cases\`
+- documentation for link:https://feelpp.github.io/feelpp-hts/feelpp-hts/index.html[feelpp-hts] 
 
-The documentation for feelpp-hts is available at link:https://feelpp.github.io/feelpp-hts[here] and you can build on it for your project by enabling the link:https://docs.github.com/en/pages[github pages] for your repository.
 
-== Renaming the project
 
-By default the project is named  `feelpp-hts` if you cloned the repository `feelpp/feelpp-hts`.
-However if you used the previous repository as a template, then the project is renamed using the name of the repository using the script `rename.sh` at the initialization of the repository.
-If the name does not suit you, you can change it again using the script `rename.sh` and providing the new name as argument.
+== Install {feelpp}
 
-WARNING: the script `rename.sh` will rename the project however some url might be set properly if you rename the project yourself. You need to check the following files: `docs/site.yml` and `docs/package.json` and fix the urls after the rename process is done.
+link:https://docs.feelpp.org/user/latest/install/index.html[Get Feel++]
 
-== Updating the {project} version
+== Example
 
-The version of the project is defined in the files `CMakeLists.txt`, `docs/antora.yml` and `docs/package.json`. 
-You need to update with the same version in all files.
+Got to `src/cases/Cylinder/A-Formulation/cfpdes_axis/` and run the case :
+```
+mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3
+```
 
-== Release process
+See the link:https://feelpp.github.io/feelpp-hts/feelpp-hts/index.html[documentation] for how to run each case. 
 
-- [x] update the version in CMakeLists.txt
-- [x] update the version in docs/antora.yml
-- [x] commit the changes with the message "Release vx.y.z". At this point the CI will generate the docker image and push it to docker hub
 
-== Issues 
+// == Issues 
 
-- Cylinder/H-Formulation models don't work in paralell
-- Torus/A-Formulation/cfpdes_3D_regularized models don't work in paralell
+// - Cylinder/H-Formulation/cfpdes_axis model doesn't work in parallel
+// - Torus/A-Formulation/cfpdes_3D_regularized models don't work in parallel
