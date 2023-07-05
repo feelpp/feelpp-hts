@@ -1,7 +1,6 @@
 :page-plotly: true
-:page-pseudocode: true
 :page-vtkjs: true
-
+:pseudocode-gh-url: https://github.com/SaswatPadhi/pseudocode.js
 
 
 = Critical current in Roebel tapes in 2D coordinates
