@@ -137,33 +137,33 @@ In order to have find the critical current, we need to have criteria to stop the
 
 
 .Algorithm example with the MAX criterion
-++++
-<pre id="algo1" style="display:hidden;">
-    \begin{algorithm}
-    \caption{I_c estimation}
-    \begin{algorithmic}
-    \WHILE{ $\abs( \max(P_{ji}) - 1 )> tolp$ :  }   
-        \STATE $err=1$
-        \WHILE{ $err > tolAz$ :}
-            \STATE $A_0=A$ 
-            \STATE Run FEM problem
-            \FOR{j in range(0,n_t) :} 
-                \FOR{i in range(0,n_c) :} 
-                    \STATE $Ics=\int_{Omega_{ji}} J_c(B)$             
-                    \STATE $P_{ji}=I_0/Ics$
-                \ENDFOR
-            \ENDFOR
-            \STATE $err=||A-A_0||_\infty$
-        \ENDWHILE
-        \STATE $I_0=2*I_0/(1+\max(P_{ji}))$
-    \ENDWHILE
-    \STATE
-    \STATE $I_c=n_c*I_0$
 
-    \end{algorithmic}
-    \end{algorithm}
-    </pre>
-++++
+[.pseudocode]
+....
+\begin{algorithm}
+\caption{I_c estimation}
+\begin{algorithmic}
+\WHILE{ $\abs( \max(P_{ji}) - 1 )> tolp$ :  }   
+    \STATE $err=1$
+    \WHILE{ $err > tolAz$ :}
+        \STATE $A_0=A$ 
+        \STATE Run FEM problem
+        \FOR{j in range(0,n_t) :} 
+            \FOR{i in range(0,n_c) :} 
+                \STATE $Ics=\int_{Omega_{ji}} J_c(B)$             
+                \STATE $P_{ji}=I_0/Ics$
+            \ENDFOR
+        \ENDFOR
+        \STATE $err=||A-A_0||_\infty$
+    \ENDWHILE
+    \STATE $I_0=2*I_0/(1+\max(P_{ji}))$
+\ENDWHILE
+\STATE
+\STATE $I_c=n_c*I_0$
+
+\end{algorithmic}
+\end{algorithm}
+....
 
 === Geometry
 
