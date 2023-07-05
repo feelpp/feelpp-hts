@@ -27,7 +27,7 @@
         "rate": "3.0*bmax/tf:tf:bmax",
         "hsVal": "(t>1.e-10)*(bmax - (t-2.0*tf/3.0)*rate + (t<2.0*tf/3.0)*(t-2.0*tf/3.0)*rate + (t<tf/3.0)*(t*rate - bmax))/mu0:t:tf:rate:bmax:mu0",
         "sigma": 58e6,
-        "jc": 3e8,
+        "jc": 1e8,
         "ec": 1e-4,
         "n": 20,
         "epsSigma": 1e-8
@@ -35,7 +35,8 @@
     "Meshes": {
         "cfpdes": {
             "Import": {
-                "filename": "$cfgdir/circle.geo"
+                "filename": "$cfgdir/circle.geo",
+                "hsize": 1e-3
             }
         }
     },
