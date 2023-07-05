@@ -393,7 +393,7 @@ function processData(file1,file2) {
     for (var i=0; i<file1.length; i++) {
         row1 = file1[i];
         x1.push( row1['Points:0'] );
-        y.push( -row1['cfpdes.magnetic.expr.J'] /3e8);
+        y.push( row1['cfpdes.magnetic.expr.J'] /3e8);
     }
     for (var i=0; i<file2.length; i++) {
         row2 = file2[i];
