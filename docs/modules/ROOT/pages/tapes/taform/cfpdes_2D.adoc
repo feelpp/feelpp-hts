@@ -70,9 +70,10 @@ Copy command line to clipboard
 </button>
 ++++
 
+.Execution time
 [width="50%",options="header,footer"]
 |====================
-| Feelpp (parallel np 32) | Comsol  
+| Feelpp (parallel np 32) |   
 | 2.803118e+03 s |  
 |====================
 

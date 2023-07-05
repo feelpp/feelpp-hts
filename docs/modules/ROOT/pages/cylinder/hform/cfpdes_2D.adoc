@@ -53,7 +53,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-feelpp_toolbox_coefficientformpdes --config-file=cylinder_2D.cfg
+mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_2D.cfg
 ----
 
 ++++
@@ -62,10 +62,11 @@ Copy command line to clipboard
 </button>
 ++++
 
+.Execution time
 [width="50%",options="header,footer"]
 |====================
-| Feelpp (sequential) | getDP  
-| 48.02 s |  
+| Feelpp (parallel np 32) |   
+| 17.73 s |  
 |====================
 
 === Equation 
@@ -366,15 +367,16 @@ restart.at-last-save=true<18>
 
 video::uYFO9JJlgDI[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
 
-// We compare the current density profiles with *Feelpp* and *getDP* on the stem:[O_r] 2D, at the mid-height of the cylinder, at time stem:[t_3] for a maximum applied field of 1 T and stem:[n=20].
+
+// We compare the current density profiles with *Feelpp* at stem:[t=7s] and *FreeFEM* on the stem:[O_r] axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.
 // ++++
 // <div id="myDiv"></div>
 //     <script type="text/javascript">
 
 //     function makeplot() {
 
-//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/0498764d7cab9c655f30281d562c44f8/raw/b0267dbe1e310855885f03dbcaf8563f54afecb4/feelaformaxi_jline.csv", function(file1) {
-//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/14683d5efca480015e4af9f2d41a78b1/raw/ccc70c40e615acc160b6e0ffdc854679f23cd20f/jline.csv", function(file2) {
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/b0578a423f6947fb151af84d405f1c24/raw/66bbcb55d6e636e5e30fb8c10a2dccc22b290505/jline_ff.csv", function(file2) {
 //                 processData(file1,file2);});
 //         });
 //     };
@@ -388,12 +390,12 @@ video::uYFO9JJlgDI[youtube, title="Electric current density stem:[J (A/m^2)]", w
 //         for (var i=0; i<file1.length; i++) {
 //             row1 = file1[i];
 //             x1.push( row1['Points:0'] );
-//             y.push( -row1['cfpdes.magnetic.expr.j_th'] /3e8);
+//             y.push( row1['cfpdes.magnetic.expr.Jh'] /1e8);
 //         }
 //         for (var i=0; i<file2.length; i++) {
 //             row2 = file2[i];
 //             x2.push( row2['X'] );
-//             z.push( row2['getDP_t3'] /3e8);
+//             z.push( row2['J'] /1e8);
 //         }
 
 //         console.log( 'X1',x1, 'SD',standard_deviation );
@@ -415,12 +417,12 @@ video::uYFO9JJlgDI[youtube, title="Electric current density stem:[J (A/m^2)]", w
 //         var traces2 = {
 //             x: x2,
 //             y: z,
-//             name: 'getDP'
+//             name: 'FreeFEM'
 //         };
 
 //         var data = [traces1, traces2];
 
-//         Plotly.newPlot('myDiv', data, {title: 'J_theta/J_c on the Or 2D of the cylinder'});
+//         Plotly.newPlot('myDiv', data, {title: 'J/J_c on the Or axis of the cylinder'});
 //     };
 
 //     makeplot();
@@ -430,7 +432,7 @@ video::uYFO9JJlgDI[youtube, title="Electric current density stem:[J (A/m^2)]", w
 // ++++
 // [cols="a"]
 // |===
-// ^|*L2 Relative Error Norm* : stem:[25.09 \%]
+// ^|*L2 Relative Error Norm* : stem:[3.4 \%]
 // |===
 
 === Magnetic flux density

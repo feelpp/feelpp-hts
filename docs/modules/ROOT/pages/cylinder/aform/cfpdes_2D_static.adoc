@@ -69,9 +69,10 @@ Copy command line to clipboard
 </button>
 ++++
 
+.Execution time
 [width="50%",options="header,footer"]
 |====================
-| Feelpp (parallel np 32) | FreeFEM++  
+| Feelpp (parallel np 32) | 
 | 6.34 s |  
 |====================
 

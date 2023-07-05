@@ -77,7 +77,7 @@ Copy command line to clipboard
 
 [width="50%",options="header,footer"]
 |====================
-| Feelpp (parallel np 32) | getDP  
+| Feelpp (parallel np 32) | 
 | 1.621e+2 s |  
 |====================
 
