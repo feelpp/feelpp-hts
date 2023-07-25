@@ -13,23 +13,10 @@
 <script src="../../../_/js/vendor/tabs-block-extension.js"></script>
 <script src="../../../_/js/vendor/tabs-block-behavior.js"></script>
 
-
     <script type="text/javascript" src="../../../_/js/vendor/visu-vtk.js"></script>
 
-    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script type="text/javascript">
-        function feelpp_unpack(rows, key) {
-           return rows.map(function(row) { return row[key] });
-        }
-          function feelpp_add_redimensionable_plot(plot) {
-            var oldResize = window.onresize;
-            window.onresize = function() {
-              if(typeof oldResize === 'function')
-                oldResize();
-              Plotly.Plots.resize(plot);
-            };
-          }
-      </script>
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7" charset="utf-8"></script>
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -227,17 +214,12 @@ MathJax.Hub.Config({
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Feel++ Template Project</span>
-    <span class="version">default</span>
+    <span class="version"></span>
   </div>
   <ul class="components">
-    <li class="component is-current">
-      <a class="title" href="../../index.html">Feel++ Template Project</a>
-      <ul class="versions">
-        <li class="version is-current is-latest">
-          <a href="../../index.html">default</a>
-        </li>
-      </ul>
-    </li>
+      <li class="component is-current">
+        <a class="title" href="../../index.html">Feel++ Template Project</a>
+      </li>
   </ul>
 </div>
     </div>
@@ -277,7 +259,6 @@ MathJax.Hub.Config({
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
-
 <article class="doc">
 <h1 class="page">HTS Tapes in 2D coordinates</h1>
 <div id="toc" class="toc">
