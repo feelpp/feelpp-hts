@@ -138,18 +138,18 @@ In order to have find the critical current, we need to have criteria to stop the
 \begin{algorithm}
 \caption{I_c estimation}
 \begin{algorithmic}
-\WHILE{ $\abs( \max(P_i) - 1 )> tolp$ :  }   
-    \STATE $err=1$
-    \WHILE{ $err > tolAz$ :}
-        \STATE $A_0=A$ 
-        \STATE Run FEM problem
-        \FOR{i in range(0,n_c) :} 
-            \STATE $Ics=\int_{Omega_i} J_c(B)$             
-            \STATE $P_i=I_0/Ics$
-        \ENDFOR
-        \STATE $err=||A-A_0||_\infty$
-    \ENDWHILE
-    \STATE $I_0=2*I_0/(1+\max(P_i))$
+\WHILE{$\abs( \max(P_i) - 1 )> tolp$ :}   
+\STATE $err=1$
+\WHILE{$err > tolAz$ :}
+\STATE $A_0=A$ 
+\STATE Run FEM problem
+\FOR{i in range(0,n_c) :} 
+\STATE $Ics=\int_{Omega_i} J_c(B)$             
+\STATE $P_i=I_0/Ics$
+\ENDFOR
+\STATE $err=||A-A_0||_\infty$
+\ENDWHILE
+\STATE $I_0=2*I_0/(1+\max(P_i))$
 \ENDWHILE
 \STATE
 \RETURN $I_c=n_c*I_0$
