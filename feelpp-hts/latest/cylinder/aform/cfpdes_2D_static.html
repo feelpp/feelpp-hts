@@ -919,18 +919,26 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_fe13bbe3-c162-4eda-9113-354cae4310b1"></div>
+<div id="ploty_d867825f-8be0-4e61-8aad-a68343a537fc"></div>
 <script>
-  d3.csv("https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv")
+  d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
       // global d
 const data = [{
-  name: 'CFPDES J',
+  name: 'Feel++ J',
   type: 'scatter',
-  x: d.map(i => i['Points:0']),
-  y: d.map(i => i['cfpdes.magnetic.expr.Jh']/1e8),
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++']),
   showlegend: true,
-  line: {color: '#FF99BB'}
+  line: {color: '#FFBF00'}
+},
+{
+  name: 'FreeFEM J',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['FreeFEM']),
+  showlegend: true,
+  line: {color: '#2E2EFE'}
 }]
 const layout = {
   title: 'Current Density',
@@ -938,7 +946,7 @@ const layout = {
   yaxis: {title:'J (A/m²)'}
 }
 
-      Plotly.newPlot('ploty_fe13bbe3-c162-4eda-9113-354cae4310b1', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_d867825f-8be0-4e61-8aad-a68343a537fc', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
