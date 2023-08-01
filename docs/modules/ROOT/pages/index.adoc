@@ -73,4 +73,3 @@
 |image:Examples/tapes_TA_2D_B.png[B,100%] | Magnetic transient model on a HTS stacked tapes geometry surrounded by air in 2D coordinates using the T-A Homogeneous Formulation and the E-J power law.
 |===
 
-

@@ -46,11 +46,7 @@ asciidoc:
     uri-gmsh-www: https://gmsh.info
     uri-gmsh-manual: https://gmsh.info
   extensions:
-    - "@feelpp/asciidoctor-remote-include-processor"
     - ./docs/lib/plotly.js
-    - asciidoctor-kroki
-    - asciidoctor-emoji
     - ./docs/lib/tabs-block-extension
-    - "@djencks/asciidoctor-template"
     - ./docs/lib/vtkjs.js
     - ./docs/lib/mpirun.js
