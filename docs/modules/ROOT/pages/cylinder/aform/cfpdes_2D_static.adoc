@@ -384,8 +384,8 @@ const data = [{
 }]
 const layout = {
   title: 'Current Density',
-  xaxis: 'x (m)',
-  yaxis: 'J (A/m²)'
+  xaxis: {title: 'x (m)'},
+  yaxis: {title:'J (A/m²)'}
 }
 ....
 
