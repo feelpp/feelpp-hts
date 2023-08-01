@@ -488,7 +488,7 @@ video::v6K1I5i472s[youtube, title="Magnetic flux density stem:[B (T)]", width=72
 We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants stem:[t_1], stem:[t_2] and stem:[t_3] with *Feelpp* and *getDP*.
 
 
-[plotly,https://gist.githubusercontent.com/jermuzet/f0e0c3964961d5ff24b3f6112a5ee8c2/raw/412e1e1966ba253110630b173475c16d285f0457/Cylinder_Aform_axi_J.csv]
+[plotly,https://gist.githubusercontent.com/jermuzet/3d503631cbd555c9c595f22e3f2eaf29/raw/180bce0567d4344728879b723ae65fc449c48f84/Cylinder_Aform_axi_B.csv]
 ....
 // global d
 const data = [{
