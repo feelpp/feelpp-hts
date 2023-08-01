@@ -380,17 +380,11 @@ const data = [{
   y: d.map(i => i['cfpdes.magnetic.expr.Jh']/1e8),
   showlegend: true,
   line: {color: '#FF99BB'}
-  xlabel: 'X'
 }]
 const layout = {
-   title: {
-    text:'Plot Title'
-  },
-  xaxis: {
-    title: {
-      text: 'x Axis'
-    }
-  }
+  title: 'Current Density',
+  xaxis: {title: 'x (m)'},
+  yaxis: {title:'J (A/m²)'}
 }
 ....
 
