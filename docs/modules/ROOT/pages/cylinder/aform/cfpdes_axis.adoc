@@ -1,7 +1,9 @@
 :page-plotly: true
 
 = HTS Bulk Cylinder in Axisymmetric coordinates
-
+:page-tags: Cylinder Aform 2 Axi
+:page-illustration: Examples/cyl_A_axi_B.png
+:description: Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in axisymmetric coordinates using the A Formulation and the E-J power law.
 :stem: latexmath
 :toc: left
 
@@ -115,12 +117,12 @@ image:Cylinder/A-Formulation/cfpdes_axis/applied_field.png[,width=700]
 
 .Geometry with GMSH
 |====
-a|image:Cylinder/A-Formulation/cfpdes_axis/cylinder.png[,width=300]
+|image:Cylinder/A-Formulation/cfpdes_axis/cylinder.png[,width=300]
 |====
 
 .Mesh with GMSH
 |====
-a|image:Cylinder/A-Formulation/cfpdes_axis/cylinder_mesh.png[,width=300]
+|image:Cylinder/A-Formulation/cfpdes_axis/cylinder_mesh.png[,width=300]
 |====
 
 == Input
