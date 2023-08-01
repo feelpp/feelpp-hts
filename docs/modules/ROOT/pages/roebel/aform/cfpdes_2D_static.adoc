@@ -167,7 +167,7 @@ In order to have find the critical current, we need to have criteria to stop the
 
 .Mesh with GMSH
 |====
-a|image:Roebel/A-Formulation/cfpdes_2D/roebel_mesh.png[,width=600]
+|image:Roebel/A-Formulation/cfpdes_2D/roebel_mesh.png[,width=600]
 |====
 
 == Input

@@ -56,7 +56,7 @@ The command line to run this case is
 [[command-line]]
 [source,sh]
 ----
-python Roebel_coil.py --criteria MAX
+mpirun -np 32 python Roebel_coil.py --criteria MAX
 ----
 
 ++++
@@ -172,7 +172,7 @@ In order to have find the critical current, we need to have criteria to stop the
 
 .Mesh with GMSH
 |====
-a|image:Roebel/A-Formulation/cfpdes_axi/roebel_axi_mesh.png[,width=600]
+|image:Roebel/A-Formulation/cfpdes_axi/roebel_axi_mesh.png[,width=600]
 |====
 
 == Input

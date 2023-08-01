@@ -129,7 +129,7 @@ Finally we have :
 
 .Time evolution of hsVal
 |====
-a|image:Tapes/T-A-Formulation/cfpdes_axis/iapp.png[]
+|image:Tapes/T-A-Formulation/cfpdes_axis/iapp.png[]
 |====
 
 === Geometry
@@ -144,7 +144,7 @@ a|image:Tapes/T-A-Formulation/cfpdes_axis/iapp.png[]
 
 .Mesh with GMSH
 |====
-a|image:Tapes/T-A-Formulation/cfpdes_axis/hom_tapesmesh.png[,width=600]
+|image:Tapes/T-A-Formulation/cfpdes_axis/hom_tapesmesh.png[,width=600]
 |====
 
 == Input
@@ -477,67 +477,93 @@ restart.at-last-save=true<16>
 video::4k0RAQOwvwM[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
 
 We compare the distribution of the electric current density on the Oz axis between the tapes at the instant stem:[t=0.005s] with *Feelpp* and *Comsol*.
-++++
-<div id="myDiv3"></div>
-    <script type="text/javascript">
 
-    function makeplot3() {
+[plotly,https://gist.githubusercontent.com/jermuzet/9d28260009a98ca5d2d90b285df1779c/raw/a1ec4f6c937cdeab0b98a0d8745cb6d4fa69dd55/Tapes_TAform_axi_J.csv]
+....
+// global d
+const data = [{
+  name: 'Feel++',
+  type: 'scatter',
+  x: d.map(i => i['z']),
+  y: d.map(i => i['Feel++']),
+  showlegend: true,
+  line: {color: '#2E64FE'}
+},
+{
+  name: 'Comsol',
+  type: 'scatter',
+  x: d.map(i => i['z']),
+  y: d.map(i => i['Comsol']),
+  showlegend: true,
+  line: {color: '#FF8000'}
+}]
+const layout = {
+  title: 'Current Density',
+  xaxis: {title: 'z (m)'},
+  yaxis: {title: 'J/Jc'}
+}
+....
+// ++++
+// <div id="myDiv3"></div>
+//     <script type="text/javascript">
 
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5314f37c7fb3caad25edc7ba68b699d3/raw/43c3d1267f572e5aa9880682a4a79ed4aa5c9043/cfpdetahom_Oz2.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/16ccc5ac4a93995a00ae2f38f65f9072/raw/d6f124fbfc0c3eaaecef8f945224c374bb5e46d1/comsoltahom_J.csv", function(file2) {
-                processData3(file1,file2);});
-        });
-    };
+//     function makeplot3() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5314f37c7fb3caad25edc7ba68b699d3/raw/43c3d1267f572e5aa9880682a4a79ed4aa5c9043/cfpdetahom_Oz2.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/16ccc5ac4a93995a00ae2f38f65f9072/raw/d6f124fbfc0c3eaaecef8f945224c374bb5e46d1/comsoltahom_J.csv", function(file2) {
+//                 processData3(file1,file2);});
+//         });
+//     };
     
 
 
-    function processData3(file1,file2) {
-        console.log(file1);
-        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+//     function processData3(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
 
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            x1.push( row1['Points:1'] );
-            y.push( row1['cfpdes.expr.Jz']);
-        }
-        for (var i=0; i<file2.length; i++) {
-            row2 = file2[i];
-            x2.push( row2['z'] );
-            z.push( row2['J']);
-        }
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:1'] );
+//             y.push( row1['cfpdes.expr.Jz']);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['z'] );
+//             z.push( row2['J']);
+//         }
 
-        console.log( 'X1',x1, 'SD',standard_deviation );
-        console.log( 'Y',y, 'SD',standard_deviation );
-        console.log( 'X2',x2, 'SD',standard_deviation );
-        console.log( 'Z',z, 'SD',standard_deviation );
-        makePlotly3( x1, y, x2, z, standard_deviation );
-    }
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly3( x1, y, x2, z, standard_deviation );
+//     }
 
 
-    function makePlotly3( x1, y, x2, z, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y,
-            name: 'Feelpp',
-            type: 'scatter'
-        };
+//     function makePlotly3( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp',
+//             type: 'scatter'
+//         };
 
-        var traces2 = {
-            x: x2,
-            y: z,
-            name: 'Comsol'
-        };
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'Comsol'
+//         };
 
-        var data = [traces1, traces2];
+//         var data = [traces1, traces2];
 
-        Plotly.newPlot('myDiv3', data, {title: 'J_theta on the Oz axis between the tapes at t=0.005s'});
-    };
+//         Plotly.newPlot('myDiv3', data, {title: 'J_theta on the Oz axis between the tapes at t=0.005s'});
+//     };
 
-    makeplot3();
+//     makeplot3();
 
-    </script>
-++++
+//     </script>
+// ++++
 [cols="a"]
 |===
 ^|*L2 Relative Error Norm* : stem:[9.98 \%]
@@ -564,134 +590,186 @@ video::AgSLSLyXVn4[youtube, title="Magnitude of the Magnetic flux density stem:[
 // |===
 
 We compare the distribution of the r-component of the magnetic flux density on the Oz axis between the tapes at the instant stem:[t=0.005s] with *Feelpp* and *Comsol*.
-++++
-<div id="myDiv"></div>
-    <script type="text/javascript">
 
-    function makeplot() {
+[plotly,https://gist.githubusercontent.com/jermuzet/5b8e524ec754ff3533001017cb95aeab/raw/f3d22307b582fc4f478e10e1f7a56eb2a0e1df63/Tapes_TAform_axi_B.csv]
+....
+// global d
+const data = [{
+  name: 'Feel++',
+  type: 'scatter',
+  x: d.map(i => i['z']),
+  y: d.map(i => i['Feel++']),
+  showlegend: true,
+  line: {color: '#2E64FE'}
+},
+{
+  name: 'Comsol',
+  type: 'scatter',
+  x: d.map(i => i['z']),
+  y: d.map(i => i['Comsol']),
+  showlegend: true,
+  line: {color: '#FF8000'}
+}]
+const layout = {
+  title: 'Magnetic Flux Density',
+  xaxis: {title: 'z (m)'},
+  yaxis: {title: 'Br (T)'}
+}
+....
+// ++++
+// <div id="myDiv"></div>
+//     <script type="text/javascript">
 
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/90e4c195b4812b695307bfca79286279/raw/8ed2adb752251971d7b1e1e10b50da31cb3d9572/cfpdetahom_Oz.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/061eabea43b1f52a35a75be583e6a8d4/raw/f214909d665eab74eace1cee84a2650b3ab23f0a/comsoltahom_Br.csv", function(file2) {
-                processData(file1,file2);});
-        });
-    };
+//     function makeplot() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/90e4c195b4812b695307bfca79286279/raw/8ed2adb752251971d7b1e1e10b50da31cb3d9572/cfpdetahom_Oz.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/061eabea43b1f52a35a75be583e6a8d4/raw/f214909d665eab74eace1cee84a2650b3ab23f0a/comsoltahom_Br.csv", function(file2) {
+//                 processData(file1,file2);});
+//         });
+//     };
     
 
 
-    function processData(file1,file2) {
-        console.log(file1);
-        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+//     function processData(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
 
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            x1.push( row1['Points:1'] );
-            y.push( row1['cfpdes.expr.B:0']);
-        }
-        for (var i=0; i<file2.length; i++) {
-            row2 = file2[i];
-            x2.push( row2['z'] );
-            z.push( row2['Br']);
-        }
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:1'] );
+//             y.push( row1['cfpdes.expr.B:0']);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['z'] );
+//             z.push( row2['Br']);
+//         }
 
-        console.log( 'X1',x1, 'SD',standard_deviation );
-        console.log( 'Y',y, 'SD',standard_deviation );
-        console.log( 'X2',x2, 'SD',standard_deviation );
-        console.log( 'Z',z, 'SD',standard_deviation );
-        makePlotly( x1, y, x2, z, standard_deviation );
-    }
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly( x1, y, x2, z, standard_deviation );
+//     }
 
 
-    function makePlotly( x1, y, x2, z, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y,
-            name: 'Feelpp'
-        };
+//     function makePlotly( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp'
+//         };
 
-        var traces2 = {
-            x: x2,
-            y: z,
-            name: 'Comsol'
-        };
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'Comsol'
+//         };
 
-        var data = [traces1, traces2];
+//         var data = [traces1, traces2];
 
-        Plotly.newPlot('myDiv', data, {title: 'B_r on the Oz axis between the tapes at t=0.005s'});
-    };
+//         Plotly.newPlot('myDiv', data, {title: 'B_r on the Oz axis between the tapes at t=0.005s'});
+//     };
 
-    makeplot();
+//     makeplot();
 
-    </script>
+//     </script>
 
-++++
+// ++++
 [cols="a"]
 |===
 ^|*L2 Relative Error Norm* : stem:[2.86 \%]
 |===
 
 We also compare the distribution of the z-component of the magnetic flux density on the Or axis across the tapes at the instants stem:[t=0.005s] with *Feelpp* and *Comsol*.
-++++
-<div id="myDiv2"></div>
-    <script type="text/javascript">
 
-    function makeplot2() {
+[plotly,https://gist.githubusercontent.com/jermuzet/9d8bcd1932d20151bf73ffc503a0e06e/raw/c269d5fdc58098fd27721243695a8e41a90b060c/Tapes_TAform_axi_Bz.csv]
+....
+// global d
+const data = [{
+  name: 'Feel++',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++']),
+  showlegend: true,
+  line: {color: '#2E64FE'}
+},
+{
+  name: 'Comsol',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Comsol']),
+  showlegend: true,
+  line: {color: '#FF8000'}
+}]
+const layout = {
+  title: 'Current Density',
+  xaxis: {title: 'r (m)'},
+  yaxis: {title: 'Bz (T)'}
+}
+....
+// ++++
+// <div id="myDiv2"></div>
+//     <script type="text/javascript">
 
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/c39eba67f50a91df6ab28b008cdb32ea/raw/2feb23eb8040363055e0aab821a1ad7d0bffc920/cfpdetahom_Or.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e839e527fb181927825e42e419b70d84/raw/c09a64a05c7bc69cb35512d28f7ff9cdd236fb1f/comsoltahom_Bz.csv", function(file2) {
-                processData2(file1,file2);});
-        });
-    };
+//     function makeplot2() {
+
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/c39eba67f50a91df6ab28b008cdb32ea/raw/2feb23eb8040363055e0aab821a1ad7d0bffc920/cfpdetahom_Or.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e839e527fb181927825e42e419b70d84/raw/c09a64a05c7bc69cb35512d28f7ff9cdd236fb1f/comsoltahom_Bz.csv", function(file2) {
+//                 processData2(file1,file2);});
+//         });
+//     };
     
 
 
-    function processData2(file1,file2) {
-        console.log(file1);
-        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+//     function processData2(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
 
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            x1.push( row1['Points:0'] );
-            y.push( row1['cfpdes.expr.B:1']);
-        }
-        for (var i=0; i<file2.length; i++) {
-            row2 = file2[i];
-            x2.push( row2['r'] );
-            z.push( row2['Bz']);
-        }
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:0'] );
+//             y.push( row1['cfpdes.expr.B:1']);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['r'] );
+//             z.push( row2['Bz']);
+//         }
 
-        console.log( 'X1',x1, 'SD',standard_deviation );
-        console.log( 'Y',y, 'SD',standard_deviation );
-        console.log( 'X2',x2, 'SD',standard_deviation );
-        console.log( 'Z',z, 'SD',standard_deviation );
-        makePlotly2( x1, y, x2, z, standard_deviation );
-    }
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly2( x1, y, x2, z, standard_deviation );
+//     }
 
 
-    function makePlotly2( x1, y, x2, z, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y,
-            name: 'Feelpp'
-        };
+//     function makePlotly2( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp'
+//         };
 
-        var traces2 = {
-            x: x2,
-            y: z,
-            name: 'Comsol'
-        };
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'Comsol'
+//         };
 
-        var data = [traces1, traces2];
+//         var data = [traces1, traces2];
 
-        Plotly.newPlot('myDiv2', data, {title: 'B_z on the Or axis between the tapes at t=0.005s'});
-    };
+//         Plotly.newPlot('myDiv2', data, {title: 'B_z on the Or axis between the tapes at t=0.005s'});
+//     };
 
-    makeplot2();
+//     makeplot2();
 
-    </script>
+//     </script>
 
-++++
+// ++++
 [cols="a"]
 |===
 ^|*L2 Relative Error Norm* : stem:[3.02 \%]

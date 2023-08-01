@@ -374,7 +374,7 @@ We compare the current density profiles with *Feelpp* and *FreeFEM* on the stem:
 ....
 // global d
 const data = [{
-  name: 'Feel++ J',
+  name: 'Feel++',
   type: 'scatter',
   x: d.map(i => i['x']),
   y: d.map(i => i['Feel++']),
@@ -382,7 +382,7 @@ const data = [{
   line: {color: '#2E64FE'}
 },
 {
-  name: 'FreeFEM J',
+  name: 'FreeFEM',
   type: 'scatter',
   x: d.map(i => i['x']),
   y: d.map(i => i['FreeFEM']),
@@ -392,71 +392,71 @@ const data = [{
 const layout = {
   title: 'Current Density',
   xaxis: {title: 'x (m)'},
-  yaxis: {title:'J (A/m²)'}
+  yaxis: {title:'J/Jc'}
 }
 ....
 
-++++
-<div id="myDiv"></div>
-    <script type="text/javascript">
+// ++++
+// <div id="myDiv"></div>
+//     <script type="text/javascript">
 
-    function makeplot() {
+//     function makeplot() {
 
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/b0578a423f6947fb151af84d405f1c24/raw/66bbcb55d6e636e5e30fb8c10a2dccc22b290505/jline_ff.csv", function(file2) {
-                processData(file1,file2);});
-        });
-    };
+//         Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv", function(file1) {
+//             Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/b0578a423f6947fb151af84d405f1c24/raw/66bbcb55d6e636e5e30fb8c10a2dccc22b290505/jline_ff.csv", function(file2) {
+//                 processData(file1,file2);});
+//         });
+//     };
     
 
 
-    function processData(file1,file2) {
-        console.log(file1);
-        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
+//     function processData(file1,file2) {
+//         console.log(file1);
+//         var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
 
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            x1.push( row1['Points:0'] );
-            y.push( row1['cfpdes.magnetic.expr.Jh'] /1e8);
-        }
-        for (var i=0; i<file2.length; i++) {
-            row2 = file2[i];
-            x2.push( row2['X'] );
-            z.push( row2['J'] /1e8);
-        }
+//         for (var i=0; i<file1.length; i++) {
+//             row1 = file1[i];
+//             x1.push( row1['Points:0'] );
+//             y.push( row1['cfpdes.magnetic.expr.Jh'] /1e8);
+//         }
+//         for (var i=0; i<file2.length; i++) {
+//             row2 = file2[i];
+//             x2.push( row2['X'] );
+//             z.push( row2['J'] /1e8);
+//         }
 
-        console.log( 'X1',x1, 'SD',standard_deviation );
-        console.log( 'Y',y, 'SD',standard_deviation );
-        console.log( 'X2',x2, 'SD',standard_deviation );
-        console.log( 'Z',z, 'SD',standard_deviation );
-        makePlotly( x1, y, x2, z, standard_deviation );
-    }
+//         console.log( 'X1',x1, 'SD',standard_deviation );
+//         console.log( 'Y',y, 'SD',standard_deviation );
+//         console.log( 'X2',x2, 'SD',standard_deviation );
+//         console.log( 'Z',z, 'SD',standard_deviation );
+//         makePlotly( x1, y, x2, z, standard_deviation );
+//     }
 
 
-    function makePlotly( x1, y, x2, z, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y,
-            name: 'Feelpp'
-        };
+//     function makePlotly( x1, y, x2, z, standard_deviation ){
+//         var plotDiv = document.getElementById("plot");
+//         var traces1 = {
+//             x: x1,
+//             y: y,
+//             name: 'Feelpp'
+//         };
 
-        var traces2 = {
-            x: x2,
-            y: z,
-            name: 'FreeFEM'
-        };
+//         var traces2 = {
+//             x: x2,
+//             y: z,
+//             name: 'FreeFEM'
+//         };
 
-        var data = [traces1, traces2];
+//         var data = [traces1, traces2];
 
-        Plotly.newPlot('myDiv', data, {title: 'J/J_c on the Or axis of the cylinder'});
-    };
+//         Plotly.newPlot('myDiv', data, {title: 'J/J_c on the Or axis of the cylinder'});
+//     };
 
-    makeplot();
+//     makeplot();
 
-    </script>
+//     </script>
 
-++++
+// ++++
 [cols="a"]
 |===
 ^|*L2 Relative Error Norm* : stem:[3.4 \%]
