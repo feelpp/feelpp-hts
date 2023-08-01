@@ -383,9 +383,14 @@ const data = [{
   xlabel: 'X'
 }]
 const layout = {
-  title: 'Current Density',
-  xaxis: {title: 'x (m)'},
-  yaxis: {title:'J (A/m²)'}
+   title: {
+    text:'Plot Title'
+  },
+  xaxis: {
+    title: {
+      text: 'x Axis'
+    }
+  }
 }
 ....
 
