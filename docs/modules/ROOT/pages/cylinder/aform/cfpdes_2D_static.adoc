@@ -370,16 +370,24 @@ image::Cylinder/A-Formulation/cfpdes_2D/cyl_A_2D_stat_J.png[,width=800,title="El
 
 We compare the current density profiles with *Feelpp* and *FreeFEM* on the stem:[O_r] axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.
 
-[plotly,https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv]
+[plotly,https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv]
 ....
 // global d
 const data = [{
-  name: 'CFPDES J',
+  name: 'Feel++ J',
   type: 'scatter',
-  x: d.map(i => i['Points:0']),
-  y: d.map(i => i['cfpdes.magnetic.expr.Jh']/1e8),
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++']),
   showlegend: true,
-  line: {color: '#FF99BB'}
+  line: {color: '#FFBF00'}
+},
+{
+  name: 'FreeFEM J',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['FreeFEM']),
+  showlegend: true,
+  line: {color: '#2E2EFE'}
 }]
 const layout = {
   title: 'Current Density',
