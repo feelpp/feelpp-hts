@@ -1,5 +1,5 @@
 = Examples
-:page-layout: case-study
+:page-layout: examples
 
 [.lead]
 Welcome to the Feelpp HTS manual.
