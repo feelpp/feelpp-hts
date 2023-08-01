@@ -379,7 +379,7 @@ const data = [{
   x: d.map(i => i['x']),
   y: d.map(i => i['Feel++']),
   showlegend: true,
-  line: {color: '#FFBF00'}
+  line: {color: '#2E64FE'}
 },
 {
   name: 'FreeFEM J',
@@ -387,7 +387,7 @@ const data = [{
   x: d.map(i => i['x']),
   y: d.map(i => i['FreeFEM']),
   showlegend: true,
-  line: {color: '#2E2EFE'}
+  line: {color: '#FF8000'}
 }]
 const layout = {
   title: 'Current Density',
