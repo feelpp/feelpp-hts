@@ -1,9 +1,17 @@
 name: feelpp-hts
 title: Feel++ Template Project
-version: ~
+version: 'latest'
 start_page: index.adoc
 nav:
 - modules/ROOT/nav.adoc
+asciidoc:
+  attributes:
+    project_name: Feel++ HTS
+    plotly: plotly
+    vtkjs: VTK.js
+    feelpp: Feel++
+    girder: Girder
+    feelpp-git-tag: develop
 ext:
   collector:
     - run:
