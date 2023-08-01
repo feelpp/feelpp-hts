@@ -919,7 +919,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_6c32fe77-191a-495a-a1ca-715316075ce9"></div>
+<div id="ploty_1f74be01-49c9-4f29-8eb9-e89de1f2066d"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv")
     .then((d) => {
@@ -934,12 +934,17 @@ const data = [{
   xlabel: 'X'
 }]
 const layout = {
-  title: 'Current Density',
-  xaxis: {title: 'x (m)'},
-  yaxis: {title:'J (A/m²)'}
+   title: {
+    text:'Plot Title'
+  },
+  xaxis: {
+    title: {
+      text: 'x Axis'
+    }
+  }
 }
 
-      Plotly.newPlot('ploty_6c32fe77-191a-495a-a1ca-715316075ce9', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_1f74be01-49c9-4f29-8eb9-e89de1f2066d', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
