@@ -478,9 +478,7 @@ Copy command line to clipboard
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../../_images/Tapes/T-A-Formulation/cfpdes_2D/Iapp_2D.png" alt="Iapp 2D"></span></p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../_images/Tapes/T-A-Formulation/cfpdes_2D/Iapp_2D.png" alt="Iapp 2D"></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -515,9 +513,7 @@ Copy command line to clipboard
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../../_images/Tapes/T-A-Formulation/cfpdes_2D/meshgeo.png" alt="meshgeo" width="600"></span></p>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="../../_images/Tapes/T-A-Formulation/cfpdes_2D/meshgeo.png" alt="meshgeo" width="600"></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -1138,6 +1134,54 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <iframe width="720" height="400" src="https://www.youtube.com/embed/yqhEfCOGrXI?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+<div class="paragraph">
+<p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>Comsol</strong> on the Ox axis across the tapes at the instants \(t=0.02s\).</p>
+</div>
+<div id="ploty_37ba2d50-f73d-4b74-95c4-79f80c10baf2"></div>
+<script>
+  d3.csv("https://gist.githubusercontent.com/jermuzet/74e92a07be125301d0281d1eaab70d63/raw/33f3beee63f4755745c0256a309d08c7875947fc/Tapes_TAform_2D_J.csv")
+    .then((d) => {
+      // global d
+const data = [{
+  name: 'Feel++',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++']),
+  showlegend: true,
+  line: {color: '#2E64FE'}
+},
+{
+  name: 'Comsol',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Comsol']),
+  showlegend: true,
+  line: {color: '#FF8000'}
+}]
+const layout = {
+  title: 'Current Density',
+  xaxis: {title: 'x (m)'},
+  yaxis: {title:'J/Jc'}
+}
+
+      Plotly.newPlot('ploty_37ba2d50-f73d-4b74-95c4-79f80c10baf2', data, layout, { showLink: false, responsive: true })
+    })
+    .catch((err) => {
+      console.log('Unable to get data', err)
+    })
+</script>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong>L2 Relative Error Norm</strong> : \(24.39 \%\)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_magnetic_flux_density"><a class="anchor" href="#_magnetic_flux_density"></a>4.2. Magnetic flux density</h3>
@@ -1147,6 +1191,54 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <iframe width="720" height="400" src="https://www.youtube.com/embed/5RCtNzpe2TY?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
+<div class="paragraph">
+<p>We compare the distribution of the y-component of the magnetic flux density on the Ox axis across the tapes at the instants \(t=0.02s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
+</div>
+<div id="ploty_bfafdec5-e06d-4e84-8f05-6bc5b316e533"></div>
+<script>
+  d3.csv("https://gist.githubusercontent.com/jermuzet/092c6c0460388a1766ac3612323a9d4b/raw/9fb09cba99d312f64d23cc979c67af7aae369ab8/Tapes_TAform_2D_By.csv")
+    .then((d) => {
+      // global d
+const data = [{
+  name: 'Feel++',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++']),
+  showlegend: true,
+  line: {color: '#2E64FE'}
+},
+{
+  name: 'Comsol',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Comsol']),
+  showlegend: true,
+  line: {color: '#FF8000'}
+}]
+const layout = {
+  title: 'Magnetic Flux Density',
+  xaxis: {title: 'r (m)'},
+  yaxis: {title: 'By (T)'}
+}
+
+      Plotly.newPlot('ploty_bfafdec5-e06d-4e84-8f05-6bc5b316e533', data, layout, { showLink: false, responsive: true })
+    })
+    .catch((err) => {
+      console.log('Unable to get data', err)
+    })
+</script>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong>L2 Relative Error Norm</strong> : \(9.11 \%\)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

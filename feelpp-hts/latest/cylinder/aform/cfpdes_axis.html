@@ -389,13 +389,13 @@ Copy command line to clipboard
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Feelpp (parallel np 32)</th>
-<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">getDP</th>
 </tr>
 </thead>
 <tfoot>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.621e+2 s</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.01e+2 s</p></td>
 </tr>
 </tfoot>
 </table>
@@ -994,64 +994,39 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>getDP</strong> on the \(O_r\) axis, at the mid-height of the cylinder, at time \(t_3\) for a maximum applied field of 1 T and \(n=20\).</p>
 </div>
-<div id="myDiv"></div>
-    <script type="text/javascript">
+<div id="ploty_2e63caf7-a14b-402a-bdd2-0682061990eb"></div>
+<script>
+  d3.csv("https://gist.githubusercontent.com/jermuzet/f0e0c3964961d5ff24b3f6112a5ee8c2/raw/412e1e1966ba253110630b173475c16d285f0457/Cylinder_Aform_axi_J.csv")
+    .then((d) => {
+      // global d
+const data = [{
+  name: 'Feel++',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++']),
+  showlegend: true,
+  line: {color: '#2E64FE'}
+},
+{
+  name: 'getDP',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['getDP']),
+  showlegend: true,
+  line: {color: '#FF8000'}
+}]
+const layout = {
+  title: 'Current Density',
+  xaxis: {title: 'r (m)'},
+  yaxis: {title:'J/Jc'}
+}
 
-    function makeplot() {
-
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/0498764d7cab9c655f30281d562c44f8/raw/b0267dbe1e310855885f03dbcaf8563f54afecb4/feelaformaxi_jline.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/14683d5efca480015e4af9f2d41a78b1/raw/ccc70c40e615acc160b6e0ffdc854679f23cd20f/jline.csv", function(file2) {
-                processData(file1,file2);});
-        });
-    };
-
-
-
-    function processData(file1,file2) {
-        console.log(file1);
-        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
-
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            x1.push( row1['Points:0'] );
-            y.push( -row1['cfpdes.magnetic.expr.j_th'] /3e8);
-        }
-        for (var i=0; i<file2.length; i++) {
-            row2 = file2[i];
-            x2.push( row2['X'] );
-            z.push( row2['getDP_t3'] /3e8);
-        }
-
-        console.log( 'X1',x1, 'SD',standard_deviation );
-        console.log( 'Y',y, 'SD',standard_deviation );
-        console.log( 'X2',x2, 'SD',standard_deviation );
-        console.log( 'Z',z, 'SD',standard_deviation );
-        makePlotly( x1, y, x2, z, standard_deviation );
-    }
-
-
-    function makePlotly( x1, y, x2, z, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y,
-            name: 'Feelpp'
-        };
-
-        var traces2 = {
-            x: x2,
-            y: z,
-            name: 'getDP'
-        };
-
-        var data = [traces1, traces2];
-
-        Plotly.newPlot('myDiv', data, {title: 'J_theta/J_c on the Or axis of the cylinder'});
-    };
-
-    makeplot();
-
-    </script>
+      Plotly.newPlot('ploty_2e63caf7-a14b-402a-bdd2-0682061990eb', data, layout, { showLink: false, responsive: true })
+    })
+    .catch((err) => {
+      console.log('Unable to get data', err)
+    })
+</script>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
@@ -1076,122 +1051,71 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants \(t_1\), \(t_2\) and \(t_3\) with <strong>Feelpp</strong> and <strong>getDP</strong>.</p>
 </div>
-<div id="myDiv2"></div>
-    <script type="text/javascript">
+<div id="ploty_1fe6c036-1e7b-40b6-9649-ad95caf1db98"></div>
+<script>
+  d3.csv("https://gist.githubusercontent.com/jermuzet/f0e0c3964961d5ff24b3f6112a5ee8c2/raw/412e1e1966ba253110630b173475c16d285f0457/Cylinder_Aform_axi_J.csv")
+    .then((d) => {
+      // global d
+const data = [{
+  name: 'Feel++ t1',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++_t1']),
+  showlegend: true,
+  line: {color: '#088A08'}
+},
+{
+  name: 'getDP t1',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['getDP_t1']),
+  showlegend: true,
+  line: {color: '#81F781'}
+},
+{
+  name: 'Feel++ t2',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++_t2']),
+  showlegend: true,
+  line: {color: '#084B8A'}
+},
+{
+  name: 'getDP t2',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['getDP_t2']),
+  showlegend: true,
+  line: {color: '#2ECCFA'}
+},
+{
+  name: 'Feel++ t3',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['Feel++_t3']),
+  showlegend: true,
+  line: {color: '#B40404'}
+},
+{
+  name: 'getDP t3',
+  type: 'scatter',
+  x: d.map(i => i['x']),
+  y: d.map(i => i['getDP_t3']),
+  showlegend: true,
+  line: {color: '#FAAC58'}
+}]
+const layout = {
+  title: 'Magnetic Flux Density',
+  xaxis: {title: 'r (m)'},
+  yaxis: {title: 'Bz (T)'}
+}
 
-    function makeplot2() {
-
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/90fe45d798639b02759ec62992630e74/raw/72bd00db2895bb204e1b0ad860ec3110e0fc134c/feelaformaxi_b_t1.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/dd4592cf880455d5e13f3b9bc33e1925/raw/7ec6f079d5f6305b71d3caa6a146ed035a7ce5b0/feelaformaxi_b_t2.csv", function(file2) {
-                Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/a7a17becfb51d9060c660d2d854ff146/raw/af71b36582c6c8e29e298b4fb3951ca10ad73db7/feelaformaxi_b_t3.csv", function(file3) {
-                    Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/03ab65c93d3eb3784739b2d0210e1b81/raw/1c2783601c378823572c5cee7ad6e122f9b3d7bd/getdpaformaxi_b_t1.csv", function(file4) {
-                        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e16dea426990083f3a252f1a08883955/raw/71b121bfef7e40d72483657c565dde6dfcccab60/getdpaformaxi_b_t2.csv", function(file5) {
-                            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5743a0b3ff9d43d5bde7bde4503296b6/raw/053822d054754969b01e098183e6449c2510b74c/getdpaformaxi_b_t3.csv", function(file6) {
-                                processData2(file1,file2,file3,file4,file5,file6);
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    };
-
-
-
-    function processData2(file1,file2,file3,file4,file5,file6) {
-        console.log(file1);
-        var x1 = [], y1 = [], y2 = [], y3 = [], x2 =[], z1=[], z2 = [], z3 =[], standard_deviation = [];
-
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            row2 = file2[i];
-            row3 = file3[i];
-            x1.push( row1['Points:0'] );
-            y1.push( row1['cfpdes.magnetic.expr.B:1']);
-            y2.push( row2['cfpdes.magnetic.expr.B:1']);
-            y3.push( row3['cfpdes.magnetic.expr.B:1']);
-        }
-        for (var i=0; i<file4.length; i++) {
-            row1 = file4[i];
-            row2 = file5[i];
-            row3 = file6[i];
-            x2.push( row1['X'] );
-            z1.push( row1['getDP_t1']);
-            z2.push( row2['getDP_t2']);
-            z3.push( row3['getDP_t3']);
-        }
-
-        makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation );
-    }
-
-
-    function makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y1,
-            name: 't1 (Feelpp)',
-            mode: 'lines',
-            line: {
-                color: 'red',
-                width:4
-            }
-        };
-        var traces2 = {
-            x: x1,
-            y: y2,
-            name: 't2 (Feelpp)',
-            mode: 'lines',
-            line: {
-                color: 'blue'
-            }
-        };
-        var traces3 = {
-            x: x1,
-            y: y3,
-            name: 't3 (Feelpp)',
-            mode: 'lines',
-            line: {
-                color: 'green'
-            }
-        };
-
-        var traces4 = {
-            x: x2,
-            y: z1,
-            name: 't1 (getDP)',
-            mode: 'lines',
-            line: {
-                color: 'indianred'
-            }
-        };
-        var traces5 = {
-            x: x2,
-            y: z2,
-            name: 't2 (getDP)',
-            mode: 'lines',
-            line: {
-                color: 'dodgerblue'
-            }
-        };
-        var traces6 = {
-            x: x2,
-            y: z3,
-            name: 't3 (getDP)',
-            mode: 'lines',
-            line: {
-                color: 'lightgreen'
-            }
-        };
-
-        var data = [traces1, traces2, traces3, traces4, traces5, traces6];
-
-        Plotly.newPlot('myDiv2', data, {title: 'Distribution of the z-component of the magnetic flux density'});
-    };
-
-    makeplot2();
-
-    </script>
+      Plotly.newPlot('ploty_1fe6c036-1e7b-40b6-9649-ad95caf1db98', data, layout, { showLink: false, responsive: true })
+    })
+    .catch((err) => {
+      console.log('Unable to get data', err)
+    })
+</script>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 25%;">

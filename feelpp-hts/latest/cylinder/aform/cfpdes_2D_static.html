@@ -919,13 +919,13 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_ba5974cc-5fcb-45be-8c23-a0e847fb6753"></div>
+<div id="ploty_96eb9eb9-5b29-48cc-bf22-562d07cd051b"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
       // global d
 const data = [{
-  name: 'Feel++ J',
+  name: 'Feel++',
   type: 'scatter',
   x: d.map(i => i['x']),
   y: d.map(i => i['Feel++']),
@@ -933,7 +933,7 @@ const data = [{
   line: {color: '#2E64FE'}
 },
 {
-  name: 'FreeFEM J',
+  name: 'FreeFEM',
   type: 'scatter',
   x: d.map(i => i['x']),
   y: d.map(i => i['FreeFEM']),
@@ -943,73 +943,15 @@ const data = [{
 const layout = {
   title: 'Current Density',
   xaxis: {title: 'x (m)'},
-  yaxis: {title:'J (A/m²)'}
+  yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_ba5974cc-5fcb-45be-8c23-a0e847fb6753', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_96eb9eb9-5b29-48cc-bf22-562d07cd051b', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
     })
 </script>
-<div id="myDiv"></div>
-    <script type="text/javascript">
-
-    function makeplot() {
-
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/b0578a423f6947fb151af84d405f1c24/raw/66bbcb55d6e636e5e30fb8c10a2dccc22b290505/jline_ff.csv", function(file2) {
-                processData(file1,file2);});
-        });
-    };
-
-
-
-    function processData(file1,file2) {
-        console.log(file1);
-        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
-
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            x1.push( row1['Points:0'] );
-            y.push( row1['cfpdes.magnetic.expr.Jh'] /1e8);
-        }
-        for (var i=0; i<file2.length; i++) {
-            row2 = file2[i];
-            x2.push( row2['X'] );
-            z.push( row2['J'] /1e8);
-        }
-
-        console.log( 'X1',x1, 'SD',standard_deviation );
-        console.log( 'Y',y, 'SD',standard_deviation );
-        console.log( 'X2',x2, 'SD',standard_deviation );
-        console.log( 'Z',z, 'SD',standard_deviation );
-        makePlotly( x1, y, x2, z, standard_deviation );
-    }
-
-
-    function makePlotly( x1, y, x2, z, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y,
-            name: 'Feelpp'
-        };
-
-        var traces2 = {
-            x: x2,
-            y: z,
-            name: 'FreeFEM'
-        };
-
-        var data = [traces1, traces2];
-
-        Plotly.newPlot('myDiv', data, {title: 'J/J_c on the Or axis of the cylinder'});
-    };
-
-    makeplot();
-
-    </script>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 100%;">
