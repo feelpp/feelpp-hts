@@ -919,7 +919,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_d867825f-8be0-4e61-8aad-a68343a537fc"></div>
+<div id="ploty_ba5974cc-5fcb-45be-8c23-a0e847fb6753"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
@@ -930,7 +930,7 @@ const data = [{
   x: d.map(i => i['x']),
   y: d.map(i => i['Feel++']),
   showlegend: true,
-  line: {color: '#FFBF00'}
+  line: {color: '#2E64FE'}
 },
 {
   name: 'FreeFEM J',
@@ -938,7 +938,7 @@ const data = [{
   x: d.map(i => i['x']),
   y: d.map(i => i['FreeFEM']),
   showlegend: true,
-  line: {color: '#2E2EFE'}
+  line: {color: '#FF8000'}
 }]
 const layout = {
   title: 'Current Density',
@@ -946,7 +946,7 @@ const layout = {
   yaxis: {title:'J (A/m²)'}
 }
 
-      Plotly.newPlot('ploty_d867825f-8be0-4e61-8aad-a68343a537fc', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_ba5974cc-5fcb-45be-8c23-a0e847fb6753', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
