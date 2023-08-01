@@ -1,4 +1,4 @@
-:page-plotly: true
+:page-plotly:
 
 
 = HTS Bulk Cylinder in 2D coordinates
@@ -369,6 +369,23 @@ image::Cylinder/A-Formulation/cfpdes_2D/cyl_A_2D_stat_J.png[,width=800,title="El
 
 
 We compare the current density profiles with *Feelpp* and *FreeFEM* on the stem:[O_r] axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.
+
+[plotly,https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv]
+....
+// global d
+const data = [{
+  name: 'CFPDES J',
+  type: 'scatter',
+  x: d.map(i => i['Points:0']),
+  y: d.map(i => i['cfpdes.magnetic.expr.Jh']/1e8),
+  showlegend: true,
+  line: {color: '#FF99BB'}
+}]
+const layout = {
+  title: 'Current Density'
+}
+....
+
 ++++
 <div id="myDiv"></div>
     <script type="text/javascript">
