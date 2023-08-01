@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Critical current in Roebel tapes in axisymmetric coordinates :: Feelpp HTS</title>
+    <link rel="canonical" href="https://feelpp.github.io/feelpp-hts/feelpp-hts/latest/roebel/aform/cfpdes_axis_static.html">
+    <meta name="generator" content="Antora 3.1.3">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<script>!function(l,p){if(l.protocol!==p&&l.host=="docs.antora.org"){l.protocol=p}else if(/\.gitlab\.io$/.test(l.host)){l.replace(p+"//docs.antora.org"+l.pathname.substr(l.pathname.indexOf("/",1))+l.search+l.hash)}}(location,"https:")</script>
+
+<script src="../../../../_/js/vendor/tabs-block-extension.js"></script>
+<script src="../../../../_/js/vendor/tabs-block-behavior.js"></script>
+
+    <script type="text/javascript" src="../../../../_/js/vendor/visu-vtk.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7" charset="utf-8"></script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\\[','\\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+
+  TeX: {
+      Macros: {
+      RR: "{\\mathbb R}",
+      NN: "{\\mathbb N}",
+      Nso: "{N_{\\mathrm{so}}}",
+      Nma: "{N_{\\mathrm{ma}}}",
+      Nno: "{N_{\\mathrm{no}}}",
+      Ne: "{N_{\\mathrm{e}}}",
+      Ilag: ["{\\mathcal{I}^{\\mathrm{lag}}_{#1}}",1],
+      calTh: "{\\mathcal{T}_h}",
+      Ck: ["{\\mathcal{C}^{#1}}",1],
+      Pk: ["{\\mathcal{P}^{#1}}",1],
+      Qk: ["{\\mathcal{Q}^{#1}}",1],
+      Pch: ["{P^{#1}_{c,h}}",1],
+      Pcho: ["{P^{#1}_{c,h,0}}",1],
+      Qch: ["{Q^{#1}_{c,h}}",1],
+      Ich: ["{\\mathcal{I}^{#1}_{c,h}#2}",2],
+      poly: ["{\\mathbb{#1}}",1],
+      nf: "{n_f}",
+      ngeo: "{n_{\\mathrm{geo}}}",
+      geo: "{\\mathrm{geo}}",
+      card: ["{\\operatorname{card}(#1)}",1],
+      dim: ["{\\operatorname{dim}(#1)}",1],
+      opdim: "{\\operatorname{dim}}",
+      card: ["{\\operatorname{card}(#1)}",1],
+      poly: ["{\\mathbb{#1}",1],
+      R: ["{\\mathbb{R}^{#1}}",1],
+      set: ["{\\left\\{#1\\right\\}}",1],
+      diam: "{\\operatorname{diam}}",
+      jump: ["{[\\![ #1 ]\\!]}",1],
+      Next: "{\\mathrm{n}}",
+      essinf: "{\\operatorname{ess}\\, \\operatorname{inf}}",
+      tr: "{\\operatorname{tr}}",
+      Id: "{\\mathcal{I}}",
+      disp: ["{\\mathbf{#1}}",1],
+      stresst: ["{\\mathbf{\\sigma(#1)}}",1],
+      deformt: ["{\\mathbf{\\varepsilon(#1)}}",1],
+      domain: "{\\Omega}",
+      prect: ["{\\left\\(#1\\right\\)}",1],
+      ds: "",
+      bold: ["{\\bf #1}",1],
+      p: "{\\mathrm{p}}",
+      q:"{\\mathbf{q}}",
+      n:"{\\mathbf{n}}",
+      T:"{\\mathcal{T}}",
+      F:"{\\mathcal{F}}",
+      P:"{\\mathcal{P}}",
+      v:"{\\mathbf{v}}"
+  },
+  extensions: ["mhchem.js"] }
+});
+</script>
+<!--<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>-->
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script> -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML'>
+</script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>-->
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>-->
+<script>var uiRootPath = '../../../../_'</script>
+
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-template-project" style="border-top: 4px solid #9E9E9E">
+        <div class="navbar-brand">
+            <div class="navbar-item feelpp-logo">
+                <a href="https://feelpp.github.io/feelpp-hts">Feelpp HTS</a>
+            </div>
+            <button class="navbar-burger" data-target="topbar-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div id="topbar-nav" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a href="https://docs.feelpp.org/">Documentation Reference</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="navbar-brand"  href="https://www.cemosis.fr">
+                        <img class="cemosis-logo"  src="../../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="body">
+<a href="#" class="menu-expand-toggle"></a>
+<div class="nav-container" data-component="feelpp-hts" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">Feel++ Template Project</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../index.html">Feel++ hts</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../example.html#_cylinder">Cylinder</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../example.html#_a_formulation">A-Formulation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../cylinder/aform/cfpdes_axis.html">cfpdes axis</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../cylinder/aform/cfpdes_2D_static.html">cfpdes 2D static</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../example.html#_h_formulation">H-Formulation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../cylinder/hform/cfpdes_axis.html">cfpdes axis</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../cylinder/hform/cfpdes_2D.html">cfpdes 2D</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../example.html#_roebel_cables">Roebel Cables</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../example.html#_a_formulation_2">A-Formulation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="cfpdes_2D_static.html">cfpdes 2D static</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="cfpdes_axis_static.html">cfpdes axis static</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../example.html#_tapes">Tapes</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../../example.html#_t_a_homogeneous_formulation">T-A Homogeneous Formulation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tapes/taform/cfpdes_axis.html">cfpdes axis</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../tapes/taform/cfpdes_2D.html">cfpdes 2D</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Feel++ Template Project</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+      <li class="component is-current">
+        <a class="title" href="../../index.html">Feel++ Template Project</a>
+          <ul class="versions">
+              <li class="version is-current is-latest">
+                <a href="../../index.html">latest</a>
+              </li>
+          </ul>
+      </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+  <button class="nav-toggle"></button>
+    <a href="../../index.html" class="home-link"></a>
+  <nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Feel++ Template Project</a></li>
+    <li><a href="../../index.html">Feel++ hts</a></li>
+    <li><a href="../../example.html#_roebel_cables">Roebel Cables</a></li>
+    <li><a href="../../example.html#_a_formulation_2">A-Formulation</a></li>
+    <li><a href="cfpdes_axis_static.html">cfpdes axis static</a></li>
+  </ul>
+</nav>
+
+  
+    <div class="edit-this-page"><a href="https://github.com/feelpp/feelpp-hts/edit/master/docs/modules/ROOT/pages/roebel/aform/cfpdes_axis_static.adoc">Edit this Page</a></div>
+  
+  <div class="page-downloads">
+  <span class="label">Download as</span>
+  <ul class="download-options">
+    <li>
+      <a onclick="print(this)" href="#" data-toggle="tooltip" data-placement="left" title="Print to PDF"
+         class="pdf-download">
+        <img class="pdf-file-icon icon" src="../../../../_/img/pdf.svg"/> .pdf
+      </a>
+    </li>
+  </ul>
+</div>
+</div>
+
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Critical current in Roebel tapes in axisymmetric coordinates</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>We took this example from : <a id="Zermeno"></a> <em>A self-consistent model for estimating the critical current of superconducting devices</em>, V Zermeño et al 2015 Supercond. Sci. Technol. 28 085004, <a href="https://www.htsmodelling.com/?page_id=748#Ps_model">Link</a> .</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>1. Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>\(\quad\)In this example, we will build self consistent algorithm in order to estimate the critical current with a magnetic model on coil geometry surrounded by air in axisymmetric coordinates. We will use the <strong>A Formulation</strong> and <strong>Gauge Condition</strong>.
+Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and non conducting materials \(\Omega_c^C\) (\(\mathbf{J} = 0\)) like the air for example. Also \(\Gamma = \partial \Omega\) is the bound of \(\Omega\), \(\Gamma_c = \partial \Omega_c\) the bound of \(\Omega_c\), \(\Gamma_D\) the bound with Dirichlet boundary condition and \(\Gamma_N\) the bound with Neumann boundary condition, such that \(\Gamma = \Gamma_D \cup \Gamma_N\).</p>
+</div>
+<div class="paragraph">
+<p>We introduce :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Magnetic potential field \(\mathbf{A}\) : \(\textbf{B} = \nabla \times \textbf{A}\)</p>
+</li>
+</ul>
+</div>
+<div id="a_formulation" class="exampleblock">
+<div class="title">A Formulation</div>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\left\{ \begin{matrix}
+	\nabla \times \left( \frac{1}{\mu} \nabla \times \textbf{A} \right)    &amp;=&amp; J \text{ on } \Omega &amp; \text{(A form)} \\
+	\mathbf{A} \times \mathbf{n} &amp;=&amp; 0 \text{ on } \Gamma_D &amp; \text{(D)} \\
+	\left( \nabla \times \mathbf{A} \right) \times \mathbf{n} &amp;=&amp; 0 \text{ on } \Gamma_N &amp; \text{(N)}
+\end{matrix} \right.\]
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_running_the_case"><a class="anchor" href="#_running_the_case"></a>1.1. Running the case</h3>
+<div class="paragraph">
+<p>First create the mesh :</p>
+</div>
+<div id="command-line" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 32</code></pre>
+</div>
+</div>
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<div class="paragraph">
+<p>The command line to run this case is</p>
+</div>
+<div id="command-line" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python Roebel_coil.py --criteria MAX</code></pre>
+</div>
+</div>
+<button class="btn" data-clipboard-target="#command-line">
+Copy command line to clipboard
+</button>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<caption class="title">Table 1. Execution time</caption>
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Feelpp (parallel np 32)</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3136e+02 s</p></td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_equation"><a class="anchor" href="#_equation"></a>1.2. Equation</h3>
+<div class="paragraph">
+<p>For this example, we will use the E-J power law to rewrite the \(J\) expression :</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[J=\frac{J_c(B)}{E_c}\left|\frac{E}{E_c}\right|^{(1-n)/n} E=J_c(B) P\]
+</div>
+</div>
+<div class="paragraph">
+<p>where :</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[P=\frac{E}{E_c}\left|\frac{E}{E_c}\right|^{(1-n)/n}\]
+</div>
+</div>
+<div class="paragraph">
+<p>When the current density reaches \(I_c\) i.e \(J=J_c(B)\), then \(E=E_c\) and \(P=1\). For bundles of conductors carrying the same current, we have on constant \(P_i|i\in\{1,2,...n_c\}\) for each conductor. To impose a current \(I_a\) in the \(i\)th conductor, we need to choose \(P_i\) as :</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[I_a=\int_{\Omega_i} P_i J_c(B) dxdy\]
+</div>
+</div>
+<div class="paragraph">
+<p>where \(\Omega_i\) is the domain of the \(i\)th conductor. As \(P_i\) is constant, it can be calculated as :</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[P_i=I_a/\int_{\Omega_i} J_C(B) dxdy\]
+</div>
+</div>
+<div class="paragraph">
+<p>FInally the  A-Formulation in 2D coordinates is :</p>
+</div>
+<div class="exampleblock">
+<div class="title">A Formulation in 2D coordinates</div>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[- \begin{matrix}
+    -\frac{1}{\mu}\Delta A  + \frac{1}{\mu r^2}A   =  J_c(B) P &amp; \text{on } \Omega &amp; \text{(A 2D)} \\
+\end{matrix}\]
+</div>
+</div>
+<div class="paragraph">
+<p>With :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(A\) : potential magnetic field</p>
+</li>
+<li>
+<p>\(J_c(B)\) : critical current density using the Kim&#8217;s law : \(J_c(B)=J_{c0}/\left(1+\sqrt{\frac{(k\partial_y A)^2+(-\partial_x A)^2)}{B_c}}\right)^b\)</p>
+</li>
+<li>
+<p>\(P\) : rewritten power law :
+\(P=\frac{E}{E_c}\left|\frac{E}{E_c}\right|^{(1-n)/n}\)</p>
+</li>
+<li>
+<p>\(\mu\) : electric permeability \(kg/A^2/S^2\)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_self_consistent_algorithm"><a class="anchor" href="#_self_consistent_algorithm"></a>1.3. Self-consistent Algorithm</h3>
+<div class="paragraph">
+<p>In order to have find the critical current, we need to have criteria to stop the algorithm and find \(I_c\). For the case of transport current in Roebel coil with a axisymmetric model, we implemented :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The MAX criterion is when <em>at least one conductor</em> has its voltage drop per unit length \(E_i\) reach its critical value \(E_c\), i.e \(P_i=1\). The condition is \(\max_{i\in\{1,2,...,n_c\}}P_i=1\).</p>
+</li>
+<li>
+<p>The MAX-AVG criterion is when the average voltage drop per unit length \(E_i\) has reached its critical value \(E_c\) in <em>at least one turn</em>. The condition is \(\max_{j\in \{1,..,m\}}\sum^{k}_{i=1}P_{i,j}|P_{i,j}|^{n-1}=k\) for a coil composed of \(m\) turns made of \(k\) conductors.</p>
+</li>
+<li>
+<p>The SUM-AVG criterion is when the <em>sum of the average voltage drop</em> in each turn, divide by the coil&#8217;s length, has reached its critical value \(E_c\) in <em>at least one turn</em>. The condition is \(\sum^{m}_{j=1}\sum^{k}_{i=1}P_{i,j}|P_{i,j}|^{n-1} l_j=L_k\) for a coil composed of \(m\) turns made of \(k\) conductors, \(l_j\) the length of the _j_th turn of the coil and \(L_k\) the total lenght of the coil.</p>
+</li>
+</ul>
+</div>
+<div class="literalblock pseudocode">
+<div class="title">Algorithm example with the MAX criterion</div>
+<div class="content">
+<pre>\begin{algorithm}
+\caption{I_c estimation}
+\begin{algorithmic}
+\WHILE{ $\abs( \max(P_{ji}) - 1 )&gt; tolp$ :  }
+    \STATE $err=1$
+    \WHILE{ $err &gt; tolAz$ :}
+        \STATE $A_0=A$
+        \STATE Run FEM problem
+        \FOR{j in range(0,n_t) :}
+            \FOR{i in range(0,n_c) :}
+                \STATE $Ics=\int_{Omega_{ji}} J_c(B)$
+                \STATE $P_{ji}=I_0/Ics$
+            \ENDFOR
+        \ENDFOR
+        \STATE $err=||A-A_0||_\infty$
+    \ENDWHILE
+    \STATE $I_0=2*I_0/(1+\max(P_{ji}))$
+\ENDWHILE
+\STATE
+\RETURN $I_c=n_c*I_0$
+\end{algorithmic}
+\end{algorithm}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_geometry"><a class="anchor" href="#_geometry"></a>1.4. Geometry</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Geometry with GMSH</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../../_images/Roebel/A-Formulation/cfpdes_axi/roebel_axi.png" alt="roebel axi" width="600">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../../_images/Roebel/A-Formulation/cfpdes_axi/roebel_axi_zoom.png" alt="roebel axi zoom" width="600">
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Mesh with GMSH</caption>
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="../../_images/Roebel/A-Formulation/cfpdes_axi/roebel_axi_mesh.png" alt="roebel axi mesh" width="600"></span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_input"><a class="anchor" href="#_input"></a>2. Input</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Feelpp Model Parameter table</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Notation</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Unit</th>
+<th class="tableblock halign-left valign-top">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><strong>Paramètres globale</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(A\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">magnetic potential field</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(T m\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><strong>Air</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\mu=\mu_0\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">magnetic permeability of vacuum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(4\pi.10^{-7}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(kg \, m / A^2 / S^2\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><strong>Conductors</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\mu=\mu_0\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">magnetic permeability of vacuum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(4\pi.10^{-7}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(kg \, m / A^2 / S^2\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(J_c(B)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">critical current density using the Kim&#8217;s law</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(J_{c0}/\left(1+\sqrt{\frac{(k\partial_y A)^2+(-\partial_x A)^2)}{B_c}}\right)^b\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(A/m^2\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(p\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">constant parameter resulting for the rewritten power law</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(E_c\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">threshold electric field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(10^{-4}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(V/m\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(n\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">material dependent exponent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(21\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tfoot>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Python Algorithm Parameter table</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Notation</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Unit</th>
+<th class="tableblock halign-left valign-top">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(ns\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">number of conductors in one turn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(nt\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">number of turns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(I_0\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">initial tranported current</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(A\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(tolAz\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tolerance for self-consistency WHILE loop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1e-9</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(tolp\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tolerance for Ic criterion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1e-9</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(E_c\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">threshold electric field</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(10^{-4}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(V/m\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(n\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">material dependent exponent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(21\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_files"><a class="anchor" href="#_data_files"></a>3. Data files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The case data files are available in Github <a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Roebel_cables/A-Formulation/cfpdes_axis_static">here</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.cfg">CFG file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.cfg">Edit the file</a>]</p>
+</li>
+<li>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.json">JSON file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Roebel_cables/A-Formulation/cfpdes_axis_static/Robel.json">Edit the file</a>]</p>
+</li>
+<li>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Roebel_cables/A-Formulation/cfpdes_axis_static/Roebel_coil.py">PY file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Roebel_cables/A-Formulation/cfpdes_axis_static/Robel.py">Edit the file</a>]</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_json_file"><a class="anchor" href="#_json_file"></a>3.1. Json file</h3>
+<div class="sect3">
+<h4 id="_mesh"><a class="anchor" href="#_mesh"></a>3.1.1. Mesh</h4>
+<div class="paragraph">
+<p>This section of the Model JSON file setup the mesh. It will also load the previous field for the \(L_\infty\) error norm :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Meshes":
+    {
+        "cfpdes":
+        {
+            "Import":
+            {
+                "filename":"$cfgdir/Roebel_coil_p32.json"<i class="conum" data-value="1"></i><b>(1)</b>
+            }
+        },
+        "Fields": {
+            "v": {<i class="conum" data-value="2"></i><b>(2)</b>
+                "filename": "$cfgdir/feelppdb/np_$np/magnetic.save/A.h5",
+                "basis": "Pch1"
+            },
+            "P": {<i class="conum" data-value="3"></i><b>(3)</b>
+                "filename": "$cfgdir/P.h5",
+                "basis": "Pch1"
+            }
+        }
+    },</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>the geometric file</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>loading field from previous iteration</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>loading finite element field containing all the P</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_materials"><a class="anchor" href="#_materials"></a>3.1.2. Materials</h4>
+<div class="paragraph">
+<p>This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Materials":
+    "Conductor": {
+            "markers": [<i class="conum" data-value="2"></i><b>(2)</b>
+                "tape_00",
+                "tape_01",
+                "tape_02",
+                "tape_03",
+                "tape_04",
+                .
+                .
+                .
+                "tape_89"
+            ],
+            "normB": "sqrt((-magnetic_grad_A_rt_1)^2+(magnetic_grad_A_rt_0+magnetic_A_rt/x)^2):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "theta": "atan2((magnetic_grad_A_rt_0+magnetic_A_rt/x),(-magnetic_grad_A_rt_1)):magnetic_grad_A_rt_0:magnetic_grad_A_rt_1:magnetic_A_rt:x",
+            "fab": "sqrt(cos(theta+pi/2)^2 + uab^2*sin(theta+pi/2)^2):theta:uab",
+            "fc": "sqrt(sin(theta+pi/2)^2 + uc^2*cos(theta+pi/2)^2):theta:uc",
+            "fi": "sqrt(cos(theta+pi/2)^2 + ui^2*sin(theta+pi/2)^2):theta:ui",
+            "Jcab": "J0p/(1+normB*fab/B0ab)^betajc:J0p:normB:fab:B0ab:betajc",
+            "Jcc": "J0p/(1+normB*fc/B0c)^betajc:J0p:normB:fc:B0c:betajc",
+            "Jci": "J0i/(1+normB*fi/B0i)^alphajc:J0i:normB:fi:B0i:alphajc",
+            "JcB": "max(Jcab,max(Jci,Jcc)):Jcab:Jcc:Jci",
+            "p": "meshes_cfpdes_fields_P:meshes_cfpdes_fields_P",<i class="conum" data-value="3"></i><b>(3)</b>
+            "J": "JcB*p:JcB:p"
+        },
+        "Air": {<i class="conum" data-value="1"></i><b>(1)</b>
+
+        }
+    },</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>gives the name of the physical entity (here <code>Physical Surface</code>) associated to the Material.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>the physical entities (associated to the mesh) to which the material is applied</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>loading a different parameter \(P\) for each conductor.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The fit formula for the critical current density \(J_c(B)\) used here is described in <em>E Pardo et al 2011 Supercond. Sci. Technol. 24 065007</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_models"><a class="anchor" href="#_models"></a>3.1.3. Models</h4>
+<div class="paragraph">
+<p>This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"Models":<i class="conum" data-value="1"></i><b>(1)</b>
+    {
+        "cfpdes":{
+            "equations":"magnetic"<i class="conum" data-value="2"></i><b>(2)</b>
+        },
+        "magnetic":{<i class="conum" data-value="3"></i><b>(3)</b>
+            "common":{
+                "setup":{
+                    "unknown":
+                    {
+                        "basis":"Pch1",<i class="conum" data-value="4"></i><b>(4)</b>
+                        "name":"A",<i class="conum" data-value="5"></i><b>(5)</b>
+                        "symbol":"A"<i class="conum" data-value="6"></i><b>(6)</b>
+                    }
+                }
+            },
+            "models":[<i class="conum" data-value="7"></i><b>(7)</b>
+                {<i class="conum" data-value="8"></i><b>(8)</b>
+                    "name": "magnetic_Conductor",
+                    "materials": ["Conductor"],<i class="conum" data-value="9"></i><b>(9)</b>
+                    "setup": {
+                        "coefficients": {<i class="conum" data-value="10"></i><b>(10)</b>
+                            "c": "x/mu:x:mu",
+                            "a": "1/mu/x:mu:x",
+                            "f": "materials_Conductor_J*x:x:materials_Conductor_J"
+                        }
+                    }
+                },{<i class="conum" data-value="8"></i><b>(8)</b>
+                    "name":"magnetic_Air",
+                    "materials":"Air",<i class="conum" data-value="9"></i><b>(9)</b>
+                    "setup":{
+                        "coefficients":{<i class="conum" data-value="10"></i><b>(10)</b>
+                            "c":"1/mu:mu"
+                        }
+                    }
+                }
+            ]
+        }
+    },</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>start section <code>Models</code> defined by the toolbox to define the main configuration and particularly the set of equations to be solved</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>set of equations to be solved</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>toolbox keyword that allows identifying the kind of model</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>equation unknown&#8217;s basis</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>equation unknown&#8217;s name</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>equation unknown&#8217;s symbol</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>models for the different materials</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>start JSON object of first model</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>list of materials associated to the model</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>CFPDES coefficients</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_boundary_conditions"><a class="anchor" href="#_boundary_conditions"></a>3.1.4. Boundary Conditions</h4>
+<div class="paragraph">
+<p>This section of the Model JSON file defines the boundary conditions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"BoundaryConditions":
+    {
+        "magnetic": <i class="conum" data-value="1"></i><b>(1)</b>
+        {
+            "Dirichlet": <i class="conum" data-value="2"></i><b>(2)</b>
+            {
+                "magdir":
+                {
+                    "markers": ["Exterior_boundary","ZAxis"],<i class="conum" data-value="3"></i><b>(3)</b>
+                    "expr":"0"
+                }
+            }
+        }
+    },</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>the field name of the toolbox to which the boundary condition is associated</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>the type of boundary condition to apply, here <code>Dirichlet</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>the physical entity (associated to the mesh) to which the condition is applied</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_post_process"><a class="anchor" href="#_post_process"></a>3.1.5. Post Process</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">"PostProcess":{
+        "use-model-name":1,
+        "cfpdes":{<i class="conum" data-value="1"></i><b>(1)</b>
+            "Exports":{<i class="conum" data-value="2"></i><b>(2)</b>
+                "fields":["A"],<i class="conum" data-value="3"></i><b>(3)</b>
+                "expr":{<i class="conum" data-value="4"></i><b>(4)</b>
+                    "B":{<i class="conum" data-value="5"></i><b>(5)</b>
+                        "expr":"{-magnetic_grad_A_1,magnetic_grad_A_0+magnetic_A/x}
+                                :magnetic_grad_A_0:magnetic_grad_A_1:magnetic_A:x",
+                        "representation":["element"]
+                    },
+                    "J":{<i class="conum" data-value="6"></i><b>(6)</b>
+                        "expr": "materials_J:materials_J",
+                        "markers": [
+                            "tape_00","tape_01","tape_02","tape_03","tape_04","tape_05","tape_06","tape_07","tape_08","tape_09",
+                            "tape_10","tape_11","tape_12","tape_13","tape_14","tape_15","tape_16","tape_17","tape_18","tape_19",
+                            "tape_20","tape_21","tape_22","tape_23","tape_24","tape_25","tape_26","tape_27","tape_28","tape_29",
+                            "tape_30","tape_31","tape_32","tape_33","tape_34","tape_35","tape_36","tape_37","tape_38","tape_39",
+                            "tape_40","tape_41","tape_42","tape_43","tape_44","tape_45","tape_46","tape_47","tape_48","tape_49",
+                            "tape_50","tape_51","tape_52","tape_53","tape_54","tape_55","tape_56","tape_57","tape_58","tape_59",
+                            "tape_60","tape_61","tape_62","tape_63","tape_64","tape_65","tape_66","tape_67","tape_68","tape_69",
+                            "tape_70","tape_71","tape_72","tape_73","tape_74","tape_75","tape_76","tape_77","tape_78","tape_79",
+                            "tape_80","tape_81","tape_82","tape_83","tape_84","tape_85","tape_86","tape_87","tape_88","tape_89"
+                        ]<i class="conum" data-value="7"></i><b>(7)</b>
+                    }
+                }
+            },
+            "Measures": {<i class="conum" data-value="8"></i><b>(8)</b>
+                "Statistics": {
+                    "Ics_%1%": {<i class="conum" data-value="9"></i><b>(9)</b>
+                        "type": "integrate",<i class="conum" data-value="10"></i><b>(10)</b>
+                        "expr": "materials_%1%_JcB:materials_%1%_JcB",
+                        "markers": "%1%",<i class="conum" data-value="11"></i><b>(11)</b>
+                        "index1": [<i class="conum" data-value="12"></i><b>(12)</b>
+                            "tape_00","tape_01","tape_02","tape_03","tape_04","tape_05","tape_06","tape_07","tape_08","tape_09",
+                            "tape_10","tape_11","tape_12","tape_13","tape_14","tape_15","tape_16","tape_17","tape_18","tape_19",
+                            "tape_20","tape_21","tape_22","tape_23","tape_24","tape_25","tape_26","tape_27","tape_28","tape_29",
+                            "tape_30","tape_31","tape_32","tape_33","tape_34","tape_35","tape_36","tape_37","tape_38","tape_39",
+                            "tape_40","tape_41","tape_42","tape_43","tape_44","tape_45","tape_46","tape_47","tape_48","tape_49",
+                            "tape_50","tape_51","tape_52","tape_53","tape_54","tape_55","tape_56","tape_57","tape_58","tape_59",
+                            "tape_60","tape_61","tape_62","tape_63","tape_64","tape_65","tape_66","tape_67","tape_68","tape_69",
+                            "tape_70","tape_71","tape_72","tape_73","tape_74","tape_75","tape_76","tape_77","tape_78","tape_79",
+                            "tape_80","tape_81","tape_82","tape_83","tape_84","tape_85","tape_86","tape_87","tape_88","tape_89"
+                        ]
+                    },
+                    "Linf": {<i class="conum" data-value="9"></i><b>(9)</b>
+                        "type": "max",<i class="conum" data-value="10"></i><b>(10)</b>
+                        "expr": "abs(magnetic_A-meshes_cfpdes_fields_v):magnetic_A:meshes_cfpdes_fields_v",
+                        "markers": [
+                            "tape_00","tape_01","tape_02","tape_03","tape_04","tape_05","tape_06","tape_07","tape_08","tape_09",
+                            "tape_10","tape_11","tape_12","tape_13","tape_14","tape_15","tape_16","tape_17","tape_18","tape_19",
+                            "tape_20","tape_21","tape_22","tape_23","tape_24","tape_25","tape_26","tape_27","tape_28","tape_29",
+                            "tape_30","tape_31","tape_32","tape_33","tape_34","tape_35","tape_36","tape_37","tape_38","tape_39",
+                            "tape_40","tape_41","tape_42","tape_43","tape_44","tape_45","tape_46","tape_47","tape_48","tape_49",
+                            "tape_50","tape_51","tape_52","tape_53","tape_54","tape_55","tape_56","tape_57","tape_58","tape_59",
+                            "tape_60","tape_61","tape_62","tape_63","tape_64","tape_65","tape_66","tape_67","tape_68","tape_69",
+                            "tape_70","tape_71","tape_72","tape_73","tape_74","tape_75","tape_76","tape_77","tape_78","tape_79",
+                            "tape_80","tape_81","tape_82","tape_83","tape_84","tape_85","tape_86","tape_87","tape_88","tape_89",
+                            "Air"
+                        ]<i class="conum" data-value="11"></i><b>(11)</b>
+                    }
+                }
+            }
+        },
+        "magnetic": {<i class="conum" data-value="1"></i><b>(1)</b>
+            "Save": {<i class="conum" data-value="13"></i><b>(13)</b>
+                "Fields": {
+                    "names": ["A"],<i class="conum" data-value="14"></i><b>(14)</b>
+                    "format": "hdf5"<i class="conum" data-value="15"></i><b>(15)</b>
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>the field name of the toolbox to which the post-processing is associated</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>the <code>Exports</code> identifies the toolbox fields that have to be exported for visualisation</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>the list of fields to be exported</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>the list of expressions assiocated to the fields to be exported</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><code>B</code> is for the magnetic flux density</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td><code>J_z</code> is for the current density</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>the physical entity (associated to the mesh) to which the expression is applied</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>the <code>Measure</code> identifies the quantities tht will be computed after the solve. The values computed are stored in a CSV files.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>the name associated with the Statistics computation</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="10"></i><b>10</b></td>
+<td>the Statistics type</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="11"></i><b>11</b></td>
+<td>the mesh marker where the Statistics is computed. This entry can be a vector of marker</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="12"></i><b>12</b></td>
+<td>index that wil replace %1%</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>storing the field for the next iteration of the algorithm</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="14"></i><b>14</b></td>
+<td>the names of fields that we want to save (can be a name or a vector of name)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="15"></i><b>15</b></td>
+<td>the format used ("hdf5")</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cfg_file"><a class="anchor" href="#_cfg_file"></a>3.2. CFG file</h3>
+<div class="paragraph">
+<p>The Model CFG (<code>.cfg</code>) files allow to pass command line options to Feel++ applications. In particular, it allows to  define the solution strategy and configure the linear/non-linear algebraic solvers.</p>
+</div>
+<div class="paragraph">
+<p>The Cfg file used is</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>directory=feelpp-hts/Roebel_Cables/cfpdes_axis<i class="conum" data-value="1"></i><b>(1)</b>
+
+case.dimension=2<i class="conum" data-value="2"></i><b>(2)</b>
+
+[cfpdes]<i class="conum" data-value="3"></i><b>(3)</b>
+filename=$cfgdir/Roebel_coil.json<i class="conum" data-value="4"></i><b>(4)</b>
+
+verbose_solvertimer=1<i class="conum" data-value="5"></i><b>(5)</b>
+solver=Picard-OLD<i class="conum" data-value="6"></i><b>(6)</b>
+
+snes-monitor=1<i class="conum" data-value="7"></i><b>(7)</b>
+ksp-monitor=1<i class="conum" data-value="8"></i><b>(8)</b>
+snes-maxit=600<i class="conum" data-value="9"></i><b>(9)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>the directory where the results are exported</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>the dimension of the application, by default 3D</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>toolbox prefix</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>the associated Json file</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>information on solver time</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>the non-linear solver</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>snes-monitor</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="8"></i><b>8</b></td>
+<td>ksp-monitor</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="9"></i><b>9</b></td>
+<td>maximum number of iteration</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_result"><a class="anchor" href="#_result"></a>4. Result</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_magnetic_flux_density"><a class="anchor" href="#_magnetic_flux_density"></a>4.1. Magnetic flux density</h3>
+<div class="imageblock">
+<div class="content">
+<img src="../../_images/Roebel/A-Formulation/cfpdes_axi/roebel_A_axi_stat_B.png" alt="roebel A axi stat B" width="800">
+</div>
+<div class="title">Figure 1. "Magnetic flux density \(B (T)\)</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_critical_current"><a class="anchor" href="#_critical_current"></a>4.2. Critical current</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MAX criterion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MAX-AVG criterion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SUM-AVG criterion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(I_c=493.8300771006914 A\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(I_c=511.6334601807369 A\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(Ic= 541.6612911585148 A\)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer" style="border-top: 2px solid #e9e9e9; background-color: #fafafa; padding-bottom: 2em; padding-top: 2em;">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 0.5em;">
+        <div>
+            <a href="https://www.cemosis.fr">
+                <img src="../../../../_/img/cemosis-logo.svg" alt="Cemosis logo" height="50">
+            </a>
+        </div>
+        <span style="font-size: 0.8rem; color: #9e9e9e">© 2023 <a href="https://www.cemosis.fr" style="text-decoration: underline;">Cemosis</a>, Université de Strasbourg</span>
+    </div>
+</footer>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
+
+
+<script async src="../../../../_/js/vendor/fontawesome-icon-defs.js"></script>
+<script async src="../../../../_/js/vendor/fontawesome.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+
+
+<script type="text/javascript">
+function toggleFullScreen() {
+   var doc = window.document;
+   var docEl = doc.documentElement;
+
+   var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+   var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+   if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+       requestFullScreen.call(docEl);
+   }
+   else {
+       cancelFullScreen.call(doc);
+   }
+}
+</script>
+  </body>
+</html>

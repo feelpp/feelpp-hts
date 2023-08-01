@@ -3,19 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>HTS Bulk Cylinder in Axisymmetric coordinates :: Feelpp HTS</title>
-    <link rel="canonical" href="https://feelpp.github.io/feelpp-hts/feelpp-hts/cylinder/aform/cfpdes_axis.html">
+    <title>HTS Bulk Cylinder in 2D coordinates :: Feelpp HTS</title>
+    <link rel="canonical" href="https://feelpp.github.io/feelpp-hts/feelpp-hts/latest/cylinder/hform/cfpdes_2D.html">
     <meta name="generator" content="Antora 3.1.3">
-    <link rel="stylesheet" href="../../../_/css/site.css">
-<link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
 <script>!function(l,p){if(l.protocol!==p&&l.host=="docs.antora.org"){l.protocol=p}else if(/\.gitlab\.io$/.test(l.host)){l.replace(p+"//docs.antora.org"+l.pathname.substr(l.pathname.indexOf("/",1))+l.search+l.hash)}}(location,"https:")</script>
 
-<script src="../../../_/js/vendor/tabs-block-extension.js"></script>
-<script src="../../../_/js/vendor/tabs-block-behavior.js"></script>
+<script src="../../../../_/js/vendor/tabs-block-extension.js"></script>
+<script src="../../../../_/js/vendor/tabs-block-behavior.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2" charset="utf-8"></script>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7" charset="utf-8"></script>
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -92,7 +90,7 @@ MathJax.Hub.Config({
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>-->
-<script>var uiRootPath = '../../../_'</script>
+<script>var uiRootPath = '../../../../_'</script>
 
   </head>
   <body class="article">
@@ -116,7 +114,7 @@ MathJax.Hub.Config({
                 </div>
                 <div class="navbar-item">
                     <a class="navbar-brand"  href="https://www.cemosis.fr">
-                        <img class="cemosis-logo"  src="../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
+                        <img class="cemosis-logo"  src="../../../../_/img/cemosis-logo.svg" alt="Cemosis logo"/>
                     </a>
                 </div>
             </div>
@@ -125,7 +123,7 @@ MathJax.Hub.Config({
 </header>
 <div class="body">
 <a href="#" class="menu-expand-toggle"></a>
-<div class="nav-container" data-component="feelpp-hts" data-version="">
+<div class="nav-container" data-component="feelpp-hts" data-version="latest">
   <aside class="nav">
     <div class="panels">
 <div class="nav-panel-menu is-active" data-panel="menu">
@@ -146,11 +144,11 @@ MathJax.Hub.Config({
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../../example.html#_a_formulation">A-Formulation</a>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="cfpdes_axis.html">cfpdes axis</a>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../aform/cfpdes_axis.html">cfpdes axis</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="cfpdes_2D_static.html">cfpdes 2D static</a>
+    <a class="nav-link" href="../aform/cfpdes_2D_static.html">cfpdes 2D static</a>
   </li>
 </ul>
   </li>
@@ -159,10 +157,10 @@ MathJax.Hub.Config({
     <a class="nav-link" href="../../example.html#_h_formulation">H-Formulation</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../hform/cfpdes_axis.html">cfpdes axis</a>
+    <a class="nav-link" href="cfpdes_axis.html">cfpdes axis</a>
   </li>
-  <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="../hform/cfpdes_2D.html">cfpdes 2D</a>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="cfpdes_2D.html">cfpdes 2D</a>
   </li>
 </ul>
   </li>
@@ -214,11 +212,16 @@ MathJax.Hub.Config({
 <div class="nav-panel-explore" data-panel="explore">
   <div class="context">
     <span class="title">Feel++ Template Project</span>
-    <span class="version"></span>
+    <span class="version">latest</span>
   </div>
   <ul class="components">
       <li class="component is-current">
         <a class="title" href="../../index.html">Feel++ Template Project</a>
+          <ul class="versions">
+              <li class="version is-current is-latest">
+                <a href="../../index.html">latest</a>
+              </li>
+          </ul>
       </li>
   </ul>
 </div>
@@ -234,13 +237,13 @@ MathJax.Hub.Config({
     <li><a href="../../index.html">Feel++ Template Project</a></li>
     <li><a href="../../index.html">Feel++ hts</a></li>
     <li><a href="../../example.html#_cylinder">Cylinder</a></li>
-    <li><a href="../../example.html#_a_formulation">A-Formulation</a></li>
-    <li><a href="cfpdes_axis.html">cfpdes axis</a></li>
+    <li><a href="../../example.html#_h_formulation">H-Formulation</a></li>
+    <li><a href="cfpdes_2D.html">cfpdes 2D</a></li>
   </ul>
 </nav>
 
   
-    <div class="edit-this-page"><a href="https://github.com/feelpp/feelpp-hts/edit/master/docs/modules/ROOT/pages/cylinder/aform/cfpdes_axis.adoc">Edit this Page</a></div>
+    <div class="edit-this-page"><a href="https://github.com/feelpp/feelpp-hts/edit/master/docs/modules/ROOT/pages/cylinder/hform/cfpdes_2D.adoc">Edit this Page</a></div>
   
   <div class="page-downloads">
   <span class="label">Download as</span>
@@ -248,7 +251,7 @@ MathJax.Hub.Config({
     <li>
       <a onclick="print(this)" href="#" data-toggle="tooltip" data-placement="left" title="Print to PDF"
          class="pdf-download">
-        <img class="pdf-file-icon icon" src="../../../_/img/pdf.svg"/> .pdf
+        <img class="pdf-file-icon icon" src="../../../../_/img/pdf.svg"/> .pdf
       </a>
     </li>
   </ul>
@@ -260,62 +263,33 @@ MathJax.Hub.Config({
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">HTS Bulk Cylinder in Axisymmetric coordinates</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>We took this example from : <a id="dular"></a> <em>Finite-Element Formulation for Systems with High-Temperature Superconductors</em>, Julien Dular, Christophe Gauzaine, Benoît Vanderheyden, IEEE Transactions on Applied Superconductivity VOL. 30 NO. 3, April 2020, <a href="https://www.htsmodelling.com/?page_id=748#Ferro">Link</a> .</p>
-</div>
-</div>
-</div>
+<h1 class="page">HTS Bulk Cylinder in 2D coordinates</h1>
 <div class="sect1">
 <h2 id="_description"><a class="anchor" href="#_description"></a>1. Description</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>\(\quad\)In this example, we will build a magnetic model on a cylinder geometry surrounded by air in axisymmetric coordinates. We will use the <strong>A-V Formulation</strong> and <strong>Gauge Condition</strong>.
+<p>\(\quad\)In this example, we will build a magnetic model on a cylinder geometry surrounded by air in 2D coordinates. We will use the <strong>H Formulation</strong>.
 Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and non conducting materials \(\Omega_c^C\) (\(\mathbf{J} = 0\)) like the air for example. Also \(\Gamma = \partial \Omega\) is the bound of \(\Omega\), \(\Gamma_c = \partial \Omega_c\) the bound of \(\Omega_c\), \(\Gamma_D\) the bound with Dirichlet boundary condition and \(\Gamma_N\) the bound with Neumann boundary condition, such that \(\Gamma = \Gamma_D \cup \Gamma_N\).</p>
 </div>
-<div class="paragraph">
-<p>We introduce :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Magnetic potential field \(\mathbf{A}\) : \(\textbf{B} = \nabla \times \textbf{A}\)</p>
-</li>
-<li>
-<p>Electric potential scalar : \(\nabla \phi = - \textbf{E} - \frac{\partial \textbf{A}}{\partial t}\)</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In this example we only consider a bulk cylinder without transport current so the electrical potential scalar can be ignored and we have :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Electrical field : \(\textbf{E}= - \frac{\partial \textbf{A}}{\partial t}\)</p>
-</li>
-</ul>
-</div>
-<div id="a_formulation" class="exampleblock">
-<div class="title">A Formulation</div>
+<div id="h_formulation" class="exampleblock">
+<div class="title">H Formulation</div>
 <div class="content">
 <div class="stemblock">
 <div class="content">
-\[\left\{ \begin{matrix}
-	\nabla \times \left( \frac{1}{\mu} \nabla \times \textbf{A} \right) + \sigma \frac{\partial \textbf{A}}{\partial t}   &amp;=&amp; 0 \text{ on } \Omega &amp; \text{(A form)} \\
-	\mathbf{A} \times \mathbf{n} &amp;=&amp; 0 \text{ on } \Gamma_D &amp; \text{(D)} \\
-	\left( \nabla \times \mathbf{A} \right) \times \mathbf{n} &amp;=&amp; 0 \text{ on } \Gamma_N &amp; \text{(N)}
-\end{matrix} \right.\]
+\[\text{(H)}
+	\left\{ \begin{matrix}
+		-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&amp;=&amp;\partial_t(\mu \textbf{H}) &amp;\text{ on } \Omega &amp; \text{(H)} \\
+		\mathbf{H} \times \mathbf{n} &amp;=&amp; 0 &amp;\text{ on } \Gamma_D &amp; \text{(D)} \\
+		\left( \nabla \times \mathbf{H} \right) \times \mathbf{n} &amp;=&amp; 0 &amp;\text{ on } \Gamma_N &amp; \text{(N)}
+	\end{matrix} \right.\]
 </div>
 </div>
 <div class="paragraph">
-<p>with \(\sigma\) expressed with the E-J power law for the HTS :</p>
+<p>with \(\rho\) the resistivity following the <strong>E-J power law</strong> for the superconductor :</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[\sigma=\frac{J_c}{E_c} \left(\frac{||\textbf{E}||}{E_c}\right)^{(1-n)/n}=\frac{J_c}{E_c} \left(\frac{||-\partial_t \textbf{A}||}{E_c}\right)^{(1-n)/n}\]
+\[\rho=\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}\]
 </div>
 </div>
 <div class="paragraph">
@@ -334,6 +308,9 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>In the air, we give the resistivity a high value like \(\rho_\text{air}=1\).</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -343,7 +320,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_2D.cfg</code></pre>
 </div>
 </div>
 <button class="btn" data-clipboard-target="#command-line">
@@ -363,7 +340,7 @@ Copy command line to clipboard
 </thead>
 <tfoot>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.621e+2 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17.73 s</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tfoot>
@@ -372,14 +349,19 @@ Copy command line to clipboard
 <div class="sect2">
 <h3 id="_equation"><a class="anchor" href="#_equation"></a>1.2. Equation</h3>
 <div class="paragraph">
-<p>The  A-Formulation in axisymmetric coordinates is :</p>
+<p>The H Formulation in 2D coordinates is :</p>
 </div>
 <div class="exampleblock">
-<div class="title">A Formulation in axisymmetric coordinates</div>
+<div class="title">H Formulation in 2D coordinates</div>
 <div class="content">
 <div class="stemblock">
 <div class="content">
-\[    -\frac{1}{\mu}\Delta A_\theta  + \frac{1}{\mu r^2}A_\theta + \sigma \frac{\partial A_\theta}{\partial t} =0  \text{ on } \Omega^{axis}  \text{(A Axis)}\]
+\[\text{(H 2D)}
+\left\{ \begin{matrix}
+    \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &amp;=&amp; 0  &amp; \text{on } \Omega^{2D} &amp; \text{(H 2D)}\\
+    \mathbf{H} \times \mathbf{n} &amp;=&amp; 0 &amp;\text{ on } \Gamma_D^{2D} &amp; \text{(D 2D)} \\
+	\left( \nabla \times \mathbf{H} \right) \times \mathbf{n} &amp;=&amp; 0 &amp;\text{ on } \Gamma_N^{2D} &amp; \text{(N 2D)}
+\end{matrix} \right.\]
 </div>
 </div>
 <div class="paragraph">
@@ -388,11 +370,11 @@ Copy command line to clipboard
 <div class="ulist">
 <ul>
 <li>
-<p>\(A_{\theta}\) : \(\theta\) component of potential magnetic field</p>
+<p>\(H\) : magnetic field</p>
 </li>
 <li>
-<p>\(\sigma\) : electric conductivity \(S/m\) described by the e-j power law :
-\(\sigma=\frac{J_c}{E_c}\left(\frac{\mid\mid e\mid\mid}{E_c}\right)^{(1-n)/n} = \frac{J_c}{E_c}\left(\frac{\mid\mid -\partial_t A_\theta\mid\mid}{E_c}\right)^{(1-n)/n}\)</p>
+<p>\(\rho\) : electric resistivity \(\Omega \cdot m\) described by the e-j power law :
+\(\rho=\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}=\frac{E_c}{J_c}\left(\frac{\mid\mid \nabla\times \textbf{H} \mid\mid}{J_c}\right)^{(n)}\)</p>
 </li>
 <li>
 <p>\(\mu\) : electric permeability \(kg/A^2/S^2\)</p>
@@ -405,13 +387,7 @@ Copy command line to clipboard
 <p>For the Dirichlet boundary conditions, we want to impose the applied magnetic field :</p>
 </div>
 <div class="paragraph">
-<p>So we have \(B=hsVal\), therefore \(\nabla\times A = hsVal\) and  so \(\frac{1}{r}\partial_r (rA_\theta)=hsVal\).</p>
-</div>
-<div class="paragraph">
-<p><strong>Time evolution of hsVal:</strong></p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="../../_images/Cylinder/A-Formulation/cfpdes_axis/applied_field.png" alt="applied field" width="700"></span></p>
+<p>So we have \(B_z=hsVal\), therefore \(H_z = hsVal/\mu\).</p>
 </div>
 </div>
 <div class="sect2">
@@ -424,7 +400,7 @@ Copy command line to clipboard
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../../_images/Cylinder/A-Formulation/cfpdes_axis/cylinder.png" alt="cylinder" width="300"></span></p>
+<p><span class="image"><img src="../../_images/Cylinder/A-Formulation/cfpdes_2D/circle.png" alt="circle" width="600"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -437,7 +413,7 @@ Copy command line to clipboard
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="../../_images/Cylinder/A-Formulation/cfpdes_axis/cylinder_mesh.png" alt="cylinder mesh" width="300"></span></p>
+<p><span class="image"><img src="../../_images/Cylinder/A-Formulation/cfpdes_2D/circlemesh.png" alt="circlemesh" width="600"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -468,27 +444,13 @@ Copy command line to clipboard
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><strong>Global parameters</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><strong>Paramètres globale</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(t\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">times</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(H\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">magnetic field</p></td>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(tf\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">final time</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">s</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(A_\theta\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">magnetic potential field</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(T m\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(A/m\)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -508,7 +470,7 @@ Copy command line to clipboard
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(hsVal\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">applied field</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\begin{cases}rate*t &amp;\quad\text{if }t&lt;\frac{t_f}{3}\\b_{max} &amp;\quad\text{if }t&lt;\frac{2t_f}{3}\\b_{max} - (t-\frac{2t_f}{3})*rate &amp;\quad\text{if }t&gt;\frac{2t_f}{3}\end{cases}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\frac{1}{\mu_0}\begin{cases}rate*t &amp;\quad\text{if }t&lt;\frac{t_f}{3}\\b_{max} &amp;\quad\text{if }t&lt;\frac{2t_f}{3}\\b_{max} - (t-\frac{2t_f}{3})*rate &amp;\quad\text{if }t&gt;\frac{2t_f}{3}\end{cases}\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(K\)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -520,6 +482,13 @@ Copy command line to clipboard
 <td class="tableblock halign-left valign-top"><p class="tableblock">magnetic permeability of vacuum</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(4\pi.10^{-7}\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(kg \, m / A^2 / S^2\)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\rho\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">electrical resistivity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(1\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Omega\cdot m\)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -556,10 +525,10 @@ Copy command line to clipboard
 </tbody>
 <tfoot>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\sigma\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">electrical conductivity (described by the \(E-J\) power law)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\frac{J_c}{E_c}\left(\frac{\mid\mid e\mid\mid}{E_c}\right)^{(1-n)/n}\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(S/m\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\rho\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">electrical resistivity (described by the \(e-j\) power law)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Omega\cdot m\)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tfoot>
@@ -570,15 +539,15 @@ Copy command line to clipboard
 <h2 id="_data_files"><a class="anchor" href="#_data_files"></a>3. Data files</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The case data files are available in Github <a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/A-Formulation/cfpdes_axis">here</a></p>
+<p>The case data files are available in Github <a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/H-Formulation/cfpdes_2D">here</a></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/A-Formulation/cfpdes_axis/cylinder_axis.cfg">CFG file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/A-Formulation/cfpdes_axis/cylinder_axis.cfg">Edit the file</a>]</p>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.cfg">CFG file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.cfg">Edit the file</a>]</p>
 </li>
 <li>
-<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/A-Formulation/cfpdes_axis/cylinder_axis.json">JSON file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/A-Formulation/cfpdes_axis/cylinder_axis.json">Edit the file</a>]</p>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.json">JSON file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.json">Edit the file</a>]</p>
 </li>
 </ul>
 </div>
@@ -597,7 +566,7 @@ Copy command line to clipboard
         {
             "Import":
             {
-                "filename":"$cfgdir/cylinder.geo"<i class="conum" data-value="1"></i><b>(1)</b>
+                "filename":"$cfgdir/circle.geo"<i class="conum" data-value="1"></i><b>(1)</b>
             }
         }
     },</code></pre>
@@ -623,14 +592,17 @@ Copy command line to clipboard
     {
         "Conductor":<i class="conum" data-value="1"></i><b>(1)</b>
         {
-            "markers":["Cylinder"],<i class="conum" data-value="1"></i><b>(1)</b>
+            "markers":["Conductor"],<i class="conum" data-value="1"></i><b>(1)</b>
 
-            "sigma":"jc / ec * 1.0 / ( epsSigma + (sqrt((-magnetic_dAtheta_dt)*(-magnetic_dAtheta_dt))/ec )^((n-1.0)/n) )
-                        :jc:ec:n:epsSigma:magnetic_dAtheta_dt"<i class="conum" data-value="2"></i><b>(2)</b>
+            "rho":"ec / jc * (abs(magnetic_curl_H_rt)/jc)^(n - 1):ec:jc:n:magnetic_curl_H_rt",<i class="conum" data-value="2"></i><b>(2)</b>
+	        "mu":"mu0:mu0"
         },
         "Air":<i class="conum" data-value="1"></i><b>(1)</b>
         {
-	        "markers":["Air","Spherical_shell"]<i class="conum" data-value="1"></i><b>(1)</b>
+	        "markers":["Air"],<i class="conum" data-value="1"></i><b>(1)</b>
+
+            "rho":1,
+	        "mu":"mu0:mu0"
         }
     },</code></pre>
 </div>
@@ -643,7 +615,7 @@ Copy command line to clipboard
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>\(\sigma\)  is defined by the E-J power law</td>
+<td>\(\rho\)  is defined by the E-J power law in the HTS</td>
 </tr>
 </table>
 </div>
@@ -660,39 +632,20 @@ Copy command line to clipboard
         "cfpdes":{
             "equations":"magnetic"<i class="conum" data-value="2"></i><b>(2)</b>
         },
-        "magnetic":{<i class="conum" data-value="3"></i><b>(3)</b>
-            "common":{
-                "setup":{
-                    "unknown":
-                    {
-                        "basis":"Pch1",<i class="conum" data-value="4"></i><b>(4)</b>
-                        "name":"Atheta",<i class="conum" data-value="5"></i><b>(5)</b>
-                        "symbol":"Atheta"<i class="conum" data-value="6"></i><b>(6)</b>
-                    }
+        "magnetic":<i class="conum" data-value="3"></i><b>(3)</b>
+        {
+            "name": "magnetic_conductor",
+            "setup":{
+                "unknown":{
+                    "basis":"Ned1h0",<i class="conum" data-value="4"></i><b>(4)</b>
+                    "name":"H",<i class="conum" data-value="5"></i><b>(5)</b>
+                    "symbol":"H"<i class="conum" data-value="6"></i><b>(6)</b>
+                },
+                "coefficients":{<i class="conum" data-value="7"></i><b>(7)</b>
+                    "zeta":"materials_rho:materials_rho",
+                    "d":"materials_mu:materials_mu"
                 }
-            },
-            "models":[<i class="conum" data-value="7"></i><b>(7)</b>
-                {<i class="conum" data-value="8"></i><b>(8)</b>
-                "name":"magnetic_Conductor",
-                "materials":"Conductor",<i class="conum" data-value="9"></i><b>(9)</b>
-                "setup":{
-                    "coefficients":{<i class="conum" data-value="10"></i><b>(10)</b>
-                        "c":"x/mu:x:mu",
-                        "a":"1/mu/x:mu:x",
-                        "f":"0.",
-                        "d":"materials_Conductor_sigma*x:materials_Conductor_sigma:x"
-                    }
-                }
-            },{<i class="conum" data-value="8"></i><b>(8)</b>
-                "name":"magnetic_Air",
-                "materials":"Air",<i class="conum" data-value="9"></i><b>(9)</b>
-                "setup":{
-                    "coefficients":{<i class="conum" data-value="10"></i><b>(10)</b>
-                        "c":"x/mu:x:mu",
-                        "a":"1/mu/x:mu:x"
-                    }
-                }
-            }]
+            }
         }
     },</code></pre>
 </div>
@@ -725,18 +678,6 @@ Copy command line to clipboard
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>models for the different materials</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>start JSON object of first model</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="9"></i><b>9</b></td>
-<td>list of materials associated to the model</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="10"></i><b>10</b></td>
 <td>CFPDES coefficients</td>
 </tr>
 </table>
@@ -757,8 +698,8 @@ Copy command line to clipboard
             {
                 "magdir":
                 {
-                    "markers":["Symmetry_line","Exterior_boundary"], <i class="conum" data-value="3"></i><b>(3)</b>
-                    "expr":"x/2 *hsVal:x:hsVal"
+                    "markers":["Infty"], <i class="conum" data-value="3"></i><b>(3)</b>
+                    "expr":"{0,hsVal}:hsVal"
                 }
             }
         }
@@ -793,18 +734,17 @@ Copy command line to clipboard
         {
             "Exports":<i class="conum" data-value="2"></i><b>(2)</b>
             {
-                "fields":["Atheta"],<i class="conum" data-value="3"></i><b>(3)</b>
+                "fields":["H"],<i class="conum" data-value="3"></i><b>(3)</b>
                 "expr":<i class="conum" data-value="4"></i><b>(4)</b>
                 {
                     "B":<i class="conum" data-value="5"></i><b>(5)</b>
                     {
-                        "expr":"{-magnetic_grad_Atheta_1,magnetic_grad_Atheta_0+magnetic_Atheta/x}
-                                    :magnetic_grad_Atheta_0:magnetic_grad_Atheta_1:magnetic_Atheta:x",
+                        "expr":"{materials_mu*magnetic_H_0,materials_mu*magnetic_H_1}:materials_mu:magnetic_H_0:magnetic_H_1",
                         "representation":["element"]
                     },
-                    "j_th":<i class="conum" data-value="6"></i><b>(6)</b>
+                    "J":<i class="conum" data-value="6"></i><b>(6)</b>
                     {
-                        "expr":"-materials_Conductor_sigma*magnetic_dAtheta_dt:materials_Conductor_sigma:magnetic_dAtheta_dt",
+                        "expr":"magnetic_curl_H:magnetic_curl_H",
                         "markers":["Cylinder"]<i class="conum" data-value="7"></i><b>(7)</b>
                     }
                 }
@@ -838,7 +778,7 @@ Copy command line to clipboard
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td><code>j_th</code> is for the current density</td>
+<td><code>J</code> is for the current density</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
@@ -858,28 +798,39 @@ Copy command line to clipboard
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>directory=feelpp-hts/cylinder/Aform/cfpdes_axis<i class="conum" data-value="1"></i><b>(1)</b>
+<pre>directory=feelpp-hts/cylinder/Hform/cfpdes_2D<i class="conum" data-value="1"></i><b>(1)</b>
 
 case.dimension=2<i class="conum" data-value="2"></i><b>(2)</b>
 
 [cfpdes]<i class="conum" data-value="3"></i><b>(3)</b>
-filename=$cfgdir/cylinder_axis.json<i class="conum" data-value="4"></i><b>(4)</b>
+filename=$cfgdir/cylinder_2D.json<i class="conum" data-value="4"></i><b>(4)</b>
 
 verbose_solvertimer=1<i class="conum" data-value="5"></i><b>(5)</b>
-solver=Picard-OLD<i class="conum" data-value="6"></i><b>(6)</b>
+solver=Newton<i class="conum" data-value="6"></i><b>(6)</b>
 
 ksp-monitor=1<i class="conum" data-value="7"></i><b>(7)</b>
+ksp-view=1
 ksp-converged-reason=1<i class="conum" data-value="8"></i><b>(8)</b>
+
+snes-type=ls
+snes-line-search-type=bt
+snes-monitor=1
+snes-view=1
 snes-maxit=200<i class="conum" data-value="9"></i><b>(9)</b>
+snes-atol=1.e-5<i class="conum" data-value="10"></i><b>(10)</b>
+#snes-rtol=1.e-6<i class="conum" data-value="11"></i><b>(11)</b>
+snes-converged-reason=1
 
-[cfpdes.magnetic]<i class="conum" data-value="10"></i><b>(10)</b>
-bdf.order=2<i class="conum" data-value="11"></i><b>(11)</b>
+pc-factor-mumps.icntl-14=200
 
-[ts]<i class="conum" data-value="12"></i><b>(12)</b>
-time-initial=0<i class="conum" data-value="13"></i><b>(13)</b>
-time-step=1<i class="conum" data-value="14"></i><b>(14)</b>
-time-final=15<i class="conum" data-value="15"></i><b>(15)</b>
-restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
+[cfpdes.magnetic]<i class="conum" data-value="12"></i><b>(12)</b>
+bdf.order=2<i class="conum" data-value="13"></i><b>(13)</b>
+
+[ts]<i class="conum" data-value="14"></i><b>(14)</b>
+time-initial=0<i class="conum" data-value="15"></i><b>(15)</b>
+time-step=0.5<i class="conum" data-value="16"></i><b>(16)</b>
+time-final=15<i class="conum" data-value="17"></i><b>(17)</b>
+restart.at-last-save=true<i class="conum" data-value="18"></i><b>(18)</b></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -922,30 +873,38 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="10"></i><b>10</b></td>
-<td>cfpdes.magnetic</td>
+<td>snes absolute tolerance</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="11"></i><b>11</b></td>
-<td>cfpdes.magnetic order</td>
+<td>snes relative tolerance</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="12"></i><b>12</b></td>
-<td>time setup</td>
+<td>cfpdes.magnetic</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="13"></i><b>13</b></td>
-<td>time initial</td>
+<td>cfpdes.magnetic order</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="14"></i><b>14</b></td>
-<td>time step</td>
+<td>time setup</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="15"></i><b>15</b></td>
-<td>time final</td>
+<td>time initial</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="16"></i><b>16</b></td>
+<td>time step</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="17"></i><b>17</b></td>
+<td>time final</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="18"></i><b>18</b></td>
 <td>restart at last save</td>
 </tr>
 </table>
@@ -961,230 +920,18 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="videoblock">
 <div class="title">Electric current density \(J (A/m^2)\)</div>
 <div class="content">
-<iframe width="720" height="400" src="https://www.youtube.com/embed/khBVxZEKc3Y?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="720" height="400" src="https://www.youtube.com/embed/uYFO9JJlgDI?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
-<div class="paragraph">
-<p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>getDP</strong> on the \(O_r\) axis, at the mid-height of the cylinder, at time \(t_3\) for a maximum applied field of 1 T and \(n=20\).</p>
-</div>
-<div id="myDiv"></div>
-    <script type="text/javascript">
-
-    function makeplot() {
-
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/0498764d7cab9c655f30281d562c44f8/raw/b0267dbe1e310855885f03dbcaf8563f54afecb4/feelaformaxi_jline.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/14683d5efca480015e4af9f2d41a78b1/raw/ccc70c40e615acc160b6e0ffdc854679f23cd20f/jline.csv", function(file2) {
-                processData(file1,file2);});
-        });
-    };
-
-
-
-    function processData(file1,file2) {
-        console.log(file1);
-        var x1 = [], y = [], x2 =[], z=[], standard_deviation = [];
-
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            x1.push( row1['Points:0'] );
-            y.push( -row1['cfpdes.magnetic.expr.j_th'] /3e8);
-        }
-        for (var i=0; i<file2.length; i++) {
-            row2 = file2[i];
-            x2.push( row2['X'] );
-            z.push( row2['getDP_t3'] /3e8);
-        }
-
-        console.log( 'X1',x1, 'SD',standard_deviation );
-        console.log( 'Y',y, 'SD',standard_deviation );
-        console.log( 'X2',x2, 'SD',standard_deviation );
-        console.log( 'Z',z, 'SD',standard_deviation );
-        makePlotly( x1, y, x2, z, standard_deviation );
-    }
-
-
-    function makePlotly( x1, y, x2, z, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y,
-            name: 'Feelpp'
-        };
-
-        var traces2 = {
-            x: x2,
-            y: z,
-            name: 'getDP'
-        };
-
-        var data = [traces1, traces2];
-
-        Plotly.newPlot('myDiv', data, {title: 'J_theta/J_c on the Or axis of the cylinder'});
-    };
-
-    makeplot();
-
-    </script>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong>L2 Relative Error Norm</strong> : \(25.09 \%\)</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div class="sect2">
 <h3 id="_magnetic_flux_density"><a class="anchor" href="#_magnetic_flux_density"></a>4.2. Magnetic flux density</h3>
 <div class="videoblock">
 <div class="title">Magnetic flux density \(B (T)\)</div>
 <div class="content">
-<iframe width="720" height="400" src="https://www.youtube.com/embed/v6K1I5i472s?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="720" height="400" src="https://www.youtube.com/embed/OF71o5rjNn4?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
-<div class="paragraph">
-<p>We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants \(t_1\), \(t_2\) and \(t_3\) with <strong>Feelpp</strong> and <strong>getDP</strong>.</p>
-</div>
-<div id="myDiv2"></div>
-    <script type="text/javascript">
-
-    function makeplot2() {
-
-        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/90fe45d798639b02759ec62992630e74/raw/72bd00db2895bb204e1b0ad860ec3110e0fc134c/feelaformaxi_b_t1.csv", function(file1) {
-            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/dd4592cf880455d5e13f3b9bc33e1925/raw/7ec6f079d5f6305b71d3caa6a146ed035a7ce5b0/feelaformaxi_b_t2.csv", function(file2) {
-                Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/a7a17becfb51d9060c660d2d854ff146/raw/af71b36582c6c8e29e298b4fb3951ca10ad73db7/feelaformaxi_b_t3.csv", function(file3) {
-                    Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/03ab65c93d3eb3784739b2d0210e1b81/raw/1c2783601c378823572c5cee7ad6e122f9b3d7bd/getdpaformaxi_b_t1.csv", function(file4) {
-                        Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/e16dea426990083f3a252f1a08883955/raw/71b121bfef7e40d72483657c565dde6dfcccab60/getdpaformaxi_b_t2.csv", function(file5) {
-                            Plotly.d3.csv("https://gist.githubusercontent.com/jermuzet/5743a0b3ff9d43d5bde7bde4503296b6/raw/053822d054754969b01e098183e6449c2510b74c/getdpaformaxi_b_t3.csv", function(file6) {
-                                processData2(file1,file2,file3,file4,file5,file6);
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    };
-
-
-
-    function processData2(file1,file2,file3,file4,file5,file6) {
-        console.log(file1);
-        var x1 = [], y1 = [], y2 = [], y3 = [], x2 =[], z1=[], z2 = [], z3 =[], standard_deviation = [];
-
-        for (var i=0; i<file1.length; i++) {
-            row1 = file1[i];
-            row2 = file2[i];
-            row3 = file3[i];
-            x1.push( row1['Points:0'] );
-            y1.push( row1['cfpdes.magnetic.expr.B:1']);
-            y2.push( row2['cfpdes.magnetic.expr.B:1']);
-            y3.push( row3['cfpdes.magnetic.expr.B:1']);
-        }
-        for (var i=0; i<file4.length; i++) {
-            row1 = file4[i];
-            row2 = file5[i];
-            row3 = file6[i];
-            x2.push( row1['X'] );
-            z1.push( row1['getDP_t1']);
-            z2.push( row2['getDP_t2']);
-            z3.push( row3['getDP_t3']);
-        }
-
-        makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation );
-    }
-
-
-    function makePlotly2( x1, y1, y2, y3, x2, z1, z2, z3, standard_deviation ){
-        var plotDiv = document.getElementById("plot");
-        var traces1 = {
-            x: x1,
-            y: y1,
-            name: 't1 (Feelpp)',
-            mode: 'lines',
-            line: {
-                color: 'red',
-                width:4
-            }
-        };
-        var traces2 = {
-            x: x1,
-            y: y2,
-            name: 't2 (Feelpp)',
-            mode: 'lines',
-            line: {
-                color: 'blue'
-            }
-        };
-        var traces3 = {
-            x: x1,
-            y: y3,
-            name: 't3 (Feelpp)',
-            mode: 'lines',
-            line: {
-                color: 'green'
-            }
-        };
-
-        var traces4 = {
-            x: x2,
-            y: z1,
-            name: 't1 (getDP)',
-            mode: 'lines',
-            line: {
-                color: 'indianred'
-            }
-        };
-        var traces5 = {
-            x: x2,
-            y: z2,
-            name: 't2 (getDP)',
-            mode: 'lines',
-            line: {
-                color: 'dodgerblue'
-            }
-        };
-        var traces6 = {
-            x: x2,
-            y: z3,
-            name: 't3 (getDP)',
-            mode: 'lines',
-            line: {
-                color: 'lightgreen'
-            }
-        };
-
-        var data = [traces1, traces2, traces3, traces4, traces5, traces6];
-
-        Plotly.newPlot('myDiv2', data, {title: 'Distribution of the z-component of the magnetic flux density'});
-    };
-
-    makeplot2();
-
-    </script>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>t1</strong> \(=5s\)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>L2 Relative Error Norm</strong> : \(0.42 \%\)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>t2</strong> \(=10s\)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>L2 Relative Error Norm</strong> : \(2.13 \%\)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>t3</strong> \(=15s\)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>L2 Relative Error Norm</strong> : \(6.54 \%\)</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
 </div>
@@ -1196,18 +943,18 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
     <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 0.5em;">
         <div>
             <a href="https://www.cemosis.fr">
-                <img src="../../../_/img/cemosis-logo.svg" alt="Cemosis logo" height="50">
+                <img src="../../../../_/img/cemosis-logo.svg" alt="Cemosis logo" height="50">
             </a>
         </div>
         <span style="font-size: 0.8rem; color: #9e9e9e">© 2023 <a href="https://www.cemosis.fr" style="text-decoration: underline;">Cemosis</a>, Université de Strasbourg</span>
     </div>
 </footer>
-<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script id="site-script" src="../../../../_/js/site.js" data-ui-root-path="../../../../_"></script>
 
 
-<script async src="../../../_/js/vendor/fontawesome-icon-defs.js"></script>
-<script async src="../../../_/js/vendor/fontawesome.js"></script>
-<script async src="../../../_/js/vendor/highlight.js"></script>
+<script async src="../../../../_/js/vendor/fontawesome-icon-defs.js"></script>
+<script async src="../../../../_/js/vendor/fontawesome.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
 
 
 <script type="text/javascript">
