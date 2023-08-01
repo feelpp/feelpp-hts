@@ -1137,7 +1137,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>Comsol</strong> on the Ox axis across the tapes at the instants \(t=0.02s\).</p>
 </div>
-<div id="ploty_37ba2d50-f73d-4b74-95c4-79f80c10baf2"></div>
+<div id="ploty_b08624ee-c8dd-4c55-bfd1-c68bc1838674"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/74e92a07be125301d0281d1eaab70d63/raw/33f3beee63f4755745c0256a309d08c7875947fc/Tapes_TAform_2D_J.csv")
     .then((d) => {
@@ -1164,7 +1164,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_37ba2d50-f73d-4b74-95c4-79f80c10baf2', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_b08624ee-c8dd-4c55-bfd1-c68bc1838674', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1194,9 +1194,9 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the y-component of the magnetic flux density on the Ox axis across the tapes at the instants \(t=0.02s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_bfafdec5-e06d-4e84-8f05-6bc5b316e533"></div>
+<div id="ploty_a9d1b297-e234-42a7-8934-001b3741a500"></div>
 <script>
-  d3.csv("https://gist.githubusercontent.com/jermuzet/092c6c0460388a1766ac3612323a9d4b/raw/9fb09cba99d312f64d23cc979c67af7aae369ab8/Tapes_TAform_2D_By.csv")
+  d3.csv("https://gist.githubusercontent.com/jermuzet/092c6c0460388a1766ac3612323a9d4b/raw/19cfeef00bdf559cab54a337c3b4287ddc22f4e3/Tapes_TAform_2D_By.csv")
     .then((d) => {
       // global d
 const data = [{
@@ -1221,7 +1221,7 @@ const layout = {
   yaxis: {title: 'By (T)'}
 }
 
-      Plotly.newPlot('ploty_bfafdec5-e06d-4e84-8f05-6bc5b316e533', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_a9d1b297-e234-42a7-8934-001b3741a500', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
