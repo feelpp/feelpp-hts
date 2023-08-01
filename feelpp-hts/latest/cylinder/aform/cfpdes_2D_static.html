@@ -919,7 +919,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_2c7a2c79-8b51-4bd9-a6be-38cda6064dcb"></div>
+<div id="ploty_b19a71e9-34fe-4d3a-8a25-498ebca559dc"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/ab4c2d745c7e7d7be96d0423a14ef84e/raw/604d1e9b6668e6dea1a0f0baf399c1472898bd40/cfpdeerf_jline.csv")
     .then((d) => {
@@ -931,12 +931,15 @@ const data = [{
   y: d.map(i => i['cfpdes.magnetic.expr.Jh']/1e8),
   showlegend: true,
   line: {color: '#FF99BB'}
+  xlabel: 'X'
 }]
 const layout = {
-  title: 'Current Density'
+  title: 'Current Density',
+  xaxis: 'x (m)',
+  yaxis: 'J (A/m²)'
 }
 
-      Plotly.newPlot('ploty_2c7a2c79-8b51-4bd9-a6be-38cda6064dcb', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_b19a71e9-34fe-4d3a-8a25-498ebca559dc', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
