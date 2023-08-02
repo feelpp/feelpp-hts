@@ -13,6 +13,7 @@
 <script src="../../../../_/js/vendor/tabs-block-extension.js"></script>
 <script src="../../../../_/js/vendor/tabs-block-behavior.js"></script>
 
+    <script type="text/javascript" src="../../../../_/js/vendor/visu-vtk.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@2" charset="utf-8"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@7" charset="utf-8"></script>
@@ -1106,7 +1107,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the distribution of the electric current density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_cfda91a7-d6be-4cf7-863f-94ef9e200dbe"></div>
+<div id="ploty_d8b5ec5b-a93a-4fc9-999b-5d5d88b7170a"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d28260009a98ca5d2d90b285df1779c/raw/a1ec4f6c937cdeab0b98a0d8745cb6d4fa69dd55/Tapes_TAform_axi_J.csv")
     .then((d) => {
@@ -1133,7 +1134,7 @@ const layout = {
   yaxis: {title: 'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_cfda91a7-d6be-4cf7-863f-94ef9e200dbe', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_d8b5ec5b-a93a-4fc9-999b-5d5d88b7170a', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1163,7 +1164,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the r-component of the magnetic flux density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_b36bd0b4-52c7-4409-975a-10affe5878d5"></div>
+<div id="ploty_525bc2a9-6396-4eea-a606-8fa7591af199"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/5b8e524ec754ff3533001017cb95aeab/raw/f3d22307b582fc4f478e10e1f7a56eb2a0e1df63/Tapes_TAform_axi_B.csv")
     .then((d) => {
@@ -1190,7 +1191,7 @@ const layout = {
   yaxis: {title: 'Br (T)'}
 }
 
-      Plotly.newPlot('ploty_b36bd0b4-52c7-4409-975a-10affe5878d5', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_525bc2a9-6396-4eea-a606-8fa7591af199', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1211,7 +1212,7 @@ const layout = {
 <div class="paragraph">
 <p>We also compare the distribution of the z-component of the magnetic flux density on the Or axis across the tapes at the instants \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_df72fa05-c35b-4999-af93-e615c5fe90b0"></div>
+<div id="ploty_d9b173bb-9e1a-4bd3-b0c6-b01e18c4f26b"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d8bcd1932d20151bf73ffc503a0e06e/raw/c269d5fdc58098fd27721243695a8e41a90b060c/Tapes_TAform_axi_Bz.csv")
     .then((d) => {
@@ -1238,7 +1239,7 @@ const layout = {
   yaxis: {title: 'Bz (T)'}
 }
 
-      Plotly.newPlot('ploty_df72fa05-c35b-4999-af93-e615c5fe90b0', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_d9b173bb-9e1a-4bd3-b0c6-b01e18c4f26b', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1256,9 +1257,9 @@ const layout = {
 </tr>
 </tbody>
 </table>
-<div id="vtkjs_77a5e295-dc2c-4330-9e5d-aaee994707ac" style="height: 500px; width: 100%;"></div>
+<div id="vtkjs_bb2f1021-81fc-45d0-80a2-292934b3eb00" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_77a5e295-dc2c-4330-9e5d-aaee994707ac", {
+feelppVtkJs.createSceneImporter("vtkjs_bb2f1021-81fc-45d0-80a2-292934b3eb00", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca3dd9b0e9570499e1cc56/download",
   objects: {
   "fields": [
@@ -1285,9 +1286,9 @@ feelppVtkJs.createSceneImporter("vtkjs_77a5e295-dc2c-4330-9e5d-aaee994707ac", {
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_af529d59-6cce-430b-8710-525caac5a8f2" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_07dc7831-0b29-4852-9eb4-c9f069a63b6c" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_af529d59-6cce-430b-8710-525caac5a8f2", {
+feelppVtkJs.createSceneImporter("vtkjs_07dc7831-0b29-4852-9eb4-c9f069a63b6c", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca3dd9b0e9570499e1cc56/download",
   objects: {
   "fields": [
@@ -1307,9 +1308,9 @@ feelppVtkJs.createSceneImporter("vtkjs_af529d59-6cce-430b-8710-525caac5a8f2", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div id="vtkjs_a67f67bc-e662-4b46-87cc-4ba5aac0502b" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-left valign-top"><div class="content"><div id="vtkjs_a9f2d05e-5b2f-4eb4-9ade-8ecfb52c7f1f" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_a67f67bc-e662-4b46-87cc-4ba5aac0502b", {
+feelppVtkJs.createSceneImporter("vtkjs_a9f2d05e-5b2f-4eb4-9ade-8ecfb52c7f1f", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca3dd8b0e9570499e1cc53/download",
   objects: {
   "fields": [
