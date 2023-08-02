@@ -438,16 +438,16 @@ Copy command line to clipboard
 <div class="title">Algorithm example with the MAX criterion</div>
 <div class="content">
 <pre>\begin{algorithm}
-\caption{I_c estimation}
+\caption{Ic estimation}
 \begin{algorithmic}
-\WHILE{ $\abs( \max(P_{ji}) - 1 )&gt; tolp$ :  }
+\WHILE{ $|\max(P_{ji}) - 1|&gt; tolp$ :  }
     \STATE $err=1$
     \WHILE{ $err &gt; tolAz$ :}
         \STATE $A_0=A$
         \STATE Run FEM problem
-        \FOR{j in range(0,n_t) :}
-            \FOR{i in range(0,n_c) :}
-                \STATE $Ics=\int_{Omega_{ji}} J_c(B)$
+        \FOR{$j$ in range($0$,$n_t$) :}
+            \FOR{$i$ in range($0$,$n_c$) :}
+                \STATE $Ics=\int_{\Omega_{ji}} J_c(B)$
                 \STATE $P_{ji}=I_0/Ics$
             \ENDFOR
         \ENDFOR

@@ -437,12 +437,12 @@ Copy command line to clipboard
 <pre>\begin{algorithm}
     \caption{Ic estimation}
     \begin{algorithmic}
-        \WHILE{$abs( \max(P_i) - 1 )&gt; tolp$ :}
+        \WHILE{$|\max(P_i) - 1|&gt; tolp$ :}
             \STATE $err=1$
             \WHILE{$err &gt; tolAz$ :}
                 \STATE $A_0=A$
                 \STATE Run FEM problem
-                \FOR{i in range(0,$n_c$) :}
+                \FOR{$i$ in range($0$,$n_c$) :}
                     \STATE $Ics=\int_{\Omega_i} J_c(B)$
                     \STATE $P_i=I_0/Ics$
                 \ENDFOR
