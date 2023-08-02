@@ -435,7 +435,7 @@ Copy command line to clipboard
 <div class="title">Example of the pseudocode for the quicksort algorithm rendered by <code>pseudocode.js</code></div>
 <div class="content">
 <pre>\begin{algorithm}
-\caption{I_c estimation}
+\caption{caption}
 \begin{algorithmic}
 \PROCEDURE{Quicksort}{$A, p, r$}
     \IF{$p &lt; r$}
@@ -460,18 +460,15 @@ Copy command line to clipboard
 \end{algorithm}</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>test test test</p>
-</div>
 <div class="literalblock pseudocode">
 <div class="title">Algorithm example with the MAX criterion</div>
 <div class="content">
 <pre>\begin{algorithm}
-    \caption{I_c estimation}
+    \caption{$I_c$ estimation}
     \begin{algorithmic}
-        // \WHILE{$\abs( \max(P_i) - 1 )&gt; tolp$ :}
+        \WHILE{$\abs( \max(P_i) - 1 )&gt; tolp$ :}
             \STATE $err=1$
-            // \WHILE{$err &gt; tolAz$ :}
+            \WHILE{$err &gt; tolAz$ :}
                 \STATE $A_0=A$
                 \STATE Run FEM problem
                 \FOR{i in range(0,n_c) :}
@@ -479,9 +476,9 @@ Copy command line to clipboard
                     \STATE $P_i=I_0/Ics$
                 \ENDFOR
                 \STATE $err=||A-A_0||_\infty$
-            // \ENDWHILE
+            \ENDWHILE
             \STATE $I_0=2*I_0/(1+\max(P_i))$
-        // \ENDWHILE
+        \ENDWHILE
         \STATE
         \RETURN $I_c=n_c*I_0$
     \end{algorithmic}
