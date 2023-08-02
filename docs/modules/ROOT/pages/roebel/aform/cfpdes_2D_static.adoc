@@ -130,34 +130,34 @@ In order to have find the critical current, we need to have criteria to stop the
 * The AVG criterion is when the _average_ voltage drop per unit length stem:[E_i] has reached its critical value stem:[E_c]. The condition is stem:[\sum^{n_c}_{i=1}P_i|P_i|^{n-1}=n_c].
 
 
-.Example of the pseudocode for the quicksort algorithm rendered by `pseudocode.js`
-[.pseudocode]
-....
-\begin{algorithm}
-\caption{Ic estimation}
-\begin{algorithmic}
-\WHILE{$\abs( \max(P_i) - 1 )> tolp$ :}
-    \IF{$p < r$}
-        \STATE $q = $ \CALL{Partition}{$A, p, r$}
-        \STATE \CALL{Quicksort}{$A, p, q - 1$}
-        \STATE \CALL{Quicksort}{$A, q + 1, r$}
-    \ENDIF
-\ENDWHILE
-\PROCEDURE{Partition}{$A, p, r$}
-    \STATE $x = A[r]$
-    \STATE $i = p - 1$
-    \FOR{$j = p$ \TO $r - 1$}
-        \IF{$A[j] < x$}
-            \STATE $i = i + 1$
-            \STATE exchange
-            $A[i]$ with $A[j]$
-        \ENDIF
-        \STATE exchange $A[i]$ with $A[r]$
-    \ENDFOR
-\ENDPROCEDURE
-\end{algorithmic}
-\end{algorithm}
-....
+// .Example of the pseudocode for the quicksort algorithm rendered by `pseudocode.js`
+// [.pseudocode]
+// ....
+// \begin{algorithm}
+// \caption{Ic estimation}
+// \begin{algorithmic}
+// \WHILE{$\abs( \max(P_i) - 1 )> tolp$ :}
+//     \IF{$p < r$}
+//         \STATE $q = $ \CALL{Partition}{$A, p, r$}
+//         \STATE \CALL{Quicksort}{$A, p, q - 1$}
+//         \STATE \CALL{Quicksort}{$A, q + 1, r$}
+//     \ENDIF
+// \ENDWHILE
+// \PROCEDURE{Partition}{$A, p, r$}
+//     \STATE $x = A[r]$
+//     \STATE $i = p - 1$
+//     \FOR{$j = p$ \TO $r - 1$}
+//         \IF{$A[j] < x$}
+//             \STATE $i = i + 1$
+//             \STATE exchange
+//             $A[i]$ with $A[j]$
+//         \ENDIF
+//         \STATE exchange $A[i]$ with $A[r]$
+//     \ENDFOR
+// \ENDPROCEDURE
+// \end{algorithmic}
+// \end{algorithm}
+// ....
 
 
 .Algorithm example with the MAX criterion
@@ -166,13 +166,13 @@ In order to have find the critical current, we need to have criteria to stop the
 \begin{algorithm}
     \caption{Ic estimation}
     \begin{algorithmic}
-        \WHILE{$\abs( \max(P_i) - 1 )> tolp$ :}   
+        \WHILE{$abs( \max(P_i) - 1 )> tolp$ :}   
             \STATE $err=1$
             \WHILE{$err > tolAz$ :}
                 \STATE $A_0=A$ 
                 \STATE Run FEM problem
                 \FOR{i in range(0,$n_c$) :} 
-                    \STATE $Ics=\int_{Omega_i} J_c(B)$             
+                    \STATE $Ics=\int_{\Omega_i} J_c(B)$             
                     \STATE $P_i=I_0/Ics$
                 \ENDFOR
                 \STATE $err=||A-A_0||_\infty$
