@@ -780,15 +780,15 @@ const layout = {
 {
   "fields": [
     {
-      "scene": "magnetic field B",
+      "scene": "magfield",
       "name": "Magnetic Field B"
     },
     {
-      "scene": "current density J",
+      "scene": "currden",
       "name": "Current Density J"
     },
     {
-      "scene": "magnetic potential A",
+      "scene": "magpot",
       "name": "Magnetic Potential A"
     }
   ]
@@ -802,15 +802,15 @@ const layout = {
 {
   "fields": [
     {
-      "scene": "magnetic field B",
+      "scene": "magfield",
       "name": "Magnetic Field B"
     },
     {
-      "scene": "current density J",
+      "scene": "currden",
       "name": "Current Density J"
     },
     {
-      "scene": "magnetic potential A",
+      "scene": "magpot",
       "name": "Magnetic Potential A"
     }
   ]
@@ -820,15 +820,15 @@ const layout = {
 {
   "fields": [
     {
-      "scene": "magnetic field B",
+      "scene": "magfield",
       "name": "Magnetic Field B"
     },
     {
-      "scene": "current density J",
+      "scene": "currden",
       "name": "Current Density J"
     },
     {
-      "scene": "magnetic potential A",
+      "scene": "magpot",
       "name": "Magnetic Potential A"
     }
   ]
