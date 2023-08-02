@@ -1137,7 +1137,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>Comsol</strong> on the Ox axis across the tapes at the instants \(t=0.02s\).</p>
 </div>
-<div id="ploty_e47e530b-59cf-4f44-8386-cd638838ea0e"></div>
+<div id="ploty_689bed51-6a31-4321-a48c-4e595ceb1e7f"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/74e92a07be125301d0281d1eaab70d63/raw/33f3beee63f4755745c0256a309d08c7875947fc/Tapes_TAform_2D_J.csv")
     .then((d) => {
@@ -1164,7 +1164,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_e47e530b-59cf-4f44-8386-cd638838ea0e', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_689bed51-6a31-4321-a48c-4e595ceb1e7f', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1194,7 +1194,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the y-component of the magnetic flux density on the Ox axis across the tapes at the instants \(t=0.02s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_dece7f76-4141-4b92-adaf-4f0f67409800"></div>
+<div id="ploty_3526a4c8-0075-4faa-8c5d-a8c7f73dfb90"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/092c6c0460388a1766ac3612323a9d4b/raw/19cfeef00bdf559cab54a337c3b4287ddc22f4e3/Tapes_TAform_2D_By.csv")
     .then((d) => {
@@ -1221,7 +1221,7 @@ const layout = {
   yaxis: {title: 'By (T)'}
 }
 
-      Plotly.newPlot('ploty_dece7f76-4141-4b92-adaf-4f0f67409800', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_3526a4c8-0075-4faa-8c5d-a8c7f73dfb90', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
