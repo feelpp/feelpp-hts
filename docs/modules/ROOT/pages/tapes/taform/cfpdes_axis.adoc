@@ -1,10 +1,10 @@
 :page-plotly: true
+:page-vtkjs: true
 = HTS Tapes in Axisymmetric coordinates
 
 :stem: latexmath
 :toc: left
 
-:page-vtkjs: true
 
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
