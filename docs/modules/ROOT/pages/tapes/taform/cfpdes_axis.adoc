@@ -798,7 +798,7 @@ const layout = {
 }
 ----
 
-WARNING : Scroll up on the window to make the figure appear
+WARNING: Scroll up on the window to make the figure appear
 
 [cols="a,a"]
 |===
@@ -839,5 +839,5 @@ WARNING : Scroll up on the window to make the figure appear
   ]
 }
 ----
-
+^| stem:[t=0.005s] | stem:[t=0.010s]
 |===
