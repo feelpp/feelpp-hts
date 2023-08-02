@@ -775,6 +775,25 @@ const layout = {
 ^|*L2 Relative Error Norm* : stem:[3.02 \%]
 |===
 
+[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca3dd9b0e9570499e1cc56/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magnetic field B",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "current density J",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magnetic potential A",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----
 
 [cols="a,a"]
 |===
