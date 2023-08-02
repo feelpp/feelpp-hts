@@ -841,3 +841,5 @@ WARNING: Scroll up on the window to make the figure appear
 ----
 ^| stem:[t=0.005s] | stem:[t=0.010s]
 |===
+
+WARNING: Scroll up on the window to make the figure appear
