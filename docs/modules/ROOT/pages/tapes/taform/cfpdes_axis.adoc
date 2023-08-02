@@ -778,31 +778,27 @@ const layout = {
 === Interactive view
 
 
-[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca48ceb0e9570499e1cc66/download]
-----
-{
-  "fields": [
-    {
-      "scene": "magfield",
-      "name": "Magnetic Field B"
-    },
-    {
-      "scene": "currden",
-      "name": "Current Density J"
-    },
-    {
-      "scene": "magpot",
-      "name": "Magnetic Potential A"
-    }
-  ]
-}
-----
-
-WARNING: Scroll up on the window to make the figure appear
-
 [cols="a,a"]
 |===
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca48ceb0e9570499e1cc66/download]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5485b0e9570499e1cc73/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc70/download]
 ----
 {
   "fields": [
@@ -821,27 +817,43 @@ WARNING: Scroll up on the window to make the figure appear
   ]
 }
 ----
-stem:[t=0.005s] | [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca4247b0e9570499e1cc5d/download]
-----
-{
-  "fields": [
-    {
-      "scene": "magfield",
-      "name": "Magnetic Field B"
-    },
-    {
-      "scene": "currden",
-      "name": "Current Density J"
-    },
-    {
-      "scene": "magpot",
-      "name": "Magnetic Potential A"
-    }
-  ]
-}
-----
-stem:[t=0.005s]
 ^| stem:[t=0.005s] | stem:[t=0.010s]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc6d/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc6a/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----
+^| stem:[t=0.015s] | stem:[t=0.020s]
 |===
-
-WARNING: Scroll up on the window to make the figure appear
