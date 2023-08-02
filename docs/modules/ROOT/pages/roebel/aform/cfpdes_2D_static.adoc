@@ -136,13 +136,13 @@ In order to have find the critical current, we need to have criteria to stop the
 \begin{algorithm}
 \caption{I_c estimation}
 \begin{algorithmic}
-\WHILE{Quicksort}
+\PROCEDURE{Quicksort}{$A, p, r$}
     \IF{$p < r$}
         \STATE $q = $ \CALL{Partition}{$A, p, r$}
         \STATE \CALL{Quicksort}{$A, p, q - 1$}
         \STATE \CALL{Quicksort}{$A, q + 1, r$}
     \ENDIF
-\ENDWHILE
+\ENDPROCEDURE
 \PROCEDURE{Partition}{$A, p, r$}
     \STATE $x = A[r]$
     \STATE $i = p - 1$
@@ -159,6 +159,7 @@ In order to have find the critical current, we need to have criteria to stop the
 \end{algorithm}
 ....
 
+test test test
 
 .Algorithm example with the MAX criterion
 [.pseudocode]
@@ -166,9 +167,9 @@ In order to have find the critical current, we need to have criteria to stop the
 \begin{algorithm}
     \caption{I_c estimation}
     \begin{algorithmic}
-        \WHILE{$\abs( \max(P_i) - 1 )> tolp$ :}   
+        // \WHILE{$\abs( \max(P_i) - 1 )> tolp$ :}   
             \STATE $err=1$
-            \WHILE{$err > tolAz$ :}
+            // \WHILE{$err > tolAz$ :}
                 \STATE $A_0=A$ 
                 \STATE Run FEM problem
                 \FOR{i in range(0,n_c) :} 
@@ -176,9 +177,9 @@ In order to have find the critical current, we need to have criteria to stop the
                     \STATE $P_i=I_0/Ics$
                 \ENDFOR
                 \STATE $err=||A-A_0||_\infty$
-            \ENDWHILE
+            // \ENDWHILE
             \STATE $I_0=2*I_0/(1+\max(P_i))$
-        \ENDWHILE
+        // \ENDWHILE
         \STATE
         \RETURN $I_c=n_c*I_0$
     \end{algorithmic}
