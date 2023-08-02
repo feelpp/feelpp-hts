@@ -775,6 +775,9 @@ const layout = {
 ^|*L2 Relative Error Norm* : stem:[3.02 \%]
 |===
 
+=== Interactive view
+
+
 [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca48ceb0e9570499e1cc66/download]
 ----
 {
@@ -794,6 +797,8 @@ const layout = {
   ]
 }
 ----
+
+WARNING : Scroll up on the window to make the figure appear
 
 [cols="a,a"]
 |===
