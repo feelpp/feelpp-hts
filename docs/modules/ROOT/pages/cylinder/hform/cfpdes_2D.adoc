@@ -1,10 +1,10 @@
+:page-plotly: true
+:page-vtkjs: true
+
 = HTS Bulk Cylinder in 2D coordinates
 
 :stem: latexmath
 :toc: left
-
-:page-vtkjs: true
-:page-plotly: true
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
