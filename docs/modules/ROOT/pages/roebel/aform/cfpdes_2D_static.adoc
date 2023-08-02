@@ -142,6 +142,7 @@ In order to have find the critical current, we need to have criteria to stop the
         \STATE \CALL{Quicksort}{$A, p, q - 1$}
         \STATE \CALL{Quicksort}{$A, q + 1, r$}
     \ENDIF
+    \STATE n_c
 \ENDPROCEDURE
 \PROCEDURE{Partition}{$A, p, r$}
     \STATE $x = A[r]$
@@ -164,14 +165,14 @@ In order to have find the critical current, we need to have criteria to stop the
 [.pseudocode]
 ....
 \begin{algorithm}
-    \caption{$I_c$ estimation}
+    \caption{Ic estimation}
     \begin{algorithmic}
         \WHILE{$\abs( \max(P_i) - 1 )> tolp$ :}   
             \STATE $err=1$
             \WHILE{$err > tolAz$ :}
                 \STATE $A_0=A$ 
                 \STATE Run FEM problem
-                \FOR{i in range(0,n_c) :} 
+                \FOR{i in range(0,$n_c$) :} 
                     \STATE $Ics=\int_{Omega_i} J_c(B)$             
                     \STATE $P_i=I_0/Ics$
                 \ENDFOR
