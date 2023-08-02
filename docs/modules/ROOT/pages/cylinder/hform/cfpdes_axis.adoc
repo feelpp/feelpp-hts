@@ -657,3 +657,58 @@ const layout = {
 |*t3* stem:[=15s]
 ^|*L2 Relative Error Norm* : stem:[6.66 \%]
 |===
+
+
+
+=== Interactive view
+
+
+[cols="a,a"]
+|===
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca6372b0e9570499e1cc9d/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    }
+  ]
+}
+---- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca6371b0e9570499e1cc9a/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    }
+  ]
+}
+----
+^| stem:[t=5s] ^| stem:[t=10s]
+2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca6371b0e9570499e1cc97/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    }
+  ]
+}
+---- 
+2+^| stem:[t=15s]
+|===

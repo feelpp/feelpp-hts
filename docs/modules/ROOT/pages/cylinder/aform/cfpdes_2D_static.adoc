@@ -489,3 +489,25 @@ image::Cylinder/A-Formulation/cfpdes_2D/cyl_A_2D_stat_B.png[,width=800,title="Ma
 //                                  } );
 // </script>
 // ++++
+
+=== Interactive view
+
+[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5d40b0e9570499e1cc82/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----
