@@ -802,7 +802,7 @@ WARNING: Scroll up on the window to make the figure appear
 
 [cols="a,a"]
 |===
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca4247b0e9570499e1cc5a/download]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca48ceb0e9570499e1cc66/download]
 ----
 {
   "fields": [
