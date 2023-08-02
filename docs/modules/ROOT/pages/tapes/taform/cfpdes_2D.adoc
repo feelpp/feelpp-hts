@@ -857,4 +857,87 @@ const layout = {
 |===
 ^|*L2 Relative Error Norm* : stem:[9.11 \%]
 |===
-// 
+
+
+=== Interactive view
+
+
+[cols="a,a"]
+|===
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5947b0e9570499e1cc76/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+---- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5947b0e9570499e1cc79/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----
+^| stem:[t=0.005s] ^| stem:[t=0.010s]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5947b0e9570499e1cc7c/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+---- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5947b0e9570499e1cc7f/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----
+^| stem:[t=0.015s] ^| stem:[t=0.020s]
+|===
