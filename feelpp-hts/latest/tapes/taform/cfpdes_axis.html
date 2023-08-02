@@ -1106,7 +1106,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the distribution of the electric current density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_e003dfac-35ef-4ead-852e-7d3078336311"></div>
+<div id="ploty_6c183d20-1232-422d-85bc-dcc9e8760dc3"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d28260009a98ca5d2d90b285df1779c/raw/a1ec4f6c937cdeab0b98a0d8745cb6d4fa69dd55/Tapes_TAform_axi_J.csv")
     .then((d) => {
@@ -1133,7 +1133,7 @@ const layout = {
   yaxis: {title: 'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_e003dfac-35ef-4ead-852e-7d3078336311', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_6c183d20-1232-422d-85bc-dcc9e8760dc3', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1163,7 +1163,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the r-component of the magnetic flux density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_7c5add9b-f8a7-4fd9-880f-6a04cbfbbf43"></div>
+<div id="ploty_c887b418-ac46-4681-a741-3b928d03a7fc"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/5b8e524ec754ff3533001017cb95aeab/raw/f3d22307b582fc4f478e10e1f7a56eb2a0e1df63/Tapes_TAform_axi_B.csv")
     .then((d) => {
@@ -1190,7 +1190,7 @@ const layout = {
   yaxis: {title: 'Br (T)'}
 }
 
-      Plotly.newPlot('ploty_7c5add9b-f8a7-4fd9-880f-6a04cbfbbf43', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_c887b418-ac46-4681-a741-3b928d03a7fc', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1211,7 +1211,7 @@ const layout = {
 <div class="paragraph">
 <p>We also compare the distribution of the z-component of the magnetic flux density on the Or axis across the tapes at the instants \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_bb93307e-9ae3-41a6-a5c5-a69f02995426"></div>
+<div id="ploty_fe6a77bc-edce-44ad-8ad7-7aac4a337b2c"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d8bcd1932d20151bf73ffc503a0e06e/raw/c269d5fdc58098fd27721243695a8e41a90b060c/Tapes_TAform_axi_Bz.csv")
     .then((d) => {
@@ -1238,7 +1238,7 @@ const layout = {
   yaxis: {title: 'Bz (T)'}
 }
 
-      Plotly.newPlot('ploty_bb93307e-9ae3-41a6-a5c5-a69f02995426', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_fe6a77bc-edce-44ad-8ad7-7aac4a337b2c', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1253,6 +1253,60 @@ const layout = {
 <td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
 <p><strong>L2 Relative Error Norm</strong> : \(3.02 \%\)</p>
 </div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_3feb63e3-907d-464a-8d2d-bab072dfb027" style="height: 500px; width: 100%;"></div>
+<script>
+feelppVtkJs.createSceneImporter("vtkjs_3feb63e3-907d-464a-8d2d-bab072dfb027", {
+  fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca3dd9b0e9570499e1cc56/download",
+  objects: {
+  "fields": [
+    {
+      "scene": "magnetic field B",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "current density J",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magnetic potential A",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+})
+</script></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div id="vtkjs_08a88815-012a-4559-857e-0b3df256210d" style="height: 500px; width: 100%;"></div>
+<script>
+feelppVtkJs.createSceneImporter("vtkjs_08a88815-012a-4559-857e-0b3df256210d", {
+  fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca3dd8b0e9570499e1cc53/download",
+  objects: {
+  "fields": [
+    {
+      "scene": "magnetic field B",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "current density J",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magnetic potential A",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+})
+</script></div></td>
 </tr>
 </tbody>
 </table>
