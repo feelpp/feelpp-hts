@@ -994,7 +994,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>getDP</strong> on the \(O_r\) axis, at the mid-height of the cylinder, at time \(t_3\) for a maximum applied field of 1 T and \(n=20\).</p>
 </div>
-<div id="ploty_9e31d1f4-2dab-4f61-8ebe-dbff2efa851e"></div>
+<div id="ploty_1c658699-5cb5-4d9c-ac8e-d1d079573780"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/f0e0c3964961d5ff24b3f6112a5ee8c2/raw/412e1e1966ba253110630b173475c16d285f0457/Cylinder_Aform_axi_J.csv")
     .then((d) => {
@@ -1021,7 +1021,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_9e31d1f4-2dab-4f61-8ebe-dbff2efa851e', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_1c658699-5cb5-4d9c-ac8e-d1d079573780', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1051,7 +1051,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants \(t_1\), \(t_2\) and \(t_3\) with <strong>Feelpp</strong> and <strong>getDP</strong>.</p>
 </div>
-<div id="ploty_8f44bfb6-7607-40d6-969d-cae222bf652a"></div>
+<div id="ploty_abbe63e3-62d6-4703-b8ea-2a5104aa32dd"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/3d503631cbd555c9c595f22e3f2eaf29/raw/180bce0567d4344728879b723ae65fc449c48f84/Cylinder_Aform_axi_B.csv")
     .then((d) => {
@@ -1110,7 +1110,7 @@ const layout = {
   yaxis: {title: 'Bz (T)'}
 }
 
-      Plotly.newPlot('ploty_8f44bfb6-7607-40d6-969d-cae222bf652a', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_abbe63e3-62d6-4703-b8ea-2a5104aa32dd', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
