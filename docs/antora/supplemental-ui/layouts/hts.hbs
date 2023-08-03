@@ -45,9 +45,10 @@
           </div>
           {{/if}}
           {{/with}}
-          {{#with (get-page-cards @root.page 'benchmark' true)}}
+          <h2>Roebel Cables</h2>
+          {{#with (get-page-cards @root.page 'roebel' true)}}
           {{#if this.length}}
-          <h2 id="benchmarks">Benchmarks</h2>
+          <h3 id="benchmarks">A Formulation</h3>
           <div class="benchmarks">
             {{#each this}}
             <div class="benchmark">{{> page-card this}}</div>
@@ -55,9 +56,10 @@
           </div>
           {{/if}}
           {{/with}}
-          {{#with (get-page-cards @root.page 'case' true)}}
+          <h2>Tapes</h2>
+          {{#with (get-page-cards @root.page 'tape' true)}}
           {{#if this.length}}
-          <h2 id="cases">Cases</h2>
+          <h2 id="cases">T-A Formulation</h2>
           <div class="cases">
             {{#each this}}
             <div class="case">{{> page-card this}}</div>

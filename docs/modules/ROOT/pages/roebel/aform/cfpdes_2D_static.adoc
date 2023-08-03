@@ -2,7 +2,9 @@
 :stem: latexmath
 
 = Critical current in Roebel tapes in 2D coordinates
-
+:page-tags: roebel
+:page-illustration: Examples/roebel_A_2D_B_2.png
+:description: A Formulation
 :toc: left
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases

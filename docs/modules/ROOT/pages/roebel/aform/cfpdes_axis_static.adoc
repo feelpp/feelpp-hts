@@ -3,7 +3,9 @@
 
 
 = Critical current in Roebel tapes in axisymmetric coordinates
-
+:page-tags: roebel
+:page-illustration: Examples/roebel_A_axi_B_2.png
+:description: A Formulation
 :stem: latexmath
 :toc: left
 
