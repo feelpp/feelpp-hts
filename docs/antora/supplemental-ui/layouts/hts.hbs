@@ -1,62 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   {{> head defaultPageTitle='Untitled'}}
 </head>
+
 <body class="article docs-case-study{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">
-{{> header}}
+  {{> header}}
 
-<div class="body">
-  {{> nav componentOrder=page.attributes.component-order}}
-  <main class="article">
-    <div class="toolbar" role="navigation">
-      {{> nav-toggle}}
-      {{#with site.homeUrl}}
+  <div class="body">
+    {{> nav componentOrder=page.attributes.component-order}}
+    <main class="article">
+      <div class="toolbar" role="navigation">
+        {{> nav-toggle}}
+        {{#with site.homeUrl}}
         <a href="{{{relativize this}}}" class="home-link{{#if @root.page.home}} is-current{{/if}}"></a>
-      {{/with}}
-      {{> breadcrumbs}}
-    </div>
+        {{/with}}
+        {{> breadcrumbs}}
+      </div>
 
-    <div class="content">
-      <article class="doc">
-        {{#with @root.page.title}}
+      <div class="content">
+        <article class="doc">
+          {{#with @root.page.title}}
           <h1 class="page">{{{this}}}</h1>
-        {{/with}}
-        {{#with (get-page-cards @root.page 'cylinder' true)}}
+          {{/with}}
+          {{#with (get-page-cards @root.page 'cylinder' true)}}
           {{#if this.length}}
-          <h2>Cylinder</h2>
-          <div class="cylinders">
+          <h2 id="manuals">Cylinder</h2>
+          <div class="manuals">
             {{#each this}}
-            <div class="cylinder">{{> page-card this}}</div>
+            <div class="manual">{{> page-card this}}</div>
             {{/each}}
           </div>
           {{/if}}
-        {{/with}}
-        {{#with (get-page-cards @root.page 'roebelcable' true)}}
+          {{/with}}
+          {{#with (get-page-cards @root.page 'benchmark' true)}}
           {{#if this.length}}
-          <h2>Roebel Cables</h2>
-          <div class="roebelcables">
+          <h2 id="benchmarks">Benchmarks</h2>
+          <div class="benchmarks">
             {{#each this}}
-            <div class="roebelcable">{{> page-card this}}</div>
+            <div class="benchmark">{{> page-card this}}</div>
             {{/each}}
           </div>
           {{/if}}
-        {{/with}}
-        {{#with (get-page-cards @root.page 'tape' true)}}
+          {{/with}}
+          {{#with (get-page-cards @root.page 'case' true)}}
           {{#if this.length}}
-          <h2>Tapes</h2>
-          <div class="tapes">
+          <h2 id="cases">Cases</h2>
+          <div class="cases">
             {{#each this}}
-            <div class="tape">{{> page-card this}}</div>
+            <div class="case">{{> page-card this}}</div>
             {{/each}}
           </div>
           {{/if}}
-        {{/with}}
-      </article>
-    </div>
-  </main>
-</div>
+          {{/with}}
+        </article>
+      </div>
+    </main>
+  </div>
 
-{{> footer}}
+  {{> footer}}
 </body>
+
 </html>
