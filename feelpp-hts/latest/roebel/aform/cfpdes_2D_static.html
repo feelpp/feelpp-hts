@@ -368,23 +368,17 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">python create_mesh_part.py --ncore 32</code></pre>
+<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">python create_mesh_part.py --ncore 32</code></pre>
 </div>
 </div>
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
 <div class="paragraph">
 <p>The command line to run this case is</p>
 </div>
-<div id="command-line" class="listingblock">
+<div id="command-line2" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 32 python Roebel.py --criteria MAX</code></pre>
+<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">mpirun -np 32 python Roebel.py --criteria MAX</code></pre>
 </div>
 </div>
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
 <table class="tableblock frame-all grid-all" style="width: 50%;">
 <caption class="title">Table 1. Execution time</caption>
 <colgroup>

@@ -399,12 +399,9 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg --cfpdes.gmsh.hsize=1e-3</code></pre>
+<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=tapes_axis.cfg --cfpdes.gmsh.hsize=1e-3</code></pre>
 </div>
 </div>
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
 <table class="tableblock frame-all grid-all" style="width: 50%;">
 <caption class="title">Table 1. Execution time</caption>
 <colgroup>
@@ -1166,7 +1163,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the distribution of the electric current density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_8001caf5-e477-44e2-ae9e-4bdca92cd775"></div>
+<div id="ploty_a9c1412b-de4c-47c0-adfd-6517b95d5dcc"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d28260009a98ca5d2d90b285df1779c/raw/a1ec4f6c937cdeab0b98a0d8745cb6d4fa69dd55/Tapes_TAform_axi_J.csv")
     .then((d) => {
@@ -1193,7 +1190,7 @@ const layout = {
   yaxis: {title: 'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_8001caf5-e477-44e2-ae9e-4bdca92cd775', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_a9c1412b-de4c-47c0-adfd-6517b95d5dcc', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1223,7 +1220,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the r-component of the magnetic flux density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_e45f788a-3379-446f-8740-cd652aa2f8f8"></div>
+<div id="ploty_e7ed5713-3626-4d07-95ab-bdd41e0542c4"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/5b8e524ec754ff3533001017cb95aeab/raw/f3d22307b582fc4f478e10e1f7a56eb2a0e1df63/Tapes_TAform_axi_B.csv")
     .then((d) => {
@@ -1250,7 +1247,7 @@ const layout = {
   yaxis: {title: 'Br (T)'}
 }
 
-      Plotly.newPlot('ploty_e45f788a-3379-446f-8740-cd652aa2f8f8', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_e7ed5713-3626-4d07-95ab-bdd41e0542c4', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1271,7 +1268,7 @@ const layout = {
 <div class="paragraph">
 <p>We also compare the distribution of the z-component of the magnetic flux density on the Or axis across the tapes at the instants \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_0be32613-cc76-48dd-abc6-c629c6c472fc"></div>
+<div id="ploty_c3505e99-f12a-45b9-abd7-f8893fac852c"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d8bcd1932d20151bf73ffc503a0e06e/raw/c269d5fdc58098fd27721243695a8e41a90b060c/Tapes_TAform_axi_Bz.csv")
     .then((d) => {
@@ -1298,7 +1295,7 @@ const layout = {
   yaxis: {title: 'Bz (T)'}
 }
 
-      Plotly.newPlot('ploty_0be32613-cc76-48dd-abc6-c629c6c472fc', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_c3505e99-f12a-45b9-abd7-f8893fac852c', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1326,9 +1323,9 @@ const layout = {
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_56511e68-7101-4a5e-b6f3-c56641c56bc2" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_59d02835-6df7-4129-8b54-891bc2a2cf8f" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_56511e68-7101-4a5e-b6f3-c56641c56bc2", {
+feelppVtkJs.createSceneImporter("vtkjs_59d02835-6df7-4129-8b54-891bc2a2cf8f", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5485b0e9570499e1cc73/download",
   objects: {
   "fields": [
@@ -1348,9 +1345,9 @@ feelppVtkJs.createSceneImporter("vtkjs_56511e68-7101-4a5e-b6f3-c56641c56bc2", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_7eedb09b-5066-40c7-9938-f8934e3ce29c" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_e61e9afe-ffb1-4d50-84af-adcae24ad786" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_7eedb09b-5066-40c7-9938-f8934e3ce29c", {
+feelppVtkJs.createSceneImporter("vtkjs_e61e9afe-ffb1-4d50-84af-adcae24ad786", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc70/download",
   objects: {
   "fields": [
@@ -1380,9 +1377,9 @@ feelppVtkJs.createSceneImporter("vtkjs_7eedb09b-5066-40c7-9938-f8934e3ce29c", {
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_aaf632c1-ba32-4da4-b1c0-8b2dcf6479a2" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_f8fd76f9-881b-4f26-989f-7762bfd0da6a" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_aaf632c1-ba32-4da4-b1c0-8b2dcf6479a2", {
+feelppVtkJs.createSceneImporter("vtkjs_f8fd76f9-881b-4f26-989f-7762bfd0da6a", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc6d/download",
   objects: {
   "fields": [
@@ -1402,9 +1399,9 @@ feelppVtkJs.createSceneImporter("vtkjs_aaf632c1-ba32-4da4-b1c0-8b2dcf6479a2", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_799b9892-d37b-4f1c-9452-f460ff814a94" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_e0f95306-e944-4b66-83bb-c44e77b2734d" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_799b9892-d37b-4f1c-9452-f460ff814a94", {
+feelppVtkJs.createSceneImporter("vtkjs_e0f95306-e944-4b66-83bb-c44e77b2734d", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc6a/download",
   objects: {
   "fields": [
