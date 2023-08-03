@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {{> head defaultPageTitle='Untitled'}}
+</head>
+
+<body class="article docs-hts{{#with (or page.attributes.role page.role)}} {{{this}}}{{/with}}">
+  {{> header}}
+
+  <div class="body">
+    {{> nav componentOrder=page.attributes.component-order}}
+    <main class="article">
+      <div class="toolbar" role="navigation">
+        {{> nav-toggle}}
+        {{#with site.homeUrl}}
+        <a href="{{{relativize this}}}" class="home-link{{#if @root.page.home}} is-current{{/if}}"></a>
+        {{/with}}
+        {{> breadcrumbs}}
+      </div>
+
+      <div class="content">
+        <article class="doc">
+          {{#with @root.page.title}}
+          <h1 class="page">{{{this}}}</h1>
+          {{/with}}
+          {{#with (get-page-cards @root.page 'cylinder' true)}}
+          {{#if this.length}}
+          <h2 id="cylinders">Cylinders</h2>
+          <div class="cylinders">
+            {{#each this}}
+            <div class="cylinder">{{> page-card this}}</div>
+            {{/each}}
+          </div>
+          {{/if}}
+          {{/with}}
+          {{#with (get-page-cards @root.page 'roebelcable' true)}}
+          {{#if this.length}}
+          <h2 id="roebelcables">Roebel Cables</h2>
+          <div class="roebelcables">
+            {{#each this}}
+            <div class="roebelcable">{{> page-card this}}</div>
+            {{/each}}
+          </div>
+          {{/if}}
+          {{/with}}
+          {{#with (get-page-cards @root.page 'tape' true)}}
+          {{#if this.length}}
+          <h2 id="tapes">Tapes</h2>
+          <div class="tapes">
+            {{#each this}}
+            <div class="tape">{{> page-card this}}</div>
+            {{/each}}
+          </div>
+          {{/if}}
+          {{/with}}
+        </article>
+      </div>
+    </main>
+  </div>
+
+  {{> footer}}
+</body>
+
+</html>
