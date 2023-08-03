@@ -72,7 +72,7 @@ mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg
 ----
 
 ++++
-<button class="btn" data-clipboard-target="#command-line">
+<button class="btn" data-clipboard-target="mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3">
 Copy command line to clipboard
 </button>
 ++++
