@@ -27,7 +27,7 @@
           <h2>Cylinder</h2>
           {{#with (get-page-cards @root.page 'aform' true)}}
           {{#if this.length}}
-          <h2 id="manuals">A Formulation</h2>
+          <h3 id="manuals">A Formulation</h3>
           <div class="manuals">
             {{#each this}}
             <div class="manual">{{> page-card this}}</div>
@@ -37,7 +37,7 @@
           {{/with}}
           {{#with (get-page-cards @root.page 'hform' true)}}
           {{#if this.length}}
-          <h2 id="manuals">H Formulation</h2>
+          <h3 id="manuals">H Formulation</h3>
           <div class="manuals">
             {{#each this}}
             <div class="manual">{{> page-card this}}</div>
