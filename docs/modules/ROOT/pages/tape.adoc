@@ -1,0 +1,23 @@
+= Tapes
+:page-layout: tape
+// :toc: left
+
+== Tapes
+
+=== T-A Homogeneous Formulation
+
+
+* xref:tapes/taform/cfpdes_axis.adoc[cfpdes axis]
+
+[cols="1,3"]
+|===
+|image:Examples/tapes_TA_axi_B.png[B,100%] | Magnetic transient model on a HTS stacked tapes geometry surrounded by air in axisymmetric coordinates using the T-A Homogeneous Formulation and the E-J power law.
+|===
+
+* xref:tapes/taform/cfpdes_2D.adoc[cfpdes 2D]
+
+[cols="1,3"]
+|===
+|image:Examples/tapes_TA_2D_B.png[B,100%] | Magnetic transient model on a HTS stacked tapes geometry surrounded by air in 2D coordinates using the T-A Homogeneous Formulation and the E-J power law.
+|===
+

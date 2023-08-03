@@ -1,0 +1,38 @@
+= Cylinder
+:page-layout: cylinder
+// :toc: left
+
+== Cylinder
+
+=== A Formulation
+
+* xref:cylinder/aform/cfpdes_axis.adoc[cfpdes axis]
+
+[cols="1,3"]
+|===
+|image:Examples/cyl_A_axi_B.png[B,100%] | Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in axisymmetric coordinates using the A Formulation and the E-J power law.
+|===
+
+* xref:cylinder/aform/cfpdes_2D_static.adoc[cfpdes 2D static]
+
+[cols="1,3"]
+|===
+|image:Examples/cyl_A_2D_B.png[B,100%] | Magnetic static model on a HTS bulk cylinder geometry surrounded by air in 2D coordinates using the A Formulation and the Erf function.
+|===
+
+=== H Formulation
+
+* xref:cylinder/hform/cfpdes_axis.adoc[cfpdes axis]
+
+[cols="1,3"]
+|===
+|image:Examples/cyl_H_axi_B.png[B,100%] | Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in axisymmetric coordinates using the H Formulation and the E-J power law.
+|===
+
+* xref:cylinder/hform/cfpdes_2D.adoc[cfpdes 2D]
+
+[cols="1,3"]
+|===
+|image:Examples/cyl_H_2D_B.png[B,100%] | Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in 2D coordinates using the H Formulation and the E-J power law.
+|===
+
