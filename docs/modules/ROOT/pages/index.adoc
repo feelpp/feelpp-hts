@@ -1,4 +1,4 @@
-= Examples
+= {feelpp} HTS Examples
 :page-layout: hts
 // :toc: left
 
