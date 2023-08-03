@@ -1,4 +1,5 @@
 = Examples
+:page-layout: hts
 // :toc: left
 
 == Cylinder
