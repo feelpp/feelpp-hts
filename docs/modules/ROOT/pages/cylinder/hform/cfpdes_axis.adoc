@@ -2,7 +2,9 @@
 :page-vtkjs: true
 
 = HTS Bulk Cylinder in Axisymmetric coordinates
-
+:page-tags: cylinder
+:page-illustration: Examples/cyl_H_axi_B_2.png 
+:description: H Formulation
 :stem: latexmath
 :toc: left
 
