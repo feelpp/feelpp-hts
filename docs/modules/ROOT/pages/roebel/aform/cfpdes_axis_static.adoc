@@ -1,13 +1,10 @@
-:page-plotly: true
-:page-vtkjs: true
-
+:stem: latexmath
+:toc: left
 
 = Critical current in Roebel tapes in axisymmetric coordinates
 :page-tags: roebel
 :page-illustration: Examples/roebel_A_axi_B_2.png
 :description: Self-consistent python algorithm to estimate the critical current on axisymmetric magnetic static model with A Formulation and E-J power law
-:stem: latexmath
-:toc: left
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
@@ -47,12 +44,6 @@ First create the mesh :
 python create_mesh_part.py --ncore 32
 ----
 
-// ++++
-// <button class="btn" data-clipboard-target="#command-line">
-// Copy command line to clipboard
-// </button>
-// ++++
-
 The command line to run this case is
 
 [[command-line2]]
@@ -60,12 +51,6 @@ The command line to run this case is
 ----
 mpirun -np 32 python Roebel_coil.py --criteria MAX
 ----
-
-// ++++
-// <button class="btn" data-clipboard-target="#command-line">
-// Copy command line to clipboard
-// </button>
-// ++++
 
 .Execution time
 [width="50%",options="header,footer"]
@@ -229,7 +214,6 @@ The case data files are available in Github link:{uri-data}/Roebel_cables/A-Form
 
 This section of the Model JSON file setup the mesh. It will also load the previous field for the stem:[L_\infty] error norm :
  
-//.Example of Materials section
 [source,json]
 ----
 "Meshes":
@@ -261,7 +245,6 @@ This section of the Model JSON file setup the mesh. It will also load the previo
 
 This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
 
-//.Example of Materials section
 [source,json]
 ----
 "Materials":
@@ -304,7 +287,6 @@ The fit formula for the critical current density stem:[J_c(B)] used here is desc
 
 This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
 
-//.Example of Materials section
 [source,json]
 ----
 "Models":<1>

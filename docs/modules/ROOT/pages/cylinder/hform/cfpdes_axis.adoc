@@ -1,13 +1,12 @@
 :page-plotly: true
 :page-vtkjs: true
+:stem: latexmath
+:toc: left
 
 = HTS Bulk Cylinder in Axisymmetric coordinates
 :page-tags: hform
 :page-illustration: Examples/cyl_H_axi_B_2.png 
 :description: Axisymmetric magnetic transient model using H Formulation and E-J power law
-
-:stem: latexmath
-:toc: left
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
@@ -58,12 +57,6 @@ The command line to run this case is
 ----
 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3
 ----
-
-// ++++
-// <button class="btn" data-clipboard-target="#command-line">
-// Copy command line to clipboard
-// </button>
-// ++++
 
 .Execution time
 [width="50%",options="header,footer"]
@@ -162,7 +155,6 @@ The case data files are available in Github link:{uri-data}/Cylinder/H-Formulati
 
 This section of the Model JSON file setup the mesh.
 
-//.Example of Materials section
 [source,json]
 ----
 "Meshes":
@@ -182,7 +174,6 @@ This section of the Model JSON file setup the mesh.
 
 This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
 
-//.Example of Materials section
 [source,json]
 ----
 "Materials":
@@ -210,7 +201,6 @@ This section of the Model JSON file defines material properties linking the Phys
 
 This section of the Model JSON file defines material properties linking the Physical Entities in the mesh data structures to these properties.
 
-//.Example of Materials section
 [source,json]
 ----
 "Models":<1>
