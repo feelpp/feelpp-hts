@@ -593,8 +593,17 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 <img src="../../_images/Cylinder/A-Formulation/cfpdes_2D/Erf_plot.png" alt="Erf plot" width="600">
 </div>
 </div>
-<div class="paragraph">
-<p>This function is not implemented on <strong>feelpp</strong>, so we use a <strong>fit</strong> on a .csv with a large panel of values calculated with the function.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This function is not implemented on <strong>feelpp</strong>, so we use a <strong>fit</strong> on a .csv with a large panel of values calculated with the function.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -950,7 +959,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></code></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_cbf9f660-7864-48f3-892b-3d3a1f3364b7"></div>
+<div id="ploty_85481db9-4608-46e2-90ee-475ef28d2658"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
@@ -977,7 +986,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_cbf9f660-7864-48f3-892b-3d3a1f3364b7', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_85481db9-4608-46e2-90ee-475ef28d2658', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1007,9 +1016,9 @@ const layout = {
 </div>
 <div class="sect2">
 <h3 id="_interactive_view"><a class="anchor" href="#_interactive_view"></a>4.3. Interactive view</h3>
-<div id="vtkjs_491ae4eb-7f67-4d39-87ad-1a2f48a27a27" style="height: 500px; width: 100%;"></div>
+<div id="vtkjs_1e224b19-3d90-481f-ae1b-a9964c705685" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_491ae4eb-7f67-4d39-87ad-1a2f48a27a27", {
+feelppVtkJs.createSceneImporter("vtkjs_1e224b19-3d90-481f-ae1b-a9964c705685", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5d40b0e9570499e1cc82/download",
   objects: {
   "fields": [
