@@ -142,7 +142,7 @@ erf(x)=\frac{2}{\sqrt{\pi}}\int_0^x \exp(-t^2)dt
 
 image::Cylinder/A-Formulation/cfpdes_2D/Erf_plot.png[,width=600]
 
-This function is not implemented on *feelpp*, so we use a *fit* on a .csv with a large panel of values calculated with the function.
+NOTE: This function is not implemented on *feelpp*, so we use a *fit* on a .csv with a large panel of values calculated with the function.
 
 == Data files
 
