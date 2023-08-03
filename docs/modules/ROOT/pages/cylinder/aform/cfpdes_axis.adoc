@@ -66,13 +66,13 @@ with :
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3
 ----
 
 ++++
-<button class="btn" data-clipboard-target="mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3">
+<button class="btn" data-clipboard-target="#command-line">
 Copy command line to clipboard
 </button>
 ++++
