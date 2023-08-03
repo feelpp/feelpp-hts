@@ -5,7 +5,7 @@
 = HTS Bulk Cylinder in 2D coordinates
 :page-tags: aform
 :page-illustration: Examples/cyl_A_2D_B_2.png
-:description: Magnetic static model on a HTS bulk cylinder geometry surrounded by air in 2D coordinates using the A Formulation and the Erf function
+:description: 2D magnetic static model using A Formulation and Erf function
 
 :stem: latexmath
 :toc: left

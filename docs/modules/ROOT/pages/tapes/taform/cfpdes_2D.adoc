@@ -9,7 +9,7 @@
 = HTS Tapes in 2D coordinates
 :page-tags: tape
 :page-illustration: Examples/tapes_TA_2D_B_2.png
-:description: Magnetic transient model on a HTS stacked tapes geometry surrounded by air in 2D coordinates using the T-A Homogeneous Formulation and the E-J power law
+:description: 2D magnetic transient model using T-A Homogeneous Formulation and E-J power law
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
