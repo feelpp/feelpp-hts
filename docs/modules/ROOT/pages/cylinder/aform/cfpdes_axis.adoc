@@ -340,6 +340,7 @@ This section of the Model JSON file defines the boundary conditions.
 The Model CFG (`.cfg`) files allow to pass command line options to {feelpp} applications. In particular, it allows to  define the solution strategy and configure the linear/non-linear algebraic solvers.
 
 The Cfg file used is
+[source,ini]
 ----
 directory=feelpp-hts/cylinder/Aform/cfpdes_axis<1>
 
