@@ -53,16 +53,16 @@ In the air, we give the resistivity a high value like stem:[\rho_\text{air}=1].
 The command line to run this case is
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-++++
+// ++++
+// <button class="btn" data-clipboard-target="#command-line">
+// Copy command line to clipboard
+// </button>
+// ++++
 
 .Execution time
 [width="50%",options="header,footer"]

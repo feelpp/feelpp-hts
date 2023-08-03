@@ -71,11 +71,11 @@ The command line to run this case is
 mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_axis.cfg --cfpdes.gmsh.hsize=1e-3
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-++++
+// ++++
+// <button class="btn" data-clipboard-target="#command-line">
+// Copy command line to clipboard
+// </button>
+// ++++
 
 .Execution time
 

@@ -42,30 +42,30 @@ We introduce :
 First create the mesh :
 
 [[command-line]]
-[source,sh]
+[source,mpirun]
 ----
 python create_mesh_part.py --ncore 32
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-++++
+// ++++
+// <button class="btn" data-clipboard-target="#command-line">
+// Copy command line to clipboard
+// </button>
+// ++++
 
 The command line to run this case is
 
-[[command-line]]
-[source,sh]
+[[command-line2]]
+[source,mpirun]
 ----
 mpirun -np 32 python Roebel_coil.py --criteria MAX
 ----
 
-++++
-<button class="btn" data-clipboard-target="#command-line">
-Copy command line to clipboard
-</button>
-++++
+// ++++
+// <button class="btn" data-clipboard-target="#command-line">
+// Copy command line to clipboard
+// </button>
+// ++++
 
 .Execution time
 [width="50%",options="header,footer"]
