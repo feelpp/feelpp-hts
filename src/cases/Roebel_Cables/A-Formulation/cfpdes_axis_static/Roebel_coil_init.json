@@ -74,7 +74,7 @@
     "Meshes": {
         "cfpdes": {
             "Import": {
-                "filename": "$cfgdir/Roebel_coil.msh"
+                "filename": "$cfgdir/Roebel_coil_p32.json"
             },
             "Fields": {
                 "P": {
