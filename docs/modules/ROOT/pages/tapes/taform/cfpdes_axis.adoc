@@ -3,7 +3,7 @@
 = HTS Tapes in Axisymmetric coordinates
 :page-tags: tape
 :page-illustration: Examples/tapes_TA_axi_B_2.png
-:description: ta form
+:description: Magnetic transient model on a HTS stacked tapes geometry surrounded by air in axisymmetric coordinates using the T-A Homogeneous Formulation and the E-J power law
 :stem: latexmath
 :toc: left
 

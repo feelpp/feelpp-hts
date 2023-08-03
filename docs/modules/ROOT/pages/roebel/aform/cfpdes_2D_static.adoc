@@ -4,7 +4,7 @@
 = Critical current in Roebel tapes in 2D coordinates
 :page-tags: roebel
 :page-illustration: Examples/roebel_A_2D_B_2.png
-:description: A Formulation
+:description: Self-consistent python algorithm to find the critical current Ic, using a magnetic static model on HTS Roebel tapes geometry surrounded by air in 2D coordinates using the A Formulation and the E-J power law
 :toc: left
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
