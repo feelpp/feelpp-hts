@@ -857,7 +857,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>directory=feelpp-hts/cylinder/Aform/cfpdes_2D_static<i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="highlightjs highlight"><code class="language-ini hljs" data-lang="ini">directory=feelpp-hts/cylinder/Aform/cfpdes_2D_static<i class="conum" data-value="1"></i><b>(1)</b>
 
 case.dimension=2<i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -868,7 +868,7 @@ verbose_solvertimer=1<i class="conum" data-value="5"></i><b>(5)</b>
 solver=Picard-OLD<i class="conum" data-value="6"></i><b>(6)</b>
 
 ksp-monitor=1<i class="conum" data-value="7"></i><b>(7)</b>
-snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
+snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -924,7 +924,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_f5ab8921-dc0e-44cc-bbed-99ba0e61f242"></div>
+<div id="ploty_94200237-6c26-4dea-bade-25f1df1a25ab"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
@@ -951,7 +951,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_f5ab8921-dc0e-44cc-bbed-99ba0e61f242', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_94200237-6c26-4dea-bade-25f1df1a25ab', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -981,9 +981,9 @@ const layout = {
 </div>
 <div class="sect2">
 <h3 id="_interactive_view"><a class="anchor" href="#_interactive_view"></a>4.3. Interactive view</h3>
-<div id="vtkjs_c40db333-b311-4b70-8309-f9594ba4d70b" style="height: 500px; width: 100%;"></div>
+<div id="vtkjs_715aa8c3-cf32-4e9c-b83d-50cf288322c9" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_c40db333-b311-4b70-8309-f9594ba4d70b", {
+feelppVtkJs.createSceneImporter("vtkjs_715aa8c3-cf32-4e9c-b83d-50cf288322c9", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5d40b0e9570499e1cc82/download",
   objects: {
   "fields": [
