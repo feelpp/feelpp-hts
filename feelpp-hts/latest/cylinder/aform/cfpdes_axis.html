@@ -177,11 +177,11 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../index.html">Feel++ hts</a>
+    <a class="nav-link" href="../../index.html">Feel++ HTS</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html#_cylinder">Cylinder</a>
+    <a class="nav-link" href="../../index.html">Cylinder</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html#_roebel_cables">Roebel Cables</a>
+    <a class="nav-link" href="../../index.html">Roebel Cables</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -229,7 +229,7 @@ MathJax.Hub.Config({
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html#_tapes">Tapes</a>
+    <a class="nav-link" href="../../index.html">Tapes</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -278,8 +278,8 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Feel++ Template Project</a></li>
-    <li><a href="../../index.html">Feel++ hts</a></li>
-    <li><a href="../../example.html#_cylinder">Cylinder</a></li>
+    <li><a href="../../index.html">Feel++ HTS</a></li>
+    <li><a href="../../index.html">Cylinder</a></li>
     <li>A-Formulation</li>
     <li><a href="cfpdes_axis.html">cfpdes axis</a></li>
   </ul>
@@ -1009,7 +1009,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>getDP</strong> on the \(O_r\) axis, at the mid-height of the cylinder, at time \(t_3\) for a maximum applied field of 1 T and \(n=20\).</p>
 </div>
-<div id="ploty_f09e2aad-adc8-4ac4-90ce-f83e33218635"></div>
+<div id="ploty_01379a1b-2d1a-4d38-a1d2-d41767033fec"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/f0e0c3964961d5ff24b3f6112a5ee8c2/raw/412e1e1966ba253110630b173475c16d285f0457/Cylinder_Aform_axi_J.csv")
     .then((d) => {
@@ -1036,7 +1036,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_f09e2aad-adc8-4ac4-90ce-f83e33218635', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_01379a1b-2d1a-4d38-a1d2-d41767033fec', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1066,7 +1066,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants \(t_1\), \(t_2\) and \(t_3\) with <strong>Feelpp</strong> and <strong>getDP</strong>.</p>
 </div>
-<div id="ploty_f1c47839-de4f-4ac5-a651-83ff968ef49b"></div>
+<div id="ploty_8a99ead3-37a9-4e07-a403-14a5a0df9cae"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/3d503631cbd555c9c595f22e3f2eaf29/raw/180bce0567d4344728879b723ae65fc449c48f84/Cylinder_Aform_axi_B.csv")
     .then((d) => {
@@ -1125,7 +1125,7 @@ const layout = {
   yaxis: {title: 'Bz (T)'}
 }
 
-      Plotly.newPlot('ploty_f1c47839-de4f-4ac5-a651-83ff968ef49b', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_8a99ead3-37a9-4e07-a403-14a5a0df9cae', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1161,9 +1161,9 @@ const layout = {
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_6cc5e229-d05e-4dd3-8505-bab58b4e1e45" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_62b36571-f98c-46e0-a8ce-852f87749178" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_6cc5e229-d05e-4dd3-8505-bab58b4e1e45", {
+feelppVtkJs.createSceneImporter("vtkjs_62b36571-f98c-46e0-a8ce-852f87749178", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc8b/download",
   objects: {
   "fields": [
@@ -1183,9 +1183,9 @@ feelppVtkJs.createSceneImporter("vtkjs_6cc5e229-d05e-4dd3-8505-bab58b4e1e45", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_8a10f0f8-32f9-4a8a-901a-dbb663b11318" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_b6778e4e-9a5d-4ed2-8b78-50c9f760be5d" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_8a10f0f8-32f9-4a8a-901a-dbb663b11318", {
+feelppVtkJs.createSceneImporter("vtkjs_b6778e4e-9a5d-4ed2-8b78-50c9f760be5d", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc88/download",
   objects: {
   "fields": [
@@ -1215,9 +1215,9 @@ feelppVtkJs.createSceneImporter("vtkjs_8a10f0f8-32f9-4a8a-901a-dbb663b11318", {
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><div class="content"><div id="vtkjs_9fe6afc1-9e0b-41c3-8a00-99c7d5e97013" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top" colspan="2"><div class="content"><div id="vtkjs_9deb22b1-010f-40f6-a032-d2ff133f22e1" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_9fe6afc1-9e0b-41c3-8a00-99c7d5e97013", {
+feelppVtkJs.createSceneImporter("vtkjs_9deb22b1-010f-40f6-a032-d2ff133f22e1", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc85/download",
   objects: {
   "fields": [

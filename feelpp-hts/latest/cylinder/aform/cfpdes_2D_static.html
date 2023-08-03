@@ -177,11 +177,11 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../index.html">Feel++ hts</a>
+    <a class="nav-link" href="../../index.html">Feel++ HTS</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html#_cylinder">Cylinder</a>
+    <a class="nav-link" href="../../index.html">Cylinder</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -211,7 +211,7 @@ MathJax.Hub.Config({
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html#_roebel_cables">Roebel Cables</a>
+    <a class="nav-link" href="../../index.html">Roebel Cables</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -229,7 +229,7 @@ MathJax.Hub.Config({
   </li>
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../example.html#_tapes">Tapes</a>
+    <a class="nav-link" href="../../index.html">Tapes</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -278,8 +278,8 @@ MathJax.Hub.Config({
   <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Feel++ Template Project</a></li>
-    <li><a href="../../index.html">Feel++ hts</a></li>
-    <li><a href="../../example.html#_cylinder">Cylinder</a></li>
+    <li><a href="../../index.html">Feel++ HTS</a></li>
+    <li><a href="../../index.html">Cylinder</a></li>
     <li>A-Formulation</li>
     <li><a href="cfpdes_2D_static.html">cfpdes 2D static</a></li>
   </ul>
@@ -960,7 +960,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_9052b078-2b54-4088-8d13-e7dd4ef6a996"></div>
+<div id="ploty_8d917f66-20a9-4b53-b566-dd1b1e440361"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
@@ -987,7 +987,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_9052b078-2b54-4088-8d13-e7dd4ef6a996', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_8d917f66-20a9-4b53-b566-dd1b1e440361', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1017,9 +1017,9 @@ const layout = {
 </div>
 <div class="sect2">
 <h3 id="_interactive_view"><a class="anchor" href="#_interactive_view"></a>4.3. Interactive view</h3>
-<div id="vtkjs_cdf74abd-940b-4ed2-bca5-a3899bdfed3f" style="height: 500px; width: 100%;"></div>
+<div id="vtkjs_0e7e34b7-3bfa-4d36-99cc-634a9835f86b" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_cdf74abd-940b-4ed2-bca5-a3899bdfed3f", {
+feelppVtkJs.createSceneImporter("vtkjs_0e7e34b7-3bfa-4d36-99cc-634a9835f86b", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5d40b0e9570499e1cc82/download",
   objects: {
   "fields": [
