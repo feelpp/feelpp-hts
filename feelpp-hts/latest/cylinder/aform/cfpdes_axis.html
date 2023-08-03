@@ -177,71 +177,65 @@ MathJax.Hub.Config({
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../index.html">Feel++ HTS</a>
+    <a class="nav-link" href="../../index.html#_cylinder">Cylinder</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../index.html#_cylinder">Cylinder</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="3">
-    <button class="nav-item-toggle"></button>
     <span class="nav-text">A-Formulation</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="4">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="cfpdes_axis.html">cfpdes axis</a>
   </li>
-  <li class="nav-item" data-depth="4">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="cfpdes_2D_static.html">cfpdes 2D static</a>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">H-Formulation</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="4">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../hform/cfpdes_axis.html">cfpdes axis</a>
   </li>
-  <li class="nav-item" data-depth="4">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../hform/cfpdes_2D.html">cfpdes 2D</a>
   </li>
 </ul>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../../index.html#_roebel_cables">Roebel Cables</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">A-Formulation</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="4">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../roebel/aform/cfpdes_2D_static.html">cfpdes 2D static</a>
   </li>
-  <li class="nav-item" data-depth="4">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../roebel/aform/cfpdes_axis_static.html">cfpdes axis static</a>
   </li>
 </ul>
   </li>
 </ul>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="../../index.html#_tapes">Tapes</a>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="3">
+  <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
     <span class="nav-text">T-A Homogeneous Formulation</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="4">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../tapes/taform/cfpdes_axis.html">cfpdes axis</a>
   </li>
-  <li class="nav-item" data-depth="4">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../../tapes/taform/cfpdes_2D.html">cfpdes 2D</a>
-  </li>
-</ul>
   </li>
 </ul>
   </li>
@@ -1008,7 +1002,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>getDP</strong> on the \(O_r\) axis, at the mid-height of the cylinder, at time \(t_3\) for a maximum applied field of 1 T and \(n=20\).</p>
 </div>
-<div id="ploty_d55d307a-2027-48c0-9311-6a3113831b51"></div>
+<div id="ploty_2fb1739b-63b7-4eb8-ad3d-ee31a8abcbdf"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/f0e0c3964961d5ff24b3f6112a5ee8c2/raw/412e1e1966ba253110630b173475c16d285f0457/Cylinder_Aform_axi_J.csv")
     .then((d) => {
@@ -1035,7 +1029,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_d55d307a-2027-48c0-9311-6a3113831b51', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_2fb1739b-63b7-4eb8-ad3d-ee31a8abcbdf', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1065,7 +1059,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants \(t_1\), \(t_2\) and \(t_3\) with <strong>Feelpp</strong> and <strong>getDP</strong>.</p>
 </div>
-<div id="ploty_7b1c93e1-fcda-4cf5-b874-1b41ed649fd3"></div>
+<div id="ploty_608b55c4-29b7-495a-9998-d6eeeda58d51"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/3d503631cbd555c9c595f22e3f2eaf29/raw/180bce0567d4344728879b723ae65fc449c48f84/Cylinder_Aform_axi_B.csv")
     .then((d) => {
@@ -1124,7 +1118,7 @@ const layout = {
   yaxis: {title: 'Bz (T)'}
 }
 
-      Plotly.newPlot('ploty_7b1c93e1-fcda-4cf5-b874-1b41ed649fd3', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_608b55c4-29b7-495a-9998-d6eeeda58d51', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1160,9 +1154,9 @@ const layout = {
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_8b77e352-4dad-4829-83a2-50a0ecae9ede" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_1a376ab9-c238-451c-bf69-e220e047fbc5" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_8b77e352-4dad-4829-83a2-50a0ecae9ede", {
+feelppVtkJs.createSceneImporter("vtkjs_1a376ab9-c238-451c-bf69-e220e047fbc5", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc8b/download",
   objects: {
   "fields": [
@@ -1182,9 +1176,9 @@ feelppVtkJs.createSceneImporter("vtkjs_8b77e352-4dad-4829-83a2-50a0ecae9ede", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_09068941-45a0-4243-86d7-b610e874c1de" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_38afd5c3-e729-4168-bf11-9434deaf39bb" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_09068941-45a0-4243-86d7-b610e874c1de", {
+feelppVtkJs.createSceneImporter("vtkjs_38afd5c3-e729-4168-bf11-9434deaf39bb", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc88/download",
   objects: {
   "fields": [
@@ -1214,9 +1208,9 @@ feelppVtkJs.createSceneImporter("vtkjs_09068941-45a0-4243-86d7-b610e874c1de", {
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top" colspan="2"><div class="content"><div id="vtkjs_f3cc97bf-51c4-41e9-bd81-6be372cd31ac" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top" colspan="2"><div class="content"><div id="vtkjs_07d2cac6-0d86-480f-a808-e240571b9e47" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_f3cc97bf-51c4-41e9-bd81-6be372cd31ac", {
+feelppVtkJs.createSceneImporter("vtkjs_07d2cac6-0d86-480f-a808-e240571b9e47", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc85/download",
   objects: {
   "fields": [
