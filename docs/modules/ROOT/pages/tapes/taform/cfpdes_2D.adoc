@@ -7,6 +7,9 @@
 
 
 = HTS Tapes in 2D coordinates
+:page-tags: toolbox
+:page-illustration: Examples/tapes_TA_2D_B_2.png
+:description: ta form
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
