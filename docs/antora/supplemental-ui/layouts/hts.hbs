@@ -59,7 +59,7 @@
           <h2>Tapes</h2>
           {{#with (get-page-cards @root.page 'tape' true)}}
           {{#if this.length}}
-          <h2 id="cases">T-A Formulation</h2>
+          <h3 id="cases">T-A Formulation</h3>
           <div class="cases">
             {{#each this}}
             <div class="case">{{> page-card this}}</div>
