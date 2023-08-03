@@ -1,5 +1,5 @@
 = Examples
-:page-layout: toolboxes
+:page-layout: case-study
 // :toc: left
 
 == Cylinder
