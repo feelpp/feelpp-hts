@@ -3,7 +3,7 @@
 
 = HTS Bulk Cylinder in Axisymmetric coordinates
 :page-tags: cylinder
-:page-illustration: Examples/cyl_A_axi_B.png 
+:page-illustration: Examples/cyl_A_axi_B_2.png 
 :description: Magnetic transient model on a HTS bulk cylinder geometry surrounded by air in axisymmetric coordinates using the A Formulation and the E-J power law.
 
 :stem: latexmath
