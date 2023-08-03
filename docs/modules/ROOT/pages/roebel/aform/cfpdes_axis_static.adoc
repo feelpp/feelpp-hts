@@ -5,7 +5,7 @@
 = Critical current in Roebel tapes in axisymmetric coordinates
 :page-tags: roebel
 :page-illustration: Examples/roebel_A_axi_B_2.png
-:description: Self-consistent python algorithm to find the critical current Ic, using an axisymmetric magnetic static model with A Formulation and E-J power law
+:description: Self-consistent python algorithm to estimate the critical current on axisymmetric magnetic static model with A Formulation and E-J power law
 :stem: latexmath
 :toc: left
 
