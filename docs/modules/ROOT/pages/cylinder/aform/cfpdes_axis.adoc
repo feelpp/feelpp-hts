@@ -375,7 +375,7 @@ restart.at-last-save=true<16>
 === Electric current density
 
 
-video::khBVxZEKc3Y[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
+video::H06ur_W9cM8[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
 
 We compare the current density profiles with *Feelpp* and *getDP* on the stem:[O_r] axis, at the mid-height of the cylinder, at time stem:[t_3] for a maximum applied field of 1 T and stem:[n=20].
 
@@ -492,7 +492,7 @@ const layout = {
 
 [cols="a,a"]
 |===
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc8b/download]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb0f5b0e9570499e1cca8/download]
 ----
 {
   "fields": [
@@ -510,7 +510,7 @@ const layout = {
     }
   ]
 }
----- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc88/download]
+---- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb0f5b0e9570499e1cca5/download]
 ----
 {
   "fields": [
@@ -530,7 +530,7 @@ const layout = {
 }
 ----
 ^| stem:[t=5s] ^| stem:[t=10s]
-2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc85/download]
+2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb0f5b0e9570499e1cca2/download]
 ----
 {
   "fields": [
