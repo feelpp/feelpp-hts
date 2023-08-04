@@ -492,7 +492,7 @@ const layout = {
 
 [cols="a,a"]
 |===
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb0f5b0e9570499e1cca8/download]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb456b0e9570499e1ccac/download]
 ----
 {
   "fields": [
@@ -510,7 +510,7 @@ const layout = {
     }
   ]
 }
----- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb0f5b0e9570499e1cca5/download]
+---- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb456b0e9570499e1ccaf/download]
 ----
 {
   "fields": [
@@ -530,7 +530,7 @@ const layout = {
 }
 ----
 ^| stem:[t=5s] ^| stem:[t=10s]
-2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb0f5b0e9570499e1cca2/download]
+2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb456b0e9570499e1ccb2/download]
 ----
 {
   "fields": [
