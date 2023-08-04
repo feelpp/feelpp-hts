@@ -489,30 +489,9 @@ const layout = {
 
 === Interactive view
 
-
-[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb946b0e9570499e1ccce/download]
-----
-{
-  "fields": [
-    {
-      "scene": "magfield",
-      "name": "Magnetic Field B"
-    },
-    {
-      "scene": "currden",
-      "name": "Current Density J"
-    },
-    {
-      "scene": "magpot",
-      "name": "Magnetic Potential A"
-    }
-  ]
-}
-----
-
 [cols="a,a"]
 |===
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb946b0e9570499e1ccce/download]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc8b/download]
 ----
 {
   "fields": [
@@ -530,7 +509,7 @@ const layout = {
     }
   ]
 }
----- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb66eb0e9570499e1ccc3/download]
+---- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc88/download]
 ----
 {
   "fields": [
@@ -550,7 +529,7 @@ const layout = {
 }
 ----
 ^| stem:[t=5s] ^| stem:[t=10s]
-2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb66eb0e9570499e1ccc6/download]
+2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca5ff2b0e9570499e1cc85/download]
 ----
 {
   "fields": [
