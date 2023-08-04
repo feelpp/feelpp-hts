@@ -490,6 +490,26 @@ const layout = {
 === Interactive view
 
 
+[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb946b0e9570499e1ccce/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    },
+    {
+      "scene": "magpot",
+      "name": "Magnetic Potential A"
+    }
+  ]
+}
+----
+
 [cols="a,a"]
 |===
 ^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb946b0e9570499e1ccce/download]
