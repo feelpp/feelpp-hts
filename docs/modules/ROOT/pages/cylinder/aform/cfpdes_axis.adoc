@@ -492,7 +492,7 @@ const layout = {
 
 [cols="a,a"]
 |===
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb7dbb0e9570499e1ccca/download]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ccb946b0e9570499e1ccce/download]
 ----
 {
   "fields": [
