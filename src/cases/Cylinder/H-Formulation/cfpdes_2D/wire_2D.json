@@ -1,0 +1,103 @@
+{
+    "Name": "Cylinder 2D",
+    "ShortName": "cylinder-2D",
+    "Models": {
+        "cfpdes": {
+            "equations": "magnetic"
+        },
+        "magnetic": {
+            "name": "magnetic_conductor",
+            "setup": {
+                "unknown": {
+                    "basis": "Ned1h0",
+                    "name": "H",
+                    "symbol": "H"
+                },
+                "coefficients": {
+                    "zeta": "materials_rho:materials_rho",
+                    "d": "materials_mu:materials_mu"
+                }
+            }
+        }
+    },
+    "Parameters": {
+        "mu0": "4*pi*1e-7",
+        "rWire": 0.001,
+        "Ic": 300,
+        "Iext": "Ic*0.8:Ic",
+        "f": 50,
+        "Iapp": "Iext*sin(2*pi*f*t):Iext:f:t",
+        "theta": "atan2(y,x):x:y",
+        "r_xy": "sqrt(x^2 + y^2):x:y",
+        "jc": "Ic/(pi*rWire^2):Ic:rWire",
+        "ec": 1e-4,
+        "n": 25
+    },
+    "Meshes": {
+        "cfpdes": {
+            "Import": {
+                "filename": "$cfgdir/wire.geo",
+                "hsize": 3e-3
+            }
+        }
+    },
+    "Materials": {
+        "Conductor": {
+            "markers": [
+                "Conductor"
+            ],
+            "rho": "ec / jc * (abs(magnetic_curl_H_rt)/jc)^(n - 1):ec:jc:n:magnetic_curl_H_rt",
+            "mu": "mu0:mu0"
+        },
+        "Air": {
+            "markers": [
+                "Air"
+            ],
+            "rho": 1,
+            "mu": "mu0:mu0"
+        }
+    },
+    "BoundaryConditions": {
+        "magnetic": {
+            "Dirichlet": {
+                "magdir": {
+                    "markers": [
+                        "Infty"
+                    ],
+                    "expr": "{-Iapp/(2*pi*r_xy)*sin(theta),Iapp/(2*pi*r_xy)*cos(theta)}:Iapp:x:y:theta:r_xy"
+                }
+            }
+        }
+    },
+    "PostProcess": {
+        "use-model-name": 1,
+        "magnetic": {
+            "Exports": {
+                "fields": "H",
+                "expr": {
+                    "B": {
+                        "expr": "{materials_mu*magnetic_H_0,materials_mu*magnetic_H_1}:materials_mu:magnetic_H_0:magnetic_H_1",
+                        "representation": [
+                            "element"
+                        ]
+                    },
+                    "E": {
+                        "expr": "materials_rho*magnetic_curl_H:magnetic_curl_H:materials_rho",
+                        "representation": [
+                            "element"
+                        ]
+                    },
+                    "J": {
+                        "expr": "magnetic_curl_H:magnetic_curl_H",
+                        "representation": [
+                            "element"
+                        ]
+                    },
+                    "Iapp": {
+                        "expr": "Iapp:Iapp"
+                    }
+                }
+            }
+        }
+    }
+}
