@@ -3,19 +3,19 @@
 :stem: latexmath
 :toc: left
 
-= HTS Wire in 2D coordinates
+= HTS Bulk Cylinder in 2D coordinates
 :page-tags: hform
-:page-illustration: Examples/cyl_H_2D_B_I_2.png 
+:page-illustration: Examples/cyl_H_2D_B_2.png 
 :description: 2D magnetic transient model using H Formulation and E-J power law
 
 :uri-data: https://github.com/feelpp/feelpp-hts/blob/master/src/cases
 :uri-data-edit: https://github.com/feelpp/feelpp-hts/edit/master/src/cases
 
-We took this example from : [[grilli]] __2-D H-Formulation of Maxwell's Equations with Edge Elements__ (shared by F. Grilli, Karlsruhe Institute of Technology and P. Masson, Houston University), https://www.htsmodelling.com/?page_id=748#2D_H_formulation[Link] .
+// We took this example from : [[dular]] __Finite-Element Formulation for Systems with High-Temperature Superconductors__, Julien Dular, Christophe Gauzaine, Benoît Vanderheyden, IEEE Transactions on Applied Superconductivity VOL. 30 NO. 3, April 2020, https://www.htsmodelling.com/?page_id=748#Ferro[Link] .
 
 == Description
-stem:[\quad]In this example, we will build a magnetic model on a HTS wire geometry surrounded by air in 2D coordinates. We will use the *H Formulation*.
-Thus stem:[\Omega] the domain contains the superconductor domain stem:[\Omega_c] and non conducting materials stem:[\Omega_c^C] (stem:[\mathbf{J} = 0]) like the air for example. Also stem:[\Gamma = \partial \Omega] is the bound of stem:[\Omega], stem:[\Gamma_c = \partial \Omega_c] the bound of stem:[\Omega_c].
+stem:[\quad]In this example, we will build a magnetic model on a cylinder geometry surrounded by air in 2D coordinates. We will use the *H Formulation*.
+Thus stem:[\Omega] the domain contains the superconductor domain stem:[\Omega_c] and non conducting materials stem:[\Omega_c^C] (stem:[\mathbf{J} = 0]) like the air for example. Also stem:[\Gamma = \partial \Omega] is the bound of stem:[\Omega], stem:[\Gamma_c = \partial \Omega_c] the bound of stem:[\Omega_c], stem:[\Gamma_D] the bound with Dirichlet boundary condition and stem:[\Gamma_N] the bound with Neumann boundary condition, such that stem:[\Gamma = \Gamma_D \cup \Gamma_N].
 
 [example,caption="",title="H Formulation"]
 [[h_formulation]]
@@ -24,7 +24,9 @@ Thus stem:[\Omega] the domain contains the superconductor domain stem:[\Omega_c]
 ++++
 \text{(H)}
 	\left\{ \begin{matrix}
-		-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&=&\partial_t(\mu \textbf{H}) &\text{ on } \Omega & \text{(H)} 
+		-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&=&\partial_t(\mu \textbf{H}) &\text{ on } \Omega & \text{(H)} \\
+		\mathbf{H} \times \mathbf{n} &=& 0 &\text{ on } \Gamma_D & \text{(D)} \\
+		\left( \nabla \times \mathbf{H} \right) \times \mathbf{n} &=& 0 &\text{ on } \Gamma_N & \text{(N)}
 	\end{matrix} \right.
 ++++
 with stem:[\rho] the resistivity following the *E-J power law* for the superconductor :
@@ -40,8 +42,6 @@ with :
 * stem:[E_c]: the threshold electric field stem:[(V/m)]
 
 * stem:[n]: material dependent exponent
-
-* stem:[I]: applied current
 
 
 In the air, we give the resistivity a high value like stem:[\rho_\text{air}=1].
@@ -75,7 +75,9 @@ The H Formulation in 2D coordinates is :
 ++++
 \text{(H 2D)}
 \left\{ \begin{matrix}
-    \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &=& 0  & \text{on } \Omega^{2D} & \text{(H 2D)}
+    \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &=& 0  & \text{on } \Omega^{2D} & \text{(H 2D)}\\
+    \mathbf{H} \times \mathbf{n} &=& 0 &\text{ on } \Gamma_D^{2D} & \text{(D 2D)} \\
+	\left( \nabla \times \mathbf{H} \right) \times \mathbf{n} &=& 0 &\text{ on } \Gamma_N^{2D} & \text{(N 2D)}
 \end{matrix} \right.
 ++++
 
@@ -90,31 +92,21 @@ stem:[\rho=\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}=\fr
 
 ====
 
-The model controls current through the wire with its outer boundary condition. The line integration of the tangential component of the
-magnetic field on the boundary equals the applied transport current. Cylindrical symmetry results in a known magnetic field at the outer boundary :
+For the Dirichlet boundary conditions, we want to impose the applied magnetic field :
 
-[stem]
-++++
-I_\text{transport}=\oint_\text{\Gamma} H_\theta dl = 2\pi r H_\theta \Rightarrow H_\theta = \frac{I_\text{transport}}{2\pi r}
-++++
+So we have stem:[B_z=hsVal], therefore stem:[H_z = hsVal/\mu].
 
-So we have the Dirichlet boundary conditions :
-
-[stem]
-++++
-H=H_\theta \cdot u_\theta = \frac{I_\text{transport}}{2\pi r} \cdot u_\theta=\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}} (-sin(\theta) u_x +cos(\theta) u_y) =\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}}\begin{matrix} -sin(\theta) \\ cos(\theta) \end{matrix}=\begin{matrix} H_x \\ H_y \end{matrix}
-++++
 
 === Geometry
 
 .Geometry with GMSH
 |====
-a|image:Cylinder/H-Formulation/cfpdes_2D/wire.png[,width=600]
+a|image:Cylinder/A-Formulation/cfpdes_2D/circle.png[,width=600]
 |====
 
 .Mesh with GMSH
 |====
-a|image:Cylinder/H-Formulation/cfpdes_2D/wiremesh.png[,width=600]
+a|image:Cylinder/A-Formulation/cfpdes_2D/circlemesh.png[,width=600]
 |====
 
 == Input
@@ -126,13 +118,9 @@ a|image:Cylinder/H-Formulation/cfpdes_2D/wiremesh.png[,width=600]
 | Notation | Description  | Value  | Unit  | Note
 5+s|Paramètres globale
 |stem:[H] | magnetic field | |stem:[A/m] |
-|stem:[rWire]| radius of the wire | stem:[0.001] | stem:[m] |
-| stem:[I_c] | critical current | stem:[300] | stem:[A] |
-| stem:[Iext] | maximum transport current | stem:[0.8 I_c] | stem:[A] |
-| stem:[f] | frequency | stem:[50] | stem:[Hz] |
-|stem:[Iapp]| transport current| stem:[Iext*sin(2*pi*f*t)] | stem:[A] |
-|stem:[r\_xy]| cylindrical coordinates stem:[r]| stem:[\sqrt{x^2+y^2}] | stem:[m] |
-|stem:[theta]| cylindrical coordinates stem:[\theta]| stem:[\text{atan2}(y,x)] | stem:[rad] |
+|stem:[bmax]| Maximal applied field| 1 | stem:[T] |
+| stem:[rate] | rate of the applied field raise | stem:[\frac{3}{tf}b_{max}] | stem:[T/s] |
+|stem:[hsVal]| applied field| stem:[\frac{1}{\mu_0}\begin{cases}rate*t &\quad\text{if }t<\frac{t_f}{3}\\b_{max} &\quad\text{if }t<\frac{2t_f}{3}\\b_{max} - (t-\frac{2t_f}{3})*rate &\quad\text{if }t>\frac{2t_f}{3}\end{cases}] | stem:[K] |
 
 5+s|Air
 | stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
@@ -140,9 +128,9 @@ a|image:Cylinder/H-Formulation/cfpdes_2D/wiremesh.png[,width=600]
 
 5+s|Cylinder
 | stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
-| stem:[J_c] | critical current density | stem:[frac{I_c}{rWire^2\pi}\simeq 1.10^8] | stem:[A/m^2] |
+| stem:[J_c] | critical current density | stem:[3.10^8] | stem:[A/m^2] |
 | stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
-| stem:[n] | material dependent exponent | stem:[25] | |
+| stem:[n] | material dependent exponent | stem:[20] | |
 | stem:[\rho] | electrical resistivity (described by the stem:[e-j] power law) | stem:[\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}] | stem:[\Omega\cdot m] |
 
 
@@ -152,8 +140,8 @@ a|image:Cylinder/H-Formulation/cfpdes_2D/wiremesh.png[,width=600]
 
 The case data files are available in Github link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D[here]
 
-* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.cfg[CFG file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.cfg[Edit the file]]
-* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.json[JSON file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.json[Edit the file]]
+* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.cfg[CFG file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.cfg[Edit the file]]
+* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.json[JSON file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.json[Edit the file]]
 
 
 === Json file
@@ -170,7 +158,7 @@ This section of the Model JSON file setup the mesh.
         {
             "Import":
             {
-                "filename":"$cfgdir/wire.geo"<1>
+                "filename":"$cfgdir/circle.geo"<1>
             }
         }
     },
@@ -258,7 +246,7 @@ This section of the Model JSON file defines the boundary conditions.
                 "magdir":
                 {
                     "markers":["Infty"], <3>
-                    "expr": "{-Iapp/(2*pi*r_xy)*sin(theta),Iapp/(2*pi*r_xy)*cos(theta)}:Iapp:x:y:theta:r_xy" 
+                    "expr":"{0,hsVal}:hsVal" 
                 }
             }
         }
@@ -290,7 +278,7 @@ This section of the Model JSON file defines the boundary conditions.
                     "J":<6>
                     {
                         "expr":"magnetic_curl_H:magnetic_curl_H",
-                        "markers":["Conductor"]<7>
+                        "markers":["Cylinder"]<7>
                     }
                 }
             }
@@ -318,7 +306,7 @@ directory=feelpp-hts/cylinder/Hform/cfpdes_2D<1>
 case.dimension=2<2>
 
 [cfpdes]<3>
-filename=$cfgdir/wire_2D.json<4>
+filename=$cfgdir/cylinder_2D.json<4>
 
 verbose_solvertimer=1<5>
 solver=Newton<6>
@@ -343,8 +331,8 @@ bdf.order=2<13>
 
 [ts]<14>
 time-initial=0<15>
-time-step=0.0002<16>
-time-final=0.02<17>
+time-step=0.5<16>
+time-final=15<17>
 restart.at-last-save=true<18>
 ----
 <1> the directory where the results are exported
@@ -371,106 +359,18 @@ restart.at-last-save=true<18>
 === Electric current density
 
 
-video::iy8hqy8e_1o[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
-
-We compare the distribution of the electric current density on the Oz axis between the tapes at the instant stem:[t=0.005s] with *Feelpp* and *Comsol*.
-
-[plotly,https://gist.githubusercontent.com/jermuzet/843079626f67dfcdef2fd81ab63180a1/raw/0ca7592dabb683a70900d271dd4db8104f7c5593/Wire_Hform_2D_J.csv]
-....
-// global d
-const data = [{
-  name: 'Feel++',
-  type: 'scatter',
-  x: d.map(i => i['x']),
-  y: d.map(i => i['Feel++']),
-  showlegend: true,
-  line: {color: '#2E64FE'}
-},
-{
-  name: 'Comsol',
-  type: 'scatter',
-  x: d.map(i => i['x']),
-  y: d.map(i => i['Comsol']),
-  showlegend: true,
-  line: {color: '#FF8000'}
-}]
-const layout = {
-  title: 'Current Density',
-  xaxis: {title: 'x (m)'},
-  yaxis: {title: 'J/Jc'}
-}
-....
-
-[cols="a"]
-|===
-^|*L2 Relative Error Norm* : stem:[22.15 \%]
-|===
+video::uYFO9JJlgDI[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
 
 === Magnetic flux density
 
-video::lidYEfeiPyY[youtube, title="Magnetic flux density stem:[B (T)]", width=720, height=400]
-
-
-We compare the distribution of the y-component of the magnetic flux density on the Ox axis across the tapes at the instants stem:[t_1=0.005s] and stem:[t_2=0.010s] with *Feelpp* and *Comsol*.
-
-[plotly,https://gist.githubusercontent.com/jermuzet/fe4cfeca637693594c5ee7413baa6b2a/raw/3336522bbed9cc6d899c5ed62227f4c3f8b6e6d3/Wire_Hform_2D_B.csv]
-....
-// global d
-const data = [{
-  name: 'Feel++ t1',
-  type: 'scatter',
-  x: d.map(i => i['x']),
-  y: d.map(i => i['Feel++_t1']),
-  showlegend: true,
-  line: {color: '#088A08'}
-},
-{
-  name: 'Comsol t1',
-  type: 'scatter',
-  x: d.map(i => i['x']),
-  y: d.map(i => i['Comsol_t1']),
-  showlegend: true,
-  line: {color: '#81F781'}
-},
-{
-  name: 'Feel++ t2',
-  type: 'scatter',
-  x: d.map(i => i['x']),
-  y: d.map(i => i['Feel++_t2']),
-  showlegend: true,
-  line: {color: '#084B8A'}
-},
-{
-  name: 'Comsol t2',
-  type: 'scatter',
-  x: d.map(i => i['x']),
-  y: d.map(i => i['Comsol_t2']),
-  showlegend: true,
-  line: {color: '#2ECCFA'}
-}]
-const layout = {
-  title: 'Magnetic Flux Density',
-  xaxis: {title: 'x (m)'},
-  yaxis: {title:'By (T)'}
-}
-....
-
-
-[cols="1,3"]
-|===
-|*t1* stem:[=0.005s]
-^|*L2 Relative Error Norm* : stem:[3.65 \%]
-|*t2* stem:[=0.010s]
-^|*L2 Relative Error Norm* : stem:[6.24 \%]
-|===
+video::OF71o5rjNn4[youtube, title="Magnetic flux density stem:[B (T)]", width=720, height=400]
 
 === Interactive view
 
 
-
 [cols="a,a"]
 |===
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64d4ac7fb0e9570499e1e443/download]
+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca6183b0e9570499e1cc94/download]
 ----
 {
   "fields": [
@@ -484,37 +384,7 @@ const layout = {
     }
   ]
 }
----- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64d4ac7fb0e9570499e1e440/download]
-----
-{
-  "fields": [
-    {
-      "scene": "magfield",
-      "name": "Magnetic Field B"
-    },
-    {
-      "scene": "currden",
-      "name": "Current Density J"
-    }
-  ]
-}
-----
-^| stem:[t=0.005s] ^| stem:[t=0.010s]
-^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64d4ac7eb0e9570499e1e43d/download]
-----
-{
-  "fields": [
-    {
-      "scene": "magfield",
-      "name": "Magnetic Field B"
-    },
-    {
-      "scene": "currden",
-      "name": "Current Density J"
-    }
-  ]
-}
----- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64d4ac7eb0e9570499e1e43a/download]
+---- ^| [vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca6183b0e9570499e1cc91/download]
 ----
 {
   "fields": [
@@ -529,7 +399,23 @@ const layout = {
   ]
 }
 ----
-^| stem:[t=0.015s] ^| stem:[t=0.020s]
+^| stem:[t=5s] ^| stem:[t=10s]
+2+^|[vtkjs,https://girder.math.unistra.fr/api/v1/item/64ca6183b0e9570499e1cc8e/download]
+----
+{
+  "fields": [
+    {
+      "scene": "magfield",
+      "name": "Magnetic Field B"
+    },
+    {
+      "scene": "currden",
+      "name": "Current Density J"
+    }
+  ]
+}
+---- 
+2+^| stem:[t=15s]
 |===
 
-Download export files to view results on https://www.paraview.org/download/[Paraview] : https://girder.math.unistra.fr/api/v1/folder/64d4afcab0e9570499e1e445/download[Wire_Hform_2D.zip]
+Download export files to view results on https://www.paraview.org/download/[Paraview] : https://girder.math.unistra.fr/api/v1/folder/64ccc02eb0e9570499e1d075/download[Cylinder_Hform_2D.zip]
