@@ -375,7 +375,7 @@ restart.at-last-save=true<16>
 === Electric current density
 
 .Electric current density stem:[J (A/m^2)]
-video::H06ur_W9cM8[youtube, height=480, opts="autoplay,loop", theme=light]
+video::H06ur_W9cM8[youtube, width=720, height=480, opts="autoplay,loop", theme=light]
 
 We compare the current density profiles with *Feelpp* and *getDP* on the stem:[O_r] axis, at the mid-height of the cylinder, at time stem:[t_3] for a maximum applied field of 1 T and stem:[n=20].
 
@@ -413,7 +413,7 @@ const layout = {
 === Magnetic flux density
 
 .Magnetic flux density stem:[B (T)]
-video::v6K1I5i472s[youtube, height=480, opts="autoplay,loop", theme=light]
+video::v6K1I5i472s[youtube, width=720, height=480, opts="autoplay,loop", theme=light]
 
 
 We compare the distribution of the z-component of the magnetic flux density 2mm above the cylinder at the instants stem:[t_1], stem:[t_2] and stem:[t_3] with *Feelpp* and *getDP*.
