@@ -198,8 +198,11 @@ MathJax.Hub.Config({
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="cfpdes_axis.html">cfpdes axis</a>
   </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="cfpdes_2D_old.html">cfpdes 2D</a>
+  </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="cfpdes_2D.html">cfpdes 2D</a>
+    <a class="nav-link" href="cfpdes_2D.html">cfpdes 2D Wire</a>
   </li>
 </ul>
   </li>
@@ -274,7 +277,7 @@ MathJax.Hub.Config({
     <li><a href="../../index.html">Feel++ HTS</a></li>
     <li><a href="../../cylinder.html">Cylinder</a></li>
     <li>H-Formulation</li>
-    <li><a href="cfpdes_2D.html">cfpdes 2D</a></li>
+    <li><a href="cfpdes_2D.html">cfpdes 2D Wire</a></li>
   </ul>
 </nav>
 
@@ -345,10 +348,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 <div class="content">
 <div class="stemblock">
 <div class="content">
-\[\text{(H)}
-	\left\{ \begin{matrix}
-		-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&amp;=&amp;\partial_t(\mu \textbf{H}) &amp;\text{ on } \Omega &amp; \text{(H)}
-	\end{matrix} \right.\]
+\[	-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&amp;=&amp;\partial_t(\mu \textbf{H}) &amp;\text{ on } \Omega &amp; \text{(H)}\]
 </div>
 </div>
 <div class="paragraph">
@@ -390,7 +390,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </div>
 <div id="command-line" class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_2D.cfg</code></pre>
+<pre class="highlightjs highlight"><code class="language-mpirun hljs" data-lang="mpirun">mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=wire_2D.cfg</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 50%;">
@@ -407,7 +407,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 </thead>
 <tfoot>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17.73 s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">315 s</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tfoot>
@@ -423,10 +423,7 @@ Thus \(\Omega\) the domain contains the superconductor domain \(\Omega_c\) and n
 <div class="content">
 <div class="stemblock">
 <div class="content">
-\[\text{(H 2D)}
-\left\{ \begin{matrix}
-    \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &amp;=&amp; 0  &amp; \text{on } \Omega^{2D} &amp; \text{(H 2D)}
-\end{matrix} \right.\]
+\[  \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &amp;=&amp; 0  &amp; \text{on } \Omega^{2D} &amp; \text{(H 2D)}\]
 </div>
 </div>
 <div class="paragraph">
@@ -454,7 +451,7 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 </div>
 <div class="stemblock">
 <div class="content">
-\[I_\text{transport}=\oint_\text{\Gamma} H_\theta dl = 2\pi r H_\theta \Rightarrow H_\theta = \frac{I_\text{transport}}{2\pi r}\]
+\[I_\text{transport}=\oint_\Gamma H_\theta dl = 2\pi r H_\theta \Rightarrow H_\theta = \frac{I_\text{transport}}{2\pi r}\]
 </div>
 </div>
 <div class="paragraph">
@@ -462,7 +459,7 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 </div>
 <div class="stemblock">
 <div class="content">
-\[H=H_\theta \cdot u_\theta = \frac{I_\text{transport}}{2\pi r} \cdot u_\theta=\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}} (-sin(\theta) u_x +cos(\theta) u_y) =\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}}\begin{matrix} -sin(\theta) \\ cos(\theta) \end{matrix}=\begin{matrix} H_x \\ H_y \end{matrix}\]
+\[H=H_\theta \cdot u_\theta = \frac{I_\text{transport}}{2\pi r} \cdot u_\theta=\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}} (-sin(\theta) u_x +cos(\theta) u_y) =\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}}\begin{pmatrix} -sin(\theta) \\ cos(\theta) \end{pmatrix}=\begin{pmatrix} H_x \\ H_y \end{pmatrix}\]
 </div>
 </div>
 </div>
@@ -560,7 +557,7 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(Iapp\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">transport current</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(Iext*sin(2*pi*f*t)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(Iext*\sin(2*\pi*f*t)\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(A\)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -596,7 +593,7 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><strong>Cylinder</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="5"><p class="tableblock"><strong>Conductor</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\mu=\mu_0\)</p></td>
@@ -608,7 +605,7 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(J_c\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">critical current density</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(frac{I_c}{rWire^2\pi}\simeq 1.10^8\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\frac{I_c}{rWire^2\pi}\simeq 1e+08\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(A/m^2\)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -631,7 +628,7 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\rho\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">electrical resistivity (described by the \(e-j\) power law)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n-1)}\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\Omega\cdot m\)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -648,10 +645,10 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.cfg">CFG file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/wire_2D.cfg">Edit the file</a>]</p>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/wire_2D.cfg">CFG file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/wire_2D.cfg">Edit the file</a>]</p>
 </li>
 <li>
-<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.json">JSON file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/wire_2D.json">Edit the file</a>]</p>
+<p><a href="https://github.com/feelpp/feelpp-hts/blob/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/wire_2D.json">JSON file</a> - [<a href="https://github.com/feelpp/feelpp-hts/edit/master/src/cases/Cylinder/H-Formulation/cfpdes_2D/wire_2D.json">Edit the file</a>]</p>
 </li>
 </ul>
 </div>
@@ -1030,7 +1027,7 @@ restart.at-last-save=true<i class="conum" data-value="18"></i><b>(18)</b></code>
 <div class="paragraph">
 <p>We compare the distribution of the electric current density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_09968562-246c-4318-aad2-ffe3d4dd7995"></div>
+<div id="ploty_5327333c-602c-489a-8dee-ec949b98fa87"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/843079626f67dfcdef2fd81ab63180a1/raw/0ca7592dabb683a70900d271dd4db8104f7c5593/Wire_Hform_2D_J.csv")
     .then((d) => {
@@ -1057,7 +1054,7 @@ const layout = {
   yaxis: {title: 'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_09968562-246c-4318-aad2-ffe3d4dd7995', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_5327333c-602c-489a-8dee-ec949b98fa87', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1087,7 +1084,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the y-component of the magnetic flux density on the Ox axis across the tapes at the instants \(t_1=0.005s\) and \(t_2=0.010s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_b83d0ef6-79f3-4f81-8afe-91f5b0ca4273"></div>
+<div id="ploty_1235a6f8-2349-4ad6-b82b-eea12f117dbb"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/fe4cfeca637693594c5ee7413baa6b2a/raw/3336522bbed9cc6d899c5ed62227f4c3f8b6e6d3/Wire_Hform_2D_B.csv")
     .then((d) => {
@@ -1130,7 +1127,7 @@ const layout = {
   yaxis: {title:'By (T)'}
 }
 
-      Plotly.newPlot('ploty_b83d0ef6-79f3-4f81-8afe-91f5b0ca4273', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_1235a6f8-2349-4ad6-b82b-eea12f117dbb', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1162,9 +1159,9 @@ const layout = {
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_51414ea3-c35c-48a4-ae11-020cb058b024" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_91ff872e-e6e1-4fcf-b797-a815ed7ea490" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_51414ea3-c35c-48a4-ae11-020cb058b024", {
+feelppVtkJs.createSceneImporter("vtkjs_91ff872e-e6e1-4fcf-b797-a815ed7ea490", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64d4ac7fb0e9570499e1e443/download",
   objects: {
   "fields": [
@@ -1180,9 +1177,9 @@ feelppVtkJs.createSceneImporter("vtkjs_51414ea3-c35c-48a4-ae11-020cb058b024", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_3813d430-7a3b-4c4e-8380-fe0c81f4bac2" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_697db723-139a-4194-b853-e9371facb962" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_3813d430-7a3b-4c4e-8380-fe0c81f4bac2", {
+feelppVtkJs.createSceneImporter("vtkjs_697db723-139a-4194-b853-e9371facb962", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64d4ac7fb0e9570499e1e440/download",
   objects: {
   "fields": [
@@ -1208,9 +1205,9 @@ feelppVtkJs.createSceneImporter("vtkjs_3813d430-7a3b-4c4e-8380-fe0c81f4bac2", {
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_88c78d3c-3e0c-4ee6-a6c3-3d453474a00d" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_defc2b44-16bc-4ed7-9431-c8a520491440" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_88c78d3c-3e0c-4ee6-a6c3-3d453474a00d", {
+feelppVtkJs.createSceneImporter("vtkjs_defc2b44-16bc-4ed7-9431-c8a520491440", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64d4ac7eb0e9570499e1e43d/download",
   objects: {
   "fields": [
@@ -1226,9 +1223,9 @@ feelppVtkJs.createSceneImporter("vtkjs_88c78d3c-3e0c-4ee6-a6c3-3d453474a00d", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_8fb08be1-986d-4091-9053-2e48aaf3f461" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_cda52730-94a6-41f9-b742-657a4dfb46e3" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_8fb08be1-986d-4091-9053-2e48aaf3f461", {
+feelppVtkJs.createSceneImporter("vtkjs_cda52730-94a6-41f9-b742-657a4dfb46e3", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64d4ac7eb0e9570499e1e43a/download",
   objects: {
   "fields": [
