@@ -456,8 +456,8 @@ restart.at-last-save=true<16>
 
 === Electric current density
 
-
-video::yqhEfCOGrXI[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
+.Electric current density stem:[J (A/m^2)]
+video::yqhEfCOGrXI[youtube, width=720, height=400, opts="autoplay,loop", theme=light]
 
 We compare the current density profiles with *Feelpp* and *Comsol* on the Ox axis across the tapes at the instants stem:[t=0.02s].
 
@@ -494,7 +494,8 @@ const layout = {
 
 === Magnetic flux density
 
-video::5RCtNzpe2TY[youtube, title="Magnetic flux density stem:[B (T)]", width=720, height=400]
+.Magnetic flux density stem:[B (T)]
+video::5RCtNzpe2TY[youtube, width=720, height=400, opts="autoplay,loop", theme=light]
 
 We compare the distribution of the y-component of the magnetic flux density on the Ox axis across the tapes at the instants stem:[t=0.02s] with *Feelpp* and *Comsol*.
 

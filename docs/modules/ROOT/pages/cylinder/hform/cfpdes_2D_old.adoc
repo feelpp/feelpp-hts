@@ -358,12 +358,13 @@ restart.at-last-save=true<18>
 
 === Electric current density
 
-
-video::uYFO9JJlgDI[youtube, title="Electric current density stem:[J (A/m^2)]", width=720, height=400]
+.Electric current density stem:[J (A/m^2)]
+video::uYFO9JJlgDI[youtube, width=720, height=400, opts="autoplay,loop", theme=light]
 
 === Magnetic flux density
 
-video::OF71o5rjNn4[youtube, title="Magnetic flux density stem:[B (T)]", width=720, height=400]
+.Magnetic flux density stem:[B (T)]
+video::OF71o5rjNn4[youtube, width=720, height=400, opts="autoplay,loop", theme=light]
 
 === Interactive view
 
