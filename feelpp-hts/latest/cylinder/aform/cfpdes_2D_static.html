@@ -959,7 +959,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></code></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_392fef16-2624-440e-bfde-d202b17b3e34"></div>
+<div id="ploty_1899ff08-b3d4-4737-a017-db73c1288dfc"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
@@ -986,7 +986,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_392fef16-2624-440e-bfde-d202b17b3e34', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_1899ff08-b3d4-4737-a017-db73c1288dfc', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1016,9 +1016,9 @@ const layout = {
 </div>
 <div class="sect2">
 <h3 id="_interactive_view"><a class="anchor" href="#_interactive_view"></a>4.3. Interactive view</h3>
-<div id="vtkjs_2d5da402-6860-42d3-ab34-ecba1af08071" style="height: 500px; width: 100%;"></div>
+<div id="vtkjs_218c0e2a-feaa-4ae9-bbd7-24317882753f" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_2d5da402-6860-42d3-ab34-ecba1af08071", {
+feelppVtkJs.createSceneImporter("vtkjs_218c0e2a-feaa-4ae9-bbd7-24317882753f", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5d40b0e9570499e1cc82/download",
   objects: {
   "fields": [
