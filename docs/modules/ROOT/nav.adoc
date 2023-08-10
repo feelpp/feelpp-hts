@@ -6,7 +6,8 @@
 *** xref:cylinder/aform/cfpdes_2D_static.adoc[cfpdes 2D static]
 ** H-Formulation
 *** xref:cylinder/hform/cfpdes_axis.adoc[cfpdes axis]
-*** xref:cylinder/hform/cfpdes_2D.adoc[cfpdes 2D]
+*** xref:cylinder/hform/cfpdes_2D_old.adoc[cfpdes 2D]
+*** xref:cylinder/hform/cfpdes_2D.adoc[cfpdes 2D Wire]
 
 * xref:cable.adoc[Roebel Cables]
 ** A-Formulation

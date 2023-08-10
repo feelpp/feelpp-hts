@@ -126,7 +126,7 @@ a|image:Cylinder/A-Formulation/cfpdes_2D/circlemesh.png[,width=600]
 | stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
 | stem:[\rho] | electrical resistivity | stem:[1] | stem:[\Omega\cdot m] |
 
-5+s|Cylinder
+5+s|Conductor
 | stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
 | stem:[J_c] | critical current density | stem:[3.10^8] | stem:[A/m^2] |
 | stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
@@ -278,7 +278,7 @@ This section of the Model JSON file defines the boundary conditions.
                     "J":<6>
                     {
                         "expr":"magnetic_curl_H:magnetic_curl_H",
-                        "markers":["Cylinder"]<7>
+                        "markers":["Conductor"]<7>
                     }
                 }
             }

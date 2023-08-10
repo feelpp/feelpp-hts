@@ -22,10 +22,8 @@ Thus stem:[\Omega] the domain contains the superconductor domain stem:[\Omega_c]
 ====
 [stem]
 ++++
-\text{(H)}
-	\left\{ \begin{matrix}
-		-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&=&\partial_t(\mu \textbf{H}) &\text{ on } \Omega & \text{(H)} 
-	\end{matrix} \right.
+	-\nabla\times \left(\rho \nabla\times \textbf{H}\right)&=&\partial_t(\mu \textbf{H}) &\text{ on } \Omega & \text{(H)} 
+
 ++++
 with stem:[\rho] the resistivity following the *E-J power law* for the superconductor :
 [stem]
@@ -55,14 +53,14 @@ The command line to run this case is
 [[command-line]]
 [source,mpirun]
 ----
-mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=cylinder_2D.cfg
+mpirun -np 32 feelpp_toolbox_coefficientformpdes --config-file=wire_2D.cfg
 ----
 
 .Execution time
 [width="50%",options="header,footer"]
 |====================
 | Feelpp (parallel np 32) |   
-| 17.73 s |  
+| 315 s |  
 |====================
 
 === Equation 
@@ -73,10 +71,7 @@ The H Formulation in 2D coordinates is :
 ====
 [stem]
 ++++
-\text{(H 2D)}
-\left\{ \begin{matrix}
-    \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &=& 0  & \text{on } \Omega^{2D} & \text{(H 2D)}
-\end{matrix} \right.
+  \nabla\times\left(\rho\nabla\times H\right)  + \frac{\partial (\mu H)}{\partial t} &=& 0  & \text{on } \Omega^{2D} & \text{(H 2D)}
 ++++
 
 With : 
@@ -95,14 +90,14 @@ magnetic field on the boundary equals the applied transport current. Cylindrical
 
 [stem]
 ++++
-I_\text{transport}=\oint_\text{\Gamma} H_\theta dl = 2\pi r H_\theta \Rightarrow H_\theta = \frac{I_\text{transport}}{2\pi r}
+I_\text{transport}=\oint_\Gamma H_\theta dl = 2\pi r H_\theta \Rightarrow H_\theta = \frac{I_\text{transport}}{2\pi r}
 ++++
 
 So we have the Dirichlet boundary conditions :
 
 [stem]
 ++++
-H=H_\theta \cdot u_\theta = \frac{I_\text{transport}}{2\pi r} \cdot u_\theta=\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}} (-sin(\theta) u_x +cos(\theta) u_y) =\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}}\begin{matrix} -sin(\theta) \\ cos(\theta) \end{matrix}=\begin{matrix} H_x \\ H_y \end{matrix}
+H=H_\theta \cdot u_\theta = \frac{I_\text{transport}}{2\pi r} \cdot u_\theta=\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}} (-sin(\theta) u_x +cos(\theta) u_y) =\frac{I_\text{transport}}{2\pi \sqrt{x^2+y^2}}\begin{pmatrix} -sin(\theta) \\ cos(\theta) \end{pmatrix}=\begin{pmatrix} H_x \\ H_y \end{pmatrix}
 ++++
 
 === Geometry
@@ -130,7 +125,7 @@ a|image:Cylinder/H-Formulation/cfpdes_2D/wiremesh.png[,width=600]
 | stem:[I_c] | critical current | stem:[300] | stem:[A] |
 | stem:[Iext] | maximum transport current | stem:[0.8 I_c] | stem:[A] |
 | stem:[f] | frequency | stem:[50] | stem:[Hz] |
-|stem:[Iapp]| transport current| stem:[Iext*sin(2*pi*f*t)] | stem:[A] |
+|stem:[Iapp]| transport current| stem:[Iext*\sin(2*\pi*f*t)] | stem:[A] |
 |stem:[r\_xy]| cylindrical coordinates stem:[r]| stem:[\sqrt{x^2+y^2}] | stem:[m] |
 |stem:[theta]| cylindrical coordinates stem:[\theta]| stem:[\text{atan2}(y,x)] | stem:[rad] |
 
@@ -138,12 +133,12 @@ a|image:Cylinder/H-Formulation/cfpdes_2D/wiremesh.png[,width=600]
 | stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
 | stem:[\rho] | electrical resistivity | stem:[1] | stem:[\Omega\cdot m] |
 
-5+s|Cylinder
+5+s|Conductor
 | stem:[\mu=\mu_0] | magnetic permeability of vacuum | stem:[4\pi.10^{-7}] | stem:[kg \, m / A^2 / S^2] |
-| stem:[J_c] | critical current density | stem:[frac{I_c}{rWire^2\pi}\simeq 1.10^8] | stem:[A/m^2] |
+| stem:[J_c] | critical current density | stem:[\frac{I_c}{rWire^2\pi}\simeq 1e+08] | stem:[A/m^2] |
 | stem:[E_c] | threshold electric field | stem:[10^{-4}] |stem:[V/m] |
 | stem:[n] | material dependent exponent | stem:[25] | |
-| stem:[\rho] | electrical resistivity (described by the stem:[e-j] power law) | stem:[\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n)}] | stem:[\Omega\cdot m] |
+| stem:[\rho] | electrical resistivity (described by the stem:[e-j] power law) | stem:[\frac{E_c}{J_c}\left(\frac{\mid\mid J \mid\mid}{J_c}\right)^{(n-1)}] | stem:[\Omega\cdot m] |
 
 
 |====================
@@ -152,8 +147,8 @@ a|image:Cylinder/H-Formulation/cfpdes_2D/wiremesh.png[,width=600]
 
 The case data files are available in Github link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D[here]
 
-* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.cfg[CFG file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.cfg[Edit the file]]
-* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/cylinder_2D.json[JSON file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.json[Edit the file]]
+* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.cfg[CFG file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.cfg[Edit the file]]
+* link:{uri-data}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.json[JSON file] - [link:{uri-data-edit}/Cylinder/H-Formulation/cfpdes_2D/wire_2D.json[Edit the file]]
 
 
 === Json file
