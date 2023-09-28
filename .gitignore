@@ -57,3 +57,8 @@ res
 feelppdb
 *_p32.json
 *.h5
+csv
+*content.hbs
+__pycache__
+*.mph
+*.bdf
