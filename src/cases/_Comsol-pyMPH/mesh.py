@@ -10,25 +10,21 @@ def meshing_nastran(data, folder) :
 
     # Loading the geometry or mesh given by the json
     meshfilename=re.search('\$cfgdir\/(.*)', data["Meshes"]["cfpdes"]["Import"]["filename"]).group(1)
-    if folder.endswith("/") :
-        gmsh.open(folder+meshfilename)
-    else :
-        gmsh.open(folder+"/"+meshfilename)
-    
+    gmsh.open(folder+meshfilename)    
 
+    os.makedirs(folder+"res", exist_ok=True)
     if meshfilename.endswith(".geo") :                          # if geometry is .geo
         gmsh.model.mesh.generate(2)                             # generating mesh
-        bdffilename=meshfilename.removesuffix(".geo")+".bdf"
-        gmsh.write(bdffilename)                                 # exporting in .bdf
+        bdffilename=meshfilename.removesuffix(".geo")+".bdf"             
     elif meshfilename.endswith(".msh") :                        # if geometry is .msh
         bdffilename=meshfilename.removesuffix(".msh")+".bdf"
-        gmsh.write(bdffilename)                                 # exporting in .bdf
+    gmsh.write(folder+"res/"+bdffilename)                                 # exporting in .bdf
 
     gmsh.clear()
     
     return meshfilename, bdffilename
 
-def import_mesh(model, bdffilename, axis=0) :
+def import_mesh(model, bdffilename, folder, axis=0) :
     ### Create empty geometry for the imported mesh
     print("Info    : Creating Geometry...")
     geometries = model/'geometries'
@@ -45,15 +41,13 @@ def import_mesh(model, bdffilename, axis=0) :
     imported.property('source', 'nastran')
     imported.property('data', 'mesh')
     imported.property('facepartition', 'minimal')
-    imported.property('filename', bdffilename)
+    imported.property('filename', folder+"res/"+bdffilename)
     model.mesh() # Build the mesh in order to select its parts later
     print("Info    : Done importing Mesh")
 
 def creating_selection(model, meshfilename, folder) :
-    if folder.endswith("/") :
-        gmsh.open(folder+meshfilename)
-    else :
-        gmsh.open(folder+"/"+meshfilename)
+    gmsh.open(folder+meshfilename)
+
 
     # Checking if two physical groups have the same ID
     print("Info    : Checking Selections")

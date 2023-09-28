@@ -34,9 +34,11 @@ args = parser.parse_args()
 
 # Loading the json
 if args.folder.endswith("/") :
-    f = open(args.folder+args.file)
+    dir=args.folder
 else :
-    f = open(args.folder+"/"+args.file)
+    dir=args.folder+"/"
+
+f = open(dir+args.file)
 data = json.load(f)
 
 equations = data["Models"]["cfpdes"]["equations"]
@@ -45,7 +47,7 @@ if type(equations) == str :
 
 gmsh.initialize()
 # Loading the geometry or mesh given by the json
-meshfilename, bdffilename = meshing_nastran(data, args.folder)
+meshfilename, bdffilename = meshing_nastran(data, dir)
 
 client = mph.start()
 model = client.create(data["ShortName"]) # creating the mph model
@@ -60,10 +62,10 @@ model.java.modelNode().create("component");
 
 
 ### Importing the mesh
-import_mesh(model, bdffilename, args.axis)
+import_mesh(model, bdffilename, dir, args.axis)
 
 ### Creating selections
-selection_import = creating_selection(model, meshfilename, args.folder)
+selection_import = creating_selection(model, meshfilename, dir)
 gmsh.finalize()
 
 
@@ -137,7 +139,8 @@ if args.solveit :
     print("Info    : Done solving... ")
 
 print("Info    : Creating "+data["ShortName"]+"_created.mph..." )
-model.save(data["ShortName"]+'_created.mph')
+os.makedirs(dir+"res", exist_ok=True)
+model.save(dir+"res/"+data["ShortName"]+'_created.mph')
 print("Info    : Done creating "+data["ShortName"]+"_created.mph..." )
 
 print("Info    : Disconnecting Client..." )
@@ -153,5 +156,5 @@ print("Info    : Client disconnected" )
 
 if args.openit :
     print("Info    : Openning "+data["ShortName"]+"_created.mph on Comsol" )
-    os.system('comsol -open '+data["ShortName"]+'_created.mph')
+    os.system('comsol -open '+dir+'res/'+data["ShortName"]+'_created.mph')
     print("Info    : "+data["ShortName"]+"_created.mph closed" )
