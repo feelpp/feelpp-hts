@@ -55,4 +55,10 @@ def material_variables(model, materials: dict, unknowns: dict, selection_import:
                     model.java.component("component").variable("var_"+mat).set(p,var)
                 else :
                     model.java.component("component").variable("var_"+mat).set(p,str(materials[mat][p]))
+            
+            if p=="sigma":
+                model.java.component("component").variable("var_"+mat).set("rho","1/sigma")
+            elif p=="rho":
+                model.java.component("component").variable("var_"+mat).set("sigma","1/rho")
+                
         # print("Info    : Done loading Parameters from material \""+mat+"\"...")

@@ -26,7 +26,7 @@ def postprocessing(model, equations: List[str], data: dict, selection_import: di
         if eq != "elastic2":
             export_method[eq](plots, args)
             tab.create("Table", name=f"{eq}_values")
-            stat_method(eq,model, data, selection_import, args)
+            stat_method(eq, model, data, selection_import, args)
         
     print("Info    : Done creating Post-Processing")
 
@@ -133,8 +133,7 @@ def stat_method(equation, model, data: dict, selection_import: dict, args):
 
 
 def create_integrate(stat: str,stats:dict, markers: List[str], statname: str, equation:str, model, selection_import: dict, args):
-    if args.debug:
-        print(f"Info    :    Statistics {statname}")
+    print(f"Info    :    Statistics {statname}")
     eval = model/'evaluations'
 
     stat_dict={
@@ -179,8 +178,7 @@ def create_integrate(stat: str,stats:dict, markers: List[str], statname: str, eq
 
 
 def create_stat(stat: str,stats:dict, markers: List[str], statname: str, equation:str, model, selection_import: dict, args):
-    if args.debug:
-        print(f"Info    :    Statistics {statname}")
+    print(f"Info    :    Statistics {statname}")
     eval = model/'evaluations'
 
     type_dict ={

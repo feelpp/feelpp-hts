@@ -64,7 +64,7 @@ def create_magnetic(model, data: dict, selection_import: dict, args):
     if args.axis:
         magnetic_potential="mf.Aphi"
     cf.property('f', '-d('+magnetic_potential+',TIME)')
-    cf.property('a', '1/sigma')
+    cf.property('a', 'rho')
     cf.property('c', '0')
     cf.property('da', '0')
 
@@ -74,6 +74,8 @@ def create_magnetic(model, data: dict, selection_import: dict, args):
             part_magnet = [marker for marker in part_electric if magnet in marker]
 
             for marker in part_magnet:
+                if args.debug:
+                    print(f"Debug   :        Global Constraint {marker}")
                 model.java.component("component").cpl().create(f"intop{marker}", "Integration")    
                 model.java.component("component").cpl(f"intop{marker}").selection().geom(2)
                 model.java.component("component").cpl(f"intop{marker}").selection().set(selection_import["surface"][marker])
@@ -82,6 +84,8 @@ def create_magnetic(model, data: dict, selection_import: dict, args):
                 GC.property('constraintExpression', f'intop{marker}(u/N_{marker})-{magnet}_Imax')
     else:
         for marker in part_electric:
+            if args.debug:
+                print(f"Debug   :        Global Constraint {marker}")
             model.java.component("component").cpl().create(f"intop{marker}", "Integration")    
             model.java.component("component").cpl(f"intop{marker}").selection().geom(2)
             model.java.component("component").cpl(f"intop{marker}").selection().set(selection_import["surface"][marker])
@@ -226,5 +230,5 @@ def create_elastic(model, data: dict, selection_import: dict, args):
     thel.property("alpha_mat", "userdef")
     thel.property("alpha", "alphaT")
 
-def create_nothing(model, data: dict, selection_import: dict, axis: bool = 0, timedep: bool = 0):
+def create_nothing(model, data: dict, selection_import: dict, args):
     pass

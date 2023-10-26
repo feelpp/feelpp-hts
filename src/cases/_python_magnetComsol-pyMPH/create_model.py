@@ -104,11 +104,11 @@ def main():
     selection_import = creating_selection(model, meshmodel, args.debug)
     gmsh.finalize()
 
-    # Create material variables
+    ### Create material variables
     material_variables(model, data["Materials"], feel_unknowns, selection_import, args.debug)
 
 
-    ### Create the physic and materials
+    ### Create physics
     create_physics(model, equations, data, selection_import, args)
 
     ### Create time dependent solver
@@ -139,7 +139,9 @@ def main():
         solver = solution.create('Stationary', name='Stationary Solver')
         print("Info    : Done creating Stationary Solver..." )
 
+    ### Create post-processing
     postprocessing(model, equations, data, selection_import, args)
+
     if args.solveit :
         print("Info    : Solving... ")
         model.solve()
