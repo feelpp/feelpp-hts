@@ -36,60 +36,61 @@ MathJax.Hub.Config({
 
   TeX: {
       Macros: {
-      RR: "{\\mathbb R}",
-      NN: "{\\mathbb N}",
-      Nso: "{N_{\\mathrm{so}}}",
-      Nma: "{N_{\\mathrm{ma}}}",
-      Nno: "{N_{\\mathrm{no}}}",
-      Ne: "{N_{\\mathrm{e}}}",
-      Ilag: ["{\\mathcal{I}^{\\mathrm{lag}}_{#1}}",1],
+      bold: ["{\\bf #1}",1],
       calTh: "{\\mathcal{T}_h}",
+      card: ["{\\operatorname{card}(#1)}",1],
+      card: ["{\\operatorname{card}(#1)}",1],
       Ck: ["{\\mathcal{C}^{#1}}",1],
-      Pk: ["{\\mathcal{P}^{#1}}",1],
-      Qk: ["{\\mathcal{Q}^{#1}}",1],
-      Pch: ["{P^{#1}_{c,h}}",1],
-      Pcho: ["{P^{#1}_{c,h,0}}",1],
-      Qch: ["{Q^{#1}_{c,h}}",1],
+      deformt: ["{\\mathbf{\\varepsilon(#1)}}",1],
+      diam: "{\\operatorname{diam}}",
+      dim: ["{\\operatorname{dim}(#1)}",1],
+      disp: ["{\\mathbf{#1}}",1],
+      domain: "{\\Omega}",
+      ds: "",
+      essinf: "{\\operatorname{ess}\\, \\operatorname{inf}}",
+      F:"{\\mathcal{F}}",
+      geo: "{\\mathrm{geo}}",
       Ich: ["{\\mathcal{I}^{#1}_{c,h}#2}",2],
-      poly: ["{\\mathbb{#1}}",1],
+      Id: "{\\mathcal{I}}",
+      Ilag: ["{\\mathcal{I}^{\\mathrm{lag}}_{#1}}",1],
+      jump: ["{[\\![ #1 ]\\!]}",1],
+      n:"{\\mathbf{n}}",
+      Ne: "{N_{\\mathrm{e}}}",
+      Next: "{\\mathrm{n}}",
       nf: "{n_f}",
       ngeo: "{n_{\\mathrm{geo}}}",
-      geo: "{\\mathrm{geo}}",
-      card: ["{\\operatorname{card}(#1)}",1],
-      dim: ["{\\operatorname{dim}(#1)}",1],
+      Nma: "{N_{\\mathrm{ma}}}",
+      NN: "{\\mathbb N}",
+      Nno: "{N_{\\mathrm{no}}}",
+      Nso: "{N_{\\mathrm{so}}}",
       opdim: "{\\operatorname{dim}}",
-      card: ["{\\operatorname{card}(#1)}",1],
-      poly: ["{\\mathbb{#1}",1],
-      R: ["{\\mathbb{R}^{#1}}",1],
-      set: ["{\\left\\{#1\\right\\}}",1],
-      diam: "{\\operatorname{diam}}",
-      jump: ["{[\\![ #1 ]\\!]}",1],
-      Next: "{\\mathrm{n}}",
-      essinf: "{\\operatorname{ess}\\, \\operatorname{inf}}",
-      tr: "{\\operatorname{tr}}",
-      Id: "{\\mathcal{I}}",
-      disp: ["{\\mathbf{#1}}",1],
-      stresst: ["{\\mathbf{\\sigma(#1)}}",1],
-      deformt: ["{\\mathbf{\\varepsilon(#1)}}",1],
-      domain: "{\\Omega}",
-      prect: ["{\\left\\(#1\\right\\)}",1],
-      ds: "",
-      bold: ["{\\bf #1}",1],
       p: "{\\mathrm{p}}",
-      q:"{\\mathbf{q}}",
-      n:"{\\mathbf{n}}",
-      T:"{\\mathcal{T}}",
-      F:"{\\mathcal{F}}",
       P:"{\\mathcal{P}}",
-      v:"{\\mathbf{v}}"
+      Pch: ["{P^{#1}_{c,h}}",1],
+      Pcho: ["{P^{#1}_{c,h,0}}",1],
+      Pk: ["{\\mathcal{P}^{#1}}",1],
+      poly: ["{\\mathbb{#1}",1],
+      poly: ["{\\mathbb{#1}}",1],
+      prect: ["{\\left\\(#1\\right\\)}",1],
+      q:"{\\mathbf{q}}",
+      Qch: ["{Q^{#1}_{c,h}}",1],
+      Qk: ["{\\mathcal{Q}^{#1}}",1],
+      R: ["{\\mathbb{R}^{#1}}",1],
+      RR: "{\\mathbb R}",
+      set: ["{\\left\\{#1\\right\\}}",1],
+      stresst: ["{\\mathbf{\\sigma(#1)}}",1],
+      T:"{\\mathcal{T}}",
+      tr: "{\\operatorname{tr}}",
+      v:"{\\mathbf{v}}",
+      vertiii: ["\\left\\vert\\kern-0.25ex\\left\\vert\\kern-0.25ex\\left\\vert #1 \\right\\vert\\kern-0.25ex\\right\\vert\\kern-0.25ex\\right\\vert",1]
   },
-  extensions: ["mhchem.js"] }
+  extensions: ["mhchem.js"] 
+  }
 });
 </script>
 <!--<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>-->
 <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script> -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML'>
-</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML'></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>-->
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
@@ -962,7 +963,7 @@ snes-maxit=600<i class="conum" data-value="8"></i><b>(8)</b></code></pre>
 <div class="paragraph">
 <p>We compare the current density profiles with <strong>Feelpp</strong> and <strong>FreeFEM</strong> on the \(O_r\) axis, on the diameter of the cylinder, for a maximum applied field of 0.02 T.</p>
 </div>
-<div id="ploty_16061630-d5ba-45c3-849b-496aa82b8983"></div>
+<div id="ploty_65c40ae8-1362-49e2-af34-7f966b43a916"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/d0e69b37935fe2b548aad0e448d01690/raw/c3ff791e0ab98a8f6058d0ce6f4a8ec5c7e0dd38/Cylinder_Aform_2D_J.csv")
     .then((d) => {
@@ -989,7 +990,7 @@ const layout = {
   yaxis: {title:'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_16061630-d5ba-45c3-849b-496aa82b8983', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_65c40ae8-1362-49e2-af34-7f966b43a916', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1019,9 +1020,9 @@ const layout = {
 </div>
 <div class="sect2">
 <h3 id="_interactive_view"><a class="anchor" href="#_interactive_view"></a>4.3. Interactive view</h3>
-<div id="vtkjs_4cae5d8e-09fa-4e1a-885e-914131d7834c" style="height: 500px; width: 100%;"></div>
+<div id="vtkjs_9b9df466-eca0-4882-ad37-40ba3c4a11eb" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_4cae5d8e-09fa-4e1a-885e-914131d7834c", {
+feelppVtkJs.createSceneImporter("vtkjs_9b9df466-eca0-4882-ad37-40ba3c4a11eb", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5d40b0e9570499e1cc82/download",
   objects: {
   "fields": [

@@ -36,60 +36,61 @@ MathJax.Hub.Config({
 
   TeX: {
       Macros: {
-      RR: "{\\mathbb R}",
-      NN: "{\\mathbb N}",
-      Nso: "{N_{\\mathrm{so}}}",
-      Nma: "{N_{\\mathrm{ma}}}",
-      Nno: "{N_{\\mathrm{no}}}",
-      Ne: "{N_{\\mathrm{e}}}",
-      Ilag: ["{\\mathcal{I}^{\\mathrm{lag}}_{#1}}",1],
+      bold: ["{\\bf #1}",1],
       calTh: "{\\mathcal{T}_h}",
+      card: ["{\\operatorname{card}(#1)}",1],
+      card: ["{\\operatorname{card}(#1)}",1],
       Ck: ["{\\mathcal{C}^{#1}}",1],
-      Pk: ["{\\mathcal{P}^{#1}}",1],
-      Qk: ["{\\mathcal{Q}^{#1}}",1],
-      Pch: ["{P^{#1}_{c,h}}",1],
-      Pcho: ["{P^{#1}_{c,h,0}}",1],
-      Qch: ["{Q^{#1}_{c,h}}",1],
+      deformt: ["{\\mathbf{\\varepsilon(#1)}}",1],
+      diam: "{\\operatorname{diam}}",
+      dim: ["{\\operatorname{dim}(#1)}",1],
+      disp: ["{\\mathbf{#1}}",1],
+      domain: "{\\Omega}",
+      ds: "",
+      essinf: "{\\operatorname{ess}\\, \\operatorname{inf}}",
+      F:"{\\mathcal{F}}",
+      geo: "{\\mathrm{geo}}",
       Ich: ["{\\mathcal{I}^{#1}_{c,h}#2}",2],
-      poly: ["{\\mathbb{#1}}",1],
+      Id: "{\\mathcal{I}}",
+      Ilag: ["{\\mathcal{I}^{\\mathrm{lag}}_{#1}}",1],
+      jump: ["{[\\![ #1 ]\\!]}",1],
+      n:"{\\mathbf{n}}",
+      Ne: "{N_{\\mathrm{e}}}",
+      Next: "{\\mathrm{n}}",
       nf: "{n_f}",
       ngeo: "{n_{\\mathrm{geo}}}",
-      geo: "{\\mathrm{geo}}",
-      card: ["{\\operatorname{card}(#1)}",1],
-      dim: ["{\\operatorname{dim}(#1)}",1],
+      Nma: "{N_{\\mathrm{ma}}}",
+      NN: "{\\mathbb N}",
+      Nno: "{N_{\\mathrm{no}}}",
+      Nso: "{N_{\\mathrm{so}}}",
       opdim: "{\\operatorname{dim}}",
-      card: ["{\\operatorname{card}(#1)}",1],
-      poly: ["{\\mathbb{#1}",1],
-      R: ["{\\mathbb{R}^{#1}}",1],
-      set: ["{\\left\\{#1\\right\\}}",1],
-      diam: "{\\operatorname{diam}}",
-      jump: ["{[\\![ #1 ]\\!]}",1],
-      Next: "{\\mathrm{n}}",
-      essinf: "{\\operatorname{ess}\\, \\operatorname{inf}}",
-      tr: "{\\operatorname{tr}}",
-      Id: "{\\mathcal{I}}",
-      disp: ["{\\mathbf{#1}}",1],
-      stresst: ["{\\mathbf{\\sigma(#1)}}",1],
-      deformt: ["{\\mathbf{\\varepsilon(#1)}}",1],
-      domain: "{\\Omega}",
-      prect: ["{\\left\\(#1\\right\\)}",1],
-      ds: "",
-      bold: ["{\\bf #1}",1],
       p: "{\\mathrm{p}}",
-      q:"{\\mathbf{q}}",
-      n:"{\\mathbf{n}}",
-      T:"{\\mathcal{T}}",
-      F:"{\\mathcal{F}}",
       P:"{\\mathcal{P}}",
-      v:"{\\mathbf{v}}"
+      Pch: ["{P^{#1}_{c,h}}",1],
+      Pcho: ["{P^{#1}_{c,h,0}}",1],
+      Pk: ["{\\mathcal{P}^{#1}}",1],
+      poly: ["{\\mathbb{#1}",1],
+      poly: ["{\\mathbb{#1}}",1],
+      prect: ["{\\left\\(#1\\right\\)}",1],
+      q:"{\\mathbf{q}}",
+      Qch: ["{Q^{#1}_{c,h}}",1],
+      Qk: ["{\\mathcal{Q}^{#1}}",1],
+      R: ["{\\mathbb{R}^{#1}}",1],
+      RR: "{\\mathbb R}",
+      set: ["{\\left\\{#1\\right\\}}",1],
+      stresst: ["{\\mathbf{\\sigma(#1)}}",1],
+      T:"{\\mathcal{T}}",
+      tr: "{\\operatorname{tr}}",
+      v:"{\\mathbf{v}}",
+      vertiii: ["\\left\\vert\\kern-0.25ex\\left\\vert\\kern-0.25ex\\left\\vert #1 \\right\\vert\\kern-0.25ex\\right\\vert\\kern-0.25ex\\right\\vert",1]
   },
-  extensions: ["mhchem.js"] }
+  extensions: ["mhchem.js"] 
+  }
 });
 </script>
 <!--<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-MML-AM_CHTML"></script>-->
 <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script> -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML'>
-</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_CHTML'></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>-->
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
@@ -1166,7 +1167,7 @@ restart.at-last-save=true<i class="conum" data-value="16"></i><b>(16)</b></code>
 <div class="paragraph">
 <p>We compare the distribution of the electric current density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_dafdd6fc-6807-460d-97e2-4c74d772ef40"></div>
+<div id="ploty_a4787b7b-c682-4f0f-ac85-250090a2e08a"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d28260009a98ca5d2d90b285df1779c/raw/a1ec4f6c937cdeab0b98a0d8745cb6d4fa69dd55/Tapes_TAform_axi_J.csv")
     .then((d) => {
@@ -1193,7 +1194,7 @@ const layout = {
   yaxis: {title: 'J/Jc'}
 }
 
-      Plotly.newPlot('ploty_dafdd6fc-6807-460d-97e2-4c74d772ef40', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_a4787b7b-c682-4f0f-ac85-250090a2e08a', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1223,7 +1224,7 @@ const layout = {
 <div class="paragraph">
 <p>We compare the distribution of the r-component of the magnetic flux density on the Oz axis between the tapes at the instant \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_b1aa80c9-660f-4b51-9d9d-c026219c9ab9"></div>
+<div id="ploty_ed58218b-2597-450e-865c-15d6d5f6c27b"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/5b8e524ec754ff3533001017cb95aeab/raw/f3d22307b582fc4f478e10e1f7a56eb2a0e1df63/Tapes_TAform_axi_B.csv")
     .then((d) => {
@@ -1250,7 +1251,7 @@ const layout = {
   yaxis: {title: 'Br (T)'}
 }
 
-      Plotly.newPlot('ploty_b1aa80c9-660f-4b51-9d9d-c026219c9ab9', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_ed58218b-2597-450e-865c-15d6d5f6c27b', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1271,7 +1272,7 @@ const layout = {
 <div class="paragraph">
 <p>We also compare the distribution of the z-component of the magnetic flux density on the Or axis across the tapes at the instants \(t=0.005s\) with <strong>Feelpp</strong> and <strong>Comsol</strong>.</p>
 </div>
-<div id="ploty_ab373dac-5599-4967-8563-d33b4abb671f"></div>
+<div id="ploty_e31c0f25-ac55-40d3-b9a1-2ef68cbb3c7b"></div>
 <script>
   d3.csv("https://gist.githubusercontent.com/jermuzet/9d8bcd1932d20151bf73ffc503a0e06e/raw/c269d5fdc58098fd27721243695a8e41a90b060c/Tapes_TAform_axi_Bz.csv")
     .then((d) => {
@@ -1298,7 +1299,7 @@ const layout = {
   yaxis: {title: 'Bz (T)'}
 }
 
-      Plotly.newPlot('ploty_ab373dac-5599-4967-8563-d33b4abb671f', data, layout, { showLink: false, responsive: true })
+      Plotly.newPlot('ploty_e31c0f25-ac55-40d3-b9a1-2ef68cbb3c7b', data, layout, { showLink: false, responsive: true })
     })
     .catch((err) => {
       console.log('Unable to get data', err)
@@ -1326,9 +1327,9 @@ const layout = {
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_641ee8e9-3999-4c39-a6ba-1339c2036b76" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_c9c22e8a-868d-47ac-9a84-d6d375226f69" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_641ee8e9-3999-4c39-a6ba-1339c2036b76", {
+feelppVtkJs.createSceneImporter("vtkjs_c9c22e8a-868d-47ac-9a84-d6d375226f69", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5485b0e9570499e1cc73/download",
   objects: {
   "fields": [
@@ -1348,9 +1349,9 @@ feelppVtkJs.createSceneImporter("vtkjs_641ee8e9-3999-4c39-a6ba-1339c2036b76", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_21d4b398-505a-4079-b391-7207db8fb882" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_9fc8204f-e385-410c-b8b1-017b990421b5" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_21d4b398-505a-4079-b391-7207db8fb882", {
+feelppVtkJs.createSceneImporter("vtkjs_9fc8204f-e385-410c-b8b1-017b990421b5", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc70/download",
   objects: {
   "fields": [
@@ -1380,9 +1381,9 @@ feelppVtkJs.createSceneImporter("vtkjs_21d4b398-505a-4079-b391-7207db8fb882", {
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_d2e43302-dba3-4d13-98e5-cbcf64c2a484" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_a4f9f433-6e03-4b80-8114-a5fbc255edfa" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_d2e43302-dba3-4d13-98e5-cbcf64c2a484", {
+feelppVtkJs.createSceneImporter("vtkjs_a4f9f433-6e03-4b80-8114-a5fbc255edfa", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc6d/download",
   objects: {
   "fields": [
@@ -1402,9 +1403,9 @@ feelppVtkJs.createSceneImporter("vtkjs_d2e43302-dba3-4d13-98e5-cbcf64c2a484", {
 }
 })
 </script></div></td>
-<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_84faf820-5f60-4852-a582-34c731514fe5" style="height: 500px; width: 100%;"></div>
+<td class="tableblock halign-center valign-top"><div class="content"><div id="vtkjs_0999992d-527a-4285-93dc-2b598c40948b" style="height: 500px; width: 100%;"></div>
 <script>
-feelppVtkJs.createSceneImporter("vtkjs_84faf820-5f60-4852-a582-34c731514fe5", {
+feelppVtkJs.createSceneImporter("vtkjs_0999992d-527a-4285-93dc-2b598c40948b", {
   fileURL: "https://girder.math.unistra.fr/api/v1/item/64ca5484b0e9570499e1cc6a/download",
   objects: {
   "fields": [
