@@ -3,7 +3,7 @@ import mph
 import json
 import re
 from typing import List
-from methods import get_markers, get_materials_markers, create_group
+from methods import get_markers, create_group
 
 
 def postprocessing(model, equations: List[str], data: dict, selection_import: dict, args):
@@ -15,7 +15,7 @@ def postprocessing(model, equations: List[str], data: dict, selection_import: di
         "heat": create_export_heat,
         "elastic": create_export_elastic,
         "elastic1": create_export_elastic,
-        "elastic2": create_nothing,
+        # "elastic2": create_nothing,
     }
 
     tab=model/'tables'
@@ -23,9 +23,10 @@ def postprocessing(model, equations: List[str], data: dict, selection_import: di
 
     ### Browse equations and create corresponding post processing
     for eq in equations :
-        export_method[eq](plots, args)
-        tab.create("Table", name=f"{eq}_values")
-        stat_method(eq,model, data, selection_import, args)
+        if eq != "elastic2":
+            export_method[eq](plots, args)
+            tab.create("Table", name=f"{eq}_values")
+            stat_method(eq,model, data, selection_import, args)
         
     print("Info    : Done creating Post-Processing")
 
@@ -79,6 +80,8 @@ def create_export(plots, name: str, ID: str, expr:str):
 
 def stat_method(equation, model, data: dict, selection_import: dict, args):
     ### Statistics
+    if args.debug:
+        print("Debug   : equation=",equation) 
     stats = data["PostProcess"][equation]["Measures"]["Statistics"]
 
     ### create node groups to sort measures
@@ -99,6 +102,8 @@ def stat_method(equation, model, data: dict, selection_import: dict, args):
     }
 
     for stat in stats:
+        if args.debug:
+            print("Debug   : Stat=",stat) 
         typeoftype=type(stats[stat]["type"]).__name__ # usable with stat_fct
         if "%1%" in stat:
             typeofindex=type(stats[stat]["index1"])
@@ -187,7 +192,12 @@ def create_stat(stat: str,stats:dict, markers: List[str], statname: str, equatio
         typeofstat = stats[stat]["type"]
         for type in typeofstat:
             stat_dict={
-                "T":{
+                "Stat_T":{
+                    "type":type_dict[type],
+                    "expr":"T",
+                    "group":"grp2"
+                    },
+                f"T_\\w+":{
                     "type":type_dict[type],
                     "expr":"T",
                     "group":"grp2"

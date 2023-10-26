@@ -20,7 +20,6 @@ Options of create_model.py:
 or 
 - "--mdata": give a dict with the applied current intensities for each magnet (ex:'{"M10Bitters":21000.0, "M19020601":31000.0}')
 - "--axis": if the model is in axisymmetric coordinates, set this option
-- "--nonlin": if the model is non linear, set this option
 - "--timedep": if the model is time dependante, set this option
 - "--solveit": to solve the model, set this option
 - "--openit": to open the created file with comsol, set this option

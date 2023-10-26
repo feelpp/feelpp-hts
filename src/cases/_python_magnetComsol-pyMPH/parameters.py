@@ -13,7 +13,7 @@ def parameters_and_functions(model, feel_parameters: dict, I: float=31000.0, mda
     print("Info    : Loading Parameters...")
     for p in feel_parameters :
         if type(feel_parameters[p])==str :
-            model.parameter(p,feel_parameters[p].split(":")[0])  # if the parameter is a str, keeping ononliny the expression part
+            model.parameter(p,feel_parameters[p].split(":")[0])  # if the parameter is a str, keeping only the expression part
         else :
             model.parameter(p,str(feel_parameters[p]))
     

@@ -41,75 +41,39 @@ def get_materials_markers(model_mat: str, materials: str):
     
     return markers_list
 
-def dict_unknown(data: dict, equations: List[str], axis: bool = 0, timedep: bool = 0):
-    create_dict = {
-        "magnetic": create_dict_mag,
-        "heat": create_dict_heat,
-        "elastic": create_dict_elas,
-        "elastic1": create_dict_elas,
-        "elastic2": create_dict_elas,
+def dict_unknown(data: dict, equations: List[str], axis: bool = 0):
+    eq_expr = {
+        "heat": "T",
+        "elastic": "u2",
+        "elastic1": "u2",
+        "elastic2": "u2",
     }
+    if axis:
+        eq_expr["magnetic"]="mf.Aphi"
+    else:
+        eq_expr["magnetic"]="mf.Az"
 
     feel_unknowns ={}
     for equation in equations :
         unknown=data["Models"][equation]["common"]["setup"]["unknown"]["symbol"]
-        feel_unknowns=feel_unknowns | create_dict[equation](unknown, equation, axis)
+        feel_unknowns=feel_unknowns | create_dict(unknown, equation, eq_expr[equation], axis)
 
     return feel_unknowns
 
-def create_dict_mag(unknown, equation, axis: bool = 0):
+def create_dict(unknown: str, equation: str, expr:str, axis: bool = 0):
+    dict={
+            f"{equation}_{unknown}": f"{expr}",
+            f"{equation}_d{unknown}_dt": f"d({expr},t)"
+        }
+     
     if axis :
-        dict={
-            f"{equation}_{unknown}": "mf.Aphi",
-            f"{equation}_d{unknown}_dt": "d(mf.Aphi,t)",
-            f"{equation}_grad_{unknown}_0": "d(mf.Aphi,r)",
-            f"{equation}_grad_{unknown}_1": "d(mf.Aphi,z)"
-        }
+        dict[f"{equation}_grad_{unknown}_0"]= f"d({expr},r)"
+        dict[f"{equation}_grad_{unknown}_1"]= f"d({expr},z)"
     else:
-        dict={
-            f"{equation}_{unknown}": "mf.Az",
-            f"{equation}_d{unknown}_dt": "d(mf.Az,t)",
-            f"{equation}_grad_{unknown}_0": "d(mf.Az,x)",
-            f"{equation}_grad_{unknown}_1": "d(mf.Az,y)"
-        }
-
+        dict[f"{equation}_grad_{unknown}_0"]= f"d({expr},x)"
+        dict[f"{equation}_grad_{unknown}_1"]= f"d({expr},y)"
     return dict
 
-def create_dict_heat(unknown, equation, axis: bool = 0):
-    if axis :
-        dict={
-            f"{equation}_{unknown}": "T",
-            f"{equation}_d{unknown}_dt": "d(T,t)",
-            f"{equation}_grad_{unknown}_0": "d(T,r)",
-            f"{equation}_grad_{unknown}_1": "d(T,z)"
-        }
-    else:
-        dict={
-            f"{equation}_{unknown}": "T",
-            f"{equation}_d{unknown}_dt": "d(T,t)",
-            f"{equation}_grad_{unknown}_0": "d(T,x)",
-            f"{equation}_grad_{unknown}_1": "d(T,y)"
-        }
-
-    return dict
-
-def create_dict_elas(unknown, equation, axis: bool = 0):
-    if axis :
-        dict={
-            f"{equation}_{unknown}": "u2",
-            f"{equation}_d{unknown}_dt": "d(u2,t)",
-            f"{equation}_grad_{unknown}_0": "d(u2,r)",
-            f"{equation}_grad_{unknown}_1": "d(u2,z)"
-        }
-    else:
-        dict={
-            f"{equation}_{unknown}": "u2",
-            f"{equation}_d{unknown}_dt": "d(u2,t)",
-            f"{equation}_grad_{unknown}_0": "d(u2,x)",
-            f"{equation}_grad_{unknown}_1": "d(u2,y)"
-        }
-
-    return dict
 
 def create_group(model, tag: str, label: str, location: str, type: str):
     model.java.nodeGroup().create(tag, location)

@@ -32,7 +32,7 @@ def main():
     parser.add_argument("--I", help="give current intensity",type=float,default=31000.0)
     parser.add_argument("--mdata", help="specify current data", type=json.loads)
     parser.add_argument("--axis", help="is the model in axisymmetric coord", action='store_true')
-    parser.add_argument("--nonlin", help="is the model non linear", action='store_true')
+    # parser.add_argument("--nonlin", help="is the model non linear", action='store_true')
     parser.add_argument("--timedep", help="is the model timedep", action='store_true')
     parser.add_argument("--solveit", help="solve the model ?", action='store_true')
     parser.add_argument("--openit", help="open with comsol ?", action='store_true')
@@ -78,7 +78,7 @@ def main():
     if type(equations) == str :
         equations=[equations]
 
-    feel_unknowns = dict_unknown(data, equations, args.axis, args.timedep)
+    feel_unknowns = dict_unknown(data, equations, args.axis)
     
     if args.debug:
         print("Debug   : equations=", equations)
@@ -114,49 +114,29 @@ def main():
     ### Create time dependent solver
     studies = model/'studies'
     solutions = model/'solutions'
-    batches = model/'batches'
     study = studies.create(name='Study 1')
 
     if args.timedep :
         print("Info    : Creating Time-Dependent Solver..." )
         step = study.create('Transient', name='Time Dependent')
         step.property('tlist','range(time_initial,time_step,time_final)')
-        solution = solutions.create(name='Solution 1')
-        solution.java.study(study.tag())
-        solution.java.attach(study.tag())
-        solution.create('StudyStep', name='equations')
-        solution.create('Variables', name='variables')
-        solver = solution.create('Time', name='Time-Dependent Solver')
-        solver.property('tlist', 'range(time_initial,time_step,time_final)')
-        if args.nonlin :
-            ## Special changes for non-linear models
-            fcoupled = solver/'Fully Coupled'
-            fcoupled.property('jtech', 'once')
-            fcoupled.property('maxiter', '25')
-            fcoupled.property('ntolfact', '0.1')
-
-
-        print("Info    : Done creating Time-Dependent Solver..." )
-
-        
-
     else :
         print("Info    : Creating Stationary Solver..." )
         step = study.create('Stationary', name='Stationary')
-        # step.property('tlist','range(0,0.1,tf)')
-        solution = solutions.create(name='Solution 1')
-        solution.java.study(study.tag())
-        solution.java.attach(study.tag())
-        solution.create('StudyStep', name='equations')
-        solution.create('Variables', name='variables')
+
+    solution = solutions.create(name='Solution 1')
+    solution.java.study(study.tag())
+    solution.java.attach(study.tag())
+    solution.create('StudyStep', name='equations')
+    solution.create('Variables', name='variables')
+
+    if args.timedep :
+        solver = solution.create('Time', name='Time-Dependent Solver')
+        solver.property('tlist', 'range(time_initial,time_step,time_final)')
+        print("Info    : Done creating Time-Dependent Solver..." )
+    
+    else:
         solver = solution.create('Stationary', name='Stationary Solver')
-        # solver.property('tlist', 'range(0, 0.1, tf)')
-        if args.nonlin :
-            ## Special changes for non-linear models
-            fcoupled = solver/'Fully Coupled'
-            fcoupled.property('jtech', 'once')
-            fcoupled.property('maxiter', '25')
-            fcoupled.property('ntolfact', '0.1')
         print("Info    : Done creating Stationary Solver..." )
 
     postprocessing(model, equations, data, selection_import, args)
