@@ -63,15 +63,21 @@ def dict_unknown(data: dict, equations: List[str], axis: bool = 0):
 def create_dict(unknown: str, equation: str, expr:str, axis: bool = 0):
     dict={
             f"{equation}_{unknown}": f"{expr}",
-            f"{equation}_d{unknown}_dt": f"d({expr},t)"
+            f"{equation}_{unknown}_rt": f"{expr}",
+            f"{equation}_d{unknown}_dt": f"d({expr},t)",
+            f"{equation}_d{unknown}_rt_dt": f"d({expr},t)"
         }
      
     if axis :
         dict[f"{equation}_grad_{unknown}_0"]= f"d({expr},r)"
+        dict[f"{equation}_grad_{unknown}_rt_0"]= f"d({expr},r)"
         dict[f"{equation}_grad_{unknown}_1"]= f"d({expr},z)"
+        dict[f"{equation}_grad_{unknown}_rt_1"]= f"d({expr},z)"
     else:
         dict[f"{equation}_grad_{unknown}_0"]= f"d({expr},x)"
+        dict[f"{equation}_grad_{unknown}_rt_0"]= f"d({expr},x)"
         dict[f"{equation}_grad_{unknown}_1"]= f"d({expr},y)"
+        dict[f"{equation}_grad_{unknown}_rt_1"]= f"d({expr},y)"
     return dict
 
 
