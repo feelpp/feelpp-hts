@@ -29,3 +29,10 @@ or
 ====
 In the MSH, two physical groups must not have the same ID
 ====
+
+
+## install env
+
+python -m venv --system-site-packages mph-env
+source ./mph-env/bin/activate
+pip install mph
