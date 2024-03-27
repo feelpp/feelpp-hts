@@ -1,7 +1,9 @@
+import os
 import numpy as np
 import pandas as pd
 from typing import List
-from methods import get_markers, get_materials_markers
+from methods import get_markers
+from paraview.simple import *
 
 
 ### Create parameters
@@ -13,7 +15,8 @@ def parameters_and_functions(
     mdata: dict = None,
     time: List[float] = None,
     debug: bool = False,
-):
+) -> dict:
+    params_unknowns = {}
     functions = model / "Functions"
     # export parameters from json
     print("Info    : Loading Parameters...")
@@ -23,19 +26,15 @@ def parameters_and_functions(
                 p, feel_parameters[p].split(":")[0]
             )  # if the parameter is a str, keeping only the expression part
         elif type(feel_parameters[p]) == dict:
-            pass
-            # if "filename" in feel_parameters[p]:
-            # df = pd.read_csv(
-            #     feel_parameters[p]["filename"].replace("$cfgdir/", basedir + "/")
-            # )
-            # fit = model.java.func().create(p, "Interpolation")
-            # fit = functions.create("Interpolation", name=p)
-            # print(row for index, row in df.iterrows())
-            # fit.property("table", [df["r"], df["Bz"]])
-            # fit.import_(feel_parameters[p]["filename"].replace("$cfgdir/", ""))
-            # fit.remove("table", 0)
-            # fit.property("funcname", p)
-
+            if "filename" in feel_parameters[p]:
+                model.java.func().create(p, "Interpolation")
+                model.java.func(p).set("source", "file")
+                model.java.func(p).set(
+                    "filename",
+                    feel_parameters[p]["filename"].replace("$cfgdir/", basedir + "/"),
+                )
+                model.java.func(p).label(f"fit {p}")
+                params_unknowns[p] = f"{p}({feel_parameters[p]['expr'].split(':')[0]})"
         else:
             model.parameter(p, str(feel_parameters[p]))
 
@@ -53,6 +52,7 @@ def parameters_and_functions(
         model.parameter("Imax", I)
 
     print("Info    : Done loading Parameters")
+    return params_unknowns
 
 
 def material_variables(
@@ -88,19 +88,22 @@ def material_variables(
             if p != "markers" and p != "filename":
                 if type(materials[mat][p]) == str:
                     var = materials[mat][p].split(":")[0]
-                    for word in unknowns:
-                        var = var.replace(word, unknowns[word])
 
                     if "{" in var:
                         var = var[var.find("{") + 1 : var.find("}")].split(",")
                         for i in range(len(var)):
+                            for word in unknowns:
+                                var[i] = var[i].replace(word, unknowns[word])
                             model.java.component("component").variable(
                                 "var_" + mat
                             ).set(f"{p}_{i}", var[i])
                     else:
+                        for word in unknowns:
+                            var = var.replace(word, unknowns[word])
                         model.java.component("component").variable("var_" + mat).set(
                             p, var
                         )
+
                 else:
                     model.java.component("component").variable("var_" + mat).set(
                         p, str(materials[mat][p])
@@ -116,3 +119,99 @@ def material_variables(
                 )
 
         # print("Info    : Done loading Parameters from material \""+mat+"\"...")
+
+
+def import_fields(
+    model,
+    Fields: dict,
+    dim: int,
+    basedir: str,
+    feelpp_directory: str,
+    axis: bool,
+    debug: bool = False,
+):
+    fields_unknowns = {}
+    for f in Fields:
+        file = Fields[f]["filename"].replace("$cfgdir", basedir).replace(".h5", ".csv")
+
+        if "v" in Fields[f]["basis"]:
+            paraview_export(f, file, feelpp_directory)
+            for i in range(dim):
+                filei = file.replace(".csv", f"_{i}.csv")
+                if os.path.exists(filei):
+                    df = pd.read_csv(file)
+                    col_to_drop = [f"cfpdes.expr.{f}:{j}" for j in range(3) if j != i]
+                    df.drop(
+                        columns=col_to_drop,
+                        inplace=True,
+                    )
+                    df.to_csv(filei, index=False)
+                if axis:
+                    fields_unknowns[f"meshes_cfpdes_fields_{f}_{i}"] = (
+                        f"meshes_cfpdes_fields_{f}_{i}(x,z,0)"
+                    )
+                elif dim == 2:
+                    fields_unknowns[f"meshes_cfpdes_fields_{f}_{i}"] = (
+                        f"meshes_cfpdes_fields_{f}_{i}(x,y,0)"
+                    )
+                else:
+                    fields_unknowns[f"meshes_cfpdes_fields_{f}_{i}"] = (
+                        f"meshes_cfpdes_fields_{f}_{i}(x,y,z)"
+                    )
+
+                model.java.func().create(
+                    f"meshes_cfpdes_fields_{f}_{i}", "Interpolation"
+                )
+                model.java.func(f"meshes_cfpdes_fields_{f}_{i}").set("source", "file")
+                model.java.func(f"meshes_cfpdes_fields_{f}_{i}").importData()
+                model.java.func(f"meshes_cfpdes_fields_{f}_{i}").set("filename", filei)
+                model.java.func(f"meshes_cfpdes_fields_{f}_{i}").label(
+                    f"Meshes Field {f}_{i}"
+                )
+            os.remove(file)
+
+        elif f != "U":
+            paraview_export(f, file, feelpp_directory)
+
+            if axis:
+                fields_unknowns[f"meshes_cfpdes_fields_{f}"] = (
+                    f"meshes_cfpdes_fields_{f}(x,z,0)"
+                )
+            elif dim == 2:
+                fields_unknowns[f"meshes_cfpdes_fields_{f}"] = (
+                    f"meshes_cfpdes_fields_{f}(x,y,0)"
+                )
+            else:
+                fields_unknowns[f"meshes_cfpdes_fields_{f}"] = (
+                    f"meshes_cfpdes_fields_{f}(x,y,z)"
+                )
+            model.java.func().create(f"meshes_cfpdes_fields_{f}", "Interpolation")
+            model.java.func(f"meshes_cfpdes_fields_{f}").set("source", "file")
+            model.java.func(f"meshes_cfpdes_fields_{f}").importData()
+            model.java.func(f"meshes_cfpdes_fields_{f}").set("filename", file)
+            model.java.func(f"meshes_cfpdes_fields_{f}").label(f"Meshes Field {f}")
+            # model.java.func(f"meshes_cfpdes_fields_{f}").importData()
+
+    return fields_unknowns
+
+
+def paraview_export(field: str, file: str, feelpp_directory: str):
+    print(
+        'Info    : Loading Interpolation from field "meshes_cfpdes_fields_'
+        + field
+        + '"...'
+    )
+    exportcase = EnSightReader(
+        registrationName="Export.case",
+        CaseFileName=f"{feelpp_directory}/np_1/cfpdes.exports/Export.case",
+    )
+
+    # print(f"save data {file}")
+    SaveData(
+        file,
+        proxy=exportcase,
+        ChooseArraysToWrite=1,
+        PointDataArrays=[
+            f"cfpdes.expr.{field}",
+        ],
+    )

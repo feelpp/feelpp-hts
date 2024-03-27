@@ -19,8 +19,8 @@ import configparser
 # from mesh import import_mesh
 from physics import create_physics
 from mesh import meshing_nastran, import_mesh, creating_selection
-from parameters import parameters_and_functions, material_variables
-from methods import dict_unknown
+from parameters import parameters_and_functions, material_variables, import_fields
+from methods import dict_unknown, json_get
 from postproc import postprocessing
 
 
@@ -49,7 +49,9 @@ def main():
     basedir = None
     with open(args.cfgfile, "r") as inputcfg:
         feelpp_config.read_string("[DEFAULT]\n[main]\n" + inputcfg.read())
-        feelpp_directory = feelpp_config["main"]["directory"]
+        feelpp_directory = (
+            os.path.expanduser("~") + "/feelppdb/" + feelpp_config["main"]["directory"]
+        )
         scale = 1
         if "mesh.scale" in feelpp_config["cfpdes"]:
             scale = feelpp_config["cfpdes"]["mesh.scale"]
@@ -102,9 +104,22 @@ def main():
     model = client.create(data["ShortName"])  # creating the mph model
 
     ### Create parameters
-    parameters_and_functions(
+    params_unknowns = parameters_and_functions(
         model, data["Parameters"], basedir, args.I, args.mdata, time, args.debug
     )
+    feel_unknowns.update(params_unknowns)
+
+    fields = json_get(data, "Meshes", "cfpdes", "Fields")
+    if fields:
+        fields_unknowns = import_fields(
+            model,
+            fields,
+            dim,
+            basedir,
+            feelpp_directory,
+            args.axis,
+        )
+        feel_unknowns.update(fields_unknowns)
 
     ### Create component
     model.java.modelNode().create("component")
@@ -120,6 +135,7 @@ def main():
     material_variables(
         model, data["Materials"], feel_unknowns, selection_import, dim, args.debug
     )
+
     ### Create physics
     create_physics(model, equations, data, dim, selection_import, args)
 
