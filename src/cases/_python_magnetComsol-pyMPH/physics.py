@@ -1,6 +1,6 @@
 import numpy as np
 from typing import List
-from methods import get_markers, get_materials_markers
+from methods import get_markers, get_materials_markers, json_get
 
 
 def create_physics(
@@ -37,7 +37,10 @@ def create_magnetic(model, data: dict, dim: int, selection_import: dict, args):
     physics = model / "physics"
     geometry = (model / "geometries").children()[0]
 
-    models = data["Models"]["magnetic"]["models"]
+    models = json_get(data, "Models", "magnetic", "models")
+    if not models:
+        print('Error: Must use configuration "common":{...},"models":[{..}]')
+        exit(1)
     materials = data["Materials"]
 
     part_electric = []
@@ -143,9 +146,12 @@ def create_heat(model, data: dict, dim: int, selection_import: dict, args):
     physics = model / "physics"
     geometry = (model / "geometries").children()[0]
 
-    models = data["Models"]["heat"]["models"]
+    models = json_get(data, "Models", "heat", "models")
+    if not models:
+        print('Error: Must use configuration "common":{...},"models":[{..}]')
+        exit(1)
     materials = data["Materials"]
-    boundaries = data["BoundaryConditions"]["heat"]["Robin"]
+    boundaries = json_get(data, "BoundaryConditions", "heat", "Robin")
 
     part_thermic = []
     part_electric = []
@@ -164,8 +170,10 @@ def create_heat(model, data: dict, dim: int, selection_import: dict, args):
         )
     )
 
+    initial = json_get(data, "InitialConditions", "heat", "temperature", "Expression")
+    initial_file = json_get(data, "InitialConditions", "heat", "temperature", "File")
     print("Info    :    Initial Conditions")
-    if "heat" in data["InitialConditions"]:
+    if initial:
         initial = data["InitialConditions"]["heat"]["temperature"]["Expression"]
         for init in initial:
             ic = heat.create("init", 2, name=f"Initial Values {init}")
@@ -176,6 +184,8 @@ def create_heat(model, data: dict, dim: int, selection_import: dict, args):
                 )
             )
             ic.property("Tinit", initial[init]["expr"].split(":")[0])
+    elif initial_file:
+        pass
     else:
         ini = heat / "Initial Values 1"
         ini.property("Tinit", "Tinit")
@@ -190,37 +200,52 @@ def create_heat(model, data: dict, dim: int, selection_import: dict, args):
         sd.property("Cp", "Cp")
 
     print("Info    :    Heat Source")
-    HeatSource = heat.create("HeatSource", 2, name="Heat Source")
-    HeatSource.select(
-        np.concatenate(
-            [selection_import[si_markers][marker] for marker in part_electric]
-        )
-    )
-    HeatSource.property("Q0", "u*u/sigma")
-
-    print("Info    :    Robin Boundary Conditions")
-    for bound in boundaries:
-        markers_bound = get_markers(bound, boundaries)
-
-        parts = boundaries[bound]["expr2"].split(":")
-        hvar = None
-        Tvar = None
-        for part in parts:
-            if part.startswith("hw"):
-                hvar = part
-            elif "(" in part and ")" in part:
-                Tvar = part[part.find("(") + 1 : part.rfind(")")]
-        Heatflux = heat.create(
-            "HeatFluxBoundary", 1, name=f"Heat Flux Boundary {bound}"
-        )
-        Heatflux.select(
+    if "magnetic" in data["Models"]["cfpdes"]["equations"]:
+        HeatSource = heat.create("HeatSource", 2, name="Heat Source")
+        HeatSource.select(
             np.concatenate(
-                [selection_import[si_bound][marker] for marker in markers_bound]
+                [selection_import[si_markers][marker] for marker in part_electric]
             )
         )
-        Heatflux.property("HeatFluxType", "ConvectiveHeatFlux")
-        Heatflux.property("h", hvar)
-        Heatflux.property("Text", Tvar)
+        HeatSource.property("Q0", "u*u/sigma")
+    else:
+        for mod in models:
+            f_coef = mod["setup"]["coefficients"]["f"].replace("materials_", "")
+            HeatSource = heat.create("HeatSource", 2, name=f"Heat Source {mod}")
+            HeatSource.select(
+                np.concatenate(
+                    [
+                        selection_import[si_markers][marker]
+                        for marker in get_materials_markers(mod, materials)
+                    ]
+                )
+            )
+            HeatSource.property("Q0", f_coef)
+
+    if boundaries:
+        print("Info    :    Robin Boundary Conditions")
+        for bound in boundaries:
+            markers_bound = get_markers(bound, boundaries)
+
+            parts = boundaries[bound]["expr2"].split(":")
+            hvar = None
+            Tvar = None
+            for part in parts:
+                if part.startswith("hw"):
+                    hvar = part
+                elif "(" in part and ")" in part:
+                    Tvar = part[part.find("(") + 1 : part.rfind(")")]
+            Heatflux = heat.create(
+                "HeatFluxBoundary", 1, name=f"Heat Flux Boundary {bound}"
+            )
+            Heatflux.select(
+                np.concatenate(
+                    [selection_import[si_bound][marker] for marker in markers_bound]
+                )
+            )
+            Heatflux.property("HeatFluxType", "ConvectiveHeatFlux")
+            Heatflux.property("h", hvar)
+            Heatflux.property("Text", Tvar)
 
 
 def create_elastic(model, data: dict, dim: int, selection_import: dict, args):
@@ -239,11 +264,14 @@ def create_elastic(model, data: dict, dim: int, selection_import: dict, args):
     elas = "elastic"
     if args.timedep:
         elas = "elastic1"
-        models2 = data["Models"]["elastic2"]["models"]
+        models2 = json_get(data, "Models", "elastic2", "models")
 
-    models = data["Models"][elas]["models"]
+    models = json_get(data, "Models", elas, "models")
+    if not models:
+        print('Error: Must use configuration "common":{...},"models":[{..}]')
+        exit(1)
     materials = data["Materials"]
-    boundaries = data["BoundaryConditions"][elas]["Dirichlet"]
+    boundaries = json_get(data, "BoundaryConditions", elas, "Dirichlet")
 
     part_elastic = []
     part_electric = []
@@ -276,25 +304,26 @@ def create_elastic(model, data: dict, dim: int, selection_import: dict, args):
     if args.timedep:
         lem.property("rho", "rho")
 
-    print("Info    :    Dirichlet Boundary Conditions")
-    component = {"x": ["1", "0", "0"], "y": ["0", "1", "0"]}
-    for bound in boundaries:
-        markers_bound = get_markers(bound, boundaries)
-        if "component" in boundaries[bound]:
-            Fixed = elastic.create("Displacement1", 1, name=f"Fixed Constraint {bound}")
-            # print(Fixed.properties())
-            Fixed.property("Direction", component[boundaries[bound]["component"]])
-            print(Fixed.properties())
-        else:
-            Fixed = elastic.create("Fixed", 1, name=f"Fixed Constraint {bound}")
-        Fixed.select(
-            np.concatenate(
-                [selection_import[si_bound][marker] for marker in markers_bound]
+    if boundaries:
+        print("Info    :    Dirichlet Boundary Conditions")
+        component = {"x": ["1", "0", "0"], "y": ["0", "1", "0"]}
+        for bound in boundaries:
+            markers_bound = get_markers(bound, boundaries)
+            if "component" in boundaries[bound]:
+                Fixed = elastic.create(
+                    "Displacement1", 1, name=f"Fixed Constraint {bound}"
+                )
+                Fixed.property("Direction", component[boundaries[bound]["component"]])
+            else:
+                Fixed = elastic.create("Fixed", 1, name=f"Fixed Constraint {bound}")
+            Fixed.select(
+                np.concatenate(
+                    [selection_import[si_bound][marker] for marker in markers_bound]
+                )
             )
-        )
 
     print("Info    :    Body Load")
-    if part_electric:
+    if "magnetic" in data["Models"]["cfpdes"]["equations"]:
         BodyLoad = elastic.create("BodyLoad", 2, name="Body Load")
         BodyLoad.select(
             np.concatenate(
@@ -317,7 +346,7 @@ def create_elastic(model, data: dict, dim: int, selection_import: dict, args):
                 )
             )
 
-            f_coef = mod["setup"]["coefficients"]["f"]
+            f_coef = mod["setup"]["coefficients"]["f"].replace("materials_", "")
             f_values = f_coef[f_coef.find("{") + 1 : f_coef.find("}")].split(",")
             if args.axis:
                 BodyLoad.property("FperVol", [f_values[0], "0", f_values[1]])
@@ -338,10 +367,6 @@ def create_elastic(model, data: dict, dim: int, selection_import: dict, args):
         thel.property("alpha", "alphaT")
 
 
-def create_nothing(model, data: dict, dim: int, selection_import: dict, args):
-    pass
-
-
 def create_electric(model, data: dict, dim: int, selection_import: dict, args):
     if dim == 2:
         si_markers = "surface"
@@ -354,9 +379,12 @@ def create_electric(model, data: dict, dim: int, selection_import: dict, args):
     physics = model / "physics"
     geometry = (model / "geometries").children()[0]
 
-    models = data["Models"]["electric"]["models"]
+    models = json_get(data, "Models", "electric", "models")
+    if not models:
+        print('Error: Must use configuration "common":{...},"models":[{..}]')
+        exit(1)
     materials = data["Materials"]
-    boundaries = data["BoundaryConditions"]["electric"]["Dirichlet"]
+    boundaries = json_get(data, "BoundaryConditions", "electric", "Dirichlet")
 
     part_electric = []
     for mod in models:
@@ -374,20 +402,25 @@ def create_electric(model, data: dict, dim: int, selection_import: dict, args):
     cucn1.property("sigma_mat", "userdef")
     cucn1.property("sigma", "sigma")
 
-    print("Info    :    Dirichlet Boundary Conditions")
-    for bound in boundaries:
-        markers_bound = get_markers(bound, boundaries)
+    if boundaries:
+        print("Info    :    Dirichlet Boundary Conditions")
+        for bound in boundaries:
+            markers_bound = get_markers(bound, boundaries)
 
-        expr = boundaries[bound]["expr"]
-        if type(expr) == str:
-            expr = expr.split(":")[0]
+            expr = boundaries[bound]["expr"]
+            if type(expr) == str:
+                expr = expr.split(":")[0]
 
-        ElecPot = electric.create(
-            "ElectricPotential", 1, name=f"Electric Potential {bound}"
-        )
-        ElecPot.select(
-            np.concatenate(
-                [selection_import[si_bound][marker] for marker in markers_bound]
+            ElecPot = electric.create(
+                "ElectricPotential", 1, name=f"Electric Potential {bound}"
             )
-        )
-        ElecPot.property("V0", expr)
+            ElecPot.select(
+                np.concatenate(
+                    [selection_import[si_bound][marker] for marker in markers_bound]
+                )
+            )
+            ElecPot.property("V0", expr)
+
+
+def create_nothing(model, data: dict, dim: int, selection_import: dict, args):
+    pass

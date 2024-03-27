@@ -64,9 +64,10 @@ def dict_unknown(data: dict, equations: List[str], dim: int, axis: bool = 0) -> 
 
     feel_unknowns = {}
     for equation in equations:
-        if "common" in data["Models"][equation]:
-            unknown = data["Models"][equation]["common"]["setup"]["unknown"]["symbol"]
-        else:
+        unknown = json_get(
+            data, "Models", equation, "common", "setup", "unknown", "symbol"
+        )
+        if not unknown:
             unknown = data["Models"][equation]["setup"]["unknown"]["symbol"]
         feel_unknowns = feel_unknowns | create_dict(
             unknown, equation, eq_expr[equation], dim, axis
@@ -98,11 +99,27 @@ def create_dict(
             dict[f"{equation}_grad_{unknown}_rt_1"] = f"ec.Ey"
     else:
         if axis:
+            dict[f"{equation}_grad_{unknown}_00"] = f"d({expr}x,x)"
+            dict[f"{equation}_grad_{unknown}_rt_00"] = f"d({expr}x,x)"
+            dict[f"{equation}_grad_{unknown}_11"] = f"d({expr}z,z)"
+            dict[f"{equation}_grad_{unknown}_rt_11"] = f"d({expr}z,z)"
+            dict[f"{equation}_grad_{unknown}_01"] = f"d({expr}x,z)"
+            dict[f"{equation}_grad_{unknown}_rt_01"] = f"d({expr}x,z)"
+            dict[f"{equation}_grad_{unknown}_10"] = f"d({expr}z,x)"
+            dict[f"{equation}_grad_{unknown}_rt_10"] = f"d({expr}z,x)"
             dict[f"{equation}_grad_{unknown}_0"] = f"d({expr},r)"
             dict[f"{equation}_grad_{unknown}_rt_0"] = f"d({expr},r)"
             dict[f"{equation}_grad_{unknown}_1"] = f"d({expr},z)"
             dict[f"{equation}_grad_{unknown}_rt_1"] = f"d({expr},z)"
         elif dim == 2:
+            dict[f"{equation}_grad_{unknown}_00"] = f"d({expr}x,x)"
+            dict[f"{equation}_grad_{unknown}_rt_00"] = f"d({expr}x,x)"
+            dict[f"{equation}_grad_{unknown}_11"] = f"d({expr}y,y)"
+            dict[f"{equation}_grad_{unknown}_rt_11"] = f"d({expr}y,y)"
+            dict[f"{equation}_grad_{unknown}_01"] = f"d({expr}x,y)"
+            dict[f"{equation}_grad_{unknown}_rt_01"] = f"d({expr}x,y)"
+            dict[f"{equation}_grad_{unknown}_10"] = f"d({expr}y,x)"
+            dict[f"{equation}_grad_{unknown}_rt_10"] = f"d({expr}y,x)"
             dict[f"{equation}_grad_{unknown}_0"] = f"d({expr},x)"
             dict[f"{equation}_grad_{unknown}_rt_0"] = f"d({expr},x)"
             dict[f"{equation}_grad_{unknown}_1"] = f"d({expr},y)"
@@ -133,3 +150,13 @@ def create_group(model, tag: str, label: str, location: str, type: str):
     model.java.nodeGroup().create(tag, location)
     model.java.nodeGroup(tag).set("type", type)
     model.java.nodeGroup(tag).label(label)
+
+
+def json_get(data: dict, *keys):
+    current_data = data
+    for key in keys:
+        current_data = current_data.get(key)
+        if not current_data:
+            break
+
+    return current_data
