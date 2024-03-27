@@ -1,6 +1,6 @@
 import numpy as np
 from typing import List
-from methods import get_markers, create_group
+from methods import get_markers, create_group, json_get
 
 
 def postprocessing(
@@ -14,7 +14,7 @@ def postprocessing(
         "heat": create_export_heat,
         "elastic": create_export_elastic,
         "elastic1": create_export_elastic,
-        "electric": create_nothing,
+        "electric": create_export_electric,
     }
 
     tab = model / "tables"
@@ -23,17 +23,15 @@ def postprocessing(
     ### Browse equations and create corresponding post processing
     for eq in equations:
         if eq != "elastic2":
-            export_method[eq](plots, args)
-            if eq in data["PostProcess"]:
-                if "Measures" in data["PostProcess"][eq]:
-                    if "Statistics" in data["PostProcess"][eq]["Measures"]:
-                        tab.create("Table", name=f"{eq}_values")
-                        stat_method(eq, model, data, selection_import, args)
+            export_method[eq](plots, equations, args)
+            if json_get(data, "PostProcess", eq, "Measures", "Statistics"):
+                tab.create("Table", name=f"{eq}_values")
+                stat_method(eq, model, data, selection_import, args)
 
     print("Info    : Done creating Post-Processing")
 
 
-def create_export_magnetic(plots, args):
+def create_export_magnetic(plots, equations: str, args):
     print("Info    :    Export Magnetic")
 
     create_export(plots, "Magnetic field", "normB", "mf.normB")
@@ -45,29 +43,48 @@ def create_export_magnetic(plots, args):
         create_export(plots, "Current Density", "Jz", "u")
 
 
-def create_export_heat(plots, args):
+def create_export_heat(plots, equations: str, args):
     print("Info    :    Export Heat")
 
     create_export(plots, "Temperature", "T", "T")
     create_export(plots, "Heat Source", "Q", "ht.Q")
 
 
-def create_export_elastic(plots, args):
+def create_export_electric(plots, equations: str, args):
+    print("Info    :    Export Electric")
+
+    create_export(plots, "Electric Potential", "V", "V")
+    create_export(plots, "Electric Field", "E", "ec.normE")
+
+
+def create_export_elastic(plots, equations: str, args):
     print("Info    :    Export Elastic")
 
     create_export(plots, "Displacement", "disp", "solid.disp")
     create_export(plots, "Von Mises", "vonmises", "solid.mises")
     if args.axis:
         create_export(plots, "Stress", "stress", "solid.srz")
-        create_export(plots, "Flaplace_0", "force laplace r", "u*mf.Bz")
-        create_export(plots, "Flaplace_1", "force laplace z", "-u*mf.Br")
+        if "magnetic" in equations:
+            create_export(
+                plots, "Flaplace", "force laplace", "sqrt((u*mf.Bz)^2+(-u*mf.Br)^2"
+            )
+        else:
+            create_export(
+                plots, "Flaplace", "force laplace", "sqrt(F_laplace_0^2+F_laplace_1^2)"
+            )
     else:
         create_export(plots, "Stress", "stress", "solid.sxy")
-        create_export(plots, "Flaplace_0", "force laplace x", "-u*mf.By")
-        create_export(plots, "Flaplace_1", "force laplace y", "-u*mf.Bx")
+        if "magnetic" in equations:
+            create_export(
+                plots, "Flaplace", "force laplace", "sqrt((-u*mf.By)^2+(-u*mf.Bx)^2)"
+            )
+        else:
+            create_export(
+                plots, "Flaplace", "force laplace", "sqrt(F_laplace_0^2+F_laplace_1^2)"
+            )
 
 
-def create_nothing(plots, args):
+def create_nothing(plots, equations: str, args):
     pass
 
 
