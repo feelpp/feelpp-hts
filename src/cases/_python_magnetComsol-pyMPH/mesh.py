@@ -1,23 +1,27 @@
 import gmsh
+import numpy as np
 import os
 from typing import List
+from rich.progress import track
 
 
-def meshing_nastran(meshmodel: str, basedir: str, debug: bool = False) -> str:
+def meshing_nastran(meshmodel: str, dim: int, basedir: str, debug: bool = False) -> str:
 
     # Loading the geometry or mesh given by the json
     gmsh.open(meshmodel)
 
     if meshmodel.endswith(".geo"):  # if geometry is .geo
         gmsh.model.mesh.generate(2)  # generating mesh
+        if dim == 3:
+            gmsh.model.mesh.generate(3)
         bdffilename = meshmodel.removesuffix(".geo") + ".bdf"
     elif meshmodel.endswith(".msh"):  # if geometry is .msh
         bdffilename = meshmodel.removesuffix(".msh") + ".bdf"
 
     bdffilename = os.path.split(bdffilename)[1]
     if debug:
-        print("Debug   : bdffilename=" + bdffilename)
-    gmsh.write(basedir + "/Comsol_res/" + bdffilename)  # exporting in .bdf
+        print(f"Debug   : bdffilename={bdffilename}")
+    gmsh.write(f"{basedir}/Comsol_res/{bdffilename}")  # exporting in .bdf
 
     gmsh.clear()
 
@@ -49,7 +53,7 @@ def import_mesh(
     imported.property("source", "nastran")
     imported.property("data", "mesh")
     imported.property("facepartition", "minimal")
-    imported.property("filename", basedir + "/Comsol_res/" + bdffilename)
+    imported.property("filename", f"{basedir}/Comsol_res/{bdffilename}")
 
     ### Add scaling if scale !=1 in cfg
     if scale != 1:
@@ -70,10 +74,14 @@ def creating_selection(model: str, meshfilename: str, debug: bool = False) -> di
 
     # Assigning the domain numbers of Comsol to the physical groups' names
     # -> Dictionnary : GMSH physical group names <=> Comsol domains ID
-    print("Info    : Creating Selection's dictionnary...")
+    # print("Info    : Creating Selection's dictionnary...")
     selection_import = {"volume": {}, "surface": {}, "curve": {}}
     groups = gmsh.model.getPhysicalGroups()
-    for g in groups:
+    for i in track(
+        range(len(groups)), description="Info    : Creating Selection's dictionnary "
+    ):
+        # for g in groups:
+        g = groups[i]
         dim = g[0]
         tag = g[1]
 
@@ -82,31 +90,29 @@ def creating_selection(model: str, meshfilename: str, debug: bool = False) -> di
 
         tab = []
         # for child in selections.children():
-        #     for i in ent :
-        #         if " "+str(i)+" " in child.name() and child.selection()[0] not in tab:
+        #     for i in ent:
+        #         if " " + str(i) + " " in child.name() and child.selection()[0] not in tab:
         #             tab.append(child.selection()[0])
 
         if debug:
             print("Debug   : Entities: ", ent)
-        for i in ent:
-            child_index = "ID " + str(i) + " Import 1"
+        for i in ent:  # for each entity of the marker, select comsol ID
+            child_index = f"ID {str(i)} Import 1"
             child = selections / child_index
-            if child.selection()[0] not in tab:
-                tab.append(child.selection()[0])
+            tab.append(child.selection().tolist())
         if debug:
             print("Debug   :     selection: ", tab)
 
         if dim == 1:
-            selection_import["curve"][name] = tab
+            selection_import["curve"][name] = np.concatenate(tab)
         elif dim == 2:
-            selection_import["surface"][name] = tab
+            selection_import["surface"][name] = np.concatenate(tab)
         elif dim == 3:
-            selection_import["volume"][name] = tab
+            selection_import["volume"][name] = np.concatenate(tab)
 
-    print("Info    : Done creating Selection's dictionnary")
+    # print("Info    : Done creating Selection's dictionnary")
     if debug:
         print("Debug   : selection dictionnary: ", selection_import)
     gmsh.clear()
-    # selection_import = import_mesh(model,data,axisymmetric)
 
     return selection_import
