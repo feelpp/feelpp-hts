@@ -14,9 +14,10 @@ import mph
 import json
 import argparse
 import configparser
+import re
+import time
 
 
-# from mesh import import_mesh
 from physics import create_physics
 from mesh import meshing_nastran, import_mesh, creating_selection
 from parameters import parameters_and_functions, material_variables, import_fields
@@ -25,6 +26,9 @@ from postproc import postprocessing
 
 
 def main():
+
+    start_time = time.time()
+
     parser = argparse.ArgumentParser()
     parser.add_argument("cfgfile", help="input cfg file", type=str)
     parser.add_argument(
@@ -52,11 +56,9 @@ def main():
         feelpp_directory = (
             os.path.expanduser("~") + "/feelppdb/" + feelpp_config["main"]["directory"]
         )
-        scale = 1
-        if "mesh.scale" in feelpp_config["cfpdes"]:
-            scale = feelpp_config["cfpdes"]["mesh.scale"]
 
         basedir = os.path.dirname(args.cfgfile)
+        name = os.path.split(args.cfgfile)[1].removesuffix(".cfg")
         if not basedir:
             basedir = "."
         os.makedirs(basedir + "/Comsol_res", exist_ok=True)
@@ -69,25 +71,40 @@ def main():
         jsonmodel = feelpp_config["cfpdes"]["filename"]
         jsonmodel = jsonmodel.replace(r"$cfgdir/", f"{basedir}/")
         print(f"Info    : jsonmodel={jsonmodel}")
+        with open(jsonmodel, "r") as jsonfile:
+            data = json.load(jsonfile)
 
-        meshmodel = feelpp_config["cfpdes"]["mesh.filename"]
+        scale = 1
+        if "mesh.filename" in feelpp_config["cfpdes"]:  # if mesh in cfg
+            meshmodel = feelpp_config["cfpdes"]["mesh.filename"]
+            if "mesh.scale" in feelpp_config["cfpdes"]:
+                scale = feelpp_config["cfpdes"]["mesh.scale"]
+        else:  # if mesh in json
+            meshmodel = json_get(data, "Meshes", "cfpdes", "Import", "filename")
+            scale = json_get(data, "Meshes", "cfpdes", "Import", "scale")
+            if not scale:
+                scale = 1
+
         meshmodel = meshmodel.replace(r"$cfgdir/", f"{basedir}/")
+        if re.match(r".*_p\d+\.json", meshmodel):
+            meshmodel = re.sub(r"_p\d+\.json", ".msh", meshmodel)
+            # scale = 0.001
         print(f"Info    : meshmodel={meshmodel}")
 
-        time = None
+        times = None
         if args.timedep:
-            time = [
+            times = [
                 feelpp_config["ts"]["time-initial"],
                 feelpp_config["ts"]["time-step"],
                 feelpp_config["ts"]["time-final"],
             ]
             if args.debug:
-                print("Debug   : (time-initial,time-step,time-initial)=", time)
+                print("Debug   : (time-initial,time-step,time-initial)=", times)
 
-    with open(jsonmodel, "r") as jsonfile:
-        data = json.load(jsonfile)
+    if "Axi" in args.cfgfile.replace(basedir, "") and not args.axis:
+        args.axis = True
 
-    equations = data["Models"]["cfpdes"]["equations"]
+    equations = json_get(data, "Models", "cfpdes", "equations")
     if type(equations) == str:
         equations = [equations]
 
@@ -98,14 +115,14 @@ def main():
 
     gmsh.initialize()
     # Loading the geometry or mesh given by the json
-    bdffilename = meshing_nastran(meshmodel, pwd + "/" + basedir, args.debug)
+    bdffilename = meshing_nastran(meshmodel, dim, f"{pwd}/{basedir}", args.debug)
 
     client = mph.start()
     model = client.create(data["ShortName"])  # creating the mph model
 
     ### Create parameters
     params_unknowns = parameters_and_functions(
-        model, data["Parameters"], basedir, args.I, args.mdata, time, args.debug
+        model, data["Parameters"], basedir, args.I, args.mdata, times, args.debug
     )
     feel_unknowns.update(params_unknowns)
 
@@ -115,7 +132,7 @@ def main():
             model,
             fields,
             dim,
-            basedir,
+            f"{pwd}/{basedir}",
             feelpp_directory,
             args.axis,
         )
@@ -137,7 +154,7 @@ def main():
     )
 
     ### Create physics
-    create_physics(model, equations, data, dim, selection_import, args)
+    create_physics(model, equations, data, dim, selection_import, feel_unknowns, args)
 
     ### Create time dependent solver
     studies = model / "studies"
@@ -168,43 +185,72 @@ def main():
         print("Info    : Done creating Stationary Solver...")
 
     ### Create post-processing
-    postprocessing(model, equations, data, selection_import, args)
+    postprocessing(model, equations, data, selection_import, dim, args)
 
     if args.solveit:
         print("Info    : Solving... ")
+        start_solve = time.time()
         model.solve()
+        end_solve = time.time()
         # results(data,model,args.formulation)
-        print("Info    : Done solving... ")
+        print(f"Info    : Done solving - Solver time: {int(end_solve-start_solve)}s")
+        print("Info    : Export Results... ")
+        start_solve = time.time()
+        eval = model / "evaluations"
+        export = model / "export"
+        tables = model / "tables"
+        tab_dict = {}
+        # add every evaluation result to the corresponding table
+        for child in eval.children():
+            name_tab = child.property("table")
+            if name_tab not in tab_dict:
+                # if table not initialised -> set result
+                tab_dict[name_tab] = tables.children()[
+                    int(re.sub(r"\D", "", name_tab)) - 1
+                ]
+                child.java.setResult()
+            else:
+                # if table initialised -> append result
+                child.java.appendResult()
 
-    name = os.path.split(args.cfgfile)[1].removesuffix(".cfg")
-    print("Info    : Creating " + name + "_created.mph...")
+        os.makedirs(f"{basedir}/Comsol_res/tables", exist_ok=True)
+        # create export of every tables
+        for tab in tab_dict:
+            exp = export.create(
+                "Table", name=f"{str(tab_dict[tab]).replace('tables/','')}"
+            )
+            exp.property("table", f"{tab}")
+            exp.property("filename", f"{pwd}/{basedir}/Comsol_res/{tab_dict[tab]}.csv")
+            exp.java.run()
+
+        end_solve = time.time()
+        print(f"Info    : Done Export - Export time: {int(end_solve-start_solve)}s")
+
+    print(f"Info    : Creating {name}_created.mph...")
     if args.debug:
-        print(
-            "Debug   : path="
-            + pwd
-            + "/"
-            + basedir
-            + "/Comsol_res/"
-            + name
-            + "_created.mph"
-        )
-    model.save(pwd + "/" + basedir + "/Comsol_res/" + name + "_created.mph")
-    print("Info    : Done creating " + name + "_created.mph...")
+        print(f"Debug   : path={pwd}/{basedir}/Comsol_res/{name}_created.mph")
+    model.save(f"{pwd}/{basedir}/Comsol_res/{name}_created.mph")
+    print(f"Info    : Done creating {name}_created.mph...")
 
     print("Info    : Disconnecting Client...")
     client.remove(model)
-    # client.disconnect()
     try:
         client.disconnect()
     except Exception:
         error = "Error while disconnecting client at session clean-up."
-        exit(1)
+        exit(error)
     print("Info    : Client disconnected")
 
+    end_time = time.time()
+
+    print(f"Info    : Model creation time: {int(end_time - start_time)}s")
+
     if args.openit:
-        print("Info    : Openning " + name + "_created.mph on Comsol")
-        os.system("comsol -open " + basedir + "/Comsol_res/" + name + "_created.mph")
-        print("Info    : " + name + "_created.mph closed")
+        print(f"Info    : Openning {name}_created.mph on Comsol")
+        os.system(f"comsol -open {basedir}/Comsol_res/{name}_created.mph")
+        print(f"Info    : {name}_created.mph closed")
+
+    return 0
 
 
 if __name__ == "__main__":
