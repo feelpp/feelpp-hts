@@ -1,23 +1,23 @@
-import numpy as np
+import re
 from typing import List
 
 
 def get_markers(material: str, materials: dict) -> List[str]:
-    if "markers" in materials[material]:
-        markers = materials[material]["markers"]
 
+    markers = json_get(materials, material, "markers")
+    if markers:
         if markers == "%1%":
             markers = materials[material][
                 "index1"
             ]  # temporaire -> fix pour chaque marker
 
-        elif type(markers) == str:
+        elif isinstance(markers, str):
             markers = [markers]
 
-        elif type(markers) == dict:
+        elif isinstance(markers, dict):
             name = markers["name"]
             if "index1" in markers:
-                if type(markers["index1"]) == list:
+                if isinstance(markers["index1"], list):
                     index1, index2 = markers["index1"][0].split(":")
                 else:
                     index1, index2 = markers["index1"].split(":")
@@ -38,16 +38,22 @@ def get_markers(material: str, materials: dict) -> List[str]:
 
 def get_materials_markers(model_mat: str, materials: str):
     markers_list = []
-    if type(model_mat["materials"]) == str:
-        markers_list.extend(get_markers(model_mat["materials"], materials))
+    mmat = json_get(model_mat, "materials")
+    if mmat:
+        if isinstance(mmat, str):
+            markers_list.extend(get_markers(mmat, materials))
+        else:
+            for mat in mmat:
+                markers_list.extend(get_markers(mat, materials))
     else:
-        for mat in model_mat["materials"]:
+        for mat in materials.keys():
             markers_list.extend(get_markers(mat, materials))
 
     return markers_list
 
 
 def dict_unknown(data: dict, equations: List[str], dim: int, axis: bool = 0) -> dict:
+    """Create dictionnary that translate feelpp symbols into Comsol symbols"""
     eq_expr = {
         "heat": "T",
         "elastic": "u2",
@@ -68,7 +74,7 @@ def dict_unknown(data: dict, equations: List[str], dim: int, axis: bool = 0) -> 
             data, "Models", equation, "common", "setup", "unknown", "symbol"
         )
         if not unknown:
-            unknown = data["Models"][equation]["setup"]["unknown"]["symbol"]
+            unknown = json_get(data, "Models", equation, "setup", "unknown", "symbol")
         feel_unknowns = feel_unknowns | create_dict(
             unknown, equation, eq_expr[equation], dim, axis
         )
@@ -97,16 +103,23 @@ def create_dict(
             dict[f"{equation}_grad_{unknown}_rt_0"] = f"ec.Ex"
             dict[f"{equation}_grad_{unknown}_1"] = f"ec.Ey"
             dict[f"{equation}_grad_{unknown}_rt_1"] = f"ec.Ey"
+        elif dim == 3:
+            dict[f"{equation}_grad_{unknown}_0"] = f"ec.Ex"
+            dict[f"{equation}_grad_{unknown}_rt_0"] = f"ec.Ex"
+            dict[f"{equation}_grad_{unknown}_1"] = f"ec.Ey"
+            dict[f"{equation}_grad_{unknown}_rt_1"] = f"ec.Ey"
+            dict[f"{equation}_grad_{unknown}_2"] = f"ec.Ez"
+            dict[f"{equation}_grad_{unknown}_rt_2"] = f"ec.Ez"
     else:
         if axis:
-            dict[f"{equation}_grad_{unknown}_00"] = f"d({expr}x,x)"
-            dict[f"{equation}_grad_{unknown}_rt_00"] = f"d({expr}x,x)"
+            dict[f"{equation}_grad_{unknown}_00"] = f"d({expr}r,r)"
+            dict[f"{equation}_grad_{unknown}_rt_00"] = f"d({expr}r,r)"
             dict[f"{equation}_grad_{unknown}_11"] = f"d({expr}z,z)"
             dict[f"{equation}_grad_{unknown}_rt_11"] = f"d({expr}z,z)"
-            dict[f"{equation}_grad_{unknown}_01"] = f"d({expr}x,z)"
-            dict[f"{equation}_grad_{unknown}_rt_01"] = f"d({expr}x,z)"
-            dict[f"{equation}_grad_{unknown}_10"] = f"d({expr}z,x)"
-            dict[f"{equation}_grad_{unknown}_rt_10"] = f"d({expr}z,x)"
+            dict[f"{equation}_grad_{unknown}_01"] = f"d({expr}r,z)"
+            dict[f"{equation}_grad_{unknown}_rt_01"] = f"d({expr}r,z)"
+            dict[f"{equation}_grad_{unknown}_10"] = f"d({expr}z,r)"
+            dict[f"{equation}_grad_{unknown}_rt_10"] = f"d({expr}z,r)"
             dict[f"{equation}_grad_{unknown}_0"] = f"d({expr},r)"
             dict[f"{equation}_grad_{unknown}_rt_0"] = f"d({expr},r)"
             dict[f"{equation}_grad_{unknown}_1"] = f"d({expr},z)"
@@ -160,3 +173,11 @@ def json_get(data: dict, *keys):
             break
 
     return current_data
+
+
+def feel_to_comsol_symbols(param: str, dict_unknown: dict):
+    return re.sub(
+        r"\b(" + "|".join(re.escape(key) for key in dict_unknown.keys()) + r")\b",
+        lambda match: dict_unknown[match.group(0)],
+        param,
+    )
