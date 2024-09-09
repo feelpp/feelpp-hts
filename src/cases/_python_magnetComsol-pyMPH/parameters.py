@@ -1,9 +1,8 @@
 import os
 import numpy as np
 import pandas as pd
-from typing import List
 from methods import get_markers, feel_to_comsol_symbols
-from paraview.simple import *
+from paraview.simple import EnSightReader, SaveData
 
 
 ### Create parameters
@@ -13,11 +12,25 @@ def parameters_and_functions(
     basedir: str,
     I: float = 31000.0,
     mdata: dict = None,
-    times: List[float] = None,
+    times: list[float] = None,
     debug: bool = False,
 ) -> dict:
+    """Create parameters in Comsol
+
+    Args:
+        model: mph file (pyComsol model)
+        feel_parameters (dict): dict of parameters from FEEL++ model
+        basedir (str): cfg directory
+        I (float, optional): applied current. Defaults to 31000.0.
+        mdata (dict, optional): applied current if more than 1 magnet. Defaults to None.
+        times (list[float], optional): time parameters if model is time dependant. Defaults to None.
+        debug (bool, optional): print debug. Defaults to False.
+
+    Returns:
+        dict: dict of parameters unknowns
+    """
+
     params_unknowns = {}
-    functions = model / "Functions"
     # export parameters from json
     print("Info    : Loading Parameters...")
     for p in feel_parameters:
@@ -63,6 +76,16 @@ def material_variables(
     dim: int,
     debug: bool = False,
 ):
+    """Create parameters for materials (variables)
+
+    Args:
+        model: mph file (pyComsol model)
+        materials (dict): dict of materials from FEEL++ model
+        unknowns (dict): dict that translate feelpp symbols into Comsol symbols
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        dim (int): geometry dimmension
+        debug (bool, optional): print debug. Defaults to False.
+    """
     if dim == 2:
         si_markers = "surface"
     elif dim == 3:
@@ -130,7 +153,22 @@ def import_fields(
     feelpp_directory: str,
     axis: bool,
     debug: bool = False,
-):
+) -> dict:
+    """import h5 fields in Comsol
+    -> instead of importing h5, load Export.case and creat a csv, then load the parts of the csv as interpolations
+
+    Args:
+        model: mph file (pyComsol model)
+        Fields (dict): dict of Fields from FEEL++ model
+        dim (int): geometry dimmension
+        basedir (str): cfg directory
+        feelpp_directory (str): directory of FEEL++ results for the model
+        axis (bool): bool if model is axis
+        debug (bool, optional): print debug. Defaults to False.
+
+    Returns:
+        dict: dict of fields unknowns
+    """
     # instead of importing h5, load Export.case and creat a csv, then load the parts of the csv as interpolations
     fields_unknowns = {}
     for f in Fields:
@@ -204,7 +242,13 @@ def import_fields(
 
 
 def paraview_export(field: str, file: str, feelpp_directory: str):
-    # export csv in paraview for comsol interpolation
+    """export csv in paraview for comsol interpolation
+
+    Args:
+        field (str): field name
+        file (str): file name
+        feelpp_directory (str): feelpp directory
+    """
     print(
         f'Info    : Loading Interpolation from field "meshes_cfpdes_fields_{field}"...'
     )

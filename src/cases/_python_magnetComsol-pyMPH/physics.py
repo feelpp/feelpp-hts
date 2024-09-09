@@ -1,17 +1,27 @@
 import numpy as np
-from typing import List
 from methods import get_markers, get_materials_markers, json_get, feel_to_comsol_symbols
 
 
 def create_physics(
     model,
-    equations: List[str],
+    equations: list[str],
     data: dict,
     dim: int,
     selection_import: dict,
     unknowns: dict,
     args,
 ):
+    """Create the physics in Comsol
+
+    Args:
+        model: mph file (pyComsol model)
+        equations (list[str]): list of equations of the model
+        data (dict): dict from jsonmodel
+        dim (int): geometry dimmension
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        unknowns (dict): dict that translate feelpp symbols into Comsol symbols
+        args: arguments of the script
+    """
     ### Create the physic
     print("Info    : Creating Physics...")
 
@@ -35,13 +45,24 @@ def create_physics(
 
 def create_magnetic(
     model,
-    equations: List[str],
+    equations: list[str],
     data: dict,
     dim: int,
     selection_import: dict,
     unknowns: dict,
     args,
 ):
+    """Create the magnetic physic in Comsol
+
+    Args:
+        model: mph file (pyComsol model)
+        equations (list[str]): list of equations of the model
+        data (dict): dict from jsonmodel
+        dim (int): geometry dimmension
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        unknowns (dict): dict that translate feelpp symbols into Comsol symbols
+        args (_type_): arguments of the script
+    """
     if dim == 2:
         si_markers = "surface"
     elif dim == 3:
@@ -181,13 +202,24 @@ def create_magnetic(
 
 def create_heat(
     model,
-    equations: List[str],
+    equations: list[str],
     data: dict,
     dim: int,
     selection_import: dict,
     unknowns: dict,
     args,
 ):
+    """Create the heat physic in Comsol
+
+    Args:
+        model: mph file (pyComsol model)
+        equations (list[str]): list of equations of the model
+        data (dict): dict from jsonmodel
+        dim (int): geometry dimmension
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        unknowns (dict): dict that translate feelpp symbols into Comsol symbols
+        args: arguments of the script
+    """
     if dim == 2:
         si_markers = "surface"
         si_bound = "curve"
@@ -311,13 +343,24 @@ def create_heat(
 
 def create_elastic(
     model,
-    equations: List[str],
+    equations: list[str],
     data: dict,
     dim: int,
     selection_import: dict,
     unknowns: dict,
     args,
 ):
+    """Create the elastic physic in Comsol
+
+    Args:
+        model: mph file (pyComsol model)
+        equations (list[str]): list of equations of the model
+        data (dict): dict from jsonmodel
+        dim (int): geometry dimmension
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        unknowns (dict): dict that translate feelpp symbols into Comsol symbols
+        args: arguments of the script
+    """
     if dim == 2:
         si_markers = "surface"
         si_bound = "curve"
@@ -452,13 +495,24 @@ def create_elastic(
 
 def create_electric(
     model,
-    equations: List[str],
+    equations: list[str],
     data: dict,
     dim: int,
     selection_import: dict,
     unknowns: dict,
     args,
 ):
+    """Create the electric physic in Comsol
+
+    Args:
+        model: mph file (pyComsol model)
+        equations (list[str]): list of equations of the model
+        data (dict): dict from jsonmodel
+        dim (int): geometry dimmension
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        unknowns (dict): dict that translate feelpp symbols into Comsol symbols
+        args: arguments of the script
+    """
     if dim == 2:
         si_markers = "surface"
         si_bound = "curve"
@@ -515,11 +569,12 @@ def create_electric(
 
 def create_nothing(
     model,
-    equations: List[str],
+    equations: list[str],
     data: dict,
     dim: int,
     selection_import: dict,
     unknowns: dict,
     args,
 ):
+    """skip this physic"""
     pass

@@ -6,7 +6,17 @@ from rich.progress import track
 
 
 def meshing_nastran(meshmodel: str, dim: int, basedir: str, debug: bool = False) -> str:
+    """Create bdf mesh from a .msh file or a .geo file
 
+    Args:
+        meshmodel (str): path & name of mesh file
+        dim (int): geometry dimmension
+        basedir (str): cfg directory
+        debug (bool, optional): print debug. Defaults to False.
+
+    Returns:
+        str: bdf file name
+    """
     # Loading the geometry or mesh given by the json
     gmsh.open(meshmodel)
 
@@ -37,6 +47,17 @@ def import_mesh(
     scale: float = 1,
     debug: bool = False,
 ):
+    """import the bdf mesh in the Comsol model
+
+    Args:
+        model (str): mph file (pyComsol model)
+        bdffilename (str): path & name of bdf mesh file
+        basedir (str): cfg directory
+        dim (int): geometry dimmension
+        axis (bool, optional):  bool if model is axis. Defaults to 0.
+        scale (float, optional): scale of the mesh. Defaults to 1.
+        debug (bool, optional): print debug. Defaults to False.
+    """
     ### Create empty geometry for the imported mesh
     print("Info    : Creating Geometry...")
     geometries = model / "geometries"
@@ -64,8 +85,19 @@ def import_mesh(
     print("Info    : Done importing Mesh")
 
 
-def creating_selection(model: str, meshfilename: str, debug: bool = False) -> dict:
-    gmsh.open(meshfilename)
+def creating_selection(model: str, meshmodel: str, debug: bool = False) -> dict:
+    """Assigning the domain numbers of Comsol to the physical groups' names
+    -> Dictionnary : GMSH physical group names <=> Comsol domains ID
+
+    Args:
+        model (str): mph file (pyComsol model)
+        meshmodel (str): path & name of mesh file
+        debug (bool, optional): print debug. Defaults to False.
+
+    Returns:
+        dict: dictionnary selection import
+    """
+    gmsh.open(meshmodel)
 
     selections = model / "selections"
     check_selection = [child.name() for child in selections.children()]

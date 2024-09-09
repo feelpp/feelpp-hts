@@ -1,13 +1,21 @@
 import re
-from typing import List
 
 
-def get_markers(material: str, materials: dict) -> List[str]:
+def get_markers(jsonkey: str, jsonsubdict: dict) -> list[str]:
+    """find markers from a dict of the FEEL++ json file (from materials, statistic in post processing...)
 
-    markers = json_get(materials, material, "markers")
+    Args:
+        jsonkey (str): key from which you want the markers
+        jsonsubdict (dict): sub dictionnary of the json file containing the jsonkey
+
+    Returns:
+        list[str]: lis of markes
+    """
+
+    markers = json_get(jsonsubdict, jsonkey, "markers")
     if markers:
         if markers == "%1%":
-            markers = materials[material][
+            markers = jsonsubdict[jsonkey][
                 "index1"
             ]  # temporaire -> fix pour chaque marker
 
@@ -29,14 +37,21 @@ def get_markers(material: str, materials: dict) -> List[str]:
             else:
                 markers = [name]
     else:
-        markers = [
-            material
-        ]  # if there is no markers the material is defined by the title
+        markers = [jsonkey]  # if there is no markers the marker is defined by the title
 
     return markers
 
 
-def get_materials_markers(model_mat: str, materials: str):
+def get_materials_markers(model_mat: dict, materials: dict) -> list[str]:
+    """find markers in for a model using the materials used in the model
+
+    Args:
+        model_mat (dict): dict of the specific model wanted
+        materials (dict): dict of  all the materials
+
+    Returns:
+        list[str]: list of markers
+    """
     markers_list = []
     mmat = json_get(model_mat, "materials")
     if mmat:
@@ -52,8 +67,18 @@ def get_materials_markers(model_mat: str, materials: str):
     return markers_list
 
 
-def dict_unknown(data: dict, equations: List[str], dim: int, axis: bool = 0) -> dict:
-    """Create dictionnary that translate feelpp symbols into Comsol symbols"""
+def dict_unknown(data: dict, equations: list[str], dim: int, axis: bool = 0) -> dict:
+    """Create dictionnary that translate feelpp symbols into Comsol symbols
+
+    Args:
+        data (dict): dict from jsonmodel
+        equations (list[str]): list of equations of the model
+        dim (int): geometry dimmension
+        axis (bool, optional): bool if model is axis. Defaults to 0.
+
+    Returns:
+        dict: dict of symbol translator
+    """
     eq_expr = {
         "heat": "T",
         "elastic": "u2",
@@ -85,6 +110,18 @@ def dict_unknown(data: dict, equations: List[str], dim: int, axis: bool = 0) -> 
 def create_dict(
     unknown: str, equation: str, expr: str, dim: int, axis: bool = 0
 ) -> dict:
+    """Create dictionnary that translate feelpp symbols into Comsol symbols (2nd step: from unknown)
+
+    Args:
+        unknown (str): symbol of the unknown of the equation
+        equation (str): equation of the unknown
+        expr (str): expression of the unknown in Comsol
+        dim (int): geometry dimmension
+        axis (bool, optional): bool if model is axis. Defaults to 0.
+
+    Returns:
+        dict: dict of symbol translator
+    """
     dict = {
         f"{equation}_{unknown}": f"{expr}",
         f"{equation}_{unknown}_rt": f"{expr}",
@@ -160,12 +197,30 @@ def create_dict(
 
 
 def create_group(model, tag: str, label: str, location: str, type: str):
+    """Create groups for post-proc exports
+
+    Args:
+        model (str): mph file (pyComsol model)
+        tag (str): group tag
+        label (str): group label
+        location (str): group location
+        type (str): group type
+    """
     model.java.nodeGroup().create(tag, location)
     model.java.nodeGroup(tag).set("type", type)
     model.java.nodeGroup(tag).label(label)
 
 
 def json_get(data: dict, *keys):
+    """find part of dict from keys, return None if it doesn't exist
+
+    Args:
+        data (dict): dict to explore
+        keys (str): keys that form the path in the dict (data[key1][key2][key3]....)
+
+    Returns:
+        data[key1][key2][key3]... or None if doesn't exist
+    """
     current_data = data
     for key in keys:
         current_data = current_data.get(key)
@@ -175,7 +230,16 @@ def json_get(data: dict, *keys):
     return current_data
 
 
-def feel_to_comsol_symbols(param: str, dict_unknown: dict):
+def feel_to_comsol_symbols(param: str, dict_unknown: dict) -> str:
+    """replace the FEEL++ symbols by Comsol symbols
+
+    Args:
+        param (str): string to translate
+        dict_unknown (dict): dict containing the translation of all symbols
+
+    Returns:
+        str: updated params with Comsol symbols
+    """
     return re.sub(
         r"\b(" + "|".join(re.escape(key) for key in dict_unknown.keys()) + r")\b",
         lambda match: dict_unknown[match.group(0)],

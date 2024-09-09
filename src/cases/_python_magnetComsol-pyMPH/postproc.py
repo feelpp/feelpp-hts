@@ -1,12 +1,21 @@
 import numpy as np
-from typing import List
 from methods import get_markers, create_group, json_get
 from rich.progress import track
 
 
 def postprocessing(
-    model, equations: List[str], data: dict, selection_import: dict, dim: int, args
+    model, equations: list[str], data: dict, selection_import: dict, dim: int, args
 ):
+    """Create post-processing in Comsol
+
+    Args:
+        model:  mph file (pyComsol model)
+        equations (list[str]): list of equations of the model
+        data (dict): dict from jsonmodel
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        dim (int): geometry dimmension
+        args: arguments of the script
+    """
     ### Create the post-proc
     print("Info    : Creating Post-Processing...")
 
@@ -35,6 +44,14 @@ def postprocessing(
 
 
 def create_export_magnetic(plots, dim: int, equations: str, args):
+    """Create magnetic post-processing in Comsol
+
+    Args:
+        plots: plots part of mph file (pyComsol model)
+        dim (int): geometry dimmension
+        equations (str): list of equations of the model
+        args: arguments of the script
+    """
     print("Info    :    Export magnetic")
 
     create_export(plots, dim, "Magnetic field", "normB", "mf.normB")
@@ -50,6 +67,14 @@ def create_export_magnetic(plots, dim: int, equations: str, args):
 
 
 def create_export_heat(plots, dim: int, equations: str, args):
+    """Create heat post-processing in Comsol
+
+    Args:
+        plots: plots part of mph file (pyComsol model)
+        dim (int): geometry dimmension
+        equations (str): list of equations of the model
+        args: arguments of the script
+    """
     print("Info    :    Export heat")
 
     create_export(plots, dim, "Temperature", "T", "T")
@@ -57,6 +82,14 @@ def create_export_heat(plots, dim: int, equations: str, args):
 
 
 def create_export_electric(plots, dim: int, equations: str, args):
+    """Create electric post-processing in Comsol
+
+    Args:
+        plots: plots part of mph file (pyComsol model)
+        dim (int): geometry dimmension
+        equations (str): list of equations of the model
+        args: arguments of the script
+    """
     print("Info    :    Export electric")
 
     create_export(plots, dim, "Electric Potential", "V", "V")
@@ -64,6 +97,14 @@ def create_export_electric(plots, dim: int, equations: str, args):
 
 
 def create_export_elastic(plots, dim: int, equations: str, args):
+    """Create elastic post-processing in Comsol
+
+    Args:
+        plots: plots part of mph file (pyComsol model)
+        dim (int): geometry dimmension
+        equations (str): list of equations of the model
+        args: arguments of the script
+    """
     print("Info    :    Export elastic")
 
     create_export(plots, dim, "Displacement", "disp", "solid.disp")
@@ -92,10 +133,20 @@ def create_export_elastic(plots, dim: int, equations: str, args):
 
 
 def create_nothing(plots, dim: int, equations: str, args):
+    """skip this physic"""
     pass
 
 
 def create_export(plots, dim: int, name: str, ID: str, expr: str):
+    """Create export of a field in post-processing in Comsol
+
+    Args:
+        plots: plots part of mph file (pyComsol model)
+        dim (int): geometry dimmension
+        name (str): name of field
+        ID (str): symbol of field
+        expr (str): expression of field
+    """
     plot = plots.create(f"PlotGroup{dim}D", name=name)
     plot.property("titletype", "manual")
     plot.property("title", name)
@@ -110,7 +161,19 @@ def create_export(plots, dim: int, name: str, ID: str, expr: str):
         volume.property("expr", expr)
 
 
-def stat_method(equation, model, stats: dict, selection_import: dict, dim: int, args):
+def stat_method(
+    equation: str, model, stats: dict, selection_import: dict, dim: int, args
+):
+    """Create statistics of a physic in post-processing in Comsol
+
+    Args:
+        equation (str): physic of stat
+        model: mph file (pyComsol model)
+        stats (dict): dict of statistics from the feelpp json
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        dim (int): geometry dimmension
+        args: arguments of the script
+    """
     ### Statistics
     if args.debug:
         print("Debug   : equation=", equation)
@@ -184,7 +247,7 @@ def stat_method(equation, model, stats: dict, selection_import: dict, dim: int, 
             ## case 3 : markers="marker%1_1%" and index1==list of list
             index = stats[stat]["index1"]
             marker = stats[stat]["markers"]
-            if isinstance(marker, List):
+            if isinstance(marker, list):
                 marker = marker[0]
 
             for i in track(
@@ -228,7 +291,7 @@ def stat_method(equation, model, stats: dict, selection_import: dict, dim: int, 
 def create_integrate(
     stat: str,
     stats: dict,
-    markers: List[str],
+    markers: list[str],
     statname: str,
     equation: str,
     model,
@@ -236,6 +299,19 @@ def create_integrate(
     dim: int,
     args,
 ):
+    """Create integrate type statistic in post-processing in Comsol
+
+    Args:
+        stat (str): name of the integrate in stats
+        stats (dict): dict of statistics from the feelpp json
+        markers (list[str]): list of marker included in this statistic
+        statname (str): name to be displayed of the statistic
+        equation (str): physic of the statistic
+        model: mph file (pyComsol model)
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        dim (int): geometry dimmension
+        args: arguments of the script
+    """
     if args.debug:
         print(f"Info    :    Statistics {statname}")
     eval = model / "evaluations"
@@ -331,7 +407,7 @@ def create_integrate(
 def create_stat(
     stat: str,
     stats: dict,
-    markers: List[str],
+    markers: list[str],
     statname: str,
     equation: str,
     model,
@@ -339,6 +415,19 @@ def create_stat(
     dim: int,
     args,
 ):
+    """Create stat type statistic in post-processing in Comsol
+
+    Args:
+        stat (str): name of the stat in stats
+        stats (dict): dict of statistics from the feelpp json
+        markers (list[str]): list of marker included in this statistic
+        statname (str): name to be displayed of the statistic
+        equation (str): physic of the statistic
+        model: mph file (pyComsol model)
+        selection_import (dict): dict that translate feelpp markers into Comsol markers
+        dim (int): geometry dimmension
+        args: arguments of the script
+    """
     if args.debug:
         print(f"Info    :    Statistics {statname}")
     eval = model / "evaluations"
