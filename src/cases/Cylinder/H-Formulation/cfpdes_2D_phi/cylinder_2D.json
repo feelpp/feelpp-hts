@@ -1,0 +1,149 @@
+{
+    "Name": "Cylinder 2D",
+    "ShortName": "cylinder-2D",
+    "Models": {
+        "cfpdes": {
+            "equations": [
+                "magneticH",
+                "magneticphi"
+            ]
+        },
+        "magneticH": {
+            "common": {
+                "setup": {
+                    "unknown": {
+                        "basis": "Ned1h0",
+                        "name": "H",
+                        "symbol": "H"
+                    }
+                }
+            },
+            "models": [
+                {
+                    "name": "magneticH_Conductor",
+                    "materials": "Conductor",
+                    "setup": {
+                        "coefficients": {
+                            "zeta": "materials_Conductor_rho:materials_Conductor_rho",
+                            "d": "materials_Conductor_mu:materials_Conductor_mu"
+                        }
+                    }
+                }
+            ]
+        },
+        "magneticphi": {
+            "common": {
+                "setup": {
+                    "unknown": {
+                        "basis": "Pch1",
+                        "name": "phi",
+                        "symbol": "phi"
+                    }
+                }
+            },
+            "models": [
+                {
+                    "name": "magneticphi_Air",
+                    "materials": "Air",
+                    "setup": {
+                        "coefficients": {
+                            "c": 1
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "Parameters": {
+        "mu0": "4*pi*1e-7",
+        "bmax": 0.02,
+        "tf": 15,
+        "rate": "3.0*bmax/tf:tf:bmax",
+        "hsVal": "(t>1.e-10)*(bmax - (t-2.0*tf/3.0)*rate + (t<2.0*tf/3.0)*(t-2.0*tf/3.0)*rate + (t<tf/3.0)*(t*rate - bmax))/mu0:t:tf:rate:bmax:mu0",
+        "theta": "atan2(y,x):x:y",
+        "r_xy": "sqrt(x^2 + y^2):x:y",
+        "sigma": 58e6,
+        "jc": 1e8,
+        "ec": 1e-4,
+        "n": 20,
+        "epsSigma": 1e-8
+    },
+    "Meshes": {
+        "cfpdes": {
+            "Import": {
+                "filename": "$cfgdir/circle.geo",
+                "hsize": 1e-3
+            }
+        }
+    },
+    "Materials": {
+        "Conductor": {
+            "markers": [
+                "Conductor"
+            ],
+            "rho": "ec / jc * (abs(magneticH_curl_H_rt)/jc)^(n - 1):ec:jc:n:magneticH_curl_H_rt",
+            // "rho": "1/sigma:sigma",
+            "mu": "mu0:mu0"
+        },
+        "Air": {
+            "markers": [
+                "Air"
+            ],
+            "mu": "mu0:mu0"
+        }
+    },
+    "BoundaryConditions": {
+        "magneticphi": {
+            "Neumann": {
+                "Bound_neu": {
+                    "markers": [
+                        "Bound_super"
+                    ],
+                    "expr": "nx*magneticH_H_rt_0+ny*magneticH_H_rt_1:magneticH_H_rt_0:magneticH_H_rt_1:nx:ny"
+                }
+            },
+            "Dirichlet": {
+                "Infty": {
+                    "markers": [
+                        "Infty"
+                    ],
+                    "expr": "-hsVal*y:y:hsVal"
+                }
+            }
+        },
+        "magneticH": {
+            "Dirichlet": {
+                "Bound_dir": {
+                    "markers": [
+                        "Bound_super"
+                    ],
+                    // "expr": "{0,hsVal}:hsVal"
+                    "expr": "{magneticphi_grad_phi_0,magneticphi_grad_phi_1}:magneticphi_grad_phi_0:magneticphi_grad_phi_1"
+                }
+            }
+        }
+    },
+    "PostProcess": {
+        "use-model-name": 1,
+        "cfpdes": {
+            "Exports": {
+                "fields": "all",
+                "expr": {
+                    "B": {
+                        "expr": "{mu0*(magneticH_H_0+magneticphi_grad_phi_0),mu0*(magneticH_H_1+magneticphi_grad_phi_1)}:mu0:magneticH_H_0:magneticH_H_1:magneticphi_grad_phi_1:magneticphi_grad_phi_0",
+                        "representation": [
+                            "element"
+                        ]
+                    },
+                    "J": {
+                        "expr": "magneticH_curl_H:magneticH_curl_H",
+                        "markers": "Conductor"
+                    },
+                    "Htot": {
+                        "expr": "{magneticH_H_0+magneticphi_grad_phi_0,magneticH_H_1+magneticphi_grad_phi_1}:magneticH_H_0:magneticH_H_1:magneticphi_grad_phi_1:magneticphi_grad_phi_0"
+                    }
+                }
+            }
+        }
+    }
+}
